@@ -1,17 +1,15 @@
 ﻿using UnityEngine;
 using UnityEditor;
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Xml;
-using System.Xml.Serialization;
+using Util;
 
 /// <summary>
 /// Tool to help tweaking constants
 /// </summary>
 [ExecuteInEditMode]
 public class ConstantTweakTool : GenericSingleton<ConstantTweakTool> {
-    public delegate void ConstantEvent (ConstantTweakTool src);
+    public delegate void ConstantEvent(ConstantTweakTool src);
     public static ConstantEvent ConstantEventHandler;
 
     /// <summary>
@@ -26,7 +24,7 @@ public class ConstantTweakTool : GenericSingleton<ConstantTweakTool> {
     /// Saves to the specified path.
     /// </summary>
     /// <param name="path">The path.</param>
-    public void Save (string path) {
+    public void Save(string path) {
         Xml.Save(path, constants_);
     }
 
@@ -34,7 +32,7 @@ public class ConstantTweakTool : GenericSingleton<ConstantTweakTool> {
     /// Loads from the specified path.
     /// </summary>
     /// <param name="path">The path.</param>
-    public void Load (string path) {
+    public void Load(string path) {
         constants_ = Xml.Load<ConstantXmlObject[]>(path);
 
         BuildTable();
@@ -44,22 +42,22 @@ public class ConstantTweakTool : GenericSingleton<ConstantTweakTool> {
     }
 
     [Serializable]
-    private struct ConstantXmlObject {
+    public struct ConstantXmlObject {
         public string key;
         public int value;
     }
 
-    void Awake () {
+    void Awake() {
         BuildTable();
     }
 
-    private void BuildTable () {
+    private void BuildTable() {
         if (const_dict == null)
             const_dict = new Dictionary<string, int>();
         else
             const_dict.Clear();
 
-        foreach(ConstantXmlObject xml_obj in constants_) {
+        foreach (ConstantXmlObject xml_obj in constants_) {
             try {
                 const_dict.Add(xml_obj.key, xml_obj.value);
             }
@@ -73,7 +71,7 @@ public class ConstantTweakTool : GenericSingleton<ConstantTweakTool> {
 
 [CustomEditor(typeof(ConstantTweakTool))]
 public class ConstantTweakEditor : Editor {
-    public override void OnInspectorGUI () {
+    public override void OnInspectorGUI() {
         DrawDefaultInspector();
 
         GUILayout.BeginHorizontal();
