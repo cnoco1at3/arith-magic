@@ -64,10 +64,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\AvatarLib\AvatarBackEnd.cs" />
-    <Compile Include="Assets\Scripts\AvatarLib\AvatarManager.cs" />
+    <Compile Include="Assets\Scripts\AvatarLib\AvatarConstructor.cs" />
     <Compile Include="Assets\Scripts\AvatarLib\AvatarProfile.cs" />
-    <Compile Include="Assets\Scripts\NewBehaviourScript.cs" />
-    <Compile Include="Assets\Scripts\NewBehaviourScript1.cs" />
+    <Compile Include="Assets\Scripts\User\User.cs" />
     <Compile Include="Assets\Scripts\Util\ConstantTweakTool.cs" />
     <Compile Include="Assets\Scripts\Util\GenericSingleton.cs" />
     <Compile Include="Assets\Scripts\Util\Xml.cs" />

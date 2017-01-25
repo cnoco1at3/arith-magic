@@ -8,7 +8,7 @@ namespace AvatarLib {
         /// <summary>
         /// The filename of profiles database
         /// </summary>
-        private const string filename = "Profiles.xml";
+        private const string filename = "User_Profiles.xml";
 
         /// <summary>
         /// The profiles
@@ -56,12 +56,43 @@ namespace AvatarLib {
         }
 
         /// <summary>
+        /// Finds the profile.
+        /// </summary>
+        /// <param name="avatar">The avatar.</param>
+        /// <returns></returns>
+        public AvatarProfile FindProfile(AvatarProfile avatar) {
+            foreach (AvatarProfile profile in profiles_)
+                if (avatar.Equals(profile))
+                    return profile;
+            return null;
+        }
+
+        /// <summary>
+        /// Finds the index of the profile.
+        /// </summary>
+        /// <param name="avatar">The avatar.</param>
+        /// <returns></returns>
+        public int FindProfileIndex(AvatarProfile avatar) {
+            for(int i = 0; i < profiles_.Count; ++i) 
+                if (avatar.Equals(profiles_[i]))
+                    return i;
+            return -1;
+        }
+
+        /// <summary>
         /// Gets the profile by the index.
         /// </summary>
         /// <param name="index">The index.</param>
         /// <returns></returns>
         public AvatarProfile GetProfileByIndex(int index) {
-            return profiles_[index];
+            if(index < 0) 
+                index = profiles_.Count + index;
+            try {
+                return profiles_[index];
+            }
+            catch (IndexOutOfRangeException) {
+                return null;
+            }
         }
 
         /// <summary>
@@ -70,7 +101,12 @@ namespace AvatarLib {
         /// <param name="index">The index.</param>
         /// <param name="avatar">The avatar.</param>
         public void SetProfileByIndex(int index, AvatarProfile avatar) {
-            profiles_[index] = avatar;
+            if(index < 0) 
+                index = profiles_.Count + index;
+            try {
+                profiles_[index] = avatar;
+            }
+            catch (IndexOutOfRangeException) { }
             if (instant_save_mode_)
                 SaveToText();
         }
