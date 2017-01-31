@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 
 namespace RecognizerLib {
-    public class Resampler {
+    public static class Resampler {
 
         public static List<Vector2> Resample(List<Vector2> points, int sample) {
             float l = PathLength(points) / (sample - 1),
@@ -34,7 +34,7 @@ namespace RecognizerLib {
         }
     }
 
-    public class Rotater {
+    public static class Rotater {
         public static List<Vector2> RotateToZero(List<Vector2> points) {
             Vector2 c = new Vector2();
             foreach (Vector2 p in points)
@@ -54,7 +54,7 @@ namespace RecognizerLib {
         }
     }
 
-    public class Scaler {
+    public static class Scaler {
         public static List<Vector2> ScaleToSquare(List<Vector2> points, float size) {
             float max_x = Mathf.NegativeInfinity,
                 max_y = Mathf.NegativeInfinity,
