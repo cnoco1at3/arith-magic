@@ -21,7 +21,7 @@ public class ConstantTweakTool : GenericSingleton<ConstantTweakTool> {
     [SerializeField]
     private ConstantXmlObject[] constants_;
 
-    public Dictionary<string, int> const_dict;
+    public Dictionary<string, double> const_dict;
 
     /// <summary>
     /// Saves to the specified path.
@@ -47,7 +47,7 @@ public class ConstantTweakTool : GenericSingleton<ConstantTweakTool> {
     [Serializable]
     public struct ConstantXmlObject {
         public string key;
-        public int value;
+        public double value;
     }
 
     void Awake() {
@@ -56,7 +56,7 @@ public class ConstantTweakTool : GenericSingleton<ConstantTweakTool> {
 
     private void BuildTable() {
         if (const_dict == null)
-            const_dict = new Dictionary<string, int>();
+            const_dict = new Dictionary<string, double>();
         else
             const_dict.Clear();
 

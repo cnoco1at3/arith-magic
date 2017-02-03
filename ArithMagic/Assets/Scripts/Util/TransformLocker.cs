@@ -1,9 +1,6 @@
-﻿using UnityEngine;
-using System.Collections;
-
-#if UNITY_EDITOR
+﻿#if UNITY_EDITOR
+using UnityEngine;
 using UnityEditor;
-#endif
 
 [ExecuteInEditMode]
 public class TransformLocker : MonoBehaviour {
@@ -32,7 +29,6 @@ public class TransformLocker : MonoBehaviour {
     }
 }
 
-#if UNITY_EDITOR
 public class LockerEditor : Editor {
     public override void OnInspectorGUI() {
         DrawDefaultInspector();

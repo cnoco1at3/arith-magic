@@ -1,7 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Interactable : MonoBehaviour {
+public class PartsAcceptor : MonoBehaviour {
+
+    public Transform accept_point;
 
 	// Use this for initialization
 	void Start () {
