@@ -1,8 +1,11 @@
 ﻿using UnityEngine;
-using UnityEditor;
 using System;
 using System.Collections.Generic;
 using Util;
+
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 /// <summary>
 /// Tool to help tweaking constants
@@ -69,6 +72,7 @@ public class ConstantTweakTool : GenericSingleton<ConstantTweakTool> {
     }
 }
 
+#if UNITY_EDITOR
 [CustomEditor(typeof(ConstantTweakTool))]
 public class ConstantTweakEditor : Editor {
     public override void OnInspectorGUI() {
@@ -86,3 +90,4 @@ public class ConstantTweakEditor : Editor {
         GUILayout.EndHorizontal();
     }
 }
+#endif
