@@ -13,18 +13,20 @@ public class FoldMenu : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         Button button = gameObject.GetComponent<Button>();
-        Debug.Log(button);
-        button.onClick.AddListener(GetFold);
 	}
 	
 	// Update is called once per frame
 	void Update () {
 	}
 
-    void GetFold() {
-        if (is_folded_)
-            Debug.Log(folding_part_.GetComponent<RectTransform>().localPosition);
+    public void GetFold() {
+        if (is_folded_) 
+            folding_part_.transform.DOMoveY(0, 1);
         else
-            Debug.Log(folding_part_.GetComponent<RectTransform>().localPosition);
+            folding_part_.transform.DOMoveY(-90, 1);
+
+        Debug.Log(is_folded_);
+
+        is_folded_ = !is_folded_;
     }
 }
