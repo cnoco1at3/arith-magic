@@ -16,6 +16,7 @@ public class PartsBehavior : Dragable {
     // Use this for initialization
     void Start() {
         from_pos = transform.position;
+        
     }
 
     // Update is called once per frame
@@ -25,6 +26,7 @@ public class PartsBehavior : Dragable {
 
     public override void OnTouchEnter() {
         from_pos = transform.position;
+        
     }
 
     public override void OnTouchStay(Vector3 touch_pos) {
@@ -35,6 +37,7 @@ public class PartsBehavior : Dragable {
         PartsAcceptor[] acceptors = FindObjectsOfType<PartsAcceptor>();
         PartsAcceptor nearest = null;
         float nearest_dist = Mathf.Infinity;
+        Debug.Log(acceptors[0]);
         foreach (PartsAcceptor acceptor in acceptors) {
             float dist = Vector3.Distance(transform.position, acceptor.accept_point.position);
             if (dist < nearest_dist) {
