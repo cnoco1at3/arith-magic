@@ -30,21 +30,21 @@ public class User : GenericSingleton<User> {
         }
 
         // Examples
-        current_prof = avatar_conn.GetProfileByIndex(0);
-        ExModifyProfile(0, "hahaha");
-        AvatarProfile newnew_profile = new AvatarProfile();
-        avatar_conn.AddProfile(newnew_profile);
-        ExModifyProfile(1, "bububu");
+        //current_prof = avatar_conn.GetProfileByIndex(0);
+        //ExModifyProfile(0, "hahaha");
+        //AvatarProfile newnew_profile = new AvatarProfile();
+        //avatar_conn.AddProfile(newnew_profile);
+        //ExModifyProfile(1, "bububu");
     }
 
     // an example on how to modify a profile
-    void ExModifyProfile(int index, string name) {
-        AvatarProfile profile = avatar_conn.GetProfileByIndex(index);
+    //void ExModifyProfile(int index, string name) {
+    //    AvatarProfile profile = avatar_conn.GetProfileByIndex(index);
 
-        // change the profile here
-        profile.first_name = name;
+    //    // change the profile here
+    //    profile.first_name = name;
 
-        avatar_conn.SetProfileByIndex(index, profile);
-        avatar_conn.SaveToText();
-    }
+    //    avatar_conn.SetProfileByIndex(index, profile);
+    //    avatar_conn.SaveToText();
+    //}
 }

@@ -46,8 +46,8 @@ public class InteractManager : GenericSingleton<InteractManager> {
                 if (Physics.Raycast(ray, out rayhit)) {
                     IInteractable src = rayhit.collider.GetComponent<IInteractable>();
                     if (src != null) {
-                        src.OnTouchEnter();
                         RequireOccupation(src);
+                        src.OnTouchEnter();
                     }
                 }
             }
