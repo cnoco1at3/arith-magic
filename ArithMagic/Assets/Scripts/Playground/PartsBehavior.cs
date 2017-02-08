@@ -14,16 +14,8 @@ public class PartsBehavior : Dragable {
 
     private Vector3 from_pos_;
 
-<<<<<<< HEAD
-    // Use this for initialization
-    void Start() {
-        from_pos = transform.position;
-        
-    }
-=======
     private bool is_accepted_ = false;
     private PartsAcceptor curr = null;
->>>>>>> d25218b33e2acddc2c8f174bcfc3cf3ede8e4111
 
     [SerializeField]
     private int part_id_ = 0;
@@ -35,12 +27,7 @@ public class PartsBehavior : Dragable {
 
     // Lazy update of the from position
     public override void OnTouchEnter() {
-<<<<<<< HEAD
-        from_pos = transform.position;
-        
-=======
         from_pos_ = transform.position;
->>>>>>> d25218b33e2acddc2c8f174bcfc3cf3ede8e4111
     }
 
     public override void OnTouchStay(Vector3 touch_pos) {
