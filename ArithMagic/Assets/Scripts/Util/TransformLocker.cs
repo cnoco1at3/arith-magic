@@ -1,13 +1,12 @@
-﻿#if UNITY_EDITOR
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEditor;
 
 [ExecuteInEditMode]
 public class TransformLocker : MonoBehaviour {
 
-    Vector3 local_pos_;
-    Quaternion local_rot_;
-    Vector3 local_scale_;
+    private Vector3 local_pos_;
+    private Quaternion local_rot_;
+    private Vector3 local_scale_;
 
     void Start() {
         local_pos_ = transform.localPosition;
@@ -15,12 +14,12 @@ public class TransformLocker : MonoBehaviour {
         local_scale_ = transform.localScale;
     }
 
-	// Update is called once per frame
-	void Update () {
+    // Update is called once per frame
+    void Update() {
         transform.localPosition = local_pos_;
         transform.localRotation = local_rot_;
         transform.localScale = local_scale_;
-	}
+    }
 
     public void SetTransform() {
         local_pos_ = transform.localPosition;
@@ -37,4 +36,3 @@ public class LockerEditor : Editor {
             ((TransformLocker)target).SetTransform();
     }
 }
-#endif

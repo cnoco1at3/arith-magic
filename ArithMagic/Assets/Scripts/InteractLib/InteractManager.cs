@@ -2,42 +2,42 @@
 using InteractLib;
 using Util;
 
+/// <summary>
+/// This help detecting if the user touch the screen and it handle different input for different platforms
+/// </summary>
 public class InteractManager : GenericSingleton<InteractManager> {
 
     private bool is_occupied_ = false;
     private IInteractable current_;
+    private Vector3 touch_pos;
 
-    // Use this for initialization
-    void Start() {
-
-    }
-
-    // Update is called once per frame
+    /// <summary>
+    /// Get the input from either mouse or touch screen and interprete them into Enter, Stay and Exit events.
+    /// </summary>
     void Update() {
 
-        Vector3 touch_pos = new Vector3();
+        // NOTE: This snippet get the touch position based on the platform
         bool is_touched = false;
-
 #if UNITY_IOS
         if (Input.touchCount > 0 && Input.GetTouch(0).phase != TouchPhase.Canceled && Input.GetTouch(0).phase != TouchPhase.Ended) {
             touch_pos = Input.GetTouch(0).position;
             is_touched = true;
         }
 #endif
-
 #if UNITY_EDITOR
         if (Input.GetMouseButton(0)) {
             touch_pos = Input.mousePosition;
             is_touched = true;
         }
 #endif
-
         else {
             if (current_ != null)
-                current_.OnTouchExit();
+                current_.OnTouchExit(touch_pos);
             ReleaseOccupation(current_);
+            touch_pos = new Vector3();
         }
 
+        // NOTE: Determine whether this touch is just enter or is a stay state touch
         if (is_touched) {
             if (!is_occupied_) {
                 Ray ray = Camera.main.ScreenPointToRay(touch_pos);
@@ -47,7 +47,7 @@ public class InteractManager : GenericSingleton<InteractManager> {
                     IInteractable src = rayhit.collider.GetComponent<IInteractable>();
                     if (src != null) {
                         RequireOccupation(src);
-                        src.OnTouchEnter();
+                        src.OnTouchEnter(touch_pos);
                     }
                 }
             }
