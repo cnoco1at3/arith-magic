@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿#if UNITY_EDITOR
+using UnityEngine;
 using UnityEditor;
 
 [ExecuteInEditMode]
@@ -36,3 +37,4 @@ public class LockerEditor : Editor {
             ((TransformLocker)target).SetTransform();
     }
 }
+#endif

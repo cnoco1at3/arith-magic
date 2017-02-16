@@ -8,33 +8,53 @@ public class User : GenericSingleton<User> {
     private static AvatarBackEnd avatar_conn;
     private static AvatarProfile current_prof;
 
+    private static Color[] color_table = { Color.yellow, Color.red };
+
     // Use this for initialization
     void Start() {
-        // no instant save mode, need to manually save the xml file after modifying user profiles
+        // not instant save mode, need to manually save the xml file after modifying user profiles
         if (avatar_conn == null)
-            avatar_conn = new AvatarBackEnd(false);
+            avatar_conn = new AvatarBackEnd();
 
         // no profiles exist, needs to create at least one
-        if (avatar_conn.GetProfilesSize() < 1) {
-            // creating profile here
-            AvatarProfile new_profile = new AvatarProfile();
+        List<AvatarProfile> profiles = avatar_conn.GetProfilesList();
 
-            // add the profile to the database
-            avatar_conn.AddProfile(new_profile);
+        while (profiles.Count < 2)
+            AddProfile();
 
-            // save the data base from memory to local storage
-            avatar_conn.SaveToText();
-
-            current_prof = new_profile;
-            // AvatarConstructor.Instance.ConstructByProfile(new_profile);
+        foreach (AvatarProfile profile in profiles) {
+            // TODO display the profiles here
         }
 
-        // Examples
-        //current_prof = avatar_conn.GetProfileByIndex(0);
-        //ExModifyProfile(0, "hahaha");
-        //AvatarProfile newnew_profile = new AvatarProfile();
-        //avatar_conn.AddProfile(newnew_profile);
-        //ExModifyProfile(1, "bububu");
+
+        current_prof = avatar_conn.GetProfileByIndex(0);
+        EditCurrent();
+        avatar_conn.SaveToText();
+    }
+
+    void AddProfile() {
+
+        // TODO input the user profile here
+        string first = "", last = "";
+        AvatarProfile.UserType user = AvatarProfile.UserType.kStudent;
+
+        AvatarProfile newpro = new AvatarProfile(first, last, user);
+
+        avatar_conn.AddProfile(newpro);
+
+        avatar_conn.SaveToText();
+    }
+
+    void EditCurrent() {
+        // TODO input the user profile here
+        string first = "Edited", last = "Edited";
+
+        current_prof.first_name = first;
+        current_prof.last_name = last;
+    }
+
+    void SignOut() {
+        current_prof = null;
     }
 
     // an example on how to modify a profile
