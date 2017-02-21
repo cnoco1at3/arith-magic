@@ -3,13 +3,15 @@ using System.Collections;
 
 public class PartsAcceptor : MonoBehaviour {
 
-    public Transform accept_point;
+    [SerializeField]
+    private Transform accept_point;
 
     private bool is_occupied = false;
 
-    void Start() {
-        if (accept_point == null)
-            accept_point = transform;
+    public virtual Vector3 GetAcceptPoint(Vector3 position) {
+        if (accept_point != null)
+            return accept_point.position;
+        return position;
     }
 
     public bool IsOccupied() {

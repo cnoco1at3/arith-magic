@@ -26,7 +26,6 @@ public class User : GenericSingleton<User> {
             // TODO display the profiles here
         }
 
-
         current_prof = avatar_conn.GetProfileByIndex(0);
         EditCurrent();
         avatar_conn.SaveToText();

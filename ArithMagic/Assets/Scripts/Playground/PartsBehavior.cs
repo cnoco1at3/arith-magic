@@ -7,8 +7,7 @@ using DG.Tweening;
 
 public class PartsBehavior : Dragable {
 
-    [SerializeField]
-    private int part_id_ = 0;
+    public int part_id = 0;
 
     // NOTE: Add these constants into tweak tool
     private const string kRotateEaseIn = "RotateEaseIn";
@@ -29,8 +28,10 @@ public class PartsBehavior : Dragable {
     public override void OnTouchEnter(Vector3 touch_pos) {
         from_pos_ = transform.position;
         transform.DORotate(new Vector3(90, 0, 0), (float)ConstantTweakTool.Instance.const_dict[kRotateEaseIn]);
+        /*
         transform.DOMoveZ(Camera.main.transform.position.z + 1.5f,
             (float)ConstantTweakTool.Instance.const_dict[kSnapEaseOut]);
+            */
     }
 
     // OnTouchStay is inherented from Draggable
@@ -67,8 +68,7 @@ public class PartsBehavior : Dragable {
         try {
             // case 1 find a valid acceptor
             if (acceptor != null && !acceptor.IsOccupied()) {
-                transform.DOMove(acceptor.accept_point.position, (float)ConstantTweakTool.Instance.const_dict[kSnapEaseIn]);
-                CheckAnswer(acceptor);
+                transform.DOMove(acceptor.GetAcceptPoint(transform.position), (float)ConstantTweakTool.Instance.const_dict[kSnapEaseIn]);
                 is_accepted_ = true;
 
                 // occupy this acceptor
