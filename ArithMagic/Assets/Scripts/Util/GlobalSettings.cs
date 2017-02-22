@@ -7,6 +7,6 @@ public class GlobalSettings : GenericSingleton<GlobalSettings> {
 
 	// Use this for initialization
 	void Awake () {
-        DOTween.Init(true);
+        DOTween.Init(true, true);
 	}
 }

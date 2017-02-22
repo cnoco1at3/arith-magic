@@ -2,31 +2,15 @@
 using UnityEngine.UI;
 using System.Collections;
 using DG.Tweening;
+using Util;
 
-public class FoldMenu : MonoBehaviour {
+public class FoldMenu : GenericSingleton<FoldMenu> {
 
-    [SerializeField]
-    GameObject folding_part_;
+    public void OnUIFold() {
+        transform.DOLocalMoveY(-0.5f, 0.5f);
+    }
 
-    bool is_folded_ = true;
-
-	// Use this for initialization
-	void Start () {
-        Button button = gameObject.GetComponent<Button>();
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	}
-
-    public void GetFold() {
-        if (is_folded_) 
-            folding_part_.transform.DOMoveY(0, 1);
-        else
-            folding_part_.transform.DOMoveY(-90, 1);
-
-        Debug.Log(is_folded_);
-
-        is_folded_ = !is_folded_;
+    public void OnUIUnfold() {
+        transform.DOLocalMoveY(0, 0.5f);
     }
 }

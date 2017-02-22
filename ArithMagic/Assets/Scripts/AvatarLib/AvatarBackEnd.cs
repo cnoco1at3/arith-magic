@@ -8,7 +8,7 @@ namespace AvatarLib {
         /// <summary>
         /// The filename of profiles database
         /// </summary>
-        private const string kFileName = "User_Profiles.xml";
+        private const string kFileName = "UserProfiles.xml";
 
         /// <summary>
         /// The profiles
@@ -106,7 +106,9 @@ namespace AvatarLib {
             try {
                 profiles_[index] = avatar;
             }
-            catch (IndexOutOfRangeException) { }
+            catch (IndexOutOfRangeException e) {
+                Debug.LogException(e);
+            }
             if (instant_save_mode_)
                 SaveToText();
         }
