@@ -28,10 +28,6 @@ public class PartsBehavior : Dragable {
     public override void OnTouchEnter(Vector3 touch_pos) {
         from_pos_ = transform.position;
         transform.DORotate(new Vector3(90, 0, 0), (float)ConstantTweakTool.Instance.const_dict[kRotateEaseIn]);
-        /*
-        transform.DOMoveZ(Camera.main.transform.position.z + 1.5f,
-            (float)ConstantTweakTool.Instance.const_dict[kSnapEaseOut]);
-            */
     }
 
     // OnTouchStay is inherented from Draggable
