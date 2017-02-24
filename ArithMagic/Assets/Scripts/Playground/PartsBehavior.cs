@@ -22,13 +22,11 @@ public class PartsBehavior : Dragable {
 
     private Vector3 default_pos_;
     private SpriteRenderer spr_ = null;
-    private static GameObject scene_;
 
     // Use this for initialization
     void Start() {
         default_pos_ = transform.position;
         spr_ = GetComponent<SpriteRenderer>();
-        scene_ = GameObject.Find("SceneObjects");
     }
 
     // Lazy update of the from position
@@ -54,7 +52,7 @@ public class PartsBehavior : Dragable {
         try {
             // case 1 find a valid acceptor
             if (acceptor != null && acceptor.IsValid(this)) {
-                transform.parent = scene_.transform;
+                transform.parent = acceptor.transform;
                 default_pos_ = acceptor.transform.position;
                 is_accepted_ = true;
 
