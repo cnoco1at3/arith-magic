@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Util;
@@ -8,26 +9,30 @@ using DG.Tweening;
 public class PartsBehavior : Dragable {
 
     public int part_id = 0;
+    [HideInInspector]
+    public bool is_accepted_ = false;
+    [HideInInspector]
+    public PartsAcceptor curr_acceptor_ = null;
 
     // NOTE: Add these constants into tweak tool
     private const string kRotateEaseIn = "RotateEaseIn";
     private const string kSnapEaseIn = "SnapEaseIn";
     private const string kSnapEaseOut = "SnapEaseOut";
+    private const int default_layer_ = 102;
 
-    private Vector3 from_pos_;
-
-    private bool is_accepted_ = false;
-    private PartsAcceptor curr_ = null;
+    private Vector3 default_pos_;
+    private SpriteRenderer spr_ = null;
 
     // Use this for initialization
     void Start() {
-        from_pos_ = transform.position;
+        default_pos_ = transform.position;
+        spr_ = GetComponent<SpriteRenderer>();
     }
 
     // Lazy update of the from position
     public override void OnTouchEnter(Vector3 touch_pos) {
-        from_pos_ = transform.position;
-        transform.DORotate(new Vector3(90, 0, 0), (float)ConstantTweakTool.Instance.const_dict[kRotateEaseIn]);
+        if (spr_ != null)
+            spr_.sortingOrder = default_layer_;
     }
 
     // OnTouchStay is inherented from Draggable
@@ -44,38 +49,24 @@ public class PartsBehavior : Dragable {
         for (int i = 0; i < hits.Length && acceptor == null; ++i)
             acceptor = hits[i].collider.GetComponent<PartsAcceptor>();
 
-        // NOTE: this is the old method where it will find the closet acceptor and see whether the dist(acceptor, part) is
-        //       within tolerance.
-        /*
-        PartsAcceptor[] acceptors = FindObjectsOfType<PartsAcceptor>();
-        PartsAcceptor nearest = null;
-        float nearest_dist = Mathf.Infinity;
-        foreach (PartsAcceptor acceptor in acceptors) {
-            Vector2 pos2d = new Vector2(transform.position.x, transform.position.y);
-            Vector2 acc2d = new Vector2(acceptor.accept_point.position.x, acceptor.accept_point.position.y);
-            float dist = Vector2.Distance(pos2d, acc2d);
-            if (dist < nearest_dist) {
-                nearest_dist = dist;
-                nearest = acceptor;
-            }
-        }
-        */
-
         try {
             // case 1 find a valid acceptor
-            if (acceptor != null && !acceptor.IsOccupied()) {
-                transform.DOMove(acceptor.GetAcceptPoint(transform.position), (float)ConstantTweakTool.Instance.const_dict[kSnapEaseIn]);
+            if (acceptor != null && acceptor.IsValid(this)) {
+                transform.parent = acceptor.transform;
+                default_pos_ = acceptor.transform.position;
                 is_accepted_ = true;
 
                 // occupy this acceptor
-                if (curr_ != null)
-                    curr_.OnPartExit(this);
-                curr_ = acceptor;
-                curr_.OnPartEnter(this);
+                if (curr_acceptor_ != null)
+                    curr_acceptor_.OnPartExit(this);
+                curr_acceptor_ = acceptor;
+                curr_acceptor_.OnPartEnter(this);
+                UpdateStatus(curr_acceptor_, true);
             }
             // case 2 invalid or did not find any acceptor
             else {
-                transform.DOMove(from_pos_, (float)ConstantTweakTool.Instance.const_dict[kSnapEaseOut]);
+                UpdateStatus(curr_acceptor_, false);
+
                 if (!is_accepted_)
                     StartCoroutine(DelayDestroy());
             }
@@ -85,23 +76,15 @@ public class PartsBehavior : Dragable {
         }
     }
 
-    // TODO: check if it's the right answer
-    private void CheckAnswer(PartsAcceptor acc) {
-        if (IsCorrectAnswer(acc)) {
-            // do it
-        }
-        else {
-            // do something else
-        }
-    }
-
-    // TODO: is the answer correct?
-    private bool IsCorrectAnswer(PartsAcceptor acc) {
-        return true;
-    }
-
     private IEnumerator DelayDestroy() {
-        yield return new WaitForSeconds((float)ConstantTweakTool.Instance.const_dict[kSnapEaseOut]);
+        yield return new WaitForSeconds((float)ConstantTweakTool.Instance.const_dict[kSnapEaseIn]);
         Destroy(gameObject);
+    }
+
+    private void UpdateStatus(PartsAcceptor acceptor, bool accepted) {
+        if (spr_ != null)
+            spr_.sortingOrder = acceptor != null ? acceptor.GetLayerOrder() : default_layer_;
+        transform.DOMove(accepted ? acceptor.GetAcceptPoint(transform.position) : default_pos_,
+            (float)ConstantTweakTool.Instance.const_dict[kSnapEaseIn]);
     }
 }
