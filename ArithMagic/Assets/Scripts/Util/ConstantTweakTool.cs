@@ -25,7 +25,7 @@ public class ConstantTweakTool : GenericSingleton<ConstantTweakTool> {
     /// </summary>
     /// <param name="path">The path.</param>
     public void Save(string path) {
-        Xml.Save(path, constants_);
+        Xml.SaveXml(path, constants_);
     }
 
     /// <summary>
@@ -33,7 +33,7 @@ public class ConstantTweakTool : GenericSingleton<ConstantTweakTool> {
     /// </summary>
     /// <param name="path">The path.</param>
     public void Load(string path) {
-        constants_ = Xml.Load<ConstantXmlObject[]>(path);
+        constants_ = Xml.LoadXml<ConstantXmlObject[]>(path);
 
         BuildTable();
 
