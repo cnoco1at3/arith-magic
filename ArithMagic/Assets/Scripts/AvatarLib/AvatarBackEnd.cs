@@ -26,7 +26,7 @@ namespace AvatarLib {
         public AvatarBackEnd() {
             string local_path_ = Application.dataPath + "/" + kFileName;
             Debug.Log(local_path_);
-            profiles_ = Util.Xml.Load<List<AvatarProfile>>(local_path_) ?? new List<AvatarProfile>();
+            profiles_ = Util.Xml.LoadXml<List<AvatarProfile>>(local_path_) ?? new List<AvatarProfile>();
         }
 
         /// <summary>
@@ -36,7 +36,7 @@ namespace AvatarLib {
         public AvatarBackEnd(bool instant_save) {
             instant_save_mode_ = instant_save;
             string local_path_ = Application.dataPath + "/" + kFileName;
-            profiles_ = Util.Xml.Load<List<AvatarProfile>>(local_path_) ?? new List<AvatarProfile>();
+            profiles_ = Util.Xml.LoadXml<List<AvatarProfile>>(local_path_) ?? new List<AvatarProfile>();
         }
 
         /// <summary>
@@ -146,7 +146,7 @@ namespace AvatarLib {
         /// </summary>
         public void SaveToText() {
             if (profiles_ != null)
-                Util.Xml.Save(Application.dataPath + "/" + kFileName, profiles_);
+                Util.Xml.SaveXml(Application.dataPath + "/" + kFileName, profiles_);
         }
     }
 }

@@ -17,7 +17,7 @@ namespace Util {
         /// <typeparam name="T"></typeparam>
         /// <param name="path">The path.</param>
         /// <param name="obj">The object.</param>
-        public static void Save<T>(string path, T obj) {
+        public static void SaveXml<T>(string path, T obj) {
             try {
                 XmlSerializer xs = new XmlSerializer(typeof(T));
                 XmlWriterSettings xws = new XmlWriterSettings();
@@ -39,7 +39,7 @@ namespace Util {
         /// <typeparam name="T"></typeparam>
         /// <param name="path">The path.</param>
         /// <returns></returns>
-        public static T Load<T>(string path) {
+        public static T LoadXml<T>(string path) {
             try {
                 XmlSerializer xs = new XmlSerializer(typeof(T));
                 Encoding encoding = Encoding.GetEncoding("UTF-8");
