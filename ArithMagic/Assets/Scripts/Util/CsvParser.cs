@@ -5,6 +5,13 @@ using System.IO;
 namespace Util {
     public static class CsvParser {
 
+        public static void SaveCsv<T>(string path, T obj) {
+            // TODO: 
+            // We need to define a interface for T (which is a placeholder for all acceptable data type)
+            // T would have a public method that convert itself into csv file format
+            // This method then should write the result to a csv file
+        }
+
         public static T LoadCsv<T>(string path) {
             using (var fs = File.OpenRead(@path))
             using (StreamReader reader = new StreamReader(fs)) {
