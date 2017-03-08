@@ -5,12 +5,12 @@ public class MovePlayer : MonoBehaviour {
 
     //public Transform destination;
 
-    private NavMeshAgent agent;
+    private UnityEngine.AI.NavMeshAgent agent;
 
     // Use this for initialization
     void Start () {
 
-        agent = gameObject.GetComponent<NavMeshAgent>();
+        agent = gameObject.GetComponent<UnityEngine.AI.NavMeshAgent>();
 
        //agent.SetDestination(destination.position);
 
