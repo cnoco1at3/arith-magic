@@ -11,17 +11,15 @@ public class LevelController : GenericSingleton<LevelController> {
     // 1. the level controller have list of levels and we only maintain the level index parameter here.
     // 2. the level controller accept a data package from outside and then build the level here (this might help reducing memory usage).
 
-    private void CleanLevel() {
+    public static int GetLevelIndex() { return level_index_; }
 
-    }
+    public static bool IsEndGame() { return false; }
 
-    private void BuildLevel() {
+    private void CleanLevel() { }
 
-    }
+    private void BuildLevel() { }
 
-    private void BuildLevel(LevelData data) {
-
-    }
+    private void BuildLevel(LevelData data) { }
 
     private void TransLevel() {
         CleanLevel();
