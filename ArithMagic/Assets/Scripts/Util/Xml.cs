@@ -4,6 +4,7 @@ using System.IO;
 using System.Text;
 using System.Xml;
 using System.Xml.Serialization;
+using System.Collections.Generic;
 
 namespace Util {
     /// <summary>
@@ -25,6 +26,23 @@ namespace Util {
                 xws.CloseOutput = true;
                 using (StreamWriter stream = new StreamWriter(path, false, encoding)) {
                     xs.Serialize(stream, obj);
+                    stream.Close();
+                }
+            }
+            catch (IOException e) {
+                Debug.LogException(e);
+            }
+        }
+
+        public static void SaveXml<T>(string path, List<T> list) {
+            try {
+                XmlSerializer xs = new XmlSerializer(typeof(T));
+                XmlWriterSettings xws = new XmlWriterSettings();
+                Encoding encoding = Encoding.GetEncoding("UTF-8");
+                xws.CloseOutput = true;
+                using (StreamWriter stream = new StreamWriter(path, true, encoding)) {
+                    foreach (T obj in list)
+                        xs.Serialize(stream, obj);
                     stream.Close();
                 }
             }
