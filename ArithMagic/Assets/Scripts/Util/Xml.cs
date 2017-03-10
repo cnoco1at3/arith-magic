@@ -4,6 +4,7 @@ using System.IO;
 using System.Text;
 using System.Xml;
 using System.Xml.Serialization;
+using System.Collections.Generic;
 
 namespace Util {
     /// <summary>
@@ -17,7 +18,7 @@ namespace Util {
         /// <typeparam name="T"></typeparam>
         /// <param name="path">The path.</param>
         /// <param name="obj">The object.</param>
-        public static void Save<T>(string path, T obj) {
+        public static void SaveXml<T>(string path, T obj) {
             try {
                 XmlSerializer xs = new XmlSerializer(typeof(T));
                 XmlWriterSettings xws = new XmlWriterSettings();
@@ -33,13 +34,30 @@ namespace Util {
             }
         }
 
+        public static void SaveXml<T>(string path, List<T> list) {
+            try {
+                XmlSerializer xs = new XmlSerializer(typeof(T));
+                XmlWriterSettings xws = new XmlWriterSettings();
+                Encoding encoding = Encoding.GetEncoding("UTF-8");
+                xws.CloseOutput = true;
+                using (StreamWriter stream = new StreamWriter(path, true, encoding)) {
+                    foreach (T obj in list)
+                        xs.Serialize(stream, obj);
+                    stream.Close();
+                }
+            }
+            catch (IOException e) {
+                Debug.LogException(e);
+            }
+        }
+
         /// <summary>
         /// Loads the specified file to a object.
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="path">The path.</param>
         /// <returns></returns>
-        public static T Load<T>(string path) {
+        public static T LoadXml<T>(string path) {
             try {
                 XmlSerializer xs = new XmlSerializer(typeof(T));
                 Encoding encoding = Encoding.GetEncoding("UTF-8");
