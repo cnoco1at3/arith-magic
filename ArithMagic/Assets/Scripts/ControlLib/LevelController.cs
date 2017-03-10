@@ -13,7 +13,7 @@ public class LevelController : GenericSingleton<LevelController> {
 
     public static int GetLevelIndex() { return level_index_; }
 
-    public static bool IsEndGame() { return false; }
+    public static bool IsEndOfPhase() { return false; }
 
     private void CleanLevel() { }
 
