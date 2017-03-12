@@ -10,6 +10,7 @@ public class ScrewBehaviour : Clickable {
     private ScrewContainer container_;
 
     private Vector3 origin_;
+    private bool is_in_ = false;
 
     void Start() {
         container_ = FindObjectOfType<ScrewContainer>();
@@ -24,15 +25,17 @@ public class ScrewBehaviour : Clickable {
     }
 
     public void ReturnFromContainer() {
+        is_in_ = false;
         transform.DOMove(origin_, 0.5f);
     }
 
     private void MoveToContainer() {
         try {
             Vector3 pos = container_.GetNextSlotPosition();
-            if (!container_.IsFull()) {
+            if (!container_.IsFull() && !is_in_) {
                 container_.ObtainSlot(this);
                 transform.DOMove(pos, 0.5f);
+                is_in_ = true;
             }
         } catch (NullReferenceException e) {
             container_ = FindObjectOfType<ScrewContainer>();
