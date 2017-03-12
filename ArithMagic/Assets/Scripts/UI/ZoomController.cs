@@ -41,9 +41,9 @@ public class ZoomController : MonoBehaviour, IInteractable {
         }
         if (reverse_)
             anim_obj_.transform.localPosition = move_dist_;
-        else
-            foreach (GameObject trigger in trigger_obj_)
-                trigger.SetActive(false);
+        //else
+            //foreach (GameObject trigger in trigger_obj_)
+                //trigger.SetActive(false);
     }
 
     // NOTE: When a touch start, we need to do

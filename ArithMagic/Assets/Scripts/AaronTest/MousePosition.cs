@@ -1,22 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Util;
 
-public class MousePosition : MonoBehaviour
-{
+public class MousePosition : GenericSingleton<MousePosition> {
     private Vector2 xrayPos;
 
-	// Use this for initialization
-	void Start ()
-    {
-        
-	}
-	
-	// Update is called once per frame
-	void Update ()
-    {
+    // Update is called once per frame
+    void Update() {
         xrayPos = Input.mousePosition;
         xrayPos = Camera.main.ScreenToWorldPoint(xrayPos);
-        transform.position = new Vector3(xrayPos.x, xrayPos.y, -1); 
-	}
+        transform.position = new Vector3(xrayPos.x, xrayPos.y, -1);
+    }
 }

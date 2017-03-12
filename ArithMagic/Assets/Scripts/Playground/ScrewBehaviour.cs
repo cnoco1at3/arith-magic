@@ -16,6 +16,7 @@ public class ScrewBehaviour : Clickable {
         if (container_ == null)
             Debug.Log("no screw container in this scene");
         origin_ = transform.position;
+        Debug.Log(origin_);
     }
 
     public override void ClickEvent() {
@@ -23,7 +24,7 @@ public class ScrewBehaviour : Clickable {
     }
 
     public void ReturnFromContainer() {
-        transform.DOMove(origin_, 0.5f, true);
+        transform.DOMove(origin_, 0.5f);
     }
 
     private void MoveToContainer() {
@@ -31,10 +32,10 @@ public class ScrewBehaviour : Clickable {
             Vector3 pos = container_.GetNextSlotPosition();
             if (!container_.IsFull()) {
                 container_.ObtainSlot(this);
-                transform.DOMove(pos, 0.5f, true);
+                transform.DOMove(pos, 0.5f);
             }
-        }
-        catch (NullReferenceException e) {
+        } catch (NullReferenceException e) {
+            container_ = FindObjectOfType<ScrewContainer>();
             Debug.LogException(e);
         }
     }

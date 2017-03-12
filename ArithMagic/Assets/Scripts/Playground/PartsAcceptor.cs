@@ -4,17 +4,18 @@ using System.Collections;
 public class PartsAcceptor : MonoBehaviour {
 
     [SerializeField]
-    private ZoomController zoom;
+    private int acc_part_id = 0;
 
     [SerializeField]
-    private int acc_part_id = 0;
+    private GameObject red_light_;
+    [SerializeField]
+    private GameObject green_light_;
 
     // NOTE: here we need to set the point where we want the screw snap to
     [SerializeField]
     private Transform accept_point_;
 
-    [SerializeField]
-    private int layer_order_ = 0;
+    private PartsBehavior pb;
 
     private bool is_occupied = false;
 
@@ -30,15 +31,7 @@ public class PartsAcceptor : MonoBehaviour {
     }
 
     public virtual Vector3 GetScaleFactor() {
-        return new Vector3(1.6f, 1.6f, 1.6f);
-    }
-
-    public virtual int GetLayerOrder() {
-        return layer_order_;
-    }
-
-    public virtual bool IsValid(PartsBehavior pb) {
-        return pb.part_id == acc_part_id && !is_occupied;
+        return new Vector3(0.5f, 0.5f, 0.5f);
     }
 
     public virtual bool IsFinished() {
@@ -47,14 +40,20 @@ public class PartsAcceptor : MonoBehaviour {
 
     public virtual void OnPartEnter(PartsBehavior part) {
         is_occupied = true;
-        if (zoom != null)
-            zoom.trigger_obj_.Add(part.gameObject);
-        GameController.Instance.OnEndGame();
+        red_light_.SetActive(false);
+        green_light_.SetActive(false);
+        if (part.part_id == acc_part_id)
+            green_light_.SetActive(true);
+        else
+            red_light_.SetActive(true);
+        if (pb != null)
+            pb.MoveBackToBox();
+        pb = part;
     }
 
     public virtual void OnPartExit(PartsBehavior part) {
         is_occupied = false;
-        if (zoom != null)
-            zoom.trigger_obj_.Remove(part.gameObject);
+        red_light_.SetActive(false);
+        green_light_.SetActive(false);
     }
 }

@@ -6,9 +6,7 @@ using InteractLib;
 public class ScrewContainer : Clickable {
 
     [SerializeField]
-    private int width_ = 5;
-    [SerializeField]
-    private int height_ = 2;
+    private Transform[] slots_;
 
     [SerializeField]
     private const float scale_factor_ = 0.5f;
@@ -22,11 +20,11 @@ public class ScrewContainer : Clickable {
     // 2. Procedurally align them
 
     void Start() {
-        buckets_ = new ScrewBehaviour[width_ * height_];
+        buckets_ = new ScrewBehaviour[slots_.Length];
     }
 
     public bool IsFull() {
-        return slot_index_ == width_ * height_ - 1;
+        return slot_index_ == slots_.Length - 1;
     }
 
     public bool IsEmpty() {
@@ -42,7 +40,7 @@ public class ScrewContainer : Clickable {
 
     public Vector3 GetNextSlotPosition() {
         int next_index = slot_index_ + 1;
-        return new Vector3((next_index % width_) * scale_factor_, (next_index / width_) * scale_factor_);
+        return slots_[next_index].position;
     }
 
     public override void ClickEvent() {

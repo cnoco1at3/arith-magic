@@ -73,10 +73,6 @@ public class PartsMaker : PartsAcceptor {
 
     }
 
-    public override bool IsValid(PartsBehavior pb) {
-        return container_.Count < 2;
-    }
-
     public override bool IsFinished() {
         return true;
     }

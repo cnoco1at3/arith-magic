@@ -11,10 +11,6 @@ public class PartsTrashCan : PartsAcceptor {
 
     public override void OnPartExit(PartsBehavior part) { }
 
-    public override bool IsValid(PartsBehavior pb) {
-        return true;
-    }
-
     public override bool IsFinished() {
         return true;
     }

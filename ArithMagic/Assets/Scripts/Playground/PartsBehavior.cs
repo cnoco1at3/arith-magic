@@ -18,24 +18,22 @@ public class PartsBehavior : Dragable {
     private const string kRotateEaseIn = "RotateEaseIn";
     private const string kSnapEaseIn = "SnapEaseIn";
     private const string kSnapEaseOut = "SnapEaseOut";
-    private const int default_layer_ = 102;
 
     private Vector3 default_pos_;
-    private SpriteRenderer spr_ = null;
+    private Vector3 default_scale_;
 
     // Use this for initialization
     void Start() {
         default_pos_ = transform.position;
-        spr_ = GetComponent<SpriteRenderer>();
+        default_scale_ = transform.localScale;
     }
 
-    // Lazy update of the from position
-    public override void OnTouchEnter(Vector3 touch_pos) {
-        if (spr_ != null)
-            spr_.sortingOrder = default_layer_;
+    public void MoveBackToBox() {
+        transform.DOMove(default_pos_,
+            (float)ConstantTweakTool.Instance.const_dict[kSnapEaseIn]);
+        transform.DOScale(default_scale_, 
+            (float)ConstantTweakTool.Instance.const_dict[kSnapEaseIn]);
     }
-
-    // OnTouchStay is inherented from Draggable
 
     // NOTE: this check is seperated into two steps
     // 1. check if there is anything it could snap on, if so, snap on it, otherwise, return to where it from
@@ -51,9 +49,7 @@ public class PartsBehavior : Dragable {
 
         try {
             // case 1 find a valid acceptor
-            if (acceptor != null && acceptor.IsValid(this)) {
-                transform.parent = acceptor.transform;
-                default_pos_ = acceptor.transform.position;
+            if (acceptor != null) {
                 is_accepted_ = true;
 
                 // occupy this acceptor
@@ -82,9 +78,9 @@ public class PartsBehavior : Dragable {
     }
 
     private void UpdateStatus(PartsAcceptor acceptor, bool accepted) {
-        if (spr_ != null)
-            spr_.sortingOrder = acceptor != null ? acceptor.GetLayerOrder() : default_layer_;
         transform.DOMove(accepted ? acceptor.GetAcceptPoint(transform.position) : default_pos_,
+            (float)ConstantTweakTool.Instance.const_dict[kSnapEaseIn]);
+        transform.DOScale(acceptor.GetScaleFactor(), 
             (float)ConstantTweakTool.Instance.const_dict[kSnapEaseIn]);
     }
 }
