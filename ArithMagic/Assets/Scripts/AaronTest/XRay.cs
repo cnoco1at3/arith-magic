@@ -3,7 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class XRay : MonoBehaviour {
-    public GameObject brokenPart;
+    [SerializeField]
+    private GameObject[] brokenParts;
+    [SerializeField]
+    private int totalParts; 
+    public GameObject currentPart;
     [SerializeField]
     private int detectTime;
     private int detectTimeStart;
@@ -12,12 +16,15 @@ public class XRay : MonoBehaviour {
     [SerializeField]
     private GameObject tool_box_;
 
+    [SerializeField]
+    private GameObject robot; 
+
     //OnTriggerEnter with broken part, starts a coroutine countdown
     void OnTriggerEnter2D(Collider2D other) {
         if (other.gameObject.tag == "Part") {
             Debug.Log("Enter");
             detectTime = detectTimeStart;
-            brokenPart = other.gameObject;
+            currentPart = other.gameObject;
             detectCo = StartCoroutine(DetectPart());
         }
     }
@@ -55,13 +62,33 @@ public class XRay : MonoBehaviour {
         //do math stuff
         Debug.Log("StartMath");
         StopCoroutine(detectCo);
-        //Destroy(brokenPart);
         Instantiate(tool_box_);
         MousePosition.Instance.gameObject.SetActive(false);
     }
+
+    public void CheckParts()
+    {
+        brokenParts = GameObject.FindGameObjectsWithTag("Part");
+        totalParts = brokenParts.Length;
+        if (totalParts == 0)
+        {
+            MousePosition.Instance.gameObject.SetActive(false);
+            robot.GetComponent<Animator>().SetBool("isDancing", true);
+            robot.GetComponent<AudioSource>().Play();
+        }
+        else if (totalParts > 0)
+        {
+            MousePosition.Instance.gameObject.GetComponent<MeshRenderer>().enabled = true;
+            GetComponent<BoxCollider2D>().enabled = true; 
+        }
+    }
+
     // Use this for initialization
     void Start() {
+        robot = GameObject.FindGameObjectWithTag("Robot");
         detectTimeStart = detectTime;
+        brokenParts = GameObject.FindGameObjectsWithTag("Part");
+        totalParts = brokenParts.Length; 
     }
 
 }
