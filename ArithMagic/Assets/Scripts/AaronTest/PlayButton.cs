@@ -10,8 +10,7 @@ public class PlayButton : MonoBehaviour
     private string nextSceneName;
     private Button playButton;
 
-    [SerializeField]
-    private AudioSource introductionBackground;
+    private AudioSource audi;
 
     public void StartButton()
     {
@@ -20,16 +19,15 @@ public class PlayButton : MonoBehaviour
 
     private IEnumerator StartGame()
     {
-        playButton.interactable = false; 
-        //sound effect
+        playButton.interactable = false;
+        audi.Play();
         yield return new WaitForSeconds(2);
         SceneManager.LoadScene(nextSceneName);
     }
 
     void Start()
     {
-        introductionBackground = Instantiate(introductionBackground);
-        introductionBackground.Play();
+        audi = GetComponent<AudioSource>(); 
         playButton = GetComponent<Button>();
     }
 }
