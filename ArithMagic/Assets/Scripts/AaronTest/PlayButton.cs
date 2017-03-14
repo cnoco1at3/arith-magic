@@ -8,7 +8,10 @@ public class PlayButton : MonoBehaviour
 {
     [SerializeField]
     private string nextSceneName;
-    private Button playButton; 
+    private Button playButton;
+
+    [SerializeField]
+    private AudioSource introductionBackground;
 
     public void StartButton()
     {
@@ -25,6 +28,8 @@ public class PlayButton : MonoBehaviour
 
     void Start()
     {
+        introductionBackground = Instantiate(introductionBackground);
+        introductionBackground.Play();
         playButton = GetComponent<Button>();
     }
 }
