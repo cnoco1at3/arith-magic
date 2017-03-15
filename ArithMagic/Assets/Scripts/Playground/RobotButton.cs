@@ -8,6 +8,6 @@ public class RobotButton : Clickable {
 
     public override void ClickEvent() {
         Debug.Log("click");
-        SceneManager.LoadScene("Game");
+        SceneManager.LoadScene("GameVertical");
     }
 }

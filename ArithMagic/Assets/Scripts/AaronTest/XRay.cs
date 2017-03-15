@@ -17,7 +17,9 @@ public class XRay : MonoBehaviour {
     private GameObject tool_box_;
 
     [SerializeField]
-    private GameObject robot; 
+    private GameObject robot;
+
+    private AudioSource soundEffect;
 
     //OnTriggerEnter with broken part, starts a coroutine countdown
     void OnTriggerEnter2D(Collider2D other) {
@@ -40,6 +42,9 @@ public class XRay : MonoBehaviour {
 
     //Coroutine countdown for detecting broken part
     private IEnumerator DetectPart() {
+        if (soundEffect) {
+            soundEffect.Play();
+        }
         while (true) {
             if (detectTime > 0) {
                 Debug.Log("DetectTime - 1");
@@ -85,6 +90,7 @@ public class XRay : MonoBehaviour {
 
     // Use this for initialization
     void Start() {
+        soundEffect = GetComponent<AudioSource>();
         robot = GameObject.FindGameObjectWithTag("Robot");
         detectTimeStart = detectTime;
         brokenParts = GameObject.FindGameObjectsWithTag("Part");

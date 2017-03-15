@@ -11,8 +11,10 @@ public class ScrewBehaviour : Clickable {
 
     private Vector3 origin_;
     private bool is_in_ = false;
+    private AudioSource soundEffect;
 
     void Start() {
+        soundEffect = GetComponent<AudioSource>();
         container_ = FindObjectOfType<ScrewContainer>();
         if (container_ == null)
             Debug.Log("no screw container in this scene");
@@ -30,6 +32,10 @@ public class ScrewBehaviour : Clickable {
     }
 
     private void MoveToContainer() {
+        if (soundEffect) {
+            soundEffect.Play();
+        }
+        
         try {
             Vector3 pos = container_.GetNextSlotPosition();
             if (!container_.IsFull() && !is_in_) {
