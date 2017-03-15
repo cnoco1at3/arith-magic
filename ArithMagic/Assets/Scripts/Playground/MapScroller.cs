@@ -42,7 +42,6 @@ public class MapScroller : Dragable {
         prev_world_vel = world_pos - prev_world_pos;
         prev_world_pos = world_pos;
 
-        // TODO: Add soft bound here
         transform.position = new Vector3(transform.position.x + delta_pos.x, transform.position.y, transform.position.z);
     }
 }
