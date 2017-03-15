@@ -31,7 +31,7 @@ public class PartsBehavior : Dragable {
     public void MoveBackToBox() {
         transform.DOMove(default_pos_,
             (float)ConstantTweakTool.Instance.const_dict[kSnapEaseIn]);
-        transform.DOScale(default_scale_, 
+        transform.DOScale(default_scale_,
             (float)ConstantTweakTool.Instance.const_dict[kSnapEaseIn]);
     }
 
@@ -57,30 +57,22 @@ public class PartsBehavior : Dragable {
                     curr_acceptor_.OnPartExit(this);
                 curr_acceptor_ = acceptor;
                 curr_acceptor_.OnPartEnter(this);
-                UpdateStatus(curr_acceptor_, true);
             }
             // case 2 invalid or did not find any acceptor
-            else {
-                UpdateStatus(curr_acceptor_, false);
+            // do nothing
 
-                if (!is_accepted_)
-                    StartCoroutine(DelayDestroy());
-            }
+            // update scale and position
+            UpdateStatus(curr_acceptor_, is_accepted_);
         }
         catch (KeyNotFoundException) {
-            ScriptDebug.Log(this, 73, "Could not found constant for snap, did you add them to ConstantTweakTool?");
+            ScriptDebug.Log(this, 65, "Could not found constant for snap, did you add them to ConstantTweakTool?");
         }
-    }
-
-    private IEnumerator DelayDestroy() {
-        yield return new WaitForSeconds((float)ConstantTweakTool.Instance.const_dict[kSnapEaseIn]);
-        Destroy(gameObject);
     }
 
     private void UpdateStatus(PartsAcceptor acceptor, bool accepted) {
         transform.DOMove(accepted ? acceptor.GetAcceptPoint(transform.position) : default_pos_,
             (float)ConstantTweakTool.Instance.const_dict[kSnapEaseIn]);
-        transform.DOScale(acceptor.GetScaleFactor(), 
+        transform.DOScale(accepted ? acceptor.GetScaleFactor() : default_scale_,
             (float)ConstantTweakTool.Instance.const_dict[kSnapEaseIn]);
     }
 }

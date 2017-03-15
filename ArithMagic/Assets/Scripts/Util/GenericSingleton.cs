@@ -18,7 +18,7 @@ namespace Util {
                         else _instance = objs[0] as T;
                     }
                     else {
-                        GameObject gameobj = new GameObject();
+                        GameObject gameobj = new GameObject(typeof(T).ToString());
                         _instance = gameobj.AddComponent<T>();
                     }
                 }

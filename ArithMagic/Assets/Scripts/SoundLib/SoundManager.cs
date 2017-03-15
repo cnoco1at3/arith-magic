@@ -20,19 +20,21 @@ namespace SoundLib {
                 sfx_src_[i] = gameObject.AddComponent<AudioSource>();
         }
 
-        public void PlayBGM(AudioClip clip) {
+        public virtual void PlayBGM(AudioClip clip) {
             bgm_src_.clip = clip;
             bgm_src_.Play();
         }
 
-        public void PlaySFX(AudioClip clip) {
+        // return true if successfully play a clip
+        public virtual bool PlaySFX(AudioClip clip) {
             foreach (AudioSource src in sfx_src_) {
                 if (!src.isPlaying) {
                     src.clip = clip;
                     src.Play();
-                    break;
+                    return true;
                 }
             }
+            return false;
         }
     }
 }

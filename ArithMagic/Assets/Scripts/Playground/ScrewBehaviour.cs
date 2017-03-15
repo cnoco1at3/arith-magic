@@ -3,9 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using InteractLib;
+using SoundLib;
 using DG.Tweening;
 
 public class ScrewBehaviour : Clickable {
+
+    [SerializeField]
+    private AudioClip sfx_clip_;
 
     private ScrewContainer container_;
 
@@ -14,12 +18,10 @@ public class ScrewBehaviour : Clickable {
     private AudioSource soundEffect;
 
     void Start() {
-        soundEffect = GetComponent<AudioSource>();
         container_ = FindObjectOfType<ScrewContainer>();
         if (container_ == null)
             Debug.Log("no screw container in this scene");
         origin_ = transform.position;
-        Debug.Log(origin_);
     }
 
     public override void ClickEvent() {
@@ -32,9 +34,7 @@ public class ScrewBehaviour : Clickable {
     }
 
     private void MoveToContainer() {
-        if (soundEffect) {
-            soundEffect.Play();
-        }
+        SoundManager.Instance.PlaySFX(sfx_clip_);
         
         try {
             Vector3 pos = container_.GetNextSlotPosition();
