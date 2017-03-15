@@ -24,7 +24,6 @@ public class PartsAcceptor : MonoBehaviour {
     void Start() {
         if (accept_point_ == null)
             accept_point_ = transform;
-        GameController.Instance.acceptors_.Add(this);
         xray = GameObject.FindGameObjectWithTag("XRay");
     }
 
