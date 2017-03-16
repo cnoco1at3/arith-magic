@@ -417,40 +417,17 @@ Prefab:
       propertyPath: m_RootOrder
       value: 11
       objectReference: {fileID: 0}
-    - target: {fileID: 1668784703408296, guid: a14a3f4ea8d27d340b76161ca1e2ef2f, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 65718132101517826, guid: a14a3f4ea8d27d340b76161ca1e2ef2f,
+    - target: {fileID: 114148665104873598, guid: a14a3f4ea8d27d340b76161ca1e2ef2f,
         type: 2}
-      propertyPath: m_Size.x
-      value: 2.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 65718132101517826, guid: a14a3f4ea8d27d340b76161ca1e2ef2f,
+      propertyPath: sfx_clip_
+      value: 
+      objectReference: {fileID: 8300000, guid: d2a6794f23c38d24fbf42ed0b69987f1, type: 3}
+    - target: {fileID: 212475097090010928, guid: a14a3f4ea8d27d340b76161ca1e2ef2f,
         type: 2}
-      propertyPath: m_Size.y
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 65718132101517826, guid: a14a3f4ea8d27d340b76161ca1e2ef2f,
-        type: 2}
-      propertyPath: m_Center.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 65718132101517826, guid: a14a3f4ea8d27d340b76161ca1e2ef2f,
-        type: 2}
-      propertyPath: m_Center.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 65869579175959666, guid: a14a3f4ea8d27d340b76161ca1e2ef2f,
-        type: 2}
-      propertyPath: m_Size.x
-      value: 2.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 65869579175959666, guid: a14a3f4ea8d27d340b76161ca1e2ef2f,
-        type: 2}
-      propertyPath: m_Size.y
-      value: 3
-      objectReference: {fileID: 0}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 5afb67f719b623a4184f41d0b367812f,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a14a3f4ea8d27d340b76161ca1e2ef2f, type: 2}
   m_IsPrefabParent: 0

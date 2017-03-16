@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 using Util;
 
@@ -10,7 +11,7 @@ namespace SoundLib {
         private static AudioSource[] sfx_src_;
 
         // this would allow at most 3 sound effects playing simultaneously
-        private const int kSFXBufferSize = 3;
+        private const int kSFXBufferSize = 6;
 
         // Use this for initialization
         void Start() {
@@ -21,19 +22,26 @@ namespace SoundLib {
         }
 
         public virtual void PlayBGM(AudioClip clip) {
+            if (clip == null)
+                return;
             bgm_src_.clip = clip;
             bgm_src_.Play();
         }
 
         // return true if successfully play a clip
         public virtual bool PlaySFX(AudioClip clip) {
-            foreach (AudioSource src in sfx_src_) {
-                if (!src.isPlaying) {
-                    src.clip = clip;
-                    src.Play();
-                    return true;
+            if (clip == null)
+                return false;
+            try {
+                foreach (AudioSource src in sfx_src_) {
+                    if (!src.isPlaying) {
+                        src.clip = clip;
+                        src.Play();
+                        return true;
+                    }
                 }
             }
+            catch (NullReferenceException) { }
             return false;
         }
     }

@@ -803,10 +803,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c350d40ecedd45a4a879ce574b02e224, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  zoom: {fileID: 114000010986581714}
   acc_part_id: 0
+  red_light_: {fileID: 0}
+  green_light_: {fileID: 0}
   accept_point_: {fileID: 0}
-  layer_order_: 1
 --- !u!114 &114618203475792042
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -818,10 +818,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c350d40ecedd45a4a879ce574b02e224, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  zoom: {fileID: 114000010986581714}
   acc_part_id: 0
+  red_light_: {fileID: 0}
+  green_light_: {fileID: 0}
   accept_point_: {fileID: 0}
-  layer_order_: 1
 --- !u!135 &135362318146480278
 SphereCollider:
   m_ObjectHideFlags: 1
