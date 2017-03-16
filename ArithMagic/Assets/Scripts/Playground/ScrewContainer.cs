@@ -40,7 +40,7 @@ public class ScrewContainer : Clickable {
 
     public Vector3 GetNextSlotPosition() {
         int next_index = slot_index_ + 1;
-        return slots_[next_index].position;
+        return next_index >= slots_.Length ? Vector3.zero : slots_[next_index].position;
     }
 
     public override void ClickEvent() {
