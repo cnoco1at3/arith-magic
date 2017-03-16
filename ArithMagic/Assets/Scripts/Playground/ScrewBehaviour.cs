@@ -25,6 +25,7 @@ public class ScrewBehaviour : Clickable {
     }
 
     public override void ClickEvent() {
+        Vector3 pos = container_.GetNextSlotPosition();
         MoveToContainer();
     }
 
@@ -34,20 +35,21 @@ public class ScrewBehaviour : Clickable {
         transform.DOMove(origin_, 0.5f);
     }
 
-    private void MoveToContainer() {
+    public virtual void MoveToContainer() {
         SoundManager.Instance.PlaySFX(sfx_clip_);
-        
+
         try {
-            Vector3 pos = container_.GetNextSlotPosition();
             if (!container_.IsFull() && !is_in_) {
+                Vector3 pos = container_.GetNextSlotPosition();
                 container_.ObtainSlot(this);
                 transform.DOMove(pos, 0.5f);
                 is_in_ = true;
                 collider_.enabled = false;
             }
-        } catch (NullReferenceException e) {
+        }
+        catch (NullReferenceException e) {
             container_ = FindObjectOfType<ScrewContainer>();
-            Debug.LogException(e);
+            collider_ = GetComponent<Collider>();
         }
     }
 }

@@ -329,7 +329,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1285703145355200
 GameObject:
   m_ObjectHideFlags: 1
@@ -1180,6 +1180,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4217670508343818}
   - component: {fileID: 212475097090010928}
+  - component: {fileID: 65600778037121574}
+  - component: {fileID: 114148665104873598}
   m_Layer: 0
   m_Name: tenPlaceScrew (1)
   m_TagString: Untagged
@@ -2787,6 +2789,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.54, y: 3.73, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!65 &65600778037121574
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1851501738797320}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.3, y: 1.3, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!65 &65718132101517826
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -2797,7 +2811,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 9, y: 6, z: 0.2}
+  m_Size: {x: 2.5, y: 3, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!65 &65718141893635778
 BoxCollider:
@@ -2845,7 +2859,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 9, y: 6, z: 0.2}
+  m_Size: {x: 2.5, y: 3, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!65 &65977702025792162
 BoxCollider:
@@ -4550,6 +4564,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e8d9a04fc539f74eba25be835bef44d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sfx_clip_: {fileID: 0}
 --- !u!114 &114032378893566570
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4561,6 +4576,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e8d9a04fc539f74eba25be835bef44d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sfx_clip_: {fileID: 0}
 --- !u!114 &114105340247310438
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4594,6 +4610,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e8d9a04fc539f74eba25be835bef44d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sfx_clip_: {fileID: 0}
+--- !u!114 &114148665104873598
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1851501738797320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea7d92dd4b25efe4188d86a83272107c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sfx_clip_: {fileID: 8300000, guid: d2a6794f23c38d24fbf42ed0b69987f1, type: 3}
+  one_: {fileID: 1637587676726164, guid: d702f7e1e9874a74b9a6fe17c6d277f4, type: 2}
 --- !u!114 &114156739258494604
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4605,6 +4635,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e8d9a04fc539f74eba25be835bef44d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sfx_clip_: {fileID: 0}
 --- !u!114 &114160329737484952
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4616,6 +4647,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e8d9a04fc539f74eba25be835bef44d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sfx_clip_: {fileID: 0}
 --- !u!114 &114172756035196736
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4677,6 +4709,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e8d9a04fc539f74eba25be835bef44d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sfx_clip_: {fileID: 0}
 --- !u!114 &114324020255634848
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4738,6 +4771,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e8d9a04fc539f74eba25be835bef44d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sfx_clip_: {fileID: 0}
 --- !u!114 &114405548120220764
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4749,6 +4783,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e8d9a04fc539f74eba25be835bef44d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sfx_clip_: {fileID: 0}
 --- !u!114 &114447644969827890
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4838,6 +4873,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e8d9a04fc539f74eba25be835bef44d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sfx_clip_: {fileID: 0}
 --- !u!114 &114759386477728976
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4849,7 +4885,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c350d40ecedd45a4a879ce574b02e224, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  acc_part_id: 4
+  acc_part_id: 9
   red_light_: {fileID: 1636619442969340}
   green_light_: {fileID: 1456395792346322}
   accept_point_: {fileID: 0}
@@ -4878,6 +4914,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e8d9a04fc539f74eba25be835bef44d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sfx_clip_: {fileID: 0}
 --- !u!114 &114938846621111388
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5743,7 +5780,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 55
-  m_Sprite: {fileID: 21300000, guid: 795ab1b38be241a4fa2bcf1f8f3e1c97, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5afb67f719b623a4184f41d0b367812f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
