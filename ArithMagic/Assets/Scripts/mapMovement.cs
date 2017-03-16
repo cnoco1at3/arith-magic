@@ -19,7 +19,7 @@ public class mapMovement : Clickable
     {
         Robot = GameObject.FindGameObjectWithTag("Player").GetComponent<RobotMapMovement>();
         bCol = GetComponent<BoxCollider>();
-        newPos = transform.position;  
+        newPos = new Vector2(transform.position.x - 3, transform.position.y);
 	}
 
     public override void ClickEvent()
