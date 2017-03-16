@@ -45,7 +45,8 @@ public class ScrewContainer : Clickable {
 
     public override void ClickEvent() {
         ScrewBehaviour tmp = ReleaseSlot();
-        tmp.ReturnFromContainer();
+        if (tmp != null)
+            tmp.ReturnFromContainer();
     }
 
     private ScrewBehaviour ReleaseSlot() {

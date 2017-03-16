@@ -33,6 +33,7 @@ public class PartsBehavior : Dragable {
             (float)ConstantTweakTool.Instance.const_dict[kSnapEaseIn]);
         transform.DOScale(default_scale_,
             (float)ConstantTweakTool.Instance.const_dict[kSnapEaseIn]);
+        is_accepted_ = false;
     }
 
     // NOTE: this check is seperated into two steps
@@ -59,12 +60,10 @@ public class PartsBehavior : Dragable {
                 curr_acceptor_.OnPartEnter(this);
             }
             // case 2 invalid or did not find any acceptor
-            // do nothing
 
             // update scale and position
             UpdateStatus(curr_acceptor_, is_accepted_);
-        }
-        catch (KeyNotFoundException) {
+        } catch (KeyNotFoundException) {
             ScriptDebug.Log(this, 65, "Could not found constant for snap, did you add them to ConstantTweakTool?");
         }
     }

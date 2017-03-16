@@ -9,18 +9,18 @@ using DG.Tweening;
 public class ScrewBehaviour : Clickable {
 
     [SerializeField]
-    private AudioClip sfx_clip_;
+    protected AudioClip sfx_clip_;
 
-    private ScrewContainer container_;
+    protected ScrewContainer container_;
 
-    private Vector3 origin_;
-    private bool is_in_ = false;
-    private AudioSource soundEffect;
+    protected Vector3 origin_;
+    protected bool is_in_ = false;
+    protected Collider collider_;
+    protected AudioSource soundEffect;
 
     void Start() {
-        container_ = FindObjectOfType<ScrewContainer>();
-        if (container_ == null)
-            Debug.Log("no screw container in this scene");
+        container_ = GameObject.Find("screwBoxOnes").GetComponent<ScrewContainer>();
+        collider_ = GetComponent<Collider>();
         origin_ = transform.position;
     }
 
@@ -28,8 +28,9 @@ public class ScrewBehaviour : Clickable {
         MoveToContainer();
     }
 
-    public void ReturnFromContainer() {
+    public virtual void ReturnFromContainer() {
         is_in_ = false;
+        collider_.enabled = true;
         transform.DOMove(origin_, 0.5f);
     }
 
@@ -42,6 +43,7 @@ public class ScrewBehaviour : Clickable {
                 container_.ObtainSlot(this);
                 transform.DOMove(pos, 0.5f);
                 is_in_ = true;
+                collider_.enabled = false;
             }
         } catch (NullReferenceException e) {
             container_ = FindObjectOfType<ScrewContainer>();
