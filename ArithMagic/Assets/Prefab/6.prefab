@@ -729,6 +729,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e8d9a04fc539f74eba25be835bef44d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sfx_clip_: {fileID: 0}
 --- !u!114 &114174298761318976
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -740,6 +741,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e8d9a04fc539f74eba25be835bef44d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sfx_clip_: {fileID: 0}
 --- !u!114 &114565003913121036
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -751,6 +753,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e8d9a04fc539f74eba25be835bef44d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sfx_clip_: {fileID: 0}
 --- !u!114 &114628849162129786
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -762,6 +765,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e8d9a04fc539f74eba25be835bef44d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sfx_clip_: {fileID: 0}
 --- !u!114 &114832327105555982
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -773,6 +777,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e8d9a04fc539f74eba25be835bef44d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sfx_clip_: {fileID: 0}
 --- !u!114 &114974181177770374
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -784,6 +789,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e8d9a04fc539f74eba25be835bef44d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sfx_clip_: {fileID: 0}
 --- !u!135 &135327200064751224
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -1027,7 +1033,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 40
-  m_Sprite: {fileID: 21300000, guid: 2fe210ba9bf855447b34dc50daeee878, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f3896745da88c0d4dbd276d97483ea98, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

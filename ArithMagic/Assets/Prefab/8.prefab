@@ -955,6 +955,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e8d9a04fc539f74eba25be835bef44d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sfx_clip_: {fileID: 0}
 --- !u!114 &114386061428441750
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -966,6 +967,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e8d9a04fc539f74eba25be835bef44d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sfx_clip_: {fileID: 0}
 --- !u!114 &114421317744089466
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -977,6 +979,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e8d9a04fc539f74eba25be835bef44d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sfx_clip_: {fileID: 0}
 --- !u!114 &114498088476579512
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -988,6 +991,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e8d9a04fc539f74eba25be835bef44d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sfx_clip_: {fileID: 0}
 --- !u!114 &114598367549237734
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -999,6 +1003,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e8d9a04fc539f74eba25be835bef44d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sfx_clip_: {fileID: 0}
 --- !u!114 &114687526137469640
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1010,6 +1015,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e8d9a04fc539f74eba25be835bef44d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sfx_clip_: {fileID: 0}
 --- !u!114 &114966217380967748
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1021,6 +1027,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e8d9a04fc539f74eba25be835bef44d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sfx_clip_: {fileID: 0}
 --- !u!114 &114995662180002174
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1032,6 +1039,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e8d9a04fc539f74eba25be835bef44d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sfx_clip_: {fileID: 0}
 --- !u!135 &135027588038751792
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -1264,7 +1272,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 40
-  m_Sprite: {fileID: 21300000, guid: 83b3cda72b718b94aa985a19dfec5c50, type: 3}
+  m_Sprite: {fileID: 21300000, guid: cc0543cc529d6104aac605aff214d8fc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
