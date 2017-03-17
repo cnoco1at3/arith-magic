@@ -12,7 +12,12 @@ public class mapMovement : Clickable
     [SerializeField]
     private Vector2 newPos;
 
-    private BoxCollider bCol; 
+    private BoxCollider bCol;
+
+    [SerializeField]
+    private bool unlocked = false;
+
+    public int levelNumber; 
 
 	// Use this for initialization
 	void Start ()
@@ -24,8 +29,11 @@ public class mapMovement : Clickable
 
     public override void ClickEvent()
     {
-        Debug.Log("click");
-        MoveRobot(); 
+        if (unlocked == true)
+        {
+            Debug.Log("click");
+            MoveRobot();
+        }
     }
 
     private void MoveRobot()
