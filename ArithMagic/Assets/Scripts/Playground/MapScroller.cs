@@ -3,18 +3,28 @@ using System.Collections.Generic;
 using UnityEngine;
 using InteractLib;
 using Util;
+using DG.Tweening;
 
 public class MapScroller : Dragable {
+
+    public mapMovement firstBox;
 
     private Vector3 prev_world_pos;
     private Vector3 prev_world_vel;
     private static float hooke;
     private static float decay;
 
+    // -7.5, 7.5
+    // -19
+
     void Start() {
         try {
             hooke = (float)ConstantTweakTool.Instance.const_dict["HookeFactor"];
             decay = (float)ConstantTweakTool.Instance.const_dict["ScrollDecay"];
+
+            // hacky way to implement the effect
+            transform.DOMoveY(-34, 2.0f);
+            firstBox.ClickEvent();
         }
         catch (KeyNotFoundException e) {
             Debug.LogException(e);
@@ -23,13 +33,14 @@ public class MapScroller : Dragable {
 
     void FixedUpdate() {
         prev_world_vel *= decay;
-        float f = prev_world_vel.x;
-        if (transform.position.x > 0)
-            f = -hooke * (transform.position.x);
-        else if (transform.position.x < -30)
-            f = -hooke * (30 + transform.position.x);
+        float f = prev_world_vel.y;
+        if (transform.position.y > 12)
+            f = hooke * (12 - transform.position.y);
+        else if (transform.position.y < -48)
+            f = -hooke * (48 + transform.position.y);
+        float x = Mathf.Lerp(-7.5f, 7.5f, (Mathf.Clamp(transform.position.y, -28.0f, -10.0f) + 10.0f) / -18.0f);
 
-        transform.position = new Vector3(transform.position.x + f, transform.position.y, transform.position.z);
+        transform.position = new Vector3(x, transform.position.y + f, transform.position.z);
     }
 
     public override void OnTouchEnter(Vector3 touch_pos) {
@@ -42,6 +53,7 @@ public class MapScroller : Dragable {
         prev_world_vel = world_pos - prev_world_pos;
         prev_world_pos = world_pos;
 
-        transform.position = new Vector3(transform.position.x + delta_pos.x, transform.position.y, transform.position.z);
+        float x = Mathf.Lerp(-7.5f, 7.5f, (Mathf.Clamp(transform.position.y, -28.0f, -10.0f) + 10.0f) / -18.0f);
+        transform.position = new Vector3(x, transform.position.y + delta_pos.y, transform.position.z);
     }
 }

@@ -160,6 +160,10 @@ MonoBehaviour:
     value: 0.3
   - key: CameraEase
     value: 0.5
+  - key: HookeFactor
+    value: 0.1
+  - key: ScrollDecay
+    value: 0.9
 --- !u!114 &114656404941779832
 MonoBehaviour:
   m_ObjectHideFlags: 1

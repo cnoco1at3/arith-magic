@@ -5,8 +5,7 @@ using UnityEngine;
 using InteractLib;
 using DG.Tweening;
 
-public class mapMovement : Clickable  
-{
+public class mapMovement : Clickable {
     [SerializeField]
     private RobotMapMovement Robot;
     [SerializeField]
@@ -17,35 +16,30 @@ public class mapMovement : Clickable
     [SerializeField]
     private bool unlocked = false;
 
-    public int levelNumber; 
+    public int levelNumber;
 
-	// Use this for initialization
-	void Start ()
-    {
+    // Use this for initialization
+    void Start() {
         Robot = GameObject.FindGameObjectWithTag("Player").GetComponent<RobotMapMovement>();
         bCol = GetComponent<BoxCollider>();
-        newPos = new Vector2(transform.position.x - 3, transform.position.y);
-	}
+        newPos = new Vector2(transform.localPosition.x - 3, transform.localPosition.y);
+    }
 
-    public override void ClickEvent()
-    {
-        if (unlocked == true)
-        {
+    public override void ClickEvent() {
+        if (unlocked == true) {
             Debug.Log("click");
             MoveRobot();
         }
     }
 
-    private void MoveRobot()
-    {
+    private void MoveRobot() {
         Robot.targetPos = newPos;
-        bCol.enabled = true; 
+        bCol.enabled = true;
     }
 
     // Update is called once per frame
-    void Update ()
-    {
-		
-	}
+    void Update() {
+
+    }
 }
 

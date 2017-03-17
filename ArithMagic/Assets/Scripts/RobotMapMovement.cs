@@ -14,7 +14,7 @@ public class RobotMapMovement : MonoBehaviour
 	// Use this for initialization
 	void Start ()
     {
-        targetPos = transform.position;
+        targetPos = transform.localPosition;
 
         /*for(int i =0;i<levels.Lenght;i++)
          * {
@@ -31,6 +31,6 @@ public class RobotMapMovement : MonoBehaviour
 	void Update ()
     {
         float step = speed * Time.deltaTime;
-        transform.position = Vector2.MoveTowards(transform.position, targetPos, step);	
+        transform.localPosition = Vector2.MoveTowards(transform.localPosition, targetPos, step);	
 	}
 }

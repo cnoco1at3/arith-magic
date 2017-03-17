@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using Util;
 using InteractLib;
 using DG.Tweening;
+using SoundLib;
 
 public class PartsBehavior : Dragable {
 
