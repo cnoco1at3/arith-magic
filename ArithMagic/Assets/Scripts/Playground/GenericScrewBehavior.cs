@@ -12,7 +12,7 @@ public class GenericScrewBehavior : ScrewBehaviour {
 
     // Use this for initialization
     void Start() {
-        container_ = GameObject.Find("screwBoxTens").GetComponent<ScrewContainer>();
+        container_ = ToolBoxBehavior.Instance.GetContainerById(1);
         collider_ = GetComponent<Collider>();
         origin_ = transform.position;
     }

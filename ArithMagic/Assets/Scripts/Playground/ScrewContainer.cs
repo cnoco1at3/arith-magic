@@ -11,6 +11,9 @@ public class ScrewContainer : Clickable {
     [SerializeField]
     private const float scale_factor_ = 0.5f;
 
+    [SerializeField]
+    private int container_id_;
+
     private ScrewBehaviour[] buckets_;
 
     private int slot_index_ = -1;
@@ -44,13 +47,23 @@ public class ScrewContainer : Clickable {
     }
 
     public void ClearSlots() {
+        for (int i = 0; i <= slot_index_; ++i)
+            buckets_[i] = null;
         slot_index_ = -1;
     }
 
     public override void ClickEvent() {
-        ScrewBehaviour tmp = ReleaseSlot();
-        if (tmp != null)
-            tmp.ReturnFromContainer();
+        if (IsFull()) {
+            Regroup();
+        }
+    }
+
+    private void Regroup() {
+        ScrewContainer next = ToolBoxBehavior.Instance.GetContainerById(container_id_ + 1);
+        if (next == null)
+            return;
+
+        next.GetNextSlotPosition();
     }
 
     private ScrewBehaviour ReleaseSlot() {

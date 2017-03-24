@@ -69,7 +69,7 @@ public class XRayCameraBehavior : GenericSingleton<XRayCameraBehavior> {
         //do math stuff
         Debug.Log("StartMath");
         SetXRayCameraActive(false);
-        Instantiate(tool_box_);
+        tool_box_.PopulateProblem(1);
     }
 
     private void SetXRayCameraActive(bool flag) {

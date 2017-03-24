@@ -19,7 +19,7 @@ public class ScrewBehaviour : Clickable {
     protected AudioSource soundEffect;
 
     void Start() {
-        container_ = GameObject.Find("screwBoxOnes").GetComponent<ScrewContainer>();
+        container_ = ToolBoxBehavior.Instance.GetContainerById(0);
         collider_ = GetComponent<Collider>();
         origin_ = transform.position;
     }
@@ -46,8 +46,7 @@ public class ScrewBehaviour : Clickable {
                 is_in_ = true;
                 collider_.enabled = false;
             }
-        }
-        catch (NullReferenceException e) {
+        } catch (NullReferenceException e) {
             container_ = FindObjectOfType<ScrewContainer>();
             collider_ = GetComponent<Collider>();
         }

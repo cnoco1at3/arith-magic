@@ -1,7 +1,10 @@
 ﻿using UnityEngine;
+using System;
 using System.Collections;
 
 public class PartsAcceptor : MonoBehaviour {
+
+    public bool active = true;
 
     [SerializeField]
     private int acc_part_id = 0;
@@ -19,8 +22,12 @@ public class PartsAcceptor : MonoBehaviour {
             accept_point_ = transform;
     }
 
+    public virtual void SetAccPartId(int id) {
+        acc_part_id = id;
+    }
+
     // NOTE: if we didn't define a certain position we want the screw move to, it will stay where it is
-    public virtual Vector3 GetAcceptPoint(Vector3 position) {
+    public virtual Vector3 GetAcceptPoint(Vector3 position = default(Vector3)) {
         return accept_point_.position;
     }
 
@@ -38,16 +45,22 @@ public class PartsAcceptor : MonoBehaviour {
         if (pb != null)
             pb.MoveBackToBox();
         pb = part;
+
+        Debug.Log(IsSolved());
+        if (IsSolved())
+            ToolBoxBehavior.Instance.CheckSolveStatus();
     }
 
     public virtual void OnPartExit(PartsBehavior part) {
         is_occupied = false;
     }
 
-    private IEnumerator ProblemSolved() {
-        //add effects, positive reinforcment
-        yield return new WaitForSeconds(2);
-        XRayCameraBehavior.Instance.CheckParts(true);
-        Destroy(transform.root.gameObject);
+    public bool IsSolved() {
+        try {
+            return pb.part_id == acc_part_id;
+        } catch (Exception e) {
+            return false;
+        }
     }
+
 }

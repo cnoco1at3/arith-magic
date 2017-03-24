@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Util;
+using DG.Tweening;
 
 public class ToolBoxBehavior : GenericSingleton<ToolBoxBehavior> {
 
@@ -28,9 +29,7 @@ public class ToolBoxBehavior : GenericSingleton<ToolBoxBehavior> {
 
     void Start() { }
 
-    void Update() {
-
-    }
+    void Update() { }
 
     public void PopulateProblem(int category, bool downward = false) {
         if (downward)
@@ -39,6 +38,22 @@ public class ToolBoxBehavior : GenericSingleton<ToolBoxBehavior> {
         SetNewProblem(ProblemRuler.GetNewProblem(category));
 
         // animations here
+        transform.DOMove(Vector3.zero, 1.0f);
+    }
+
+    public void CheckSolveStatus() {
+        foreach (PartsAcceptor slot in slots_)
+            if (slot.active && !slot.IsSolved())
+                return;
+
+        // animations here
+        StartCoroutine(SolvedCoroutine());
+    }
+
+    public ScrewContainer GetContainerById(int id) {
+        if (id >= 0 && id < containers_.Length)
+            return containers_[id];
+        return null;
     }
 
     private void SetNewProblem(ProblemData prob) {
@@ -82,9 +97,22 @@ public class ToolBoxBehavior : GenericSingleton<ToolBoxBehavior> {
     }
 
     private void RefineSlots(int ans) {
-        if (ans < 10) 
+        slots_[0].SetAccPartId(ans % 10);
+
+        if (ans < 10) {
+            slots_[1].active = false;
             slots_[1].GetComponent<Collider>().enabled = false;
-        else
+        } else {
+            slots_[1].active = true;
             slots_[1].GetComponent<Collider>().enabled = true;
+            slots_[1].SetAccPartId(ans / 10);
+        }
+    }
+
+    private IEnumerator SolvedCoroutine() {
+        yield return new WaitForSeconds(2.0f);
+        transform.DOMove(new Vector3(0, 10.4f), 2.0f);
+
+        XRayCameraBehavior.Instance.CheckParts(true);
     }
 }

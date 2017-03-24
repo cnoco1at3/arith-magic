@@ -25,12 +25,12 @@ public class PartsBehavior : Dragable {
 
     // Use this for initialization
     void Start() {
-        default_pos_ = transform.position;
+        default_pos_ = transform.localPosition;
         default_scale_ = transform.localScale;
     }
 
     public void MoveBackToBox() {
-        transform.DOMove(default_pos_,
+        transform.DOLocalMove(default_pos_,
             (float)ConstantTweakTool.Instance.const_dict[kSnapEaseIn]);
         transform.DOScale(default_scale_,
             (float)ConstantTweakTool.Instance.const_dict[kSnapEaseIn]);
@@ -70,8 +70,13 @@ public class PartsBehavior : Dragable {
     }
 
     private void UpdateStatus(PartsAcceptor acceptor, bool accepted) {
-        transform.DOMove(accepted ? acceptor.GetAcceptPoint(transform.position) : default_pos_,
-            (float)ConstantTweakTool.Instance.const_dict[kSnapEaseIn]);
+        if (accepted)
+            transform.DOMove(acceptor.GetAcceptPoint(),
+                (float)ConstantTweakTool.Instance.const_dict[kSnapEaseIn]);
+        else
+            transform.DOLocalMove(default_pos_,
+                (float)ConstantTweakTool.Instance.const_dict[kSnapEaseIn]);
+
         transform.DOScale(accepted ? acceptor.GetScaleFactor() : default_scale_,
             (float)ConstantTweakTool.Instance.const_dict[kSnapEaseIn]);
     }
