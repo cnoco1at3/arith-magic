@@ -5,8 +5,8 @@ using DG.Tweening;
 
 public class GlobalSettings : GenericSingleton<GlobalSettings> {
 
-	// Use this for initialization
-	void Awake () {
+    // Use this for initialization
+    void Awake() {
         DOTween.Init(true, true);
-	}
+    }
 }

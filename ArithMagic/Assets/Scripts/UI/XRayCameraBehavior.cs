@@ -12,7 +12,7 @@ public class XRayCameraBehavior : GenericSingleton<XRayCameraBehavior> {
     private Coroutine detect_coroutine_;
 
     [SerializeField]
-    private GameObject tool_box_;
+    private ToolBoxBehavior tool_box_;
 
     [SerializeField]
     private GameObject robot_;

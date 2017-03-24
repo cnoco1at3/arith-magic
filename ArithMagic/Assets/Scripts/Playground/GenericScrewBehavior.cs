@@ -18,7 +18,6 @@ public class GenericScrewBehavior : ScrewBehaviour {
     }
 
     public override void ClickEvent() {
-        Debug.Log("clicked");
         Vector3 pos = container_.GetNextSlotPosition();
         MoveToContainer();
     }
@@ -37,27 +36,32 @@ public class GenericScrewBehavior : ScrewBehaviour {
                 is_in_ = true;
                 collider_.enabled = false;
             }
-        }
-        catch (NullReferenceException e) {
+        } catch (NullReferenceException e) {
             container_ = GameObject.Find("screwBoxTens").GetComponent<ScrewContainer>();
             collider_ = GetComponent<Collider>();
         }
     }
 
     private IEnumerator TensAnim(Vector3 pos) {
-        GameObject[] ones = new GameObject[10];
-        for (int i = 0; i < 10; ++i) {
+        GameObject[] ones = new GameObject[9];
+
+        for (int i = 0; i < ones.Length; ++i) {
             ones[i] = Instantiate(one_, transform.position, Quaternion.identity);
+            Vector3 randoff = new Vector3(UnityEngine.Random.Range(-1.0f, 1.0f), UnityEngine.Random.Range(-1.0f, 1.0f));
 
             SoundManager.Instance.PlaySFX(sfx_clip_);
-            ones[i].transform.DOMove(pos, 0.5f);
-
-            yield return new WaitForSeconds(0.05f);
+            ones[i].transform.DOLocalMove(ones[i].transform.localPosition + randoff, 0.5f);
         }
+
+        yield return new WaitForSeconds(0.8f);
+
+        for (int i = 0; i < ones.Length; ++i)
+            ones[i].transform.DOMove(pos, 0.8f);
+
         SoundManager.Instance.PlaySFX(sfx_clip_);
-        transform.DOMove(pos, 0.5f);
-        yield return new WaitForSeconds(0.5f);
-        for (int i = 0; i < 10; ++i)
+        transform.DOMove(pos, 0.8f);
+        yield return new WaitForSeconds(0.8f);
+        for (int i = 0; i < ones.Length; ++i)
             Destroy(ones[i]);
     }
 }

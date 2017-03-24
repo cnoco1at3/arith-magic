@@ -43,6 +43,10 @@ public class ScrewContainer : Clickable {
         return next_index >= slots_.Length ? Vector3.zero : slots_[next_index].position;
     }
 
+    public void ClearSlots() {
+        slot_index_ = -1;
+    }
+
     public override void ClickEvent() {
         ScrewBehaviour tmp = ReleaseSlot();
         if (tmp != null)

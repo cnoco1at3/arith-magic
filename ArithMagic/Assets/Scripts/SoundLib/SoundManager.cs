@@ -22,6 +22,9 @@ namespace SoundLib {
         }
 
         public virtual void PlayBGM(AudioClip clip) {
+            if (bgm_src_ == null)
+                bgm_src_ = gameObject.AddComponent<AudioSource>();
+
             if (clip == null)
                 return;
             bgm_src_.clip = clip;
@@ -33,15 +36,18 @@ namespace SoundLib {
             if (clip == null)
                 return false;
             try {
-                foreach (AudioSource src in sfx_src_) {
+                for (int i = 0; i < sfx_src_.Length; ++i) {
+                    if (sfx_src_[i] == null)
+                        sfx_src_[i] = gameObject.AddComponent<AudioSource>();
+
+                    AudioSource src = sfx_src_[i];
                     if (!src.isPlaying) {
                         src.clip = clip;
                         src.Play();
                         return true;
                     }
                 }
-            }
-            catch (NullReferenceException) { }
+            } catch (NullReferenceException) { }
             return false;
         }
     }
