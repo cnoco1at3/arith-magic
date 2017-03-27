@@ -4,6 +4,10 @@ using UnityEngine;
 using Util;
 
 public class XRayCameraBehavior : GenericSingleton<XRayCameraBehavior> {
+
+    [Range(1, 6)]
+    public int category = 1;
+
     private List<GameObject> parts_;
     private GameObject part_ptr_;
 
@@ -69,7 +73,7 @@ public class XRayCameraBehavior : GenericSingleton<XRayCameraBehavior> {
         //do math stuff
         Debug.Log("StartMath");
         SetXRayCameraActive(false);
-        tool_box_.PopulateProblem(1);
+        tool_box_.PopulateProblem(category);
     }
 
     private void SetXRayCameraActive(bool flag) {

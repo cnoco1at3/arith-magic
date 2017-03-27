@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using InteractLib;
+using DG.Tweening;
 
 public class ScrewContainer : Clickable {
 
@@ -59,11 +60,19 @@ public class ScrewContainer : Clickable {
     }
 
     private void Regroup() {
-        ScrewContainer next = ToolBoxBehavior.Instance.GetContainerById(container_id_ + 1);
-        if (next == null)
+        ScrewContainer next_container = ToolBoxBehavior.Instance.GetContainerById(container_id_ + 1);
+        if (next_container == null)
             return;
 
-        next.GetNextSlotPosition();
+        if (next_container.IsFull())
+            return;
+
+        Vector3 next_pos = next_container.GetNextSlotPosition();
+
+        for (int i = 0; i <= slot_index_; ++i)
+            buckets_[i].transform.DOMove(next_pos, 0.5f);
+
+        StartCoroutine(RegroupAnim(next_container));
     }
 
     private ScrewBehaviour ReleaseSlot() {
@@ -72,5 +81,23 @@ public class ScrewContainer : Clickable {
         ScrewBehaviour tmp = buckets_[slot_index_];
         buckets_[slot_index_--] = null;
         return tmp;
+    }
+
+    private IEnumerator RegroupAnim(ScrewContainer next) {
+        yield return new WaitForSeconds(0.5f);
+
+        for (int i = 0; i <= slot_index_; ++i) {
+            Destroy(buckets_[i].gameObject);
+            buckets_[i] = null;
+        }
+        ClearSlots();
+
+        GameObject next_screw =
+            Instantiate(ToolBoxBehavior.Instance.GetScrewById(container_id_ + 1),
+            next.GetNextSlotPosition(), Quaternion.identity, next.transform);
+        ScrewBehaviour next_sb = next_screw.GetComponent<GenericScrewBehavior>();
+
+        next.ObtainSlot(next_sb);
+        next_sb.SetInStatus(true);
     }
 }
