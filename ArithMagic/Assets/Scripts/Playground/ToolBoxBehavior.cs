@@ -8,10 +8,7 @@ public class ToolBoxBehavior : GenericSingleton<ToolBoxBehavior> {
 
 
     [SerializeField]
-    private GameObject[] ones_;
-
-    [SerializeField]
-    private GameObject[] tens_;
+    private GameObject[] numbers_;
 
     [SerializeField]
     private GameObject[] operators_;
@@ -98,13 +95,19 @@ public class ToolBoxBehavior : GenericSingleton<ToolBoxBehavior> {
     private void SpawnProblem(int num1, int num2) {
         problems_ = new GameObject[4];
 
-        problems_[0] = Instantiate(ones_[num1 % 10], anchors_[0].position, Quaternion.identity, transform);
-        if (num1 >= 10)
-            problems_[1] = Instantiate(tens_[num1 / 10], anchors_[1].position, Quaternion.identity, transform);
+        problems_[0] = Instantiate(numbers_[num1 % 10], anchors_[0].position, Quaternion.identity, transform);
+        problems_[0].GetComponent<ScrewGenerator>().GenerateScrews(0);
+        if (num1 >= 10) {
+            problems_[1] = Instantiate(numbers_[num1 / 10], anchors_[1].position, Quaternion.identity, transform);
+            problems_[1].GetComponent<ScrewGenerator>().GenerateScrews(1);
+        }
 
-        problems_[2] = Instantiate(ones_[num2 % 10], anchors_[2].position, Quaternion.identity, transform);
-        if (num2 >= 10)
-            problems_[3] = Instantiate(tens_[num2 / 10], anchors_[3].position, Quaternion.identity, transform);
+        problems_[2] = Instantiate(numbers_[num2 % 10], anchors_[2].position, Quaternion.identity, transform);
+        problems_[2].GetComponent<ScrewGenerator>().GenerateScrews(0);
+        if (num2 >= 10) {
+            problems_[3] = Instantiate(numbers_[num2 / 10], anchors_[3].position, Quaternion.identity, transform);
+            problems_[3].GetComponent<ScrewGenerator>().GenerateScrews(1);
+        }
     }
 
     private void RefineSlots(int ans) {

@@ -1,18 +1,28 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System;
+﻿using System;
+using System.Collections;
 using UnityEngine;
+using InteractLib;
 using SoundLib;
 using DG.Tweening;
 
-public class GenericScrewBehavior : ScrewBehaviour {
+public class GenericScrewBehavior : Clickable {
 
     [SerializeField]
-    private GameObject one_;
+    protected int screw_id_;
+
+    [SerializeField]
+    protected GameObject prev_screw_;
+
+    [SerializeField]
+    protected AudioClip sfx_clip_;
+
+    protected ScrewContainer container_;
+    protected Collider collider_;
+    protected AudioSource soundEffect;
 
     // Use this for initialization
     void Start() {
-        container_ = ToolBoxBehavior.Instance.GetContainerById(1);
+        container_ = ToolBoxBehavior.Instance.GetContainerById(screw_id_);
         collider_ = GetComponent<Collider>();
     }
 
@@ -21,31 +31,30 @@ public class GenericScrewBehavior : ScrewBehaviour {
         MoveToContainer();
     }
 
-    public override void MoveToContainer() {
+    public void MoveToContainer() {
         SoundManager.Instance.PlaySFX(sfx_clip_);
 
         try {
-            if (!container_.IsFull() && !is_in_) {
+            if (!container_.IsFull()) {
                 Vector3 pos = container_.GetNextSlotPosition();
                 container_.ObtainSlot(this);
 
                 // do animation here
-                StartCoroutine(TensAnim(pos));
+                if (prev_screw_ != null)
+                    StartCoroutine(ClusterAnim(pos));
+                else
+                    transform.DOMove(pos, 0.5f);
 
-                is_in_ = true;
                 collider_.enabled = false;
             }
-        } catch (NullReferenceException e) {
-            container_ = GameObject.Find("screwBoxTens").GetComponent<ScrewContainer>();
-            collider_ = GetComponent<Collider>();
-        }
+        } catch (NullReferenceException e) { }
     }
 
-    private IEnumerator TensAnim(Vector3 pos) {
+    private IEnumerator ClusterAnim(Vector3 pos) {
         GameObject[] ones = new GameObject[9];
 
         for (int i = 0; i < ones.Length; ++i) {
-            ones[i] = Instantiate(one_, transform.position, Quaternion.identity);
+            ones[i] = Instantiate(prev_screw_, transform.position, Quaternion.identity);
             ones[i].GetComponent<Collider>().enabled = false;
             Vector3 randoff = new Vector3(UnityEngine.Random.Range(-0.5f, 0.5f), UnityEngine.Random.Range(-0.5f, 0.5f));
 
