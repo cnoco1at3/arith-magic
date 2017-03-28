@@ -15,7 +15,7 @@ public class ScrewContainer : Clickable {
     [SerializeField]
     private int container_id_;
 
-    private ScrewBehaviour[] buckets_;
+    private GenericScrewBehavior[] buckets_;
 
     private int slot_index_ = -1;
 
@@ -24,7 +24,7 @@ public class ScrewContainer : Clickable {
     // 2. Procedurally align them
 
     void Start() {
-        buckets_ = new ScrewBehaviour[slots_.Length];
+        buckets_ = new GenericScrewBehavior[slots_.Length];
     }
 
     public bool IsFull() {
@@ -35,7 +35,7 @@ public class ScrewContainer : Clickable {
         return slot_index_ == -1;
     }
 
-    public int ObtainSlot(ScrewBehaviour screw) {
+    public int ObtainSlot(GenericScrewBehavior screw) {
         if (IsFull())
             return -1;
         buckets_[++slot_index_] = screw;
@@ -75,10 +75,10 @@ public class ScrewContainer : Clickable {
         StartCoroutine(RegroupAnim(next_container));
     }
 
-    private ScrewBehaviour ReleaseSlot() {
+    private GenericScrewBehavior ReleaseSlot() {
         if (IsEmpty())
             return null;
-        ScrewBehaviour tmp = buckets_[slot_index_];
+        GenericScrewBehavior tmp = buckets_[slot_index_];
         buckets_[slot_index_--] = null;
         return tmp;
     }
@@ -94,10 +94,11 @@ public class ScrewContainer : Clickable {
 
         GameObject next_screw =
             Instantiate(ToolBoxBehavior.Instance.GetScrewById(container_id_ + 1),
-            next.GetNextSlotPosition(), Quaternion.identity, next.transform);
-        ScrewBehaviour next_sb = next_screw.GetComponent<GenericScrewBehavior>();
+            next.GetNextSlotPosition(), Quaternion.identity, transform.root);
+        GenericScrewBehavior next_sb = next_screw.GetComponent<GenericScrewBehavior>();
+        Collider next_collider = next_screw.GetComponent<Collider>();
+        next_collider.enabled = false;
 
         next.ObtainSlot(next_sb);
-        next_sb.SetInStatus(true);
     }
 }

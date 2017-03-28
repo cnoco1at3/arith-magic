@@ -2,18 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RobotMapMovement : MonoBehaviour
-{
+public class RobotMapMovement : MonoBehaviour {
     [SerializeField]
     private float speed;
     public Vector2 targetPos;
 
-    private mapMovement[] levels; 
+    private MapMovement[] levels;
 
 
-	// Use this for initialization
-	void Start ()
-    {
+    // Use this for initialization
+    void Start() {
         targetPos = transform.localPosition;
 
         /*for(int i =0;i<levels.Lenght;i++)
@@ -25,12 +23,11 @@ public class RobotMapMovement : MonoBehaviour
          * }
          
          */
-	}
-	
-	// Update is called once per frame
-	void Update ()
-    {
+    }
+
+    // Update is called once per frame
+    void Update() {
         float step = speed * Time.deltaTime;
-        transform.localPosition = Vector2.MoveTowards(transform.localPosition, targetPos, step);	
-	}
+        transform.localPosition = Vector2.MoveTowards(transform.localPosition, targetPos, step);
+    }
 }

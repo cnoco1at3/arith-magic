@@ -5,7 +5,7 @@ using UnityEngine;
 using InteractLib;
 using DG.Tweening;
 
-public class mapMovement : Clickable {
+public class MapMovement : Clickable {
     [SerializeField]
     private RobotMapMovement Robot;
     [SerializeField]
