@@ -14,7 +14,6 @@ public class GenericScrewBehavior : ScrewBehaviour {
     void Start() {
         container_ = ToolBoxBehavior.Instance.GetContainerById(1);
         collider_ = GetComponent<Collider>();
-        origin_ = transform.position;
     }
 
     public override void ClickEvent() {
@@ -47,7 +46,8 @@ public class GenericScrewBehavior : ScrewBehaviour {
 
         for (int i = 0; i < ones.Length; ++i) {
             ones[i] = Instantiate(one_, transform.position, Quaternion.identity);
-            Vector3 randoff = new Vector3(UnityEngine.Random.Range(-1.0f, 1.0f), UnityEngine.Random.Range(-1.0f, 1.0f));
+            ones[i].GetComponent<Collider>().enabled = false;
+            Vector3 randoff = new Vector3(UnityEngine.Random.Range(-0.5f, 0.5f), UnityEngine.Random.Range(-0.5f, 0.5f));
 
             SoundManager.Instance.PlaySFX(sfx_clip_);
             ones[i].transform.DOLocalMove(ones[i].transform.localPosition + randoff, 0.5f);

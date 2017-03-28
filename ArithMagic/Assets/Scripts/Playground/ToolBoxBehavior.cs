@@ -6,6 +6,7 @@ using DG.Tweening;
 
 public class ToolBoxBehavior : GenericSingleton<ToolBoxBehavior> {
 
+
     [SerializeField]
     private GameObject[] ones_;
 
@@ -22,6 +23,9 @@ public class ToolBoxBehavior : GenericSingleton<ToolBoxBehavior> {
     private ScrewContainer[] containers_;
 
     [SerializeField]
+    private GameObject[] screws_;
+
+    [SerializeField]
     private Transform[] anchors_;
 
     private GameObject[] problems_;
@@ -29,7 +33,8 @@ public class ToolBoxBehavior : GenericSingleton<ToolBoxBehavior> {
 
     void Start() { }
 
-    void Update() { }
+    void Update() {
+    }
 
     public void PopulateProblem(int category, bool downward = false) {
         if (downward)
@@ -53,6 +58,12 @@ public class ToolBoxBehavior : GenericSingleton<ToolBoxBehavior> {
     public ScrewContainer GetContainerById(int id) {
         if (id >= 0 && id < containers_.Length)
             return containers_[id];
+        return null;
+    }
+
+    public GameObject GetScrewById(int id) {
+        if (id >= 0 && id < screws_.Length)
+            return screws_[id];
         return null;
     }
 
