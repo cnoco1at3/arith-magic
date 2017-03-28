@@ -201,6 +201,7 @@ GameObject:
   - component: {fileID: 154923170}
   - component: {fileID: 154923173}
   - component: {fileID: 154923174}
+  - component: {fileID: 154923175}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -403,6 +404,23 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!95 &154923175
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 154923168}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 54e0efbd4ad179d4e8cd8c37f40137f9, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &386945763
 GameObject:
   m_ObjectHideFlags: 0
