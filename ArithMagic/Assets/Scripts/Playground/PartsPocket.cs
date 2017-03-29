@@ -19,9 +19,8 @@ public class PartsPocket : MonoBehaviour, IInteractable {
         try {
             Vector3 pos = transform.position;
             pos.z -= 0.1f;
-            part = (GameObject)Instantiate(PartsCluster.Instance.parts[part_id_], pos, Quaternion.identity);
-        }
-        catch (ArgumentNullException e) {
+            part = (GameObject)Instantiate(PartsCluster.Instance.parts[part_id_], pos, Quaternion.identity, transform.root);
+        } catch (ArgumentNullException e) {
             Debug.LogException(e);
         }
         IInteractable src = part.GetComponent<IInteractable>();

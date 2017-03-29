@@ -7,38 +7,44 @@ using DG.Tweening;
 
 public class MapScroller : Dragable {
 
-    public mapMovement firstBox;
+    public LockBoxBehavior first_box;
 
     private Vector3 prev_world_pos;
     private Vector3 prev_world_vel;
-    private static float hooke;
-    private static float decay;
-
-    // -7.5, 7.5
-    // -19
+    private static float kHooke;
+    private static float kDecay;
+    private SpriteRenderer sprite_;
 
     void Start() {
         try {
-            hooke = (float)ConstantTweakTool.Instance.const_dict["HookeFactor"];
-            decay = (float)ConstantTweakTool.Instance.const_dict["ScrollDecay"];
+            kHooke = (float)ConstantTweakTool.Instance.const_dict["HookeFactor"];
+            kDecay = (float)ConstantTweakTool.Instance.const_dict["ScrollDecay"];
+
+            sprite_ = GetComponent<SpriteRenderer>();
 
             // hacky way to implement the effect
-            transform.DOMoveY(-34, 2.0f);
-            firstBox.ClickEvent();
-        }
-        catch (KeyNotFoundException e) {
+            LockBoxBehavior center = LevelCluster.Instance.GetLockBoxById(MapRobotBehavior.GetDockedId());
+            if (center != null) {
+                Debug.Log(center.gameObject);
+                transform.DOMoveY(transform.position.y - center.transform.position.y, 2.0f);
+            }
+        } catch (KeyNotFoundException e) {
             Debug.LogException(e);
         }
     }
 
     void FixedUpdate() {
-        prev_world_vel *= decay;
+        prev_world_vel *= kDecay;
         float f = prev_world_vel.y;
-        if (transform.position.y > 12)
-            f = hooke * (12 - transform.position.y);
-        else if (transform.position.y < -48)
-            f = -hooke * (48 + transform.position.y);
-        float x = Mathf.Lerp(-7.5f, 7.5f, (Mathf.Clamp(transform.position.y, -28.0f, -10.0f) + 10.0f) / -18.0f);
+
+        float bound = sprite_.bounds.extents.y - 10.0f;
+
+        if (transform.position.y > bound)
+            f = kHooke * (bound - transform.position.y);
+        else if (transform.position.y < -bound)
+            f = -kHooke * (bound + transform.position.y);
+
+        float x = SlideX();
 
         transform.position = new Vector3(x, transform.position.y + f, transform.position.z);
     }
@@ -53,7 +59,11 @@ public class MapScroller : Dragable {
         prev_world_vel = world_pos - prev_world_pos;
         prev_world_pos = world_pos;
 
-        float x = Mathf.Lerp(-7.5f, 7.5f, (Mathf.Clamp(transform.position.y, -28.0f, -10.0f) + 10.0f) / -18.0f);
+        float x = SlideX();
         transform.position = new Vector3(x, transform.position.y + delta_pos.y, transform.position.z);
+    }
+
+    private float SlideX() {
+        return Mathf.Lerp(7.5f, -7.5f, (Mathf.Clamp(transform.position.y + 10.0f, -5.0f, 5.0f) + 5.0f) / 10.0f);
     }
 }
