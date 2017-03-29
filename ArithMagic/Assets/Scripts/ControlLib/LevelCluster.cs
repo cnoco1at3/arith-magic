@@ -1,31 +1,29 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Util;
 
-public class LevelCluster : ICsvObject {
+public class LevelCluster : GenericSingleton<LevelCluster> {
 
-    private Hashtable level_table_;
+    [SerializeField]
+    private LockBoxBehavior[] lock_boxes_;
 
-    public LevelCluster() {
-        level_table_ = new Hashtable();
+    void Start() {
+        for (int i = 0; i < lock_boxes_.Length; ++i)
+            if (lock_boxes_[i] != null) {
+                lock_boxes_[i].SetLockBoxId(i);
+                if (i <= LevelController.GetLevelIndex() + 1)
+                    lock_boxes_[i].SetUnlocked();
+            }
+
+        Debug.Log(LevelController.GetLevelIndex());
     }
 
-    public bool IsHeader(string[] text) {
-        return false;
-    }
-
-    public void StartHeader(string[] header) {
-    }
-
-    public void EndHeader() {
-
-    }
-
-    public void AddElement(string[] element) {
-
-    }
-
-    public int GetLevelCount() {
-        return 0;
+    public LockBoxBehavior GetLockBoxById(int id) {
+        if (id >= 0 && id < lock_boxes_.Length)
+            return lock_boxes_[id];
+        if (lock_boxes_.Length > 0 && id > lock_boxes_.Length)
+            return lock_boxes_[lock_boxes_.Length - 1];
+        return null;
     }
 }

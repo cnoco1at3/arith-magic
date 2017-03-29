@@ -7,7 +7,7 @@ public class RobotMapMovement : MonoBehaviour {
     private float speed;
     public Vector2 targetPos;
 
-    private MapMovement[] levels;
+    //private MapMovement[] levels;
 
 
     // Use this for initialization

@@ -43,6 +43,8 @@ public static class ProblemRuler {
                 break;
         }
 
+        Debug.Log(num1 + " " + num2);
+
         return new ProblemData(num1, num2);
     }
 }
