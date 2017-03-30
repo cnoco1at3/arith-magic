@@ -832,6 +832,11 @@ Prefab:
       propertyPath: m_Name
       value: lockedBox1
       objectReference: {fileID: 0}
+    - target: {fileID: 114309617291460822, guid: b0794c902421c4246856dc348fa1ef94,
+        type: 2}
+      propertyPath: touchBoxSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 6baa07d5c92afbe41a36d47bb95bf832, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b0794c902421c4246856dc348fa1ef94, type: 2}
   m_IsPrefabParent: 0

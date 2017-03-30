@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System;
 using System.Collections;
+using SoundLib;
 
 public class PartsAcceptor : MonoBehaviour {
 
@@ -8,6 +9,8 @@ public class PartsAcceptor : MonoBehaviour {
 
     [SerializeField]
     private int acc_part_id = 0;
+
+    public AudioClip dropBatterySound;
 
     // NOTE: here we need to set the point where we want the screw snap to
     [SerializeField]
@@ -46,6 +49,7 @@ public class PartsAcceptor : MonoBehaviour {
     }
 
     public virtual void OnPartEnter(PartsBehavior part) {
+        SoundManager.Instance.PlaySFX(dropBatterySound, false);
         is_occupied = true;
 
         if (pb != null)

@@ -35,7 +35,7 @@ namespace SoundLib {
         }
 
         // return true if successfully play a clip
-        public virtual bool PlaySFX(AudioClip clip) {
+        public virtual bool PlaySFX(AudioClip clip, bool loopSound) {
             if (clip == null)
                 return false;
             try {
@@ -44,6 +44,7 @@ namespace SoundLib {
                         sfx_src_[i] = gameObject.AddComponent<AudioSource>();
 
                     AudioSource src = sfx_src_[i];
+                    src.loop = loopSound;
                     if (!src.isPlaying) {
                         src.clip = clip;
                         src.Play();
@@ -51,6 +52,32 @@ namespace SoundLib {
                     }
                 }
             } catch (NullReferenceException) { }
+            return false;
+        }
+
+        public virtual bool StopSFX(AudioClip clip, bool loopSound)
+        {
+            if (clip == null)
+                return false;
+            try
+            {
+                for (int i = 0; i < sfx_src_.Length; ++i)
+                {
+                    if (sfx_src_[i] == null)
+                        sfx_src_[i] = gameObject.AddComponent<AudioSource>();
+
+                    AudioSource src = sfx_src_[i];
+                    src.loop = loopSound;
+                    if (src.isPlaying)
+                    {
+                        Debug.Log("sdkfbsd");
+                        src.clip = clip;
+                        src.Stop();
+                        return true;
+                    }
+                }
+            }
+            catch (NullReferenceException) { }
             return false;
         }
     }

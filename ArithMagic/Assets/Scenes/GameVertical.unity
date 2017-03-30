@@ -228,6 +228,16 @@ Prefab:
       propertyPath: tool_box_
       value: 
       objectReference: {fileID: 252627816}
+    - target: {fileID: 114049982662288404, guid: c1bf3985fad1d7e48b78fd3fa83b3d9b,
+        type: 2}
+      propertyPath: scannerSound
+      value: 
+      objectReference: {fileID: 8300000, guid: e45f32c69c5811642bc2f95644e5db26, type: 3}
+    - target: {fileID: 114049982662288404, guid: c1bf3985fad1d7e48b78fd3fa83b3d9b,
+        type: 2}
+      propertyPath: defectDetectionSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 941e561470b8415449b693b441e10c0f, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c1bf3985fad1d7e48b78fd3fa83b3d9b, type: 2}
   m_IsPrefabParent: 0

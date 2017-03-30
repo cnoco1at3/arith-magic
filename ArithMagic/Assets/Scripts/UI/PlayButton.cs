@@ -18,7 +18,7 @@ public class PlayButton : MonoBehaviour
 
     public void StartButton()
     {
-        SoundManager.Instance.PlaySFX(clip);
+        SoundManager.Instance.PlaySFX(clip, false);
         StartCoroutine(StartGame());
     }
 
