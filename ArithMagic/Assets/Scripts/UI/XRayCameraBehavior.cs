@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Util;
+using SoundLib;
 
 public class XRayCameraBehavior : GenericSingleton<XRayCameraBehavior> {
 
@@ -27,6 +28,9 @@ public class XRayCameraBehavior : GenericSingleton<XRayCameraBehavior> {
     private GameObject render_mesh_;
     private BoxCollider2D collider_;
 
+    public AudioClip scannerSound;
+    public AudioClip defectDetectionSound;
+
     public void CheckParts(bool remove) {
         if (remove) {
             parts_.Remove(part_ptr_);
@@ -44,6 +48,7 @@ public class XRayCameraBehavior : GenericSingleton<XRayCameraBehavior> {
     //OnTriggerEnter with broken part, starts a coroutine countdown
     void OnTriggerEnter2D(Collider2D other) {
         if (other.gameObject.tag == "Part") {
+            SoundManager.Instance.PlaySFX(defectDetectionSound);
             detect_time_ = kDetectTimeThreshold;
             part_ptr_ = other.gameObject;
             detect_coroutine_ = StartCoroutine(DetectPart());
@@ -92,6 +97,7 @@ public class XRayCameraBehavior : GenericSingleton<XRayCameraBehavior> {
 
     // Use this for initialization
     void Start() {
+        
         sfx_src_ = GetComponent<AudioSource>();
         detect_time_ = kDetectTimeThreshold;
 
@@ -109,6 +115,7 @@ public class XRayCameraBehavior : GenericSingleton<XRayCameraBehavior> {
     }
 
     void Update() {
+        SoundManager.Instance.PlaySFX(scannerSound);
         Vector2 pos = Input.mousePosition;
         pos = Camera.main.ScreenToWorldPoint(pos);
         transform.position = new Vector3(pos.x, pos.y, -1);

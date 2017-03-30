@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using InteractLib;
+using SoundLib;
 
 public class LockBoxBehavior : Clickable {
 
@@ -16,7 +17,11 @@ public class LockBoxBehavior : Clickable {
 
     private int id_ = -1;
 
+    public AudioClip touchBoxSound;
+
     public override void ClickEvent() {
+        Debug.Log("clicked!!");
+        SoundManager.Instance.PlaySFX(touchBoxSound);
         if (unlocked_)
             MoveRobot();
     }
