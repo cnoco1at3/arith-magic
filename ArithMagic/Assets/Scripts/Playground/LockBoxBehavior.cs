@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using InteractLib;
@@ -7,6 +8,9 @@ public class LockBoxBehavior : Clickable {
 
     [SerializeField]
     private Vector3 target_pos_;
+
+    [SerializeField]
+    private GameObject robot_pic_;
 
     private bool unlocked_ = false;
 
@@ -17,11 +21,26 @@ public class LockBoxBehavior : Clickable {
             MoveRobot();
     }
 
+    public void SetAnimation(bool flag) {
+        try {
+            Animator anim = GetComponent<Animator>();
+            if (flag) {
+                anim.SetTrigger("BoxAnim");
+                anim.ResetTrigger("Null");
+            } else {
+                anim.SetTrigger("Null");
+                anim.ResetTrigger("BoxAnim");
+            }
+        } catch (Exception) { }
+    }
+
     public void SetUnlocked() {
         GetComponent<SpriteRenderer>().enabled = false;
-        Transform child = transform.GetChild(0);
-        if (child != null)
-            child.gameObject.SetActive(true);
+        if (robot_pic_ != null) {
+            GameObject robot = Instantiate(robot_pic_, transform);
+            robot.transform.localPosition = Vector3.zero;
+            robot.transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
+        }
         unlocked_ = true;
     }
 
