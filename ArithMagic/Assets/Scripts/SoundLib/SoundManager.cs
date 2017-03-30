@@ -30,6 +30,8 @@ namespace SoundLib {
 
             if (clip == null)
                 return;
+            if (bgm_src_.isPlaying)
+                bgm_src_.Stop();
             bgm_src_.clip = clip;
             bgm_src_.Play();
         }
