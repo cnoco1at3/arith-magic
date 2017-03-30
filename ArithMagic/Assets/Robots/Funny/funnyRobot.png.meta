@@ -1,0 +1,370 @@
+fileFormatVersion: 2
+guid: 79d573eed07f44334a851ee6fc51c5b1
+timeCreated: 1490848955
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: funnyRobot_0
+    21300002: funnyRobot_1
+    21300004: funnyRobot_2
+    21300006: funnyRobot_3
+    21300008: funnyRobot_4
+    21300010: funnyRobot_5
+    21300012: funnyRobot_6
+    21300014: funnyRobot_7
+    21300016: funnyRobot_8
+    21300018: funnyRobot_9
+    21300020: funnyRobot_10
+    21300022: funnyRobot_11
+    21300024: funnyRobot_12
+    21300026: funnyRobot_13
+    21300028: funnyRobot_14
+    21300030: funnyRobot_15
+    21300032: funnyRobot_16
+    21300034: funnyRobot_17
+    21300036: funnyRobot_18
+    21300038: funnyRobot_19
+    21300040: funnyRobot_20
+  serializedVersion: 4
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: -1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Standalone
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: funnyRobot_0
+      rect:
+        serializedVersion: 2
+        x: 483
+        y: 1715
+        width: 112
+        height: 113
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: funnyRobot_1
+      rect:
+        serializedVersion: 2
+        x: 717
+        y: 1715
+        width: 103
+        height: 102
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: funnyRobot_2
+      rect:
+        serializedVersion: 2
+        x: 1138
+        y: 1737
+        width: 70
+        height: 69
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: funnyRobot_3
+      rect:
+        serializedVersion: 2
+        x: 1555
+        y: 1631
+        width: 312
+        height: 117
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: funnyRobot_4
+      rect:
+        serializedVersion: 2
+        x: 1592
+        y: 1746
+        width: 5
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: funnyRobot_5
+      rect:
+        serializedVersion: 2
+        x: 1600
+        y: 1746
+        width: 5
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: funnyRobot_6
+      rect:
+        serializedVersion: 2
+        x: 1611
+        y: 1747
+        width: 26
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: funnyRobot_7
+      rect:
+        serializedVersion: 2
+        x: 1643
+        y: 1746
+        width: 6
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: funnyRobot_8
+      rect:
+        serializedVersion: 2
+        x: 1652
+        y: 1746
+        width: 5
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: funnyRobot_9
+      rect:
+        serializedVersion: 2
+        x: 1480
+        y: 1693
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: funnyRobot_10
+      rect:
+        serializedVersion: 2
+        x: 1488
+        y: 1700
+        width: 87
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: funnyRobot_11
+      rect:
+        serializedVersion: 2
+        x: 1468
+        y: 1682
+        width: 11
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: funnyRobot_12
+      rect:
+        serializedVersion: 2
+        x: 1460
+        y: 1674
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: funnyRobot_13
+      rect:
+        serializedVersion: 2
+        x: 439
+        y: 1557
+        width: 200
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: funnyRobot_14
+      rect:
+        serializedVersion: 2
+        x: 554
+        y: 1079
+        width: 225
+        height: 271
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: funnyRobot_15
+      rect:
+        serializedVersion: 2
+        x: 1253
+        y: 1305
+        width: 161
+        height: 161
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: funnyRobot_16
+      rect:
+        serializedVersion: 2
+        x: 1804
+        y: 1346
+        width: 294
+        height: 79
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: funnyRobot_17
+      rect:
+        serializedVersion: 2
+        x: 531
+        y: 787
+        width: 127
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: funnyRobot_18
+      rect:
+        serializedVersion: 2
+        x: 1089
+        y: 272
+        width: 1034
+        height: 987
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: funnyRobot_19
+      rect:
+        serializedVersion: 2
+        x: 2367
+        y: 848
+        width: 430
+        height: 369
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: funnyRobot_20
+      rect:
+        serializedVersion: 2
+        x: 484
+        y: 351
+        width: 183
+        height: 183
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

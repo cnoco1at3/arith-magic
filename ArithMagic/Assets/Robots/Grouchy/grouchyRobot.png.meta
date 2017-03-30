@@ -1,0 +1,384 @@
+fileFormatVersion: 2
+guid: 0676f35d12bad4679a9e3bbdf435e992
+timeCreated: 1490848851
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: grouchyRobot_0
+    21300002: grouchyRobot_1
+    21300004: grouchyRobot_2
+    21300006: grouchyRobot_3
+    21300008: grouchyRobot_4
+    21300010: grouchyRobot_5
+    21300012: grouchyRobot_6
+    21300014: grouchyRobot_7
+    21300016: grouchyRobot_8
+    21300018: grouchyRobot_9
+    21300020: grouchyRobot_10
+    21300022: grouchyRobot_11
+    21300024: grouchyRobot_12
+    21300026: grouchyRobot_13
+    21300028: grouchyRobot_14
+    21300030: grouchyRobot_15
+    21300032: grouchyRobot_16
+    21300034: grouchyRobot_17
+    21300036: grouchyRobot_18
+    21300038: grouchyRobot_19
+    21300040: grouchyRobot_20
+    21300042: grouchyRobot_21
+  serializedVersion: 4
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: -1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Standalone
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: grouchyRobot_0
+      rect:
+        serializedVersion: 2
+        x: 1102
+        y: 2845
+        width: 346
+        height: 507
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: grouchyRobot_1
+      rect:
+        serializedVersion: 2
+        x: 1841
+        y: 3147
+        width: 43
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: grouchyRobot_2
+      rect:
+        serializedVersion: 2
+        x: 2319
+        y: 3141
+        width: 159
+        height: 87
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: grouchyRobot_3
+      rect:
+        serializedVersion: 2
+        x: 2547
+        y: 3141
+        width: 85
+        height: 87
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: grouchyRobot_4
+      rect:
+        serializedVersion: 2
+        x: 2694
+        y: 3146
+        width: 160
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: grouchyRobot_5
+      rect:
+        serializedVersion: 2
+        x: 2296
+        y: 3001
+        width: 182
+        height: 84
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: grouchyRobot_6
+      rect:
+        serializedVersion: 2
+        x: 2546
+        y: 3000
+        width: 87
+        height: 86
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: grouchyRobot_7
+      rect:
+        serializedVersion: 2
+        x: 2694
+        y: 3000
+        width: 170
+        height: 86
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: grouchyRobot_8
+      rect:
+        serializedVersion: 2
+        x: 1696
+        y: 2880
+        width: 170
+        height: 113
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: grouchyRobot_9
+      rect:
+        serializedVersion: 2
+        x: 2259
+        y: 2858
+        width: 219
+        height: 87
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: grouchyRobot_10
+      rect:
+        serializedVersion: 2
+        x: 2546
+        y: 2858
+        width: 86
+        height: 87
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: grouchyRobot_11
+      rect:
+        serializedVersion: 2
+        x: 2694
+        y: 2858
+        width: 197
+        height: 87
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: grouchyRobot_12
+      rect:
+        serializedVersion: 2
+        x: 1305
+        y: 2661
+        width: 114
+        height: 73
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: grouchyRobot_13
+      rect:
+        serializedVersion: 2
+        x: 2233
+        y: 2546
+        width: 877
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: grouchyRobot_14
+      rect:
+        serializedVersion: 2
+        x: 1105
+        y: 2430
+        width: 449
+        height: 179
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: grouchyRobot_15
+      rect:
+        serializedVersion: 2
+        x: 1747
+        y: 2413
+        width: 291
+        height: 213
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: grouchyRobot_16
+      rect:
+        serializedVersion: 2
+        x: 2328
+        y: 2087
+        width: 688
+        height: 436
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: grouchyRobot_17
+      rect:
+        serializedVersion: 2
+        x: 1523
+        y: 1794
+        width: 304
+        height: 262
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: grouchyRobot_18
+      rect:
+        serializedVersion: 2
+        x: 1431
+        y: 1171
+        width: 263
+        height: 461
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: grouchyRobot_19
+      rect:
+        serializedVersion: 2
+        x: 2396
+        y: 1200
+        width: 526
+        height: 309
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: grouchyRobot_20
+      rect:
+        serializedVersion: 2
+        x: 1560
+        y: 937
+        width: 140
+        height: 142
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: grouchyRobot_21
+      rect:
+        serializedVersion: 2
+        x: 1501
+        y: 274
+        width: 195
+        height: 463
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
