@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -79,8 +80,6 @@ public class XRayCameraBehavior : GenericSingleton<XRayCameraBehavior> {
     }
 
     private void PopsUpToolBox() {
-        //do math stuff
-        Debug.Log("StartMath");
         SetXRayCameraActive(false);
         tool_box_.PopulateProblem(category_);
     }
@@ -100,15 +99,19 @@ public class XRayCameraBehavior : GenericSingleton<XRayCameraBehavior> {
     void Start() {
         
         sfx_src_ = GetComponent<AudioSource>();
-        robot_ = GameObject.FindGameObjectWithTag("Robot");
         detect_time_ = kDetectTimeThreshold;
-        parts_ = new List<GameObject>(GameObject.FindGameObjectsWithTag("Part"));
 
         render_mesh_ = transform.GetChild(0).gameObject;
         collider_ = GetComponent<BoxCollider2D>();
 
         // TODO wrap category
-        category_ = MapRobotBehavior.GetDockedId() + 1;
+        category_ = Mathf.RoundToInt(Mathf.Repeat((float)MapRobotBehavior.GetDockedId(), 6.0f) + 1);
+        // TODO wrap robots
+        try {
+            robot_ = Instantiate(RobotCluster.Instance.GetRobotById(MapRobotBehavior.GetDockedId()));
+        } catch (NullReferenceException) { }
+
+        parts_ = new List<GameObject>(GameObject.FindGameObjectsWithTag("Part"));
     }
 
     void Update() {

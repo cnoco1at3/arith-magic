@@ -14,9 +14,11 @@ public class LevelCluster : GenericSingleton<LevelCluster> {
                 lock_boxes_[i].SetLockBoxId(i);
                 if (i <= LevelController.GetLevelIndex() + 1)
                     lock_boxes_[i].SetUnlocked();
+                if (i == LevelController.GetLevelIndex() + 1)
+                    lock_boxes_[i].SetAnimation(true);
+                else
+                    lock_boxes_[i].SetAnimation(false);
             }
-
-        Debug.Log(LevelController.GetLevelIndex());
     }
 
     public LockBoxBehavior GetLockBoxById(int id) {

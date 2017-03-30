@@ -25,6 +25,7 @@ public class PartsAcceptor : MonoBehaviour {
     public virtual void ClearSlot() {
         if (pb != null)
             Destroy(pb.gameObject);
+        pb = null;
     }
 
     public virtual void SetAccPartId(int id) {
@@ -51,7 +52,6 @@ public class PartsAcceptor : MonoBehaviour {
             pb.MoveBackToBox();
         pb = part;
 
-        Debug.Log(IsSolved());
         if (IsSolved())
             ToolBoxBehavior.Instance.CheckSolveStatus();
     }
@@ -62,10 +62,12 @@ public class PartsAcceptor : MonoBehaviour {
 
     public bool IsSolved() {
         try {
-            return pb.part_id == acc_part_id;
+            if (pb != null)
+                return pb.part_id == acc_part_id;
         } catch (Exception e) {
             return false;
         }
+        return false;
     }
 
 }

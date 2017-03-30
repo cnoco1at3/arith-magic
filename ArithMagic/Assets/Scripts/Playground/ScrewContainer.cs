@@ -48,8 +48,11 @@ public class ScrewContainer : Clickable {
     }
 
     public void ClearSlots() {
-        for (int i = 0; i <= slot_index_; ++i)
+        for (int i = 0; i <= slot_index_; ++i) {
+            if (buckets_[i] != null)
+                Destroy(buckets_[i].gameObject);
             buckets_[i] = null;
+        }
         slot_index_ = -1;
     }
 
