@@ -880,6 +880,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tool_box_: {fileID: 252627816}
   robot_: {fileID: 0}
+  scannerSound: {fileID: 8300000, guid: e45f32c69c5811642bc2f95644e5db26, type: 3}
+  defectDetectionSound: {fileID: 8300000, guid: 941e561470b8415449b693b441e10c0f,
+    type: 3}
 --- !u!61 &336615479
 BoxCollider2D:
   m_ObjectHideFlags: 0

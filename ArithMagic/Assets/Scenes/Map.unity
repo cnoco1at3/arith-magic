@@ -108,6 +108,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target_pos_: {x: -2.33, y: 0, z: 0}
+  touchBoxSound: {fileID: 0}
 --- !u!65 &3548829
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -511,6 +512,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target_pos_: {x: -2.33, y: 0, z: 0}
+  touchBoxSound: {fileID: 0}
 --- !u!65 &285619087
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -668,6 +670,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target_pos_: {x: -2.33, y: 0, z: 0}
+  touchBoxSound: {fileID: 0}
 --- !u!65 &493407625
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -753,7 +756,7 @@ AudioSource:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 505533897}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 3f1f6a2474b7a6b438b0c3eb678d66cb, type: 3}
@@ -1429,6 +1432,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target_pos_: {x: -2.33, y: 0, z: 0}
+  touchBoxSound: {fileID: 0}
 --- !u!65 &1283989592
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1792,6 +1796,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target_pos_: {x: -2.33, y: 0, z: 0}
+  touchBoxSound: {fileID: 0}
 --- !u!1001 &1584029849
 Prefab:
   m_ObjectHideFlags: 0
@@ -2008,6 +2013,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target_pos_: {x: -2.33, y: 0, z: 0}
+  touchBoxSound: {fileID: 8300000, guid: 6baa07d5c92afbe41a36d47bb95bf832, type: 3}
 --- !u!65 &1725563702
 BoxCollider:
   m_ObjectHideFlags: 0
