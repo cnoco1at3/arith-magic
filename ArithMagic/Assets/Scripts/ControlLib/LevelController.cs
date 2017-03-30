@@ -7,12 +7,12 @@ using Util;
 public class LevelController : PersistentSingleton<LevelController> {
 
     [SerializeField]
-    private GameObject[] robots;
+    private static GameObject[] robots;
 
     [SerializeField]
     private static int level_index_ = -1;
 
-    public GameObject GetRobotById(int id) { return robots[id]; }
+    public static GameObject GetRobotById(int id) { return robots[id]; }
 
     public static int GetLevelIndex() { return level_index_; }
 

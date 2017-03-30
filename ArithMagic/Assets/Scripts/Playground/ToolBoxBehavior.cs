@@ -28,25 +28,32 @@ public class ToolBoxBehavior : GenericSingleton<ToolBoxBehavior> {
     private GameObject[] problems_;
     private GameObject operator_;
 
-    void Start() { }
-
-    void Update() {
-    }
+    private int problem_size_;
+    private int category_;
+    [SerializeField]
+    private const int kProblemSize = 5;
 
     public void PopulateProblem(int category, bool downward = false) {
         if (downward)
             category = Random.Range(1, category);
 
-        SetNewProblem(ProblemRuler.GetNewProblem(category));
+        category_ = category;
+        problem_size_ = kProblemSize;
+
+        SetNewProblem(ProblemRuler.GetNewProblem(category_));
 
         // animations here
         transform.DOMove(Vector3.zero, 1.0f);
     }
 
     public void CheckSolveStatus() {
-        foreach (PartsAcceptor slot in slots_)
-            if (slot.active && !slot.IsSolved())
+        foreach (PartsAcceptor slot in slots_) {
+            if (!slot.active)
+                continue;
+            if (!slot.IsSolved())
                 return;
+        }
+
 
         // animations here
         StartCoroutine(SolvedCoroutine());
@@ -130,8 +137,14 @@ public class ToolBoxBehavior : GenericSingleton<ToolBoxBehavior> {
 
     private IEnumerator SolvedCoroutine() {
         yield return new WaitForSeconds(2.0f);
-        transform.DOMove(new Vector3(0, 10.4f), 2.0f);
 
-        XRayCameraBehavior.Instance.CheckParts(true);
+        problem_size_--;
+        if (problem_size_ > 0) {
+            SetNewProblem(ProblemRuler.GetNewProblem(category_));
+        } else {
+            ClearProblem();
+            transform.DOMove(new Vector3(0, 10.4f), 2.0f);
+            XRayCameraBehavior.Instance.CheckParts(true);
+        }
     }
 }

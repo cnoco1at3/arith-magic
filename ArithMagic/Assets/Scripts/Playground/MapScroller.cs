@@ -25,7 +25,6 @@ public class MapScroller : Dragable {
             // hacky way to implement the effect
             LockBoxBehavior center = LevelCluster.Instance.GetLockBoxById(MapRobotBehavior.GetDockedId());
             if (center != null) {
-                Debug.Log(center.gameObject);
                 transform.DOMoveY(transform.position.y - center.transform.position.y, 2.0f);
             }
         } catch (KeyNotFoundException e) {

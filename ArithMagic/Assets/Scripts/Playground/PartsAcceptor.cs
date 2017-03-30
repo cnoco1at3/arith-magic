@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System;
 using System.Collections;
+using SoundLib;
 
 public class PartsAcceptor : MonoBehaviour {
 
@@ -8,6 +9,8 @@ public class PartsAcceptor : MonoBehaviour {
 
     [SerializeField]
     private int acc_part_id = 0;
+
+    public AudioClip dropBatterySound;
 
     // NOTE: here we need to set the point where we want the screw snap to
     [SerializeField]
@@ -25,6 +28,7 @@ public class PartsAcceptor : MonoBehaviour {
     public virtual void ClearSlot() {
         if (pb != null)
             Destroy(pb.gameObject);
+        pb = null;
     }
 
     public virtual void SetAccPartId(int id) {
@@ -45,13 +49,13 @@ public class PartsAcceptor : MonoBehaviour {
     }
 
     public virtual void OnPartEnter(PartsBehavior part) {
+        SoundManager.Instance.PlaySFX(dropBatterySound, false);
         is_occupied = true;
 
         if (pb != null)
             pb.MoveBackToBox();
         pb = part;
 
-        Debug.Log(IsSolved());
         if (IsSolved())
             ToolBoxBehavior.Instance.CheckSolveStatus();
     }
@@ -62,10 +66,12 @@ public class PartsAcceptor : MonoBehaviour {
 
     public bool IsSolved() {
         try {
-            return pb.part_id == acc_part_id;
+            if (pb != null)
+                return pb.part_id == acc_part_id;
         } catch (Exception e) {
             return false;
         }
+        return false;
     }
 
 }

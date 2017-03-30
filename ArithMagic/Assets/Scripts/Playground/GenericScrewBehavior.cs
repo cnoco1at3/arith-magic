@@ -32,7 +32,7 @@ public class GenericScrewBehavior : Clickable {
     }
 
     public void MoveToContainer() {
-        SoundManager.Instance.PlaySFX(sfx_clip_);
+        SoundManager.Instance.PlaySFX(sfx_clip_, false);
 
         try {
             if (!container_.IsFull()) {
@@ -58,7 +58,7 @@ public class GenericScrewBehavior : Clickable {
             ones[i].GetComponent<Collider>().enabled = false;
             Vector3 randoff = new Vector3(UnityEngine.Random.Range(-0.5f, 0.5f), UnityEngine.Random.Range(-0.5f, 0.5f));
 
-            SoundManager.Instance.PlaySFX(sfx_clip_);
+            SoundManager.Instance.PlaySFX(sfx_clip_, false);
             ones[i].transform.DOLocalMove(ones[i].transform.localPosition + randoff, 0.5f);
         }
 
@@ -67,7 +67,7 @@ public class GenericScrewBehavior : Clickable {
         for (int i = 0; i < ones.Length; ++i)
             ones[i].transform.DOMove(pos, 0.8f);
 
-        SoundManager.Instance.PlaySFX(sfx_clip_);
+        SoundManager.Instance.PlaySFX(sfx_clip_, false);
         transform.DOMove(pos, 0.8f);
         yield return new WaitForSeconds(0.8f);
         for (int i = 0; i < ones.Length; ++i)
