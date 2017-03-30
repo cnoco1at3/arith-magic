@@ -1072,6 +1072,12 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 114723400260721200, guid: 9ec9a30bd3ead894986ca2e98bc32ebe,
+        type: 2}
+      propertyPath: robot_pic_
+      value: 
+      objectReference: {fileID: 1783928024077224, guid: 979823bd62f42944bbef97d3d083903b,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9ec9a30bd3ead894986ca2e98bc32ebe, type: 2}
   m_IsPrefabParent: 0
@@ -1510,6 +1516,12 @@ Prefab:
       propertyPath: m_Name
       value: lockedBox1.1
       objectReference: {fileID: 0}
+    - target: {fileID: 114309617291460822, guid: b0794c902421c4246856dc348fa1ef94,
+        type: 2}
+      propertyPath: robot_pic_
+      value: 
+      objectReference: {fileID: 1475372183576022, guid: bcc2b6fa8556241428bdccffc7215994,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b0794c902421c4246856dc348fa1ef94, type: 2}
   m_IsPrefabParent: 0
