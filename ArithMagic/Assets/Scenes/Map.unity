@@ -108,8 +108,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target_pos_: {x: -2.33, y: 0, z: 0}
-  touchBoxSound: {fileID: 0}
   robot_pic_: {fileID: 0}
+  touchBoxSound: {fileID: 0}
 --- !u!65 &3548829
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -531,8 +531,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target_pos_: {x: -2.33, y: 0, z: 0}
-  touchBoxSound: {fileID: 0}
   robot_pic_: {fileID: 0}
+  touchBoxSound: {fileID: 0}
 --- !u!65 &285619087
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -623,22 +623,6 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 825420815}
   m_Script: {fileID: 11500000, guid: 8500694b4ee3f974e9a6a76b06ad700b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target_pos_: {x: -2.33, y: 0, z: 0}
-  touchBoxSound: {fileID: 0}
---- !u!65 &493407625
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 493407621}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 3, y: 3, z: 5}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &503879025
 Prefab:
   m_ObjectHideFlags: 0
@@ -848,6 +832,11 @@ Prefab:
       propertyPath: m_Name
       value: lockedBox1
       objectReference: {fileID: 0}
+    - target: {fileID: 114309617291460822, guid: b0794c902421c4246856dc348fa1ef94,
+        type: 2}
+      propertyPath: touchBoxSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 6baa07d5c92afbe41a36d47bb95bf832, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b0794c902421c4246856dc348fa1ef94, type: 2}
   m_IsPrefabParent: 0
@@ -1343,8 +1332,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target_pos_: {x: -2.33, y: 0, z: 0}
-  touchBoxSound: {fileID: 0}
   robot_pic_: {fileID: 0}
+  touchBoxSound: {fileID: 0}
 --- !u!65 &1283989592
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1703,31 +1692,6 @@ Transform:
   m_PrefabParentObject: {fileID: 4030749752470782, guid: b0794c902421c4246856dc348fa1ef94,
     type: 2}
   m_PrefabInternal: {fileID: 1334979356}
---- !u!65 &1526509739
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1526509736}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 5, y: 5, z: 5}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1526509740
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1526509736}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8500694b4ee3f974e9a6a76b06ad700b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target_pos_: {x: -2.33, y: 0, z: 0}
-  touchBoxSound: {fileID: 0}
 --- !u!1001 &1584029849
 Prefab:
   m_ObjectHideFlags: 0
@@ -1922,22 +1886,6 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 554735536}
   m_Script: {fileID: 11500000, guid: 8500694b4ee3f974e9a6a76b06ad700b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target_pos_: {x: -2.33, y: 0, z: 0}
-  touchBoxSound: {fileID: 8300000, guid: 6baa07d5c92afbe41a36d47bb95bf832, type: 3}
---- !u!65 &1725563702
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1725563698}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 5, y: 5, z: 5}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1774910066
 GameObject:
   m_ObjectHideFlags: 0

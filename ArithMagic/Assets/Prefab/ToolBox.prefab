@@ -1779,6 +1779,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   part_id_: 3
+  pickBatterySound: {fileID: 8300000, guid: 3d0089f949a2383409b2d45b626ddb6b, type: 3}
 --- !u!114 &114101665643588898
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1815,6 +1816,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   active: 1
   acc_part_id: 4
+  dropBatterySound: {fileID: 8300000, guid: d465aa5e80400c94eb3a639999018a76, type: 3}
   accept_point_: {fileID: 0}
 --- !u!114 &114234412178380894
 MonoBehaviour:
@@ -1828,6 +1830,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   part_id_: 6
+  pickBatterySound: {fileID: 8300000, guid: 45a8bde658b492548b18fb586bf29352, type: 3}
 --- !u!114 &114278415595831466
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1840,6 +1843,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   part_id_: 1
+  pickBatterySound: {fileID: 8300000, guid: 205a6b8f628f5294d8d9088af2f4579b, type: 3}
 --- !u!114 &114368725684338168
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1852,6 +1856,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   part_id_: 7
+  pickBatterySound: {fileID: 8300000, guid: 744e436d4174a0d44ac7a374c77e0117, type: 3}
 --- !u!114 &114528237006075714
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1864,6 +1869,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   part_id_: 5
+  pickBatterySound: {fileID: 8300000, guid: 5e13e985404c5fc42a0c638b47f3b421, type: 3}
 --- !u!114 &114576472108213078
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1916,6 +1922,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   part_id_: 4
+  pickBatterySound: {fileID: 8300000, guid: a335eff7bb74cf846b3ac5e12be0daf2, type: 3}
 --- !u!114 &114786125428810064
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1928,6 +1935,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   part_id_: 0
+  pickBatterySound: {fileID: 8300000, guid: a4f01149f84f278439b43b468c72fb39, type: 3}
 --- !u!114 &114844311621055688
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1941,6 +1949,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   active: 1
   acc_part_id: 4
+  dropBatterySound: {fileID: 8300000, guid: d465aa5e80400c94eb3a639999018a76, type: 3}
   accept_point_: {fileID: 0}
 --- !u!114 &114873416447014850
 MonoBehaviour:
@@ -1954,6 +1963,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   part_id_: 8
+  pickBatterySound: {fileID: 8300000, guid: 45672ea6e758ba942b8f57e0cc33edca, type: 3}
 --- !u!114 &114955763937124330
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1966,6 +1976,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   part_id_: 9
+  pickBatterySound: {fileID: 8300000, guid: 9aa82b5a23c50e040b257e88b593e347, type: 3}
 --- !u!114 &114970213876709022
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1978,6 +1989,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   part_id_: 2
+  pickBatterySound: {fileID: 8300000, guid: b2e416f510120bf44b6e942376843fc2, type: 3}
 --- !u!114 &114982358573441156
 MonoBehaviour:
   m_ObjectHideFlags: 1
