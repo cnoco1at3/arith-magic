@@ -22,6 +22,11 @@ public class PartsAcceptor : MonoBehaviour {
             accept_point_ = transform;
     }
 
+    public virtual void ClearSlot() {
+        if (pb != null)
+            Destroy(pb.gameObject);
+    }
+
     public virtual void SetAccPartId(int id) {
         acc_part_id = id;
     }

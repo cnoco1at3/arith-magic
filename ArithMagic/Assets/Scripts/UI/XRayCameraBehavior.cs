@@ -1,12 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Util;
 
 public class XRayCameraBehavior : GenericSingleton<XRayCameraBehavior> {
 
-    [Range(1, 6)]
-    public int category = 1;
+    private int category_;
 
     private List<GameObject> parts_;
     private GameObject part_ptr_;
@@ -35,8 +35,8 @@ public class XRayCameraBehavior : GenericSingleton<XRayCameraBehavior> {
         if (parts_.Count == 0) {
             robot_.GetComponent<Animator>().SetBool("isDancing", true);
             robot_.GetComponent<AudioSource>().Play();
-        }
-        else
+            StartCoroutine(BackToMap());
+        } else
             SetXRayCameraActive(true);
     }
 
@@ -46,6 +46,8 @@ public class XRayCameraBehavior : GenericSingleton<XRayCameraBehavior> {
             detect_time_ = kDetectTimeThreshold;
             part_ptr_ = other.gameObject;
             detect_coroutine_ = StartCoroutine(DetectPart());
+            render_mesh_.GetComponent<Animator>().SetTrigger("ScannerAnim");
+            render_mesh_.GetComponent<Animator>().ResetTrigger("Null");
         }
     }
 
@@ -54,6 +56,8 @@ public class XRayCameraBehavior : GenericSingleton<XRayCameraBehavior> {
         if (other.gameObject.tag == "Part") {
             StopCoroutine(detect_coroutine_);
             detect_time_ = kDetectTimeThreshold;
+            render_mesh_.GetComponent<Animator>().SetTrigger("Null");
+            render_mesh_.GetComponent<Animator>().ResetTrigger("ScannerAnim");
         }
     }
 
@@ -73,13 +77,18 @@ public class XRayCameraBehavior : GenericSingleton<XRayCameraBehavior> {
         //do math stuff
         Debug.Log("StartMath");
         SetXRayCameraActive(false);
-        tool_box_.PopulateProblem(category);
+        tool_box_.PopulateProblem(category_);
     }
 
     private void SetXRayCameraActive(bool flag) {
         collider_.enabled = flag;
         render_mesh_.SetActive(flag);
         StopCoroutine(detect_coroutine_);
+    }
+
+    private IEnumerator BackToMap() {
+        yield return new WaitForSeconds(3.0f);
+        SceneManager.LoadScene("Map");
     }
 
     // Use this for initialization
@@ -91,6 +100,9 @@ public class XRayCameraBehavior : GenericSingleton<XRayCameraBehavior> {
 
         render_mesh_ = transform.GetChild(0).gameObject;
         collider_ = GetComponent<BoxCollider2D>();
+
+        // TODO wrap category
+        category_ = MapRobotBehavior.GetDockedId() + 1;
     }
 
     void Update() {

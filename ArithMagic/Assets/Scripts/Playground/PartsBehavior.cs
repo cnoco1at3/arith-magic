@@ -30,11 +30,14 @@ public class PartsBehavior : Dragable {
     }
 
     public void MoveBackToBox() {
+        /*
         transform.DOLocalMove(default_pos_,
             (float)ConstantTweakTool.Instance.const_dict[kSnapEaseIn]);
         transform.DOScale(default_scale_,
             (float)ConstantTweakTool.Instance.const_dict[kSnapEaseIn]);
         is_accepted_ = false;
+        */
+        Destroy(gameObject);
     }
 
     // NOTE: this check is seperated into two steps
@@ -74,8 +77,11 @@ public class PartsBehavior : Dragable {
             transform.DOMove(acceptor.GetAcceptPoint(),
                 (float)ConstantTweakTool.Instance.const_dict[kSnapEaseIn]);
         else
-            transform.DOLocalMove(default_pos_,
-                (float)ConstantTweakTool.Instance.const_dict[kSnapEaseIn]);
+            Destroy(gameObject);
+        /*
+        transform.DOLocalMove(default_pos_,
+            (float)ConstantTweakTool.Instance.const_dict[kSnapEaseIn]);
+            */
 
         transform.DOScale(accepted ? acceptor.GetScaleFactor() : default_scale_,
             (float)ConstantTweakTool.Instance.const_dict[kSnapEaseIn]);

@@ -85,6 +85,11 @@ public class ToolBoxBehavior : GenericSingleton<ToolBoxBehavior> {
             foreach (ScrewContainer container in containers_)
                 if (container != null)
                     container.ClearSlots();
+
+        if (slots_ != null)
+            foreach (PartsAcceptor slot in slots_)
+                if (slot != null)
+                    slot.ClearSlot();
     }
 
     private void SpawnOperator(bool add) {

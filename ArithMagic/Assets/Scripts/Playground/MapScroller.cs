@@ -7,16 +7,13 @@ using DG.Tweening;
 
 public class MapScroller : Dragable {
 
-    public MapMovement firstBox;
+    public LockBoxBehavior first_box;
 
     private Vector3 prev_world_pos;
     private Vector3 prev_world_vel;
     private static float kHooke;
     private static float kDecay;
     private SpriteRenderer sprite_;
-
-    // -7.5, 7.5
-    // -19
 
     void Start() {
         try {
@@ -26,10 +23,11 @@ public class MapScroller : Dragable {
             sprite_ = GetComponent<SpriteRenderer>();
 
             // hacky way to implement the effect
-            /*
-            transform.DOMoveY(-34, 2.0f);
-            firstBox.ClickEvent();
-            */
+            LockBoxBehavior center = LevelCluster.Instance.GetLockBoxById(MapRobotBehavior.GetDockedId());
+            if (center != null) {
+                Debug.Log(center.gameObject);
+                transform.DOMoveY(transform.position.y - center.transform.position.y, 2.0f);
+            }
         } catch (KeyNotFoundException e) {
             Debug.LogException(e);
         }
@@ -39,15 +37,14 @@ public class MapScroller : Dragable {
         prev_world_vel *= kDecay;
         float f = prev_world_vel.y;
 
-        // 12 -48
-        float bound = sprite_.bounds.extents.y - 15.0f;
+        float bound = sprite_.bounds.extents.y - 10.0f;
 
         if (transform.position.y > bound)
             f = kHooke * (bound - transform.position.y);
         else if (transform.position.y < -bound)
             f = -kHooke * (bound + transform.position.y);
 
-        float x = Mathf.Lerp(7.5f, -7.5f, (Mathf.Clamp(transform.position.y, -10.0f, 10.0f) + 10.0f) / 20.0f);
+        float x = SlideX();
 
         transform.position = new Vector3(x, transform.position.y + f, transform.position.z);
     }
@@ -62,7 +59,11 @@ public class MapScroller : Dragable {
         prev_world_vel = world_pos - prev_world_pos;
         prev_world_pos = world_pos;
 
-        float x = Mathf.Lerp(7.5f, -7.5f, (Mathf.Clamp(transform.position.y, -10.0f, 10.0f) + 10.0f) / 20.0f);
+        float x = SlideX();
         transform.position = new Vector3(x, transform.position.y + delta_pos.y, transform.position.z);
+    }
+
+    private float SlideX() {
+        return Mathf.Lerp(7.5f, -7.5f, (Mathf.Clamp(transform.position.y + 10.0f, -5.0f, 5.0f) + 5.0f) / 10.0f);
     }
 }
