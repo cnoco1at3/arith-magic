@@ -16,14 +16,17 @@ namespace SoundLib {
         // Use this for initialization
         void Start() {
             bgm_src_ = gameObject.AddComponent<AudioSource>();
+            bgm_src_.loop = true;
             sfx_src_ = new AudioSource[kSFXBufferSize];
             for (int i = 0; i < sfx_src_.Length; ++i)
                 sfx_src_[i] = gameObject.AddComponent<AudioSource>();
         }
 
         public virtual void PlayBGM(AudioClip clip) {
-            if (bgm_src_ == null)
+            if (bgm_src_ == null) {
                 bgm_src_ = gameObject.AddComponent<AudioSource>();
+                bgm_src_.loop = true;
+            }
 
             if (clip == null)
                 return;
