@@ -9,7 +9,7 @@ public class RobotCluster : GenericSingleton<RobotCluster> {
     private GameObject[] robots;
 
     public GameObject GetRobotById(int id) {
-        int wrap_id = Mathf.RoundToInt(Mathf.Repeat((float)id, (float)robots.Length - 1) + 1);
+        int wrap_id = Mathf.RoundToInt(Mathf.Repeat((float)id, (float)robots.Length - 1));
         return robots[wrap_id];
     }
 }

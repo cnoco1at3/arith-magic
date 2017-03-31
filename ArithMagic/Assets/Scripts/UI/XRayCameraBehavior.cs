@@ -47,8 +47,10 @@ public class XRayCameraBehavior : GenericSingleton<XRayCameraBehavior> {
 
     //OnTriggerEnter with broken part, starts a coroutine countdown
     void OnTriggerEnter2D(Collider2D other) {
+        SoundManager.Instance.PlaySFX(scannerSound, false);
         if (other.gameObject.tag == "Part") {
-            SoundManager.Instance.PlaySFX(defectDetectionSound);
+            SoundManager.Instance.StopSFX(scannerSound);
+            SoundManager.Instance.PlaySFX(defectDetectionSound, false);
             detect_time_ = kDetectTimeThreshold;
             part_ptr_ = other.gameObject;
             detect_coroutine_ = StartCoroutine(DetectPart());
@@ -60,6 +62,7 @@ public class XRayCameraBehavior : GenericSingleton<XRayCameraBehavior> {
     //Exit with part, stops and resets countdown
     void OnTriggerExit2D(Collider2D other) {
         if (other.gameObject.tag == "Part") {
+
             StopCoroutine(detect_coroutine_);
             detect_time_ = kDetectTimeThreshold;
             render_mesh_.GetComponent<Animator>().SetTrigger("Null");
@@ -69,6 +72,7 @@ public class XRayCameraBehavior : GenericSingleton<XRayCameraBehavior> {
 
     //Coroutine countdown for detecting broken part
     private IEnumerator DetectPart() {
+
         if (sfx_src_) {
             sfx_src_.Play();
         }
@@ -80,6 +84,7 @@ public class XRayCameraBehavior : GenericSingleton<XRayCameraBehavior> {
     }
 
     private void PopsUpToolBox() {
+        SoundManager.Instance.StopSFX(scannerSound);
         SetXRayCameraActive(false);
         tool_box_.PopulateProblem(category_);
     }
@@ -97,7 +102,7 @@ public class XRayCameraBehavior : GenericSingleton<XRayCameraBehavior> {
 
     // Use this for initialization
     void Start() {
-        
+
         sfx_src_ = GetComponent<AudioSource>();
         detect_time_ = kDetectTimeThreshold;
 
@@ -115,7 +120,7 @@ public class XRayCameraBehavior : GenericSingleton<XRayCameraBehavior> {
     }
 
     void Update() {
-        SoundManager.Instance.PlaySFX(scannerSound);
+
         Vector2 pos = Input.mousePosition;
         pos = Camera.main.ScreenToWorldPoint(pos);
         transform.position = new Vector3(pos.x, pos.y, -1);

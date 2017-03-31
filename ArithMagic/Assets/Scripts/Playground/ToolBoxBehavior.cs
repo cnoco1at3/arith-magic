@@ -31,7 +31,7 @@ public class ToolBoxBehavior : GenericSingleton<ToolBoxBehavior> {
     private int problem_size_;
     private int category_;
     [SerializeField]
-    private const int kProblemSize = 5;
+    private const int kProblemSize = 1;
 
     public void PopulateProblem(int category, bool downward = false) {
         if (downward)
