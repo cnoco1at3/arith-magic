@@ -19,6 +19,11 @@ public class LockBoxBehavior : Clickable {
 
     public AudioClip touchBoxSound;
 
+    void Update() {
+        if (Input.GetKeyDown(KeyCode.Space))
+            SetUnlocked();
+    }
+
     public override void ClickEvent() {
         SoundManager.Instance.PlaySFX(touchBoxSound, false);
         if (unlocked_)
@@ -42,6 +47,7 @@ public class LockBoxBehavior : Clickable {
         GetComponent<SpriteRenderer>().enabled = false;
         if (robot_pic_ != null) {
             GameObject robot = Instantiate(robot_pic_, transform);
+            robot.GetComponent<Animator>().enabled = false;
             robot.transform.localPosition = Vector3.zero;
             robot.transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
         }

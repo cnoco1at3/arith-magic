@@ -84,7 +84,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target_pos_: {x: -2.33, y: 0, z: 0}
-  robot_pic_: {fileID: 0}
+  robot_pic_: {fileID: 1783928024077224, guid: 979823bd62f42944bbef97d3d083903b, type: 2}
+  touchBoxSound: {fileID: 0}
 --- !u!212 &212497099069255132
 SpriteRenderer:
   m_ObjectHideFlags: 1

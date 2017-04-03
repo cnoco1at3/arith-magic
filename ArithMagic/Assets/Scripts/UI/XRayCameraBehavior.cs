@@ -39,7 +39,9 @@ public class XRayCameraBehavior : GenericSingleton<XRayCameraBehavior> {
 
         if (parts_.Count == 0) {
             robot_.GetComponent<Animator>().SetBool("isDancing", true);
-            robot_.GetComponent<AudioSource>().Play();
+            try {
+                robot_.GetComponent<AudioSource>().Play();
+            } catch (Exception) { }
             StartCoroutine(BackToMap());
         } else
             SetXRayCameraActive(true);
