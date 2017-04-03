@@ -74,7 +74,6 @@ public class XRayCameraBehavior : GenericSingleton<XRayCameraBehavior> {
 
     //Coroutine countdown for detecting broken part
     private IEnumerator DetectPart() {
-
         if (sfx_src_) {
             sfx_src_.Play();
         }
@@ -98,8 +97,12 @@ public class XRayCameraBehavior : GenericSingleton<XRayCameraBehavior> {
     }
 
     private IEnumerator BackToMap() {
+        InteractManager.LockInteraction();
+
         yield return new WaitForSeconds(3.0f);
         SceneManager.LoadScene("Map");
+
+        InteractManager.ReleaseInteraction();
     }
 
     // Use this for initialization

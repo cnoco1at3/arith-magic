@@ -47,6 +47,7 @@ public class ToolBoxBehavior : GenericSingleton<ToolBoxBehavior> {
 
         // animations here
         transform.DOMove(Vector3.zero, 1.0f);
+        InteractManager.Instance.LockInteractionForSeconds(1.0f);
     }
 
     public void CheckSolveStatus() {
