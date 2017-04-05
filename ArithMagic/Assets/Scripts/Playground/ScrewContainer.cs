@@ -48,7 +48,7 @@ public class ScrewContainer : Clickable {
     }
 
     public void ClearSlots() {
-        for (int i = 0; i <= slot_index_; ++i) {
+        for (int i = 0; i < buckets_.Length; ++i) {
             if (buckets_[i] != null)
                 Destroy(buckets_[i].gameObject);
             buckets_[i] = null;
@@ -75,6 +75,7 @@ public class ScrewContainer : Clickable {
         for (int i = 0; i <= slot_index_; ++i)
             buckets_[i].transform.DOMove(next_pos, 0.5f);
 
+        slot_index_ = -1;
         StartCoroutine(RegroupAnim(next_container));
     }
 
@@ -87,6 +88,8 @@ public class ScrewContainer : Clickable {
     }
 
     private IEnumerator RegroupAnim(ScrewContainer next) {
+        InteractManager.LockInteraction();
+
         yield return new WaitForSeconds(0.5f);
 
         for (int i = 0; i <= slot_index_; ++i) {
@@ -103,5 +106,6 @@ public class ScrewContainer : Clickable {
         next_collider.enabled = false;
 
         next.ObtainSlot(next_sb);
+        InteractManager.ReleaseInteraction();
     }
 }

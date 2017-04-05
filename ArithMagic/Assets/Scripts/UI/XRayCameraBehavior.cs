@@ -39,7 +39,9 @@ public class XRayCameraBehavior : GenericSingleton<XRayCameraBehavior> {
 
         if (parts_.Count == 0) {
             robot_.GetComponent<Animator>().SetBool("isDancing", true);
-            robot_.GetComponent<AudioSource>().Play();
+            try {
+                robot_.GetComponent<AudioSource>().Play();
+            } catch (Exception) { }
             StartCoroutine(BackToMap());
         } else
             SetXRayCameraActive(true);
@@ -72,7 +74,6 @@ public class XRayCameraBehavior : GenericSingleton<XRayCameraBehavior> {
 
     //Coroutine countdown for detecting broken part
     private IEnumerator DetectPart() {
-
         if (sfx_src_) {
             sfx_src_.Play();
         }
@@ -96,8 +97,12 @@ public class XRayCameraBehavior : GenericSingleton<XRayCameraBehavior> {
     }
 
     private IEnumerator BackToMap() {
+        InteractManager.LockInteraction();
+
         yield return new WaitForSeconds(3.0f);
         SceneManager.LoadScene("Map");
+
+        InteractManager.ReleaseInteraction();
     }
 
     // Use this for initialization

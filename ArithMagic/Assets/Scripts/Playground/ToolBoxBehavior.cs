@@ -25,13 +25,16 @@ public class ToolBoxBehavior : GenericSingleton<ToolBoxBehavior> {
     [SerializeField]
     private Transform[] anchors_;
 
+    [SerializeField]
+    private GameObject feedback_;
+
     private GameObject[] problems_;
     private GameObject operator_;
 
     private int problem_size_;
     private int category_;
     [SerializeField]
-    private const int kProblemSize = 1;
+    private const int kProblemSize = 3;
 
     public void PopulateProblem(int category, bool downward = false) {
         if (downward)
@@ -44,6 +47,7 @@ public class ToolBoxBehavior : GenericSingleton<ToolBoxBehavior> {
 
         // animations here
         transform.DOMove(Vector3.zero, 1.0f);
+        InteractManager.Instance.LockInteractionForSeconds(1.0f);
     }
 
     public void CheckSolveStatus() {
@@ -136,7 +140,9 @@ public class ToolBoxBehavior : GenericSingleton<ToolBoxBehavior> {
     }
 
     private IEnumerator SolvedCoroutine() {
+        feedback_.SetActive(true);
         yield return new WaitForSeconds(2.0f);
+        feedback_.SetActive(false);
 
         problem_size_--;
         if (problem_size_ > 0) {

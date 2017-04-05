@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using InteractLib;
 using Util;
 
@@ -8,6 +9,7 @@ using Util;
 public class InteractManager : GenericSingleton<InteractManager> {
 
     private bool is_occupied_ = false;
+    private static bool locker_ = false;
     private IInteractable current_;
     private Vector3 touch_pos;
 
@@ -15,6 +17,8 @@ public class InteractManager : GenericSingleton<InteractManager> {
     /// Get the input from either mouse or touch screen and interprete them into Enter, Stay and Exit events.
     /// </summary>
     void Update() {
+        if (locker_)
+            return;
 
         // NOTE: This snippet get the touch position based on the platform
         bool is_touched = false;
@@ -83,5 +87,25 @@ public class InteractManager : GenericSingleton<InteractManager> {
         is_occupied_ = false;
         current_ = null;
         return true;
+    }
+
+    public static bool LockInteraction() {
+        locker_ = true;
+        return locker_;
+    }
+
+    public static bool ReleaseInteraction() {
+        locker_ = false;
+        return !locker_;
+    }
+
+    public void LockInteractionForSeconds(float time) {
+        StartCoroutine(LockCoroutine(time));
+    }
+
+    private IEnumerator LockCoroutine(float time) {
+        LockInteraction();
+        yield return new WaitForSeconds(time);
+        ReleaseInteraction();
     }
 }

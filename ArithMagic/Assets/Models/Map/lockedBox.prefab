@@ -38,7 +38,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1471588634872330}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.9700003, y: 22.3, z: 0}
+  m_LocalPosition: {x: -1.9700003, y: 11.3, z: 0}
   m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
   m_Children: []
   m_Father: {fileID: 0}
@@ -97,7 +97,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target_pos_: {x: -2.33, y: 0, z: 0}
-  robot_pic_: {fileID: 1578655078615640, guid: 1d66de3cc8c6d254cbe9f9697fe766f4, type: 2}
+  robot_pic_: {fileID: 1222469167460492, guid: 977a41edf773f214c8872ea23c1e129b, type: 2}
+  touchBoxSound: {fileID: 0}
 --- !u!212 &212637454727336280
 SpriteRenderer:
   m_ObjectHideFlags: 1
