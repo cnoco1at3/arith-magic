@@ -83,6 +83,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4438594270138442}
+  - component: {fileID: 95923154235242164}
   m_Layer: 0
   m_Name: Funny
   m_TagString: Untagged
@@ -2396,6 +2397,23 @@ Transform:
   m_Father: {fileID: 4010783330720868}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &95923154235242164
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1108754277553440}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 622ec1c98c2ad66469882b38262b6658, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!212 &212020377698127272
 SpriteRenderer:
   m_ObjectHideFlags: 1
