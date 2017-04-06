@@ -30,6 +30,9 @@ public class XRayCameraBehavior : GenericSingleton<XRayCameraBehavior> {
 
     public AudioClip scannerSound;
     public AudioClip defectDetectionSound;
+    public AudioClip scannerBackground;
+    public AudioClip beforeScanningSound;
+    public AudioClip afterScannnigDetected;
 
     public void CheckParts(bool remove) {
         if (remove) {
@@ -74,6 +77,7 @@ public class XRayCameraBehavior : GenericSingleton<XRayCameraBehavior> {
 
     //Coroutine countdown for detecting broken part
     private IEnumerator DetectPart() {
+        
         if (sfx_src_) {
             sfx_src_.Play();
         }
@@ -85,6 +89,7 @@ public class XRayCameraBehavior : GenericSingleton<XRayCameraBehavior> {
     }
 
     private void PopsUpToolBox() {
+        //SoundManager.Instance.PlaySFX(afterScannnigDetected, false);
         SoundManager.Instance.StopSFX(scannerSound);
         SetXRayCameraActive(false);
         tool_box_.PopulateProblem(category_);
@@ -107,7 +112,9 @@ public class XRayCameraBehavior : GenericSingleton<XRayCameraBehavior> {
 
     // Use this for initialization
     void Start() {
-
+        
+        SoundManager.Instance.PlaySFX(beforeScanningSound, false);
+        SoundManager.Instance.PlayBGM(scannerBackground, 1f);
         sfx_src_ = GetComponent<AudioSource>();
         detect_time_ = kDetectTimeThreshold;
 

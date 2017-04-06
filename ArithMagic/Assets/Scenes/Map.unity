@@ -152,6 +152,16 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 0.33873
       objectReference: {fileID: 0}
+    - target: {fileID: 114309617291460822, guid: b0794c902421c4246856dc348fa1ef94,
+        type: 2}
+      propertyPath: touchBoxSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 6baa07d5c92afbe41a36d47bb95bf832, type: 3}
+    - target: {fileID: 114309617291460822, guid: b0794c902421c4246856dc348fa1ef94,
+        type: 2}
+      propertyPath: moveRobotSound
+      value: 
+      objectReference: {fileID: 8300000, guid: c4d86496a1a7e7542bbc9f32cd31cdc0, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b0794c902421c4246856dc348fa1ef94, type: 2}
   m_IsPrefabParent: 0
@@ -360,6 +370,16 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 0.5618235
       objectReference: {fileID: 0}
+    - target: {fileID: 114723400260721200, guid: 9ec9a30bd3ead894986ca2e98bc32ebe,
+        type: 2}
+      propertyPath: touchBoxSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 6baa07d5c92afbe41a36d47bb95bf832, type: 3}
+    - target: {fileID: 114723400260721200, guid: 9ec9a30bd3ead894986ca2e98bc32ebe,
+        type: 2}
+      propertyPath: moveRobotSound
+      value: 
+      objectReference: {fileID: 8300000, guid: c4d86496a1a7e7542bbc9f32cd31cdc0, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9ec9a30bd3ead894986ca2e98bc32ebe, type: 2}
   m_IsPrefabParent: 0
@@ -511,6 +531,16 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 0.33873
       objectReference: {fileID: 0}
+    - target: {fileID: 114309617291460822, guid: b0794c902421c4246856dc348fa1ef94,
+        type: 2}
+      propertyPath: touchBoxSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 6baa07d5c92afbe41a36d47bb95bf832, type: 3}
+    - target: {fileID: 114309617291460822, guid: b0794c902421c4246856dc348fa1ef94,
+        type: 2}
+      propertyPath: moveRobotSound
+      value: 
+      objectReference: {fileID: 8300000, guid: c4d86496a1a7e7542bbc9f32cd31cdc0, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b0794c902421c4246856dc348fa1ef94, type: 2}
   m_IsPrefabParent: 0
@@ -586,6 +616,16 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 0.5618235
       objectReference: {fileID: 0}
+    - target: {fileID: 114723400260721200, guid: 9ec9a30bd3ead894986ca2e98bc32ebe,
+        type: 2}
+      propertyPath: touchBoxSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 6baa07d5c92afbe41a36d47bb95bf832, type: 3}
+    - target: {fileID: 114723400260721200, guid: 9ec9a30bd3ead894986ca2e98bc32ebe,
+        type: 2}
+      propertyPath: moveRobotSound
+      value: 
+      objectReference: {fileID: 8300000, guid: c4d86496a1a7e7542bbc9f32cd31cdc0, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9ec9a30bd3ead894986ca2e98bc32ebe, type: 2}
   m_IsPrefabParent: 0
@@ -676,6 +716,16 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 0.33873
       objectReference: {fileID: 0}
+    - target: {fileID: 114309617291460822, guid: b0794c902421c4246856dc348fa1ef94,
+        type: 2}
+      propertyPath: touchBoxSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 6baa07d5c92afbe41a36d47bb95bf832, type: 3}
+    - target: {fileID: 114309617291460822, guid: b0794c902421c4246856dc348fa1ef94,
+        type: 2}
+      propertyPath: moveRobotSound
+      value: 
+      objectReference: {fileID: 8300000, guid: c4d86496a1a7e7542bbc9f32cd31cdc0, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b0794c902421c4246856dc348fa1ef94, type: 2}
   m_IsPrefabParent: 0
@@ -865,6 +915,11 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 0.33873
       objectReference: {fileID: 0}
+    - target: {fileID: 114309617291460822, guid: b0794c902421c4246856dc348fa1ef94,
+        type: 2}
+      propertyPath: moveRobotSound
+      value: 
+      objectReference: {fileID: 8300000, guid: c4d86496a1a7e7542bbc9f32cd31cdc0, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b0794c902421c4246856dc348fa1ef94, type: 2}
   m_IsPrefabParent: 0
@@ -928,6 +983,16 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 0.5618176
       objectReference: {fileID: 0}
+    - target: {fileID: 114723400260721200, guid: 9ec9a30bd3ead894986ca2e98bc32ebe,
+        type: 2}
+      propertyPath: touchBoxSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 6baa07d5c92afbe41a36d47bb95bf832, type: 3}
+    - target: {fileID: 114723400260721200, guid: 9ec9a30bd3ead894986ca2e98bc32ebe,
+        type: 2}
+      propertyPath: moveRobotSound
+      value: 
+      objectReference: {fileID: 8300000, guid: c4d86496a1a7e7542bbc9f32cd31cdc0, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9ec9a30bd3ead894986ca2e98bc32ebe, type: 2}
   m_IsPrefabParent: 0
@@ -1076,6 +1141,16 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 0.5618235
       objectReference: {fileID: 0}
+    - target: {fileID: 114723400260721200, guid: 9ec9a30bd3ead894986ca2e98bc32ebe,
+        type: 2}
+      propertyPath: touchBoxSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 6baa07d5c92afbe41a36d47bb95bf832, type: 3}
+    - target: {fileID: 114723400260721200, guid: 9ec9a30bd3ead894986ca2e98bc32ebe,
+        type: 2}
+      propertyPath: moveRobotSound
+      value: 
+      objectReference: {fileID: 8300000, guid: c4d86496a1a7e7542bbc9f32cd31cdc0, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9ec9a30bd3ead894986ca2e98bc32ebe, type: 2}
   m_IsPrefabParent: 0
@@ -1130,6 +1205,16 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 0.5618235
       objectReference: {fileID: 0}
+    - target: {fileID: 114723400260721200, guid: 9ec9a30bd3ead894986ca2e98bc32ebe,
+        type: 2}
+      propertyPath: touchBoxSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 6baa07d5c92afbe41a36d47bb95bf832, type: 3}
+    - target: {fileID: 114723400260721200, guid: 9ec9a30bd3ead894986ca2e98bc32ebe,
+        type: 2}
+      propertyPath: moveRobotSound
+      value: 
+      objectReference: {fileID: 8300000, guid: c4d86496a1a7e7542bbc9f32cd31cdc0, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9ec9a30bd3ead894986ca2e98bc32ebe, type: 2}
   m_IsPrefabParent: 0
@@ -1327,6 +1412,16 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 0.33873
       objectReference: {fileID: 0}
+    - target: {fileID: 114309617291460822, guid: b0794c902421c4246856dc348fa1ef94,
+        type: 2}
+      propertyPath: touchBoxSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 6baa07d5c92afbe41a36d47bb95bf832, type: 3}
+    - target: {fileID: 114309617291460822, guid: b0794c902421c4246856dc348fa1ef94,
+        type: 2}
+      propertyPath: moveRobotSound
+      value: 
+      objectReference: {fileID: 8300000, guid: c4d86496a1a7e7542bbc9f32cd31cdc0, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b0794c902421c4246856dc348fa1ef94, type: 2}
   m_IsPrefabParent: 0
@@ -1385,6 +1480,16 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 0.33873
       objectReference: {fileID: 0}
+    - target: {fileID: 114309617291460822, guid: b0794c902421c4246856dc348fa1ef94,
+        type: 2}
+      propertyPath: touchBoxSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 6baa07d5c92afbe41a36d47bb95bf832, type: 3}
+    - target: {fileID: 114309617291460822, guid: b0794c902421c4246856dc348fa1ef94,
+        type: 2}
+      propertyPath: moveRobotSound
+      value: 
+      objectReference: {fileID: 8300000, guid: c4d86496a1a7e7542bbc9f32cd31cdc0, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b0794c902421c4246856dc348fa1ef94, type: 2}
   m_IsPrefabParent: 0
@@ -1460,6 +1565,16 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 0.5618176
       objectReference: {fileID: 0}
+    - target: {fileID: 114723400260721200, guid: 9ec9a30bd3ead894986ca2e98bc32ebe,
+        type: 2}
+      propertyPath: touchBoxSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 6baa07d5c92afbe41a36d47bb95bf832, type: 3}
+    - target: {fileID: 114723400260721200, guid: 9ec9a30bd3ead894986ca2e98bc32ebe,
+        type: 2}
+      propertyPath: moveRobotSound
+      value: 
+      objectReference: {fileID: 8300000, guid: c4d86496a1a7e7542bbc9f32cd31cdc0, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9ec9a30bd3ead894986ca2e98bc32ebe, type: 2}
   m_IsPrefabParent: 0
@@ -1529,6 +1644,16 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 0.33873
       objectReference: {fileID: 0}
+    - target: {fileID: 114309617291460822, guid: b0794c902421c4246856dc348fa1ef94,
+        type: 2}
+      propertyPath: touchBoxSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 6baa07d5c92afbe41a36d47bb95bf832, type: 3}
+    - target: {fileID: 114309617291460822, guid: b0794c902421c4246856dc348fa1ef94,
+        type: 2}
+      propertyPath: moveRobotSound
+      value: 
+      objectReference: {fileID: 8300000, guid: c4d86496a1a7e7542bbc9f32cd31cdc0, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b0794c902421c4246856dc348fa1ef94, type: 2}
   m_IsPrefabParent: 0
@@ -1599,6 +1724,16 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 0.33873
       objectReference: {fileID: 0}
+    - target: {fileID: 114309617291460822, guid: b0794c902421c4246856dc348fa1ef94,
+        type: 2}
+      propertyPath: touchBoxSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 6baa07d5c92afbe41a36d47bb95bf832, type: 3}
+    - target: {fileID: 114309617291460822, guid: b0794c902421c4246856dc348fa1ef94,
+        type: 2}
+      propertyPath: moveRobotSound
+      value: 
+      objectReference: {fileID: 8300000, guid: c4d86496a1a7e7542bbc9f32cd31cdc0, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b0794c902421c4246856dc348fa1ef94, type: 2}
   m_IsPrefabParent: 0
@@ -1783,6 +1918,16 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 0.33873
       objectReference: {fileID: 0}
+    - target: {fileID: 114309617291460822, guid: b0794c902421c4246856dc348fa1ef94,
+        type: 2}
+      propertyPath: touchBoxSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 6baa07d5c92afbe41a36d47bb95bf832, type: 3}
+    - target: {fileID: 114309617291460822, guid: b0794c902421c4246856dc348fa1ef94,
+        type: 2}
+      propertyPath: moveRobotSound
+      value: 
+      objectReference: {fileID: 8300000, guid: c4d86496a1a7e7542bbc9f32cd31cdc0, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b0794c902421c4246856dc348fa1ef94, type: 2}
   m_IsPrefabParent: 0
@@ -1916,6 +2061,16 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 0.33873
       objectReference: {fileID: 0}
+    - target: {fileID: 114309617291460822, guid: b0794c902421c4246856dc348fa1ef94,
+        type: 2}
+      propertyPath: touchBoxSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 6baa07d5c92afbe41a36d47bb95bf832, type: 3}
+    - target: {fileID: 114309617291460822, guid: b0794c902421c4246856dc348fa1ef94,
+        type: 2}
+      propertyPath: moveRobotSound
+      value: 
+      objectReference: {fileID: 8300000, guid: c4d86496a1a7e7542bbc9f32cd31cdc0, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b0794c902421c4246856dc348fa1ef94, type: 2}
   m_IsPrefabParent: 0
@@ -2060,6 +2215,16 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 0.33873
       objectReference: {fileID: 0}
+    - target: {fileID: 114309617291460822, guid: b0794c902421c4246856dc348fa1ef94,
+        type: 2}
+      propertyPath: touchBoxSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 6baa07d5c92afbe41a36d47bb95bf832, type: 3}
+    - target: {fileID: 114309617291460822, guid: b0794c902421c4246856dc348fa1ef94,
+        type: 2}
+      propertyPath: moveRobotSound
+      value: 
+      objectReference: {fileID: 8300000, guid: c4d86496a1a7e7542bbc9f32cd31cdc0, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b0794c902421c4246856dc348fa1ef94, type: 2}
   m_IsPrefabParent: 0
@@ -2172,6 +2337,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   first_box: {fileID: 0}
+  mapBackground: {fileID: 8300000, guid: ad784d61edfd448489ed281e9af851f5, type: 3}
 --- !u!65 &1924444538
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2367,6 +2533,16 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 0.33873
       objectReference: {fileID: 0}
+    - target: {fileID: 114309617291460822, guid: b0794c902421c4246856dc348fa1ef94,
+        type: 2}
+      propertyPath: touchBoxSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 6baa07d5c92afbe41a36d47bb95bf832, type: 3}
+    - target: {fileID: 114309617291460822, guid: b0794c902421c4246856dc348fa1ef94,
+        type: 2}
+      propertyPath: moveRobotSound
+      value: 
+      objectReference: {fileID: 8300000, guid: c4d86496a1a7e7542bbc9f32cd31cdc0, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b0794c902421c4246856dc348fa1ef94, type: 2}
   m_IsPrefabParent: 0

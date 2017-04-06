@@ -4,6 +4,7 @@ using UnityEngine;
 using InteractLib;
 using Util;
 using DG.Tweening;
+using SoundLib;
 
 public class MapScroller : Dragable {
 
@@ -15,7 +16,10 @@ public class MapScroller : Dragable {
     private static float kDecay;
     private SpriteRenderer sprite_;
 
+    public AudioClip mapBackground;
+
     void Start() {
+        SoundManager.Instance.PlayBGM(mapBackground, 0.3f);
         try {
             kHooke = (float)ConstantTweakTool.Instance.const_dict["HookeFactor"];
             kDecay = (float)ConstantTweakTool.Instance.const_dict["ScrollDecay"];
