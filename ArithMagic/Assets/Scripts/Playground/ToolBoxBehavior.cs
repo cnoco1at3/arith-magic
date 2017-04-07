@@ -29,7 +29,13 @@ public class ToolBoxBehavior : GenericSingleton<ToolBoxBehavior> {
     private GameObject feedback_;
 
     [SerializeField]
-    private GameObject wrongFeedback_;
+    private GameObject wrong_feedback_;
+
+    [SerializeField]
+    private ToolBoxActiveButton button_;
+
+    [SerializeField]
+    private GameObject cover_;
 
     private GameObject[] problems_;
     private GameObject operator_;
@@ -38,6 +44,9 @@ public class ToolBoxBehavior : GenericSingleton<ToolBoxBehavior> {
     private int category_;
     [SerializeField]
     private const int kProblemSize = 3;
+
+    public AudioClip right_sfx;
+    public AudioClip wrong_sfx;
 
     public void PopulateProblem(int category, bool downward = false) {
         if (downward)
@@ -53,14 +62,28 @@ public class ToolBoxBehavior : GenericSingleton<ToolBoxBehavior> {
         InteractManager.Instance.LockInteractionForSeconds(1.0f);
     }
 
+    public void CheckActivateStatus() {
+        foreach (PartsAcceptor slot in slots_) {
+            if (!slot.active)
+                continue;
+            if (!slot.IsOccupied()) {
+                button_.ActiveButton(false);
+                return;
+            }
+        }
+        button_.ActiveButton(true);
+
+    }
+
     public void CheckSolveStatus() {
         foreach (PartsAcceptor slot in slots_) {
             if (!slot.active)
                 continue;
-            if (!slot.IsSolved())
+            if (!slot.IsSolved()) {
+                StartCoroutine(WrongCoroutine());
                 return;
+            }
         }
-
 
         // animations here
         StartCoroutine(SolvedCoroutine());
@@ -104,6 +127,9 @@ public class ToolBoxBehavior : GenericSingleton<ToolBoxBehavior> {
             foreach (PartsAcceptor slot in slots_)
                 if (slot != null)
                     slot.ClearSlot();
+
+        if (button_ != null)
+            button_.ActiveButton(false);
     }
 
     private void SpawnOperator(bool add) {
@@ -135,15 +161,18 @@ public class ToolBoxBehavior : GenericSingleton<ToolBoxBehavior> {
         if (ans < 10) {
             slots_[1].active = false;
             slots_[1].GetComponent<Collider>().enabled = false;
+            cover_.SetActive(true);
         } else {
             slots_[1].active = true;
             slots_[1].GetComponent<Collider>().enabled = true;
             slots_[1].SetAccPartId(ans / 10);
+            cover_.SetActive(false);
         }
     }
 
     private IEnumerator SolvedCoroutine() {
         feedback_.SetActive(true);
+        SoundLib.SoundManager.Instance.PlaySFX(right_sfx);
         yield return new WaitForSeconds(2.0f);
         feedback_.SetActive(false);
 
@@ -155,5 +184,12 @@ public class ToolBoxBehavior : GenericSingleton<ToolBoxBehavior> {
             transform.DOMove(new Vector3(0, 10.4f), 2.0f);
             XRayCameraBehavior.Instance.CheckParts(true);
         }
+    }
+
+    private IEnumerator WrongCoroutine() {
+        SoundLib.SoundManager.Instance.PlaySFX(wrong_sfx);
+        wrong_feedback_.SetActive(true);
+        yield return new WaitForSeconds(2.0f);
+        wrong_feedback_.SetActive(false);
     }
 }

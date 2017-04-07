@@ -24,6 +24,9 @@ public class XRayCameraBehavior : GenericSingleton<XRayCameraBehavior> {
     [SerializeField]
     private GameObject robot_;
 
+    [SerializeField]
+    private GameObject button_;
+
     private AudioSource sfx_src_;
 
     private GameObject render_mesh_;
@@ -38,7 +41,7 @@ public class XRayCameraBehavior : GenericSingleton<XRayCameraBehavior> {
     public AudioClip afterScannnigDetected;
 
     //Robot VoiceOver
-    private RobotVO roboVO; 
+    private RobotVO roboVO;
 
     public void CheckParts(bool remove) {
         if (remove) {
@@ -46,25 +49,24 @@ public class XRayCameraBehavior : GenericSingleton<XRayCameraBehavior> {
             Destroy(part_ptr_);
         }
 
-        if (parts_.Count == 0)
-        {
+        if (parts_.Count == 0) {
             robot_.GetComponent<Animator>().SetBool("isDancing", true);
-            try
-            {
+            button_.SetActive(true);
+            try {
                 roboVO.robotAudio_.clip = roboVO.fixedClips_[UnityEngine.Random.Range(0, roboVO.fixedClips_.Length - 1)];
                 roboVO.robotAudio_.Play();
-            }
-            catch (Exception) { }
-            StartCoroutine(BackToMap());
-        }
-        else
-        {
+            } catch (Exception) { }
+        } else {
             SetXRayCameraActive(true);
             roboVO.robotAudio_.clip = roboVO.brokenClips_[UnityEngine.Random.Range(0, roboVO.brokenClips_.Length - 1)];
             roboVO.robotAudio_.Play();
             Debug.Log("Playing BrokenAudio");
             Debug.Log(roboVO.robotAudio_.clip.name);
         }
+    }
+
+    public bool IsFinished() {
+        return parts_.Count == 0;
     }
 
     //OnTriggerEnter with broken part, starts a coroutine countdown
@@ -113,7 +115,8 @@ public class XRayCameraBehavior : GenericSingleton<XRayCameraBehavior> {
             return;
 
         if (other.gameObject.tag == "Part") {
-            StopCoroutine(detect_coroutine_);
+            if (detect_coroutine_ != null)
+                StopCoroutine(detect_coroutine_);
             detect_time_ = kDetectTimeThreshold;
 
             render_mesh_.GetComponent<Animator>().SetTrigger("Null");
@@ -125,7 +128,7 @@ public class XRayCameraBehavior : GenericSingleton<XRayCameraBehavior> {
 
     //Coroutine countdown for detecting broken part
     private IEnumerator DetectPart() {
-        
+
         if (sfx_src_) {
             sfx_src_.Play();
         }
@@ -146,23 +149,20 @@ public class XRayCameraBehavior : GenericSingleton<XRayCameraBehavior> {
     private void SetXRayCameraActive(bool flag) {
         collider_.enabled = flag;
         render_mesh_.SetActive(flag);
+        button_.SetActive(flag);
+
+        if (flag)
+            SoundManager.Instance.PlaySFX(scannerBackground);
+        else
+            SoundManager.Instance.StopSFX(scannerBackground);
         StopCoroutine(detect_coroutine_);
-    }
-
-    private IEnumerator BackToMap() {
-        InteractManager.LockInteraction();
-
-        yield return new WaitForSeconds(3.0f);
-        SceneManager.LoadScene("Map");
-
-        InteractManager.ReleaseInteraction();
     }
 
     // Use this for initialization
     void Start() {
-        
+
         SoundManager.Instance.PlaySFX(beforeScanningSound, false);
-        SoundManager.Instance.PlayBGM(scannerBackground, 1f);
+        SoundManager.Instance.PlayBGM(null);
         sfx_src_ = GetComponent<AudioSource>();
         detect_time_ = kDetectTimeThreshold;
 

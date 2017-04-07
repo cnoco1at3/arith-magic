@@ -64,6 +64,11 @@ public class PartsBehavior : Dragable {
                 curr_acceptor_.OnPartEnter(this);
             }
             // case 2 invalid or did not find any acceptor
+            else {
+                if (curr_acceptor_ != null)
+                    curr_acceptor_.OnPartExit(this);
+                Destroy(gameObject);
+            }
 
             // update scale and position
             UpdateStatus(curr_acceptor_, is_accepted_);

@@ -57,12 +57,16 @@ public class PartsAcceptor : MonoBehaviour {
             pb.MoveBackToBox();
         pb = part;
 
-        if (IsSolved())
-            ToolBoxBehavior.Instance.CheckSolveStatus();
+        ToolBoxBehavior.Instance.CheckActivateStatus();
     }
 
     public virtual void OnPartExit(PartsBehavior part) {
         is_occupied = false;
+        ToolBoxBehavior.Instance.CheckActivateStatus();
+    }
+
+    public bool IsOccupied() {
+        return is_occupied;
     }
 
     public bool IsSolved() {

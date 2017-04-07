@@ -220,6 +220,10 @@ Prefab:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1500026141860672, guid: a638f711c86421d49b15fd050efd9f78, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a638f711c86421d49b15fd050efd9f78, type: 2}
   m_IsPrefabParent: 0
@@ -265,10 +269,10 @@ RectTransform:
   m_Father: {fileID: 1130779872}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 600, y: 800}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &564941049
 MonoBehaviour:
@@ -592,6 +596,10 @@ Prefab:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1036406687662312, guid: 16253bb0035b048fd899d6984a863512, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 16253bb0035b048fd899d6984a863512, type: 2}
   m_IsPrefabParent: 0
@@ -766,22 +774,22 @@ Prefab:
     - target: {fileID: 224970582605449656, guid: 16840479a752846c29fbb9196293e8f5,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: -23
+      value: -24
       objectReference: {fileID: 0}
     - target: {fileID: 224970582605449656, guid: 16840479a752846c29fbb9196293e8f5,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -82.5
+      value: -79.25
       objectReference: {fileID: 0}
     - target: {fileID: 224970582605449656, guid: 16840479a752846c29fbb9196293e8f5,
         type: 2}
       propertyPath: m_SizeDelta.x
-      value: 300
+      value: 298
       objectReference: {fileID: 0}
     - target: {fileID: 224970582605449656, guid: 16840479a752846c29fbb9196293e8f5,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: 300
+      value: 293.5
       objectReference: {fileID: 0}
     - target: {fileID: 224970582605449656, guid: 16840479a752846c29fbb9196293e8f5,
         type: 2}
@@ -827,18 +835,13 @@ Prefab:
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1688336398}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 16840479a752846c29fbb9196293e8f5, type: 2}
   m_IsPrefabParent: 0
 --- !u!224 &1688336397 stripped
 RectTransform:
   m_PrefabParentObject: {fileID: 224970582605449656, guid: 16840479a752846c29fbb9196293e8f5,
-    type: 2}
-  m_PrefabInternal: {fileID: 1688336396}
---- !u!1 &1688336398 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1862576086288286, guid: 16840479a752846c29fbb9196293e8f5,
     type: 2}
   m_PrefabInternal: {fileID: 1688336396}
 --- !u!1001 &1832322493
@@ -952,6 +955,10 @@ Prefab:
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1059215139394026, guid: 0c65d166bbb054f50a5d53cac78ed330, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0c65d166bbb054f50a5d53cac78ed330, type: 2}

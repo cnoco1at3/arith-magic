@@ -28,4 +28,8 @@ public class LevelCluster : GenericSingleton<LevelCluster> {
             return lock_boxes_[lock_boxes_.Length - 1];
         return null;
     }
+
+    public int GetLockBoxSize() {
+        return lock_boxes_.Length;
+    }
 }

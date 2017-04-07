@@ -20,11 +20,6 @@ public class LockBoxBehavior : Clickable {
     public AudioClip touchBoxSound;
     public AudioClip moveRobotSound;
 
-    void Update() {
-        if (Input.GetKeyDown(KeyCode.Space))
-            SetUnlocked();
-    }
-
     public override void ClickEvent() {
         SoundManager.Instance.PlaySFX(touchBoxSound, false);
         if (unlocked_)

@@ -19,7 +19,7 @@ public class MapScroller : Dragable {
     public AudioClip mapBackground;
 
     void Start() {
-        SoundManager.Instance.PlayBGM(mapBackground, 0.3f);
+        SoundManager.Instance.PlayBGM(mapBackground);
         try {
             kHooke = (float)ConstantTweakTool.Instance.const_dict["HookeFactor"];
             kDecay = (float)ConstantTweakTool.Instance.const_dict["ScrollDecay"];
@@ -67,6 +67,6 @@ public class MapScroller : Dragable {
     }
 
     private float SlideX() {
-        return Mathf.Lerp(7.5f, -7.5f, (Mathf.Clamp(transform.position.y + 10.0f, -5.0f, 5.0f) + 5.0f) / 10.0f);
+        return Mathf.Lerp(7.5f, -7.5f, (Mathf.Clamp(transform.position.y + 16.0f, -8.0f, 8.0f) + 8.0f) / 16.0f);
     }
 }

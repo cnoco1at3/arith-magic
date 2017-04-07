@@ -32,7 +32,7 @@ public class PlayButton : MonoBehaviour
 
     void Start()
     {
-        SoundManager.Instance.PlayBGM(backgroundSound, 1f);
+        SoundManager.Instance.PlayBGM(backgroundSound);
         audi = GetComponent<AudioSource>(); 
         playButton = GetComponent<Button>();
     }
