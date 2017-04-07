@@ -34,20 +34,34 @@ public class XRayCameraBehavior : GenericSingleton<XRayCameraBehavior> {
     public AudioClip beforeScanningSound;
     public AudioClip afterScannnigDetected;
 
+    //Robot VoiceOver
+    private RobotVO roboVO; 
+
     public void CheckParts(bool remove) {
         if (remove) {
             parts_.Remove(part_ptr_);
             Destroy(part_ptr_);
         }
 
-        if (parts_.Count == 0) {
+        if (parts_.Count == 0)
+        {
             robot_.GetComponent<Animator>().SetBool("isDancing", true);
-            try {
-                robot_.GetComponent<AudioSource>().Play();
-            } catch (Exception) { }
+            try
+            {
+                roboVO.robotAudio_.clip = roboVO.fixedClips_[UnityEngine.Random.Range(0, roboVO.fixedClips_.Length - 1)];
+                roboVO.robotAudio_.Play();
+            }
+            catch (Exception) { }
             StartCoroutine(BackToMap());
-        } else
+        }
+        else
+        {
             SetXRayCameraActive(true);
+            roboVO.robotAudio_.clip = roboVO.brokenClips_[UnityEngine.Random.Range(0, roboVO.brokenClips_.Length - 1)];
+            roboVO.robotAudio_.Play();
+            Debug.Log("Playing BrokenAudio");
+            Debug.Log(roboVO.robotAudio_.clip.name);
+        }
     }
 
     //OnTriggerEnter with broken part, starts a coroutine countdown
@@ -126,6 +140,7 @@ public class XRayCameraBehavior : GenericSingleton<XRayCameraBehavior> {
         // TODO wrap robots
         try {
             robot_ = Instantiate(RobotCluster.Instance.GetRobotById(MapRobotBehavior.GetDockedId()));
+            roboVO = robot_.GetComponent<RobotVO>();
         } catch (NullReferenceException) { }
 
         parts_ = new List<GameObject>(GameObject.FindGameObjectsWithTag("Part"));

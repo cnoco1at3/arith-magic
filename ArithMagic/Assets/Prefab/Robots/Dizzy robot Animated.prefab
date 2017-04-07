@@ -469,6 +469,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4863462689674156}
   - component: {fileID: 95604905687397606}
+  - component: {fileID: 82957181803208356}
+  - component: {fileID: 114996195607631638}
   m_Layer: 0
   m_Name: Dizzy robot Animated
   m_TagString: Untagged
@@ -2390,6 +2392,86 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.1
+--- !u!82 &82957181803208356
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1246857624629494}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: bc0732a16d4511942b518326a6abed42, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!95 &95604905687397606
 Animator:
   serializedVersion: 3
@@ -2460,6 +2542,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0
+--- !u!114 &114996195607631638
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1246857624629494}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1622a2be235d2c64a86fc9ca7267240f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  robotAudio_: {fileID: 0}
+  fixedClips_:
+  - {fileID: 8300000, guid: ce0f07cbf3e92a048a0b870ad4249a82, type: 3}
+  - {fileID: 8300000, guid: b7654e0a362cfff4baa818314903f20c, type: 3}
+  - {fileID: 8300000, guid: 4132e9ac1d982d44fa7754d8e88df206, type: 3}
+  brokenClips_:
+  - {fileID: 8300000, guid: 96fbde526c095764cbd0fbb7b16d5a06, type: 3}
+  - {fileID: 8300000, guid: efdc2136e9e4e8e42a77f7aeef2f2cf2, type: 3}
+  - {fileID: 8300000, guid: d136cf090c6553b4f83768fb3f7b3223, type: 3}
+  - {fileID: 8300000, guid: d27e9541bbf4535429581e7fcb2cd5eb, type: 3}
 --- !u!212 &212002073142460972
 SpriteRenderer:
   m_ObjectHideFlags: 1
