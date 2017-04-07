@@ -28,6 +28,9 @@ public class ToolBoxBehavior : GenericSingleton<ToolBoxBehavior> {
     [SerializeField]
     private GameObject feedback_;
 
+    [SerializeField]
+    private GameObject wrongFeedback_;
+
     private GameObject[] problems_;
     private GameObject operator_;
 
