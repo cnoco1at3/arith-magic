@@ -397,6 +397,29 @@ Prefab:
       propertyPath: rightAnswerSound
       value: 
       objectReference: {fileID: 8300000, guid: c02f2ef9c81245148a02916a6d1a34f9, type: 3}
+    - target: {fileID: 1304155032156056, guid: 2f3ce3e4d84c65d449cf4d3daf877a61, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 95932450311851456, guid: 2f3ce3e4d84c65d449cf4d3daf877a61,
+        type: 2}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 08b8bc6d702960f419366cbff5de0280, type: 2}
+    - target: {fileID: 212714210631277144, guid: 2f3ce3e4d84c65d449cf4d3daf877a61,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: a9167b568eeca89439b8528594c9c76e,
+        type: 3}
+    - target: {fileID: 4269032905834720, guid: 2f3ce3e4d84c65d449cf4d3daf877a61, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4269032905834720, guid: 2f3ce3e4d84c65d449cf4d3daf877a61, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2f3ce3e4d84c65d449cf4d3daf877a61, type: 2}
   m_IsPrefabParent: 0
