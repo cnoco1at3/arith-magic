@@ -33,6 +33,12 @@ public class XRayCameraBehavior : GenericSingleton<XRayCameraBehavior> {
 
     public AudioClip scannerSound;
     public AudioClip defectDetectionSound;
+    public AudioClip scannerBackground;
+    public AudioClip beforeScanningSound;
+    public AudioClip afterScannnigDetected;
+
+    //Robot VoiceOver
+    private RobotVO roboVO; 
 
     public void CheckParts(bool remove) {
         if (remove) {
@@ -40,14 +46,25 @@ public class XRayCameraBehavior : GenericSingleton<XRayCameraBehavior> {
             Destroy(part_ptr_);
         }
 
-        if (parts_.Count == 0) {
+        if (parts_.Count == 0)
+        {
             robot_.GetComponent<Animator>().SetBool("isDancing", true);
-            try {
-                robot_.GetComponent<AudioSource>().Play();
-            } catch (Exception) { }
+            try
+            {
+                roboVO.robotAudio_.clip = roboVO.fixedClips_[UnityEngine.Random.Range(0, roboVO.fixedClips_.Length - 1)];
+                roboVO.robotAudio_.Play();
+            }
+            catch (Exception) { }
             StartCoroutine(BackToMap());
-        } else
+        }
+        else
+        {
             SetXRayCameraActive(true);
+            roboVO.robotAudio_.clip = roboVO.brokenClips_[UnityEngine.Random.Range(0, roboVO.brokenClips_.Length - 1)];
+            roboVO.robotAudio_.Play();
+            Debug.Log("Playing BrokenAudio");
+            Debug.Log(roboVO.robotAudio_.clip.name);
+        }
     }
 
     //OnTriggerEnter with broken part, starts a coroutine countdown
@@ -108,6 +125,7 @@ public class XRayCameraBehavior : GenericSingleton<XRayCameraBehavior> {
 
     //Coroutine countdown for detecting broken part
     private IEnumerator DetectPart() {
+        
         if (sfx_src_) {
             sfx_src_.Play();
         }
@@ -119,6 +137,7 @@ public class XRayCameraBehavior : GenericSingleton<XRayCameraBehavior> {
     }
 
     private void PopsUpToolBox() {
+        //SoundManager.Instance.PlaySFX(afterScannnigDetected, false);
         SoundManager.Instance.StopSFX(scannerSound);
         SetXRayCameraActive(false);
         tool_box_.PopulateProblem(category_);
@@ -141,7 +160,9 @@ public class XRayCameraBehavior : GenericSingleton<XRayCameraBehavior> {
 
     // Use this for initialization
     void Start() {
-
+        
+        SoundManager.Instance.PlaySFX(beforeScanningSound, false);
+        SoundManager.Instance.PlayBGM(scannerBackground, 1f);
         sfx_src_ = GetComponent<AudioSource>();
         detect_time_ = kDetectTimeThreshold;
 
@@ -153,6 +174,7 @@ public class XRayCameraBehavior : GenericSingleton<XRayCameraBehavior> {
         // TODO wrap robots
         try {
             robot_ = Instantiate(RobotCluster.Instance.GetRobotById(MapRobotBehavior.GetDockedId()));
+            roboVO = robot_.GetComponent<RobotVO>();
         } catch (NullReferenceException) { }
 
         parts_ = new List<GameObject>(GameObject.FindGameObjectsWithTag("Part"));

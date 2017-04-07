@@ -11,6 +11,7 @@ public class PartsAcceptor : MonoBehaviour {
     private int acc_part_id = 0;
 
     public AudioClip dropBatterySound;
+    public AudioClip rightAnswerSound;
 
     // NOTE: here we need to set the point where we want the screw snap to
     [SerializeField]
@@ -65,6 +66,7 @@ public class PartsAcceptor : MonoBehaviour {
     }
 
     public bool IsSolved() {
+        //SoundManager.Instance.PlaySFX(rightAnswerSound, false, 0.3f);
         try {
             if (pb != null)
                 return pb.part_id == acc_part_id;

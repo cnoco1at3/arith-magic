@@ -26,13 +26,13 @@ public class PlayButton : MonoBehaviour
     {
         playButton.interactable = false;
         //audi.Play();
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(0);
         SceneManager.LoadScene(nextSceneName);
     }
 
     void Start()
     {
-        SoundManager.Instance.PlayBGM(backgroundSound);
+        SoundManager.Instance.PlayBGM(backgroundSound, 1f);
         audi = GetComponent<AudioSource>(); 
         playButton = GetComponent<Button>();
     }

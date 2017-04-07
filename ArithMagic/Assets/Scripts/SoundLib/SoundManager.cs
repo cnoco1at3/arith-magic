@@ -22,10 +22,11 @@ namespace SoundLib {
                 sfx_src_[i] = gameObject.AddComponent<AudioSource>();
         }
 
-        public virtual void PlayBGM(AudioClip clip) {
+        public virtual void PlayBGM(AudioClip clip, float vol = 1f) {
             if (bgm_src_ == null) {
                 bgm_src_ = gameObject.AddComponent<AudioSource>();
                 bgm_src_.loop = true;
+                bgm_src_.volume = vol;
             }
 
             if (clip == null)
@@ -37,7 +38,7 @@ namespace SoundLib {
         }
 
         // return true if successfully play a clip
-        public virtual bool PlaySFX(AudioClip clip, bool loopSound = false) {
+        public virtual bool PlaySFX(AudioClip clip, bool loopSound = false, float vol = 1f) {
             if (clip == null)
                 return false;
             try {
@@ -49,6 +50,7 @@ namespace SoundLib {
                     if (!src.isPlaying) {
                         src.clip = clip;
                         src.loop = loopSound;
+                        src.volume = vol;
                         src.Play();
                         return true;
                     }

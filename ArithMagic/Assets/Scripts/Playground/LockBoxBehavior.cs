@@ -18,6 +18,7 @@ public class LockBoxBehavior : Clickable {
     private int id_ = -1;
 
     public AudioClip touchBoxSound;
+    public AudioClip moveRobotSound;
 
     void Update() {
         if (Input.GetKeyDown(KeyCode.Space))
@@ -63,6 +64,7 @@ public class LockBoxBehavior : Clickable {
     }
 
     private void MoveRobot() {
+        SoundManager.Instance.PlaySFX(moveRobotSound, false);
         GetComponent<Collider>().enabled = false;
         MapRobotBehavior.Instance.MoveToPosition(this);
     }
