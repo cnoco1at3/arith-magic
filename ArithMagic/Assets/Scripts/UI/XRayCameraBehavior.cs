@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using Util;
 using SoundLib;
+using DG.Tweening;
 
 public class XRayCameraBehavior : GenericSingleton<XRayCameraBehavior> {
 
@@ -27,6 +28,8 @@ public class XRayCameraBehavior : GenericSingleton<XRayCameraBehavior> {
 
     private GameObject render_mesh_;
     private BoxCollider2D collider_;
+    private Vector3 scale_factor_;
+    private bool is_entered_ = false;
 
     public AudioClip scannerSound;
     public AudioClip defectDetectionSound;
@@ -49,26 +52,57 @@ public class XRayCameraBehavior : GenericSingleton<XRayCameraBehavior> {
 
     //OnTriggerEnter with broken part, starts a coroutine countdown
     void OnTriggerEnter2D(Collider2D other) {
+        if (!InteractManager.Instance.IsTouched)
+            return;
+
         SoundManager.Instance.PlaySFX(scannerSound, false);
         if (other.gameObject.tag == "Part") {
             SoundManager.Instance.StopSFX(scannerSound);
             SoundManager.Instance.PlaySFX(defectDetectionSound, false);
+
             detect_time_ = kDetectTimeThreshold;
             part_ptr_ = other.gameObject;
+            if (detect_coroutine_ != null)
+                StopCoroutine(detect_coroutine_);
             detect_coroutine_ = StartCoroutine(DetectPart());
+
             render_mesh_.GetComponent<Animator>().SetTrigger("ScannerAnim");
             render_mesh_.GetComponent<Animator>().ResetTrigger("Null");
+            is_entered_ = true;
+        }
+    }
+
+    void OnTriggerStay2D(Collider2D other) {
+        if (other.gameObject.tag == "Part" && !is_entered_) {
+            SoundManager.Instance.StopSFX(scannerSound);
+            SoundManager.Instance.PlaySFX(defectDetectionSound, false);
+
+            detect_time_ = kDetectTimeThreshold;
+            part_ptr_ = other.gameObject;
+            if (detect_coroutine_ != null)
+                StopCoroutine(detect_coroutine_);
+            detect_coroutine_ = StartCoroutine(DetectPart());
+
+            render_mesh_.GetComponent<Animator>().SetTrigger("ScannerAnim");
+            render_mesh_.GetComponent<Animator>().ResetTrigger("Null");
+            is_entered_ = true;
+
         }
     }
 
     //Exit with part, stops and resets countdown
     void OnTriggerExit2D(Collider2D other) {
-        if (other.gameObject.tag == "Part") {
+        if (!InteractManager.Instance.IsTouched)
+            return;
 
+        if (other.gameObject.tag == "Part") {
             StopCoroutine(detect_coroutine_);
             detect_time_ = kDetectTimeThreshold;
+
             render_mesh_.GetComponent<Animator>().SetTrigger("Null");
             render_mesh_.GetComponent<Animator>().ResetTrigger("ScannerAnim");
+
+            is_entered_ = false;
         }
     }
 
@@ -122,9 +156,15 @@ public class XRayCameraBehavior : GenericSingleton<XRayCameraBehavior> {
         } catch (NullReferenceException) { }
 
         parts_ = new List<GameObject>(GameObject.FindGameObjectsWithTag("Part"));
+
+        scale_factor_ = transform.localScale;
     }
 
     void Update() {
+        if (InteractManager.Instance.IsTouched || is_entered_)
+            transform.DOScale(scale_factor_, 0.5f);
+        else
+            transform.DOScale(Vector3.zero, 0.5f);
 
         Vector2 pos = Input.mousePosition;
         pos = Camera.main.ScreenToWorldPoint(pos);

@@ -18,35 +18,17 @@ namespace Util {
         /// <typeparam name="T"></typeparam>
         /// <param name="path">The path.</param>
         /// <param name="obj">The object.</param>
-        public static void SaveXml<T>(string path, T obj) {
+        public static void SaveXml<T>(string path, T obj, bool append = false) {
             try {
                 XmlSerializer xs = new XmlSerializer(typeof(T));
                 XmlWriterSettings xws = new XmlWriterSettings();
                 Encoding encoding = Encoding.GetEncoding("UTF-8");
                 xws.CloseOutput = true;
-                using (StreamWriter stream = new StreamWriter(path, false, encoding)) {
+                using (StreamWriter stream = new StreamWriter(path, append, encoding)) {
                     xs.Serialize(stream, obj);
                     stream.Close();
                 }
-            }
-            catch (IOException e) {
-                Debug.LogException(e);
-            }
-        }
-
-        public static void SaveXml<T>(string path, List<T> list) {
-            try {
-                XmlSerializer xs = new XmlSerializer(typeof(T));
-                XmlWriterSettings xws = new XmlWriterSettings();
-                Encoding encoding = Encoding.GetEncoding("UTF-8");
-                xws.CloseOutput = true;
-                using (StreamWriter stream = new StreamWriter(path, true, encoding)) {
-                    foreach (T obj in list)
-                        xs.Serialize(stream, obj);
-                    stream.Close();
-                }
-            }
-            catch (IOException e) {
+            } catch (IOException e) {
                 Debug.LogException(e);
             }
         }
@@ -60,18 +42,18 @@ namespace Util {
         public static T LoadXml<T>(string path) {
             try {
                 XmlSerializer xs = new XmlSerializer(typeof(T));
+                XmlReaderSettings xrs = new XmlReaderSettings();
                 Encoding encoding = Encoding.GetEncoding("UTF-8");
+                xrs.CloseInput = true;
                 using (StreamReader stream = new StreamReader(path, encoding)) {
                     T val = (T)xs.Deserialize(stream);
                     stream.Close();
                     return val;
                 }
-            }
-            catch (IOException e) {
+            } catch (IOException e) {
                 Debug.LogException(e);
                 return default(T);
-            }
-            catch (InvalidCastException e) {
+            } catch (InvalidCastException e) {
                 Debug.LogException(e);
                 return default(T);
             }

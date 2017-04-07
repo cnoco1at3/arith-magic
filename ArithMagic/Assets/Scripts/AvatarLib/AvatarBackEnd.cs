@@ -25,7 +25,6 @@ namespace AvatarLib {
         /// </summary>
         public AvatarBackEnd() {
             string local_path_ = Application.dataPath + "/" + kFileName;
-            Debug.Log(local_path_);
             profiles_ = Util.Xml.LoadXml<List<AvatarProfile>>(local_path_) ?? new List<AvatarProfile>();
         }
 
@@ -73,7 +72,7 @@ namespace AvatarLib {
         /// <param name="avatar">The avatar.</param>
         /// <returns></returns>
         public int FindProfileIndex(AvatarProfile avatar) {
-            for(int i = 0; i < profiles_.Count; ++i) 
+            for (int i = 0; i < profiles_.Count; ++i)
                 if (avatar.Equals(profiles_[i]))
                     return i;
             return -1;
@@ -85,12 +84,11 @@ namespace AvatarLib {
         /// <param name="index">The index.</param>
         /// <returns></returns>
         public AvatarProfile GetProfileByIndex(int index) {
-            if(index < 0) 
+            if (index < 0)
                 index = profiles_.Count + index;
             try {
                 return profiles_[index];
-            }
-            catch (IndexOutOfRangeException) {
+            } catch (IndexOutOfRangeException) {
                 return null;
             }
         }
@@ -101,12 +99,11 @@ namespace AvatarLib {
         /// <param name="index">The index.</param>
         /// <param name="avatar">The avatar.</param>
         public void SetProfileByIndex(int index, AvatarProfile avatar) {
-            if(index < 0) 
+            if (index < 0)
                 index = profiles_.Count + index;
             try {
                 profiles_[index] = avatar;
-            }
-            catch (IndexOutOfRangeException e) {
+            } catch (IndexOutOfRangeException e) {
                 Debug.LogException(e);
             }
             if (instant_save_mode_)
@@ -141,12 +138,17 @@ namespace AvatarLib {
                 SaveToText();
         }
 
+        public void ClearProfilesList() {
+            profiles_.Clear();
+        }
+
         /// <summary>
         /// Saves to text.
         /// </summary>
         public void SaveToText() {
+
             if (profiles_ != null)
-                Util.Xml.SaveXml(Application.dataPath + "/" + kFileName, profiles_);
+                Util.Xml.SaveXml<List<AvatarProfile>>(Application.dataPath + "/" + kFileName, profiles_, false);
         }
     }
 }
