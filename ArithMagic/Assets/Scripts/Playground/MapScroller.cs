@@ -21,16 +21,16 @@ public class MapScroller : Dragable {
     void Start() {
         SoundManager.Instance.PlayBGM(mapBackground);
         try {
-            kHooke = (float)ConstantTweakTool.Instance.const_dict["HookeFactor"];
-            kDecay = (float)ConstantTweakTool.Instance.const_dict["ScrollDecay"];
+            kHooke = (float)ConstantTweakTool.Instance["HookeFactor"];
+            kDecay = (float)ConstantTweakTool.Instance["ScrollDecay"];
 
             sprite_ = GetComponent<SpriteRenderer>();
 
             // hacky way to implement the effect
             LockBoxBehavior center = LevelCluster.Instance.GetLockBoxById(MapRobotBehavior.GetDockedId());
-            if (center != null) {
-                transform.DOMoveY(transform.position.y - center.transform.position.y, 2.0f);
-            }
+            if (center == null)
+                center = LevelCluster.Instance.GetLockBoxById(0);
+            transform.DOMoveY(transform.position.y - center.transform.position.y, 2.0f);
         } catch (KeyNotFoundException e) {
             Debug.LogException(e);
         }

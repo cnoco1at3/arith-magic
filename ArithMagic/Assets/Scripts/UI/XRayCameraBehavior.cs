@@ -1,11 +1,10 @@
-﻿using System;
+﻿using DG.Tweening;
+using SoundLib;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using Util;
-using SoundLib;
-using DG.Tweening;
 
 public class XRayCameraBehavior : GenericSingleton<XRayCameraBehavior> {
 
@@ -58,10 +57,10 @@ public class XRayCameraBehavior : GenericSingleton<XRayCameraBehavior> {
             } catch (Exception) { }
         } else {
             SetXRayCameraActive(true);
-            roboVO.robotAudio_.clip = roboVO.brokenClips_[UnityEngine.Random.Range(0, roboVO.brokenClips_.Length - 1)];
-            roboVO.robotAudio_.Play();
-            Debug.Log("Playing BrokenAudio");
-            Debug.Log(roboVO.robotAudio_.clip.name);
+            try {
+                roboVO.robotAudio_.clip = roboVO.brokenClips_[UnityEngine.Random.Range(0, roboVO.brokenClips_.Length - 1)];
+                roboVO.robotAudio_.Play();
+            } catch (Exception) { }
         }
     }
 
@@ -146,12 +145,12 @@ public class XRayCameraBehavior : GenericSingleton<XRayCameraBehavior> {
         tool_box_.PopulateProblem(category_);
     }
 
-    private void SetXRayCameraActive(bool flag) {
-        collider_.enabled = flag;
-        render_mesh_.SetActive(flag);
-        button_.SetActive(flag);
+    private void SetXRayCameraActive(bool active) {
+        collider_.enabled = active;
+        render_mesh_.SetActive(active);
+        button_.SetActive(active);
 
-        if (flag)
+        if (active)
             SoundManager.Instance.PlaySFX(scannerBackground);
         else
             SoundManager.Instance.StopSFX(scannerBackground);
@@ -164,8 +163,9 @@ public class XRayCameraBehavior : GenericSingleton<XRayCameraBehavior> {
 
     // Use this for initialization
     void Start() {
-        SoundManager.Instance.PlaySFX(beforeScanningSound, false);
-        SoundManager.Instance.PlayBGM(null);
+        SoundManager.Instance.StopSFX();
+        SoundManager.Instance.PlaySFX(beforeScanningSound);
+        SoundManager.Instance.StopBGM();
         sfx_src_ = GetComponent<AudioSource>();
         detect_time_ = kDetectTimeThreshold;
 

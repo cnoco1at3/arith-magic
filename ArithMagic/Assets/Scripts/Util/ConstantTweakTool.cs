@@ -21,7 +21,19 @@ public class ConstantTweakTool : PersistentSingleton<ConstantTweakTool> {
     [SerializeField]
     private ConstantXmlObject[] constants_;
 
-    public Dictionary<string, double> const_dict;
+    private Dictionary<string, double> const_dict;
+
+    public double this[string key] {
+        get {
+            try {
+                return const_dict[key];
+            } catch (KeyNotFoundException e) {
+                Debug.LogException(e);
+                return 0.5;
+            }
+        }
+        private set { }
+    }
 
     /// <summary>
     /// Saves to the specified path.
@@ -63,8 +75,7 @@ public class ConstantTweakTool : PersistentSingleton<ConstantTweakTool> {
         foreach (ConstantXmlObject xml_obj in constants_) {
             try {
                 const_dict.Add(xml_obj.key, xml_obj.value);
-            }
-            catch (ArgumentException) {
+            } catch (ArgumentException) {
                 const_dict.Remove(xml_obj.key);
                 const_dict.Add(xml_obj.key, xml_obj.value);
             }

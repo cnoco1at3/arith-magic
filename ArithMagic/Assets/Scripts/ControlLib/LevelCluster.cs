@@ -1,24 +1,30 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Util;
 
 public class LevelCluster : GenericSingleton<LevelCluster> {
 
-    [SerializeField]
     private LockBoxBehavior[] lock_boxes_;
 
     void Start() {
-        for (int i = 0; i < lock_boxes_.Length; ++i)
-            if (lock_boxes_[i] != null) {
-                lock_boxes_[i].SetLockBoxId(i);
-                if (i <= GameController.GetCurrentLevel() + 1)
-                    lock_boxes_[i].SetUnlocked();
-                if (i == GameController.GetCurrentLevel() + 1)
-                    lock_boxes_[i].SetAnimation(true);
-                else
-                    lock_boxes_[i].SetAnimation(false);
-            }
+        lock_boxes_ = FindObjectsOfType<LockBoxBehavior>();
+        try {
+            Array.Sort(lock_boxes_);
+            for (int i = 0; i < lock_boxes_.Length; ++i)
+                if (lock_boxes_[i] != null) {
+                    lock_boxes_[i].SetLockBoxId(i);
+                    if (i <= GameController.GetCurrentLevel() + 1)
+                        lock_boxes_[i].SetUnlocked();
+                    if (i == GameController.GetCurrentLevel() + 1)
+                        lock_boxes_[i].SetAnimation(true);
+                    else
+                        lock_boxes_[i].SetAnimation(false);
+                }
+        } catch (NullReferenceException e) {
+            Debug.LogException(e);
+        }
     }
 
     public LockBoxBehavior GetLockBoxById(int id) {

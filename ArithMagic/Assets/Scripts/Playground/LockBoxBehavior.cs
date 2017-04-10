@@ -5,7 +5,7 @@ using UnityEngine;
 using InteractLib;
 using SoundLib;
 
-public class LockBoxBehavior : Clickable {
+public class LockBoxBehavior : Clickable, IComparable {
 
     [SerializeField]
     private Vector3 target_pos_;
@@ -28,6 +28,13 @@ public class LockBoxBehavior : Clickable {
     void Start() {
         if (feng_rao_ != null)
             feng_feng_ = feng_rao_;
+    }
+
+    public int CompareTo(object obj) {
+        if (obj.GetType() != typeof(LockBoxBehavior))
+            return -1;
+        LockBoxBehavior other = (LockBoxBehavior)obj;
+        return other.transform.position.y.CompareTo(transform.position.y);
     }
 
     public override void ClickEvent() {

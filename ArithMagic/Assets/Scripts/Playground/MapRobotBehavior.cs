@@ -14,6 +14,8 @@ public class MapRobotBehavior : GenericSingleton<MapRobotBehavior> {
 
     void Start() {
         LockBoxBehavior box = LevelCluster.Instance.GetLockBoxById(docked_id_);
+        if (docked_id_ == -1)
+            docked_id_ = 0;
         if (box != null)
             transform.localPosition = box.GetTargetLocalPosition();
         int tmp = GameController.GetCurrentLevel() + 1;

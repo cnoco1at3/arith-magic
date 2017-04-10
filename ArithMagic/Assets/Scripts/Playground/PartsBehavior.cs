@@ -71,11 +71,11 @@ public class PartsBehavior : Dragable {
     private void UpdateStatus(PartsAcceptor acceptor, bool accepted) {
         if (accepted)
             transform.DOMove(acceptor.GetAcceptPoint(),
-                (float)ConstantTweakTool.Instance.const_dict[kSnapEaseIn]);
+                (float)ConstantTweakTool.Instance[kSnapEaseIn]);
         else
             Destroy(gameObject);
 
         transform.DOScale(accepted ? acceptor.GetScaleFactor() : default_scale_,
-            (float)ConstantTweakTool.Instance.const_dict[kSnapEaseIn]);
+            (float)ConstantTweakTool.Instance[kSnapEaseIn]);
     }
 }
