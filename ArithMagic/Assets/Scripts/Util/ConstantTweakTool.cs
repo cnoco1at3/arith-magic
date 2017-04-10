@@ -11,7 +11,7 @@ using UnityEditor;
 /// Tool to help tweaking constants
 /// </summary>
 [ExecuteInEditMode]
-public class ConstantTweakTool : GenericSingleton<ConstantTweakTool> {
+public class ConstantTweakTool : PersistentSingleton<ConstantTweakTool> {
     public delegate void ConstantEvent(ConstantTweakTool src);
     public static ConstantEvent ConstantEventHandler;
 

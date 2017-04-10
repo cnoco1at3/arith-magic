@@ -36,44 +36,47 @@ namespace SoundLib {
             bgm_src_.Play();
         }
 
+        public virtual void StopBGM() {
+            if (bgm_src_.isPlaying)
+                bgm_src_.Stop();
+        }
+
         // return true if successfully play a clip
-        public virtual bool PlaySFX(AudioClip clip, bool loopSound = false, float vol = 1f) {
+        public virtual bool PlaySFX(AudioClip clip, bool loopSound = false) {
             if (clip == null)
                 return false;
-            try {
-                for (int i = 0; i < sfx_src_.Length; ++i) {
-                    if (sfx_src_[i] == null)
-                        sfx_src_[i] = gameObject.AddComponent<AudioSource>();
 
-                    AudioSource src = sfx_src_[i];
-                    if (!src.isPlaying) {
-                        src.clip = clip;
-                        src.loop = loopSound;
-                        src.volume = vol;
-                        src.Play();
-                        return true;
-                    }
+            for (int i = 0; i < sfx_src_.Length; ++i) {
+                if (sfx_src_[i] == null)
+                    sfx_src_[i] = gameObject.AddComponent<AudioSource>();
+
+                AudioSource src = sfx_src_[i];
+                if (!src.isPlaying) {
+                    src.clip = clip;
+                    src.loop = loopSound;
+                    src.Play();
+                    return true;
                 }
-            } catch (NullReferenceException) { }
+            }
             return false;
         }
 
+        // return true if successfully stop a clip
         public virtual bool StopSFX(AudioClip clip) {
             if (clip == null)
                 return false;
-            try {
-                for (int i = 0; i < sfx_src_.Length; ++i) {
-                    if (sfx_src_[i] == null)
-                        sfx_src_[i] = gameObject.AddComponent<AudioSource>();
 
-                    AudioSource src = sfx_src_[i];
-                    if (src.isPlaying && src.clip == clip) {
-                        src.loop = false;
-                        src.Stop();
-                        return true;
-                    }
+            for (int i = 0; i < sfx_src_.Length; ++i) {
+                if (sfx_src_[i] == null)
+                    sfx_src_[i] = gameObject.AddComponent<AudioSource>();
+
+                AudioSource src = sfx_src_[i];
+                if (src.isPlaying && src.clip == clip) {
+                    src.loop = false;
+                    src.Stop();
+                    return true;
                 }
-            } catch (NullReferenceException) { }
+            }
             return false;
         }
     }

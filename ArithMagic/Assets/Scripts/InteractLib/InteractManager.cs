@@ -6,7 +6,7 @@ using Util;
 /// <summary>
 /// This help detecting if the user touch the screen and it handle different input for different platforms
 /// </summary>
-public class InteractManager : GenericSingleton<InteractManager> {
+public class InteractManager : PersistentSingleton<InteractManager> {
 
     public bool IsTouched { get; private set; }
 

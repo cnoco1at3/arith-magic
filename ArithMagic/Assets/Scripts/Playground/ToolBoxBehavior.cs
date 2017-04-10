@@ -171,6 +171,7 @@ public class ToolBoxBehavior : GenericSingleton<ToolBoxBehavior> {
     }
 
     private IEnumerator SolvedCoroutine() {
+        InteractManager.LockInteraction();
         feedback_.SetActive(true);
         SoundLib.SoundManager.Instance.PlaySFX(right_sfx);
         yield return new WaitForSeconds(2.0f);
@@ -184,12 +185,15 @@ public class ToolBoxBehavior : GenericSingleton<ToolBoxBehavior> {
             transform.DOMove(new Vector3(0, 10.4f), 2.0f);
             XRayCameraBehavior.Instance.CheckParts(true);
         }
+        InteractManager.ReleaseInteraction();
     }
 
     private IEnumerator WrongCoroutine() {
+        InteractManager.LockInteraction();
         SoundLib.SoundManager.Instance.PlaySFX(wrong_sfx);
         wrong_feedback_.SetActive(true);
         yield return new WaitForSeconds(2.0f);
         wrong_feedback_.SetActive(false);
+        InteractManager.ReleaseInteraction();
     }
 }

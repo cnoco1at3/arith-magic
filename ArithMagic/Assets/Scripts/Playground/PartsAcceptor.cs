@@ -62,6 +62,7 @@ public class PartsAcceptor : MonoBehaviour {
 
     public virtual void OnPartExit(PartsBehavior part) {
         is_occupied = false;
+        pb = null;
         ToolBoxBehavior.Instance.CheckActivateStatus();
     }
 
@@ -70,11 +71,11 @@ public class PartsAcceptor : MonoBehaviour {
     }
 
     public bool IsSolved() {
-        //SoundManager.Instance.PlaySFX(rightAnswerSound, false, 0.3f);
         try {
             if (pb != null)
                 return pb.part_id == acc_part_id;
         } catch (Exception e) {
+            Debug.LogException(e);
             return false;
         }
         return false;

@@ -13,7 +13,7 @@ namespace AvatarLib {
 
         // Use this for initialization
         void Start() {
-            List<AvatarProfile> profiles = AvatarUser.Instance.GetProfiles();
+            List<AvatarProfile> profiles = GameController.GetProfiles();
             if (profiles == null)
                 return;
 

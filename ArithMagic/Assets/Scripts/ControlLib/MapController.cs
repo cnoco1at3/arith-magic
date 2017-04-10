@@ -21,7 +21,7 @@ public class MapController : GenericSingleton<MapController> {
         if (sprite_ != null && route_points_.Length > 0)
             sprite_.transform.position = route_points_[0].position;
 
-        int level_index = LevelController.FetchLevelFromUser();
+        int level_index = GameController.GetCurrentLevel();
         if (map_level_index_ != level_index)
             TransFromMapLevelToControllerLevel(level_index);
     }

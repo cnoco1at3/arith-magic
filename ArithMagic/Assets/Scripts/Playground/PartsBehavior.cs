@@ -20,23 +20,14 @@ public class PartsBehavior : Dragable {
     private const string kSnapEaseIn = "SnapEaseIn";
     private const string kSnapEaseOut = "SnapEaseOut";
 
-    private Vector3 default_pos_;
     private Vector3 default_scale_;
 
     // Use this for initialization
     void Start() {
-        default_pos_ = transform.localPosition;
         default_scale_ = transform.localScale;
     }
 
     public void MoveBackToBox() {
-        /*
-        transform.DOLocalMove(default_pos_,
-            (float)ConstantTweakTool.Instance.const_dict[kSnapEaseIn]);
-        transform.DOScale(default_scale_,
-            (float)ConstantTweakTool.Instance.const_dict[kSnapEaseIn]);
-        is_accepted_ = false;
-        */
         Destroy(gameObject);
     }
 
@@ -83,10 +74,6 @@ public class PartsBehavior : Dragable {
                 (float)ConstantTweakTool.Instance.const_dict[kSnapEaseIn]);
         else
             Destroy(gameObject);
-        /*
-        transform.DOLocalMove(default_pos_,
-            (float)ConstantTweakTool.Instance.const_dict[kSnapEaseIn]);
-            */
 
         transform.DOScale(accepted ? acceptor.GetScaleFactor() : default_scale_,
             (float)ConstantTweakTool.Instance.const_dict[kSnapEaseIn]);

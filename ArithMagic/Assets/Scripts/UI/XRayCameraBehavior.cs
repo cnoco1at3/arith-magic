@@ -155,12 +155,15 @@ public class XRayCameraBehavior : GenericSingleton<XRayCameraBehavior> {
             SoundManager.Instance.PlaySFX(scannerBackground);
         else
             SoundManager.Instance.StopSFX(scannerBackground);
+
+        is_entered_ = false;
+        transform.localScale = Vector3.zero;
+
         StopCoroutine(detect_coroutine_);
     }
 
     // Use this for initialization
     void Start() {
-
         SoundManager.Instance.PlaySFX(beforeScanningSound, false);
         SoundManager.Instance.PlayBGM(null);
         sfx_src_ = GetComponent<AudioSource>();
@@ -180,6 +183,7 @@ public class XRayCameraBehavior : GenericSingleton<XRayCameraBehavior> {
         parts_ = new List<GameObject>(GameObject.FindGameObjectsWithTag("Part"));
 
         scale_factor_ = transform.localScale;
+        transform.localScale = Vector3.zero;
     }
 
     void Update() {

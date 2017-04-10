@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class ProfileInfo : MonoBehaviour {
 
-	public InputField name;
+	public new InputField name;
 	public InputField age;
 	public Dropdown gradeLevel;
 	public Button collectData;

@@ -27,7 +27,6 @@ public class GenericScrewBehavior : Clickable {
     }
 
     public override void ClickEvent() {
-        Vector3 pos = container_.GetNextSlotPosition();
         MoveToContainer();
     }
 
@@ -47,7 +46,9 @@ public class GenericScrewBehavior : Clickable {
 
                 collider_.enabled = false;
             }
-        } catch (NullReferenceException e) { }
+        } catch (NullReferenceException e) {
+            Debug.LogException(e);
+        }
     }
 
     private IEnumerator ClusterAnim(Vector3 pos) {

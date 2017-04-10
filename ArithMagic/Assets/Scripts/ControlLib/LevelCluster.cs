@@ -12,9 +12,9 @@ public class LevelCluster : GenericSingleton<LevelCluster> {
         for (int i = 0; i < lock_boxes_.Length; ++i)
             if (lock_boxes_[i] != null) {
                 lock_boxes_[i].SetLockBoxId(i);
-                if (i <= LevelController.FetchLevelFromUser() + 1)
+                if (i <= GameController.GetCurrentLevel() + 1)
                     lock_boxes_[i].SetUnlocked();
-                if (i == LevelController.FetchLevelFromUser() + 1)
+                if (i == GameController.GetCurrentLevel() + 1)
                     lock_boxes_[i].SetAnimation(true);
                 else
                     lock_boxes_[i].SetAnimation(false);

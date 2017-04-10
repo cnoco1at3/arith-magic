@@ -16,7 +16,7 @@ public class MapRobotBehavior : GenericSingleton<MapRobotBehavior> {
         LockBoxBehavior box = LevelCluster.Instance.GetLockBoxById(docked_id_);
         if (box != null)
             transform.localPosition = box.GetTargetLocalPosition();
-        int tmp = LevelController.FetchLevelFromUser() + 1;
+        int tmp = GameController.GetCurrentLevel() + 1;
         if (tmp == LevelCluster.Instance.GetLockBoxSize())
             tmp -= 1;
         transform.DOLocalMove(LevelCluster.Instance.GetLockBoxById(tmp).GetTargetLocalPosition(), 2.0f);
@@ -29,7 +29,7 @@ public class MapRobotBehavior : GenericSingleton<MapRobotBehavior> {
         SoundManager.Instance.PlaySFX(move_sfx_);
         transform.DOLocalMove(target.GetTargetLocalPosition(), 2.0f);
         if (target == LevelCluster.Instance.GetLockBoxById(docked_id_)) {
-            LevelController.Instance.AdvanceLevel();
+            GameController.AdvanceToNextLevel();
         } else {
             docked_id_ = target.GetLockBoxId();
             StartCoroutine(AdvanceLevel());
@@ -38,6 +38,6 @@ public class MapRobotBehavior : GenericSingleton<MapRobotBehavior> {
 
     private IEnumerator AdvanceLevel() {
         yield return new WaitForSeconds(2.0f);
-        LevelController.Instance.AdvanceLevel();
+        GameController.AdvanceToNextLevel();
     }
 }

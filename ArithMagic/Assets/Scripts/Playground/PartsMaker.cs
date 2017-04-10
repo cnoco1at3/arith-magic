@@ -60,7 +60,9 @@ public class PartsMaker : PartsAcceptor {
                     pb.is_accepted_ = true;
                     OnPartEnter(pb);
                 }
-                catch (Exception e) { }
+                catch (Exception e) {
+                    Debug.LogException(e);
+                }
                 text.text = tmp;
             }
         }

@@ -37,11 +37,10 @@ namespace AvatarLib {
         };
         public GradeLevel grade;
 
-        // TODO add progress here
         public int progress_index = -1;
 
         public bool Equals(AvatarProfile other) {
-            return first_name.Equals(other.first_name) && last_name.Equals(other.last_name);
+            return user.Equals(other.user) && first_name.Equals(other.first_name) && last_name.Equals(other.last_name);
         }
     }
 }

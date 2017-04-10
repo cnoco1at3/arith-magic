@@ -13,12 +13,22 @@ public class LockBoxBehavior : Clickable {
     [SerializeField]
     private GameObject robot_pic_;
 
+    [SerializeField]
+    private Sprite feng_rao_;
+
+    private static Sprite feng_feng_;
+
     private bool unlocked_ = false;
 
     private int id_ = -1;
 
     public AudioClip touchBoxSound;
     public AudioClip moveRobotSound;
+
+    void Start() {
+        if (feng_rao_ != null)
+            feng_feng_ = feng_rao_;
+    }
 
     public override void ClickEvent() {
         SoundManager.Instance.PlaySFX(touchBoxSound, false);
@@ -40,13 +50,15 @@ public class LockBoxBehavior : Clickable {
     }
 
     public void SetUnlocked() {
-        GetComponent<SpriteRenderer>().enabled = false;
+        GetComponent<SpriteRenderer>().sprite = feng_feng_;
+        /*
         if (robot_pic_ != null) {
             GameObject robot = Instantiate(robot_pic_, transform);
             robot.GetComponent<Animator>().enabled = false;
             robot.transform.localPosition = Vector3.zero;
             robot.transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
         }
+        */
         unlocked_ = true;
     }
 
