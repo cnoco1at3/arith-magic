@@ -8,7 +8,7 @@ using Util;
 /// </summary>
 public class InteractManager : PersistentSingleton<InteractManager> {
 
-    public bool IsTouched { get; private set; }
+    public bool is_touched { get; private set; }
 
     private bool is_occupied_ = false;
     private static bool locker_ = false;
@@ -23,17 +23,17 @@ public class InteractManager : PersistentSingleton<InteractManager> {
             return;
 
         // NOTE: This snippet get the touch position based on the platform
-        IsTouched = false;
+        is_touched = false;
 #if UNITY_IOS
         if (Input.touchCount > 0 && Input.GetTouch(0).phase != TouchPhase.Canceled && Input.GetTouch(0).phase != TouchPhase.Ended) {
             touch_pos = Input.GetTouch(0).position;
-            IsTouched = true;
+            is_touched = true;
         }
 #endif
 #if UNITY_EDITOR
         if (Input.GetMouseButton(0)) {
             touch_pos = Input.mousePosition;
-            IsTouched = true;
+            is_touched = true;
         }
 #endif
         else {
@@ -44,7 +44,7 @@ public class InteractManager : PersistentSingleton<InteractManager> {
         }
 
         // NOTE: Determine whether this touch is just enter or is a stay state touch
-        if (IsTouched) {
+        if (is_touched) {
             if (!is_occupied_) {
                 Ray ray = Camera.main.ScreenPointToRay(touch_pos);
                 RaycastHit rayhit;

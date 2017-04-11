@@ -6,37 +6,39 @@ using DG.Tweening;
 
 public class ScrewContainer : Clickable {
 
+    #region variables
     [SerializeField]
     private Transform[] slots_;
-
-    [SerializeField]
-    private const float scale_factor_ = 0.5f;
-
-    [SerializeField]
-    private int container_id_;
 
     private GenericScrewBehavior[] buckets_;
 
     private int slot_index_ = -1;
+    #endregion
 
-    // NOTE: We got two options here
-    // 1. Align all the slots manually
-    // 2. Procedurally align them
+
+    #region attributes
+    public bool is_full {
+        get {
+            return slot_index_ == slots_.Length - 1;
+        }
+        private set { }
+    }
+
+    public bool is_empty {
+        get {
+            return slot_index_ == -1;
+        }
+        private set { }
+    }
+    #endregion
+
 
     void Start() {
         buckets_ = new GenericScrewBehavior[slots_.Length];
     }
 
-    public bool IsFull() {
-        return slot_index_ == slots_.Length - 1;
-    }
-
-    public bool IsEmpty() {
-        return slot_index_ == -1;
-    }
-
     public int ObtainSlot(GenericScrewBehavior screw) {
-        if (IsFull())
+        if (is_full)
             return -1;
         buckets_[++slot_index_] = screw;
         return slot_index_;
@@ -57,17 +59,18 @@ public class ScrewContainer : Clickable {
     }
 
     public override void ClickEvent() {
-        if (IsFull()) {
-            Regroup();
-        }
+        if (is_full)
+            RegroupToNext();
+        else
+            BorrowToPrev();
     }
 
-    private void Regroup() {
-        ScrewContainer next_container = ToolBoxBehavior.Instance.GetContainerById(container_id_ + 1);
+    private void RegroupToNext() {
+        ScrewContainer next_container = ToolBoxBehavior.Instance.GetNextContainer(this);
+
         if (next_container == null)
             return;
-
-        if (next_container.IsFull())
+        if (next_container.is_full)
             return;
 
         Vector3 next_pos = next_container.GetNextSlotPosition();
@@ -79,15 +82,46 @@ public class ScrewContainer : Clickable {
         StartCoroutine(RegroupAnim(next_container));
     }
 
+    private void BorrowToPrev() {
+        ScrewContainer prev_container = ToolBoxBehavior.Instance.GetPrevContainer(this);
+
+        if (prev_container == null)
+            return;
+        if (!prev_container.is_empty)
+            return;
+
+        for (int i = 0; i < slots_.Length; ++i) {
+
+            GameObject prev_screw = Instantiate(ToolBoxBehavior.Instance.GetScrewByContainer(prev_container),
+                buckets_[slot_index_].transform.position, Quaternion.identity, transform.root);
+            prev_screw.GetComponent<Collider>().enabled = false;
+
+            prev_screw.transform.DOMove(prev_container.GetNextSlotPosition(), 0.5f);
+            prev_container.ObtainSlot(prev_screw.GetComponent<GenericScrewBehavior>());
+        }
+
+        StartCoroutine(BorrowAnim(prev_container));
+    }
+
     private GenericScrewBehavior ReleaseSlot() {
-        if (IsEmpty())
+        if (is_empty)
             return null;
         GenericScrewBehavior tmp = buckets_[slot_index_];
         buckets_[slot_index_--] = null;
         return tmp;
     }
 
-    private IEnumerator RegroupAnim(ScrewContainer next) {
+    private IEnumerator BorrowAnim(ScrewContainer prev_container) {
+        InteractManager.LockInteraction();
+
+        GenericScrewBehavior tmp = ReleaseSlot();
+        Destroy(tmp.gameObject);
+        yield return new WaitForSeconds(0.5f);
+
+        InteractManager.ReleaseInteraction();
+    }
+
+    private IEnumerator RegroupAnim(ScrewContainer next_container) {
         InteractManager.LockInteraction();
 
         yield return new WaitForSeconds(0.5f);
@@ -99,13 +133,13 @@ public class ScrewContainer : Clickable {
         ClearSlots();
 
         GameObject next_screw =
-            Instantiate(ToolBoxBehavior.Instance.GetScrewById(container_id_ + 1),
-            next.GetNextSlotPosition(), Quaternion.identity, transform.root);
-        GenericScrewBehavior next_sb = next_screw.GetComponent<GenericScrewBehavior>();
+            Instantiate(ToolBoxBehavior.Instance.GetScrewByContainer(next_container),
+            next_container.GetNextSlotPosition(), Quaternion.identity, transform.root);
+        GenericScrewBehavior next_behavior = next_screw.GetComponent<GenericScrewBehavior>();
         Collider next_collider = next_screw.GetComponent<Collider>();
         next_collider.enabled = false;
 
-        next.ObtainSlot(next_sb);
+        next_container.ObtainSlot(next_behavior);
         InteractManager.ReleaseInteraction();
     }
 }

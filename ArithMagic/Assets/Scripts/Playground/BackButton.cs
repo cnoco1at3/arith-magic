@@ -9,7 +9,7 @@ public class BackButton : Clickable {
     private const string kMapScene = "Map";
 
     public override void ClickEvent() {
-        if (XRayCameraBehavior.Instance.IsFinished())
+        if (XRayCameraBehavior.Instance.is_finished)
             SceneManager.LoadScene(kMapScene);
         else
             GameController.ReturnToPreviousLevel();

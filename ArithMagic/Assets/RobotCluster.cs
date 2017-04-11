@@ -12,4 +12,8 @@ public class RobotCluster : GenericSingleton<RobotCluster> {
         int wrap_id = Mathf.RoundToInt(Mathf.Repeat((float)id, (float)robots.Length));
         return robots[wrap_id];
     }
+
+    public int GetRobotsSize() {
+        return robots.Length;
+    }
 }

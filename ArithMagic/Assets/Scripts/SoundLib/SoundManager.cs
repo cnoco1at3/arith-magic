@@ -11,8 +11,9 @@ namespace SoundLib {
         private static AudioSource[] sfx_src_;
         private static Queue<AudioClip> bgm_queue_;
         private static Queue<AudioClip> sfx_queue_;
+        private static HashSet<AudioClip> clips_set_;
 
-        // this would allow at most 3 sound effects playing simultaneously
+        // this would allow at most 6 sound effects playing simultaneously
         private const int kSFXBufferSize = 6;
 
         // Use this for initialization
@@ -34,6 +35,23 @@ namespace SoundLib {
             if (sfx_queue_ == null)
                 sfx_queue_ = new Queue<AudioClip>();
             FlushSFX();
+
+            if (clips_set_ == null)
+                clips_set_ = new HashSet<AudioClip>();
+        }
+
+        public void SwitchScene(AudioClip bgm, AudioClip[] sfx) {
+            StopBGM();
+            StopSFX();
+            PlayBGM(bgm);
+            PlaySFX(sfx);
+        }
+
+        public void SwitchScene(AudioClip bgm, AudioClip sfx) {
+            StopBGM();
+            StopSFX();
+            PlayBGM(bgm);
+            PlaySFX(sfx);
         }
 
         public void FlushBGM() {
@@ -58,12 +76,17 @@ namespace SoundLib {
 
             if (clip == null)
                 return false;
+            if (clips_set_ == null || clips_set_.Contains(clip))
+                return false;
 
             try {
                 if (bgm_src_.isPlaying)
                     bgm_src_.Stop();
                 bgm_src_.clip = clip;
                 bgm_src_.Play();
+
+                clips_set_.Add(clip);
+
                 return true;
             } catch (NullReferenceException e) {
                 try {
@@ -81,10 +104,10 @@ namespace SoundLib {
             try {
                 if (bgm_src_.isPlaying) {
                     bgm_src_.Stop();
+                    clips_set_.Remove(bgm_src_.clip);
                     return true;
                 }
             } catch (NullReferenceException e) {
-                Debug.LogException(e);
             }
             return false;
         }
@@ -92,6 +115,8 @@ namespace SoundLib {
         // return true if successfully play a clip
         public bool PlaySFX(AudioClip clip, bool loop = false) {
             if (clip == null)
+                return false;
+            if (clips_set_ == null || clips_set_.Contains(clip))
                 return false;
 
             try {
@@ -106,6 +131,9 @@ namespace SoundLib {
                         src.clip = clip;
                         src.loop = loop;
                         src.Play();
+
+                        clips_set_.Remove(clip);
+
                         return true;
                     }
                 }
@@ -116,14 +144,25 @@ namespace SoundLib {
                     sfx_queue_ = new Queue<AudioClip>();
                     sfx_queue_.Enqueue(clip);
                 }
-                Debug.LogException(e);
             }
             return false;
+        }
+
+        public bool PlaySFX(AudioClip[] clips, bool loop = false) {
+            if (clips == null)
+                return false;
+            foreach (AudioClip clip in clips)
+                if (!PlaySFX(clip, loop))
+                    return false;
+            return true;
         }
 
         // return true if successfully stop a clip
         public bool StopSFX(AudioClip clip) {
             if (clip == null)
+                return false;
+
+            if (clips_set_ == null || !clips_set_.Contains(clip))
                 return false;
 
             try {
@@ -135,22 +174,25 @@ namespace SoundLib {
                     if (src.isPlaying && src.clip == clip) {
                         src.loop = false;
                         src.Stop();
+
+                        clips_set_.Remove(clip);
+
                         return true;
                     }
                 }
             } catch (NullReferenceException e) {
-                Debug.LogException(e);
             }
             return false;
         }
 
         public bool StopSFX() {
             try {
-                foreach (AudioSource src in sfx_src_)
+                foreach (AudioSource src in sfx_src_) {
                     src.Stop();
+                    clips_set_.Remove(src.clip);
+                }
                 return true;
             } catch (NullReferenceException e) {
-                Debug.LogException(e);
             }
             return false;
         }

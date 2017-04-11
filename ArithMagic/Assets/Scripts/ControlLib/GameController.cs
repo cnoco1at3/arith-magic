@@ -19,6 +19,7 @@ public class GameController : PersistentSingleton<GameController> {
             avatar_conn = new AvatarBackEnd();
     }
 
+    #region level
     /*
      * BEGIN LEVEL
      */
@@ -57,7 +58,9 @@ public class GameController : PersistentSingleton<GameController> {
     /*
      * END LEVEL
      */
+    #endregion
 
+    #region profile
     /* 
      * BEGIN PROFILE 
      */
@@ -104,4 +107,5 @@ public class GameController : PersistentSingleton<GameController> {
     /*
      * END PROFILE
      */
+    #endregion
 }

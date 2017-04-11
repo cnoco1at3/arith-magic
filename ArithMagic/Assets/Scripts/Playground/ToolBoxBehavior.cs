@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Util;
@@ -6,6 +7,9 @@ using DG.Tweening;
 
 public class ToolBoxBehavior : GenericSingleton<ToolBoxBehavior> {
 
+
+    public AudioClip right_sfx;
+    public AudioClip wrong_sfx;
 
     [SerializeField]
     private GameObject[] numbers_;
@@ -45,12 +49,10 @@ public class ToolBoxBehavior : GenericSingleton<ToolBoxBehavior> {
     [SerializeField]
     private const int kProblemSize = 3;
 
-    public AudioClip right_sfx;
-    public AudioClip wrong_sfx;
 
     public void PopulateProblem(int category, bool downward = false) {
         if (downward)
-            category = Random.Range(1, category);
+            category = UnityEngine.Random.Range(1, category);
 
         category_ = category;
         problem_size_ = kProblemSize;
@@ -90,14 +92,43 @@ public class ToolBoxBehavior : GenericSingleton<ToolBoxBehavior> {
     }
 
     public ScrewContainer GetContainerById(int id) {
-        if (id >= 0 && id < containers_.Length)
-            return containers_[id];
+        try {
+            if (id >= 0 && id < containers_.Length)
+                return containers_[id];
+        } catch (NullReferenceException) { }
+        return null;
+    }
+
+    public ScrewContainer GetNextContainer(ScrewContainer container) {
+        try {
+            for (int i = 0; i < containers_.Length - 1; ++i)
+                if (containers_[i].Equals(container))
+                    return containers_[i + 1];
+        } catch (NullReferenceException) { }
+        return null;
+    }
+
+    public ScrewContainer GetPrevContainer(ScrewContainer container) {
+        try {
+            for (int i = 1; i < containers_.Length; ++i)
+                if (containers_[i].Equals(container))
+                    return containers_[i - 1];
+        } catch (NullReferenceException) { }
         return null;
     }
 
     public GameObject GetScrewById(int id) {
         if (id >= 0 && id < screws_.Length)
             return screws_[id];
+        return null;
+    }
+
+    public GameObject GetScrewByContainer(ScrewContainer container) {
+        try {
+            for (int i = 0; i < containers_.Length && i < screws_.Length; ++i)
+                if (container.Equals(containers_[i]))
+                    return screws_[i];
+        } catch (NullReferenceException) { }
         return null;
     }
 

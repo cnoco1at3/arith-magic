@@ -34,7 +34,7 @@ public class GenericScrewBehavior : Clickable {
         SoundManager.Instance.PlaySFX(sfx_clip_, false);
 
         try {
-            if (!container_.IsFull()) {
+            if (!container_.is_full) {
                 Vector3 pos = container_.GetNextSlotPosition();
                 container_.ObtainSlot(this);
 
