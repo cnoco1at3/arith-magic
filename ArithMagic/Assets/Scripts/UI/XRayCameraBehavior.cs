@@ -66,19 +66,27 @@ public class XRayCameraBehavior : GenericSingleton<XRayCameraBehavior> {
 
     //OnTriggerEnter with broken part, starts a coroutine countdown
     void OnTriggerEnter2D(Collider2D other) {
-        if (!InteractManager.Instance.is_touched)
+        if (!InteractManager.Instance.is_touched) {
+            SetDetectStatus(null);
             return;
+        }
 
         if (other.gameObject.tag == "Part")
             SetDetectStatus(other);
     }
 
     void OnTriggerStay2D(Collider2D other) {
+        if (!InteractManager.Instance.is_touched && !is_entered_) {
+            SetDetectStatus(null);
+            return;
+        }
+
         if (is_entered_) {
             detect_time_ -= Time.fixedDeltaTime;
 
             if (detect_time_ <= 0) {
                 PopsUpToolBox();
+                part_ptr_ = other.gameObject;
                 SoundManager.Instance.PlaySFX(sfx_a_scan);
             }
         } else if (other.gameObject.tag == "Part")
@@ -87,16 +95,12 @@ public class XRayCameraBehavior : GenericSingleton<XRayCameraBehavior> {
 
     //Exit with part, stops and resets countdown
     void OnTriggerExit2D(Collider2D other) {
-        if (!InteractManager.Instance.is_touched)
-            return;
-
         if (other.gameObject.tag == "Part")
             SetDetectStatus(null);
     }
 
     private void SetDetectStatus(Collider2D other) {
         detect_time_ = detect_thres_;
-        part_ptr_ = other != null ? other.gameObject : null;
 
         mesh_animator_.SetBool("hit", other != null);
         is_entered_ = other != null;

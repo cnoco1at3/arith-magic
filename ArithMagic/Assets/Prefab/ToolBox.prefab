@@ -61,7 +61,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1098710775035880
 GameObject:
   m_ObjectHideFlags: 1
@@ -71,6 +71,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4009719858218766}
   - component: {fileID: 212207036404841574}
+  - component: {fileID: 95892983984830572}
   m_Layer: 0
   m_Name: slotLights
   m_TagString: Untagged
@@ -647,6 +648,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4317738608313056}
   - component: {fileID: 212471597013951290}
+  - component: {fileID: 95907631628412272}
   m_Layer: 0
   m_Name: slotLights (1)
   m_TagString: Untagged
@@ -2130,6 +2132,40 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!95 &95892983984830572
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1098710775035880}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 79eefeb9e0cb9f642b586b57e3d08b09, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+--- !u!95 &95907631628412272
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1447244190205500}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 79eefeb9e0cb9f642b586b57e3d08b09, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!95 &95932450311851456
 Animator:
   serializedVersion: 3
@@ -2182,7 +2218,6 @@ MonoBehaviour:
   - {fileID: 4323361431042490}
   - {fileID: 4846270894723888}
   - {fileID: 4932221451472204}
-  container_id_: 0
 --- !u!114 &114185184751057114
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2262,6 +2297,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed6fc876221e870419ab55a415752f3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  right_sfx: {fileID: 8300000, guid: c02f2ef9c81245148a02916a6d1a34f9, type: 3}
+  wrong_sfx: {fileID: 8300000, guid: ccac5b46f2f5fd444bdb6f45b78a99b8, type: 3}
   numbers_:
   - {fileID: 1581309935582976, guid: c2fac9d2bb39e6742a94db989a299ca1, type: 2}
   - {fileID: 1484826530720502, guid: fcf0b51fe17bb5d47a532a66aac7aa28, type: 2}
@@ -2295,8 +2332,6 @@ MonoBehaviour:
   wrong_feedback_: {fileID: 1304155032156056}
   button_: {fileID: 114815410054589734}
   cover_: {fileID: 1082089676728834}
-  right_sfx: {fileID: 8300000, guid: c02f2ef9c81245148a02916a6d1a34f9, type: 3}
-  wrong_sfx: {fileID: 8300000, guid: ccac5b46f2f5fd444bdb6f45b78a99b8, type: 3}
 --- !u!114 &114786088961040598
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2411,7 +2446,6 @@ MonoBehaviour:
   - {fileID: 4439678755152148}
   - {fileID: 4443893676289708}
   - {fileID: 4299308475751066}
-  container_id_: 1
 --- !u!212 &212011538744441880
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -78,17 +78,22 @@ public class ToolBoxBehavior : GenericSingleton<ToolBoxBehavior> {
     }
 
     public void CheckSolveStatus() {
+        bool solved = true;
+
         foreach (PartsAcceptor slot in slots_) {
             if (!slot.active)
                 continue;
             if (!slot.IsSolved()) {
-                StartCoroutine(WrongCoroutine());
-                return;
+                solved = false;
+                slot.ClearSlot();
             }
         }
 
-        // animations here
-        StartCoroutine(SolvedCoroutine());
+        // Animation here
+        if (solved)
+            StartCoroutine(SolvedCoroutine());
+        else
+            StartCoroutine(WrongCoroutine());
     }
 
     public ScrewContainer GetContainerById(int id) {

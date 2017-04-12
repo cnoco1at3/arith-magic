@@ -65,7 +65,18 @@ public class ScrewContainer : Clickable {
             BorrowToPrev();
     }
 
+    public void SetWiggleBuckets(bool wiggle) {
+        for (int i = 0; i <= slot_index_; ++i)
+            buckets_[i].SetWiggle(wiggle);
+    }
+
+    public void SetWiggleLastBucket(bool wiggle) {
+        buckets_[slot_index_].SetWiggle(wiggle);
+    }
+
     private void RegroupToNext() {
+        SetWiggleBuckets(false);
+
         ScrewContainer next_container = ToolBoxBehavior.Instance.GetNextContainer(this);
 
         if (next_container == null)
@@ -95,9 +106,10 @@ public class ScrewContainer : Clickable {
             GameObject prev_screw = Instantiate(ToolBoxBehavior.Instance.GetScrewByContainer(prev_container),
                 buckets_[slot_index_].transform.position, Quaternion.identity, transform.root);
             prev_screw.GetComponent<Collider>().enabled = false;
+            GenericScrewBehavior prev_behavior = prev_screw.GetComponent<GenericScrewBehavior>();
 
             prev_screw.transform.DOMove(prev_container.GetNextSlotPosition(), 0.5f);
-            prev_container.ObtainSlot(prev_screw.GetComponent<GenericScrewBehavior>());
+            prev_container.ObtainSlot(prev_behavior);
         }
 
         StartCoroutine(BorrowAnim(prev_container));

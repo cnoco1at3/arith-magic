@@ -17,19 +17,24 @@ public class PartsAcceptor : MonoBehaviour {
     [SerializeField]
     private Transform accept_point_;
 
-    private PartsBehavior pb;
+    private PartsBehavior pb_;
+
+    private Animator light_;
 
     private bool is_occupied = false;
 
     void Start() {
         if (accept_point_ == null)
             accept_point_ = transform;
+        light_ = transform.GetChild(0).GetComponent<Animator>();
+        light_.SetBool("blink", true);
     }
 
     public virtual void ClearSlot() {
-        if (pb != null)
-            Destroy(pb.gameObject);
-        pb = null;
+        if (pb_ != null)
+            Destroy(pb_.gameObject);
+        pb_ = null;
+        light_.SetBool("blink", true);
     }
 
     public virtual void SetAccPartId(int id) {
@@ -53,16 +58,18 @@ public class PartsAcceptor : MonoBehaviour {
         SoundManager.Instance.PlaySFX(dropBatterySound, false);
         is_occupied = true;
 
-        if (pb != null)
-            pb.MoveBackToBox();
-        pb = part;
+        if (pb_ != null)
+            pb_.MoveBackToBox();
+        pb_ = part;
+        light_.SetBool("blink", false);
 
         ToolBoxBehavior.Instance.CheckActivateStatus();
     }
 
     public virtual void OnPartExit(PartsBehavior part) {
         is_occupied = false;
-        pb = null;
+        pb_ = null;
+        light_.SetBool("blink", true);
         ToolBoxBehavior.Instance.CheckActivateStatus();
     }
 
@@ -72,8 +79,8 @@ public class PartsAcceptor : MonoBehaviour {
 
     public bool IsSolved() {
         try {
-            if (pb != null)
-                return pb.part_id == acc_part_id;
+            if (pb_ != null)
+                return pb_.part_id == acc_part_id;
         } catch (Exception e) {
             Debug.LogException(e);
             return false;

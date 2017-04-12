@@ -16,7 +16,9 @@ public class ScrewGenerator : MonoBehaviour {
         if (anchors_.Length > 0) {
             for (int i = 0; i < anchors_.Length; ++i) {
                 GameObject s = Instantiate(screw, anchors_[i].position, Quaternion.identity, transform);
-                s.transform.localScale = new Vector3(0.415f / 0.35f, 0.415f / 0.35f, 1.0f);
+                s.transform.localScale = new Vector3(0.415f / transform.localScale.x, 0.415f / transform.localScale.y, 1.0f);
+                GenericScrewBehavior sb = s.GetComponent<GenericScrewBehavior>();
+                sb.on_number = true;
             }
         }
     }
