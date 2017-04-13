@@ -1,0 +1,384 @@
+fileFormatVersion: 2
+guid: ee40646358cb2804cbf244578822fa36
+timeCreated: 1492031089
+licenseType: Pro
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: grouchyRed_0
+    21300002: grouchyRed_1
+    21300004: grouchyRed_2
+    21300006: grouchyRed_3
+    21300008: grouchyRed_4
+    21300010: grouchyRed_5
+    21300012: grouchyRed_6
+    21300014: grouchyRed_7
+    21300016: grouchyRed_8
+    21300018: grouchyRed_9
+    21300020: grouchyRed_10
+    21300022: grouchyRed_11
+    21300024: grouchyRed_12
+    21300026: grouchyRed_13
+    21300028: grouchyRed_14
+    21300030: grouchyRed_15
+    21300032: grouchyRed_16
+    21300034: grouchyRed_17
+    21300036: grouchyRed_18
+    21300038: grouchyRed_19
+    21300040: grouchyRed_20
+    21300042: grouchyRed_21
+  serializedVersion: 4
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: -1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Standalone
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: grouchyRed_0
+      rect:
+        serializedVersion: 2
+        x: 1576
+        y: 2812
+        width: 347
+        height: 505
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: grouchyRed_1
+      rect:
+        serializedVersion: 2
+        x: 2313
+        y: 3115
+        width: 44
+        height: 44
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: grouchyRed_2
+      rect:
+        serializedVersion: 2
+        x: 2789
+        y: 3112
+        width: 161
+        height: 86
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: grouchyRed_3
+      rect:
+        serializedVersion: 2
+        x: 3019
+        y: 3110
+        width: 85
+        height: 84
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: grouchyRed_4
+      rect:
+        serializedVersion: 2
+        x: 3165
+        y: 3110
+        width: 161
+        height: 84
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: grouchyRed_5
+      rect:
+        serializedVersion: 2
+        x: 2767
+        y: 2968
+        width: 183
+        height: 86
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: grouchyRed_6
+      rect:
+        serializedVersion: 2
+        x: 3019
+        y: 2968
+        width: 85
+        height: 86
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: grouchyRed_7
+      rect:
+        serializedVersion: 2
+        x: 3165
+        y: 2966
+        width: 171
+        height: 85
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: grouchyRed_8
+      rect:
+        serializedVersion: 2
+        x: 2167
+        y: 2846
+        width: 171
+        height: 115
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: grouchyRed_9
+      rect:
+        serializedVersion: 2
+        x: 2731
+        y: 2824
+        width: 219
+        height: 86
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: grouchyRed_10
+      rect:
+        serializedVersion: 2
+        x: 3019
+        y: 2824
+        width: 85
+        height: 86
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: grouchyRed_11
+      rect:
+        serializedVersion: 2
+        x: 3165
+        y: 2822
+        width: 198
+        height: 85
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: grouchyRed_12
+      rect:
+        serializedVersion: 2
+        x: 1779
+        y: 2629
+        width: 112
+        height: 71
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: grouchyRed_13
+      rect:
+        serializedVersion: 2
+        x: 2706
+        y: 2514
+        width: 879
+        height: 237
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: grouchyRed_14
+      rect:
+        serializedVersion: 2
+        x: 1576
+        y: 2399
+        width: 449
+        height: 176
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: grouchyRed_15
+      rect:
+        serializedVersion: 2
+        x: 2218
+        y: 2377
+        width: 293
+        height: 215
+      alignment: 9
+      pivot: {x: 0.95, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: grouchyRed_16
+      rect:
+        serializedVersion: 2
+        x: 2799
+        y: 2053
+        width: 688
+        height: 434
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: grouchyRed_17
+      rect:
+        serializedVersion: 2
+        x: 1996
+        y: 1764
+        width: 305
+        height: 264
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: grouchyRed_18
+      rect:
+        serializedVersion: 2
+        x: 1901
+        y: 1139
+        width: 263
+        height: 462
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: grouchyRed_19
+      rect:
+        serializedVersion: 2
+        x: 2867
+        y: 1171
+        width: 528
+        height: 310
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: grouchyRed_20
+      rect:
+        serializedVersion: 2
+        x: 2029
+        y: 905
+        width: 143
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: grouchyRed_21
+      rect:
+        serializedVersion: 2
+        x: 1971
+        y: 243
+        width: 193
+        height: 462
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
