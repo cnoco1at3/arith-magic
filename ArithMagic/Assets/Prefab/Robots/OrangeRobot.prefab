@@ -598,7 +598,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4202579296923732}
   - component: {fileID: 95723239348670928}
-  - component: {fileID: 82965980572186852}
+  - component: {fileID: 82439917854717124}
+  - component: {fileID: 114674058934355214}
   m_Layer: 8
   m_Name: OrangeRobot
   m_TagString: Untagged
@@ -1671,7 +1672,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.1
---- !u!82 &82965980572186852
+--- !u!82 &82439917854717124
 AudioSource:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -1680,8 +1681,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 0041e2f56b66fd648be2d447bd55e50f, type: 3}
-  m_PlayOnAwake: 0
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -1768,6 +1769,29 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114674058934355214
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1783928024077224}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1622a2be235d2c64a86fc9ca7267240f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  robotAudio_: {fileID: 0}
+  fixedClips_:
+  - {fileID: 8300000, guid: 7b2b16c72b0e5c740a708a57d700f72b, type: 3}
+  - {fileID: 8300000, guid: 1af9bcbb4e3a4e544aa6cc55ecf20b72, type: 3}
+  brokenClips_:
+  - {fileID: 8300000, guid: 071601c3e45cdd340ab653d907d1c7a3, type: 3}
+  - {fileID: 8300000, guid: ba79e55f3b87caa4b80e58c1cd876a99, type: 3}
+  - {fileID: 8300000, guid: 6fe32696991a0db49a04d78a7a722888, type: 3}
+  - {fileID: 8300000, guid: e13634ab9b9d2f94c9cc2b09088525c5, type: 3}
+  - {fileID: 8300000, guid: 65ae131360036c746816fedae9e1941a, type: 3}
+  - {fileID: 8300000, guid: d5467edd21e2cfd46be661d8af9de4b6, type: 3}
+  - {fileID: 8300000, guid: fc3663dc6c4d24b49b5865a4c1ecd356, type: 3}
 --- !u!212 &212028720220530150
 SpriteRenderer:
   m_ObjectHideFlags: 1

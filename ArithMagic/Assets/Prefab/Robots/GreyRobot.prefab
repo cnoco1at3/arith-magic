@@ -374,7 +374,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4758765870809976}
   - component: {fileID: 95815473268539418}
-  - component: {fileID: 82337287454631696}
+  - component: {fileID: 82210462124214188}
+  - component: {fileID: 114205112141160052}
   m_Layer: 8
   m_Name: GreyRobot
   m_TagString: Untagged
@@ -1731,7 +1732,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.1
---- !u!82 &82337287454631696
+--- !u!82 &82210462124214188
 AudioSource:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -1740,8 +1741,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 4cd617e9f856d5c4588b8a6e50c4b99e, type: 3}
-  m_PlayOnAwake: 0
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -1828,6 +1829,30 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114205112141160052
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1475372183576022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1622a2be235d2c64a86fc9ca7267240f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  robotAudio_: {fileID: 0}
+  fixedClips_:
+  - {fileID: 8300000, guid: f4dd4ed1f5509a84094303d98fba489e, type: 3}
+  brokenClips_:
+  - {fileID: 8300000, guid: efcd0bed4c922eb4aaf7a4931c342b88, type: 3}
+  - {fileID: 8300000, guid: 89a4f1f95faf5324bbe4fb2210a2b0a3, type: 3}
+  - {fileID: 8300000, guid: b1a023357df20a845a836b003bcfc374, type: 3}
+  - {fileID: 8300000, guid: c6a6c0114573a2d47bbab946ec107180, type: 3}
+  - {fileID: 8300000, guid: d67338a76b586fb4a941ab84d91ccba5, type: 3}
+  - {fileID: 8300000, guid: 9168a697cf73bf647b0556b0f4bfee89, type: 3}
+  - {fileID: 8300000, guid: 459a6c3bfe270914fa47a43f28179ef6, type: 3}
+  - {fileID: 8300000, guid: cd7fb133e430b1e45ad165742d12f6a1, type: 3}
+  - {fileID: 8300000, guid: b7bfca9c2d6b0d44089577a44501cf67, type: 3}
 --- !u!212 &212002158521265200
 SpriteRenderer:
   m_ObjectHideFlags: 1

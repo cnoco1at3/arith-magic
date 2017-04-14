@@ -843,6 +843,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4449572465367156}
   - component: {fileID: 95390160166745138}
+  - component: {fileID: 82920393071747150}
+  - component: {fileID: 114858310282359582}
   m_Layer: 0
   m_Name: ShiveringRobot
   m_TagString: Untagged
@@ -3574,6 +3576,86 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.1
+--- !u!82 &82920393071747150
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1440064340157806}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!95 &95051438308355212
 Animator:
   serializedVersion: 3
@@ -3727,6 +3809,30 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114858310282359582
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1440064340157806}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1622a2be235d2c64a86fc9ca7267240f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  robotAudio_: {fileID: 0}
+  fixedClips_:
+  - {fileID: 8300000, guid: c5105b89f19f4c5449b5f2a18a7caeab, type: 3}
+  brokenClips_:
+  - {fileID: 8300000, guid: 24af2f77d373ecc4298d3d985dc0c19a, type: 3}
+  - {fileID: 8300000, guid: 41aacf30b4267054ca2bdccdc67a3062, type: 3}
+  - {fileID: 8300000, guid: 8a9e2ea89500c164cbe0e3bbaea57e65, type: 3}
+  - {fileID: 8300000, guid: 40d77180138afef4086229b69ad5e02c, type: 3}
+  - {fileID: 8300000, guid: 63a521f82b7ef46419e93a90b7cd9ca7, type: 3}
+  - {fileID: 8300000, guid: 90b6d744f9b49574abf9564cc7d1fcc5, type: 3}
+  - {fileID: 8300000, guid: 3ffe06e660d508345a609efb187918ad, type: 3}
+  - {fileID: 8300000, guid: c95ec3bf23162a541a6806f36dfad5e3, type: 3}
+  - {fileID: 8300000, guid: f9b380d8c7b733345a7ec8a310ce5345, type: 3}
 --- !u!212 &212012552570779606
 SpriteRenderer:
   m_ObjectHideFlags: 1

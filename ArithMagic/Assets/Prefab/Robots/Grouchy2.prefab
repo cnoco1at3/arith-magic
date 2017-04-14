@@ -754,6 +754,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4143947751474120}
   - component: {fileID: 95621709963446912}
+  - component: {fileID: 82022754835939532}
+  - component: {fileID: 114580894150904036}
   m_Layer: 0
   m_Name: Grouchy2
   m_TagString: Untagged
@@ -3100,6 +3102,86 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.1
+--- !u!82 &82022754835939532
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1427365410503842}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!95 &95621709963446912
 Animator:
   serializedVersion: 3
@@ -3117,6 +3199,28 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114580894150904036
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1427365410503842}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1622a2be235d2c64a86fc9ca7267240f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  robotAudio_: {fileID: 0}
+  fixedClips_:
+  - {fileID: 8300000, guid: 763b90c3ae5bdf142aa571a2feab1768, type: 3}
+  brokenClips_:
+  - {fileID: 8300000, guid: 694ce99008dcb514c9b6d4a3e5790549, type: 3}
+  - {fileID: 8300000, guid: 8b400a29efe53274387cf962c50ae5ed, type: 3}
+  - {fileID: 8300000, guid: 25f223e3e2eadc749a32c310a9e142c2, type: 3}
+  - {fileID: 8300000, guid: edf60184a4b007349a28fd60c5ddc6af, type: 3}
+  - {fileID: 8300000, guid: 5ee626c2d747e3242b60a7669e516cc2, type: 3}
+  - {fileID: 8300000, guid: d6acecfb623034c4f9213ac82023a770, type: 3}
+  - {fileID: 8300000, guid: 4959ae5671425fe4c9db52ea5364a217, type: 3}
 --- !u!212 &212007944776767660
 SpriteRenderer:
   m_ObjectHideFlags: 1
