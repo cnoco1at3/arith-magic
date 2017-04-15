@@ -1063,6 +1063,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 114449083308412474, guid: 5b8a7729e3502bb498f13ba958c9bcd0,
+        type: 2}
+      propertyPath: move_sfx_
+      value: 
+      objectReference: {fileID: 8300000, guid: fc77792597860d14dab80d38df537199, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5b8a7729e3502bb498f13ba958c9bcd0, type: 2}
   m_IsPrefabParent: 0
@@ -2623,7 +2628,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   first_box: {fileID: 0}
-  mapBackground: {fileID: 8300000, guid: ad784d61edfd448489ed281e9af851f5, type: 3}
+  mapBackground:
+  - {fileID: 8300000, guid: f1f4925f5f6bc7e45b315303abd478b6, type: 3}
+  - {fileID: 8300000, guid: 8dd80bbf5b5e44e44a913d15e6f36c64, type: 3}
+  - {fileID: 8300000, guid: 4460f5999d337144f97ce17472ef43d9, type: 3}
 --- !u!65 &1924444538
 BoxCollider:
   m_ObjectHideFlags: 0

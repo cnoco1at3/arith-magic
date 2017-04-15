@@ -16,10 +16,10 @@ public class MapScroller : Dragable {
     private static float kDecay;
     private SpriteRenderer sprite_;
 
-    public AudioClip mapBackground;
+    public AudioClip[] mapBackground;
 
     void Start() {
-        SoundManager.Instance.PlayBGM(mapBackground);
+        SoundManager.Instance.PlayBGM(mapBackground[UnityEngine.Random.Range(0,mapBackground.Length)]);
         try {
             kHooke = (float)ConstantTweakTool.Instance["HookeFactor"];
             kDecay = (float)ConstantTweakTool.Instance["ScrollDecay"];

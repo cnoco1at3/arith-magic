@@ -78,7 +78,7 @@ public class LockBoxBehavior : Clickable, IComparable {
     }
 
     private void MoveRobot() {
-        SoundManager.Instance.PlaySFX(moveRobotSound, false);
+        //SoundManager.Instance.PlaySFX(moveRobotSound, false);
         GetComponent<Collider>().enabled = false;
         MapRobotBehavior.Instance.MoveToPosition(this);
     }

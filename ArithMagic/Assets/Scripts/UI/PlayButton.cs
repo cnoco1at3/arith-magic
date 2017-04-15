@@ -11,7 +11,7 @@ public class PlayButton : MonoBehaviour {
     private Button playButton;
 
     public AudioClip clip;
-    public AudioClip backgroundSound;
+    //public AudioClip backgroundSound;
 
     public void StartButton() {
         SoundManager.Instance.PlaySFX(clip);
@@ -21,7 +21,7 @@ public class PlayButton : MonoBehaviour {
     }
 
     void Start() {
-        SoundManager.Instance.PlayBGM(backgroundSound);
+        //SoundManager.Instance.PlayBGM(backgroundSound);
         playButton = GetComponent<Button>();
     }
 }
