@@ -31,7 +31,7 @@ public class MapRobotBehavior : GenericSingleton<MapRobotBehavior> {
         SoundManager.Instance.PlaySFX(move_sfx_);
         transform.DOLocalMove(target.GetTargetLocalPosition(), 2.0f);
         if (target == LevelCluster.Instance.GetLockBoxById(docked_id_)) {
-            GameController.AdvanceToNextLevel();
+            GameController.EnterNextLevel();
         } else {
             docked_id_ = target.GetLockBoxId();
             StartCoroutine(AdvanceLevel());
@@ -40,6 +40,6 @@ public class MapRobotBehavior : GenericSingleton<MapRobotBehavior> {
 
     private IEnumerator AdvanceLevel() {
         yield return new WaitForSeconds(2.0f);
-        GameController.AdvanceToNextLevel();
+        GameController.EnterNextLevel();
     }
 }

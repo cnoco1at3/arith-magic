@@ -29,7 +29,7 @@ public class PartsPocket : MonoBehaviour, IInteractable {
         }
         IInteractable src = part.GetComponent<IInteractable>();
         if (src == null) {
-            ScriptDebug.Log(this, 40, "Instantiated a non-interactable object");
+            ScriptDebug.Log(this, 32, "Instantiated a non-interactable object");
             Destroy(part);
         }
 

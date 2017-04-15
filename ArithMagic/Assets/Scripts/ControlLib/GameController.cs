@@ -34,15 +34,8 @@ public class GameController : PersistentSingleton<GameController> {
         return level_index_;
     }
 
-    public static void ReturnToPreviousLevel() {
-        level_index_ = GetCurrentLevel() - 1;
-        try {
-            user_prof.progress_index = level_index_;
-            avatar_conn.SaveToText();
-        } catch (NullReferenceException e) {
-            Debug.LogException(e);
-        }
-        SceneManager.LoadScene(kMapScene);
+    public static void EnterNextLevel() {
+        SceneManager.LoadScene(kGameScene);
     }
 
     public static void AdvanceToNextLevel() {
@@ -53,7 +46,6 @@ public class GameController : PersistentSingleton<GameController> {
         } catch (NullReferenceException e) {
             Debug.LogException(e);
         }
-        SceneManager.LoadScene(kGameScene);
     }
     /*
      * END LEVEL
@@ -77,17 +69,24 @@ public class GameController : PersistentSingleton<GameController> {
         return profiles;
     }
 
-    public static void AddProfile(string first, string last) {
-        AvatarProfile profile = new AvatarProfile(first, last);
+    public static void AddProfile(AvatarProfile profile) {
         avatar_conn.AddProfile(profile);
         avatar_conn.SaveToText();
     }
 
-    public static void EditProfileById(int id, string first, string last, AvatarProfile.GradeLevel grade) {
-        AvatarProfile prof = avatar_conn.GetProfileByIndex(id);
+    public static AvatarProfile GetProfileById(int id) {
+        return avatar_conn.GetProfileByIndex(id);
+    }
 
-        prof.first_name = first;
-        prof.last_name = last;
+    public static void RemoveProfile(AvatarProfile prof) {
+        avatar_conn.RemoveProfile(prof);
+        avatar_conn.SaveToText();
+    }
+
+    public static void EditProfile(AvatarProfile prof, string name, uint age, AvatarProfile.Gender gender, AvatarProfile.GradeLevel grade) {
+        prof.name = name;
+        prof.age = age;
+        prof.gender = gender;
         prof.grade = grade;
 
         avatar_conn.SaveToText();

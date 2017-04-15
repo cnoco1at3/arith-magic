@@ -34,6 +34,8 @@ public class MapScroller : Dragable {
         } catch (KeyNotFoundException e) {
             Debug.LogException(e);
         }
+
+        Debug.Log(GameController.user_prof);
     }
 
     void FixedUpdate() {
