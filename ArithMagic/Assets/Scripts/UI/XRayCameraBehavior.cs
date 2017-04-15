@@ -13,6 +13,9 @@ public class XRayCameraBehavior : GenericSingleton<XRayCameraBehavior> {
     public AudioClip sfx_b_scan;
     public AudioClip sfx_a_scan;
 
+    public AudioClip[] bgm;
+    private int bgmTrack = 0; 
+
     [SerializeField]
     private GameObject back_button_;
 
@@ -45,6 +48,8 @@ public class XRayCameraBehavior : GenericSingleton<XRayCameraBehavior> {
         if (remove) {
             parts_.Remove(part_ptr_);
             Destroy(part_ptr_);
+            bgmTrack += 1;
+            SoundManager.Instance.PlayBGM(bgm[bgmTrack]);
         }
 
         if (parts_.Count == 0) {
@@ -130,6 +135,7 @@ public class XRayCameraBehavior : GenericSingleton<XRayCameraBehavior> {
     // Use this for initialization
     void Start() {
         SoundManager.Instance.SwitchScene(null, sfx_b_scan);
+        SoundManager.Instance.PlayBGM(bgm[bgmTrack]);
 
         detect_thres_ = (float)ConstantTweakTool.Instance["DetectThreshold"];
         detect_time_ = detect_thres_;

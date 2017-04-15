@@ -16,10 +16,10 @@ public class MapScroller : Dragable {
     private static float kDecay;
     private SpriteRenderer sprite_;
 
-    public AudioClip mapBackground;
+    public AudioClip[] mapBackground;
 
     void Start() {
-        SoundManager.Instance.PlayBGM(mapBackground);
+        SoundManager.Instance.PlayBGM(mapBackground[UnityEngine.Random.Range(0,mapBackground.Length)]);
         try {
             kHooke = (float)ConstantTweakTool.Instance["HookeFactor"];
             kDecay = (float)ConstantTweakTool.Instance["ScrollDecay"];
@@ -49,9 +49,9 @@ public class MapScroller : Dragable {
         else if (transform.position.y < -bound)
             f = -kHooke * (bound + transform.position.y);
 
-        float x = SlideX();
+        //float x = SlideX();
 
-        transform.position = new Vector3(x, transform.position.y + f, transform.position.z);
+        transform.position = new Vector3(transform.position.x, transform.position.y + f, transform.position.z);
     }
 
     public override void OnTouchEnter(Vector3 touch_pos) {
@@ -64,8 +64,8 @@ public class MapScroller : Dragable {
         prev_world_vel = world_pos - prev_world_pos;
         prev_world_pos = world_pos;
 
-        float x = SlideX();
-        transform.position = new Vector3(x, transform.position.y + delta_pos.y, transform.position.z);
+        //float x = SlideX();
+        transform.position = new Vector3(transform.position.x, transform.position.y + delta_pos.y, transform.position.z);
     }
 
     private float SlideX() {

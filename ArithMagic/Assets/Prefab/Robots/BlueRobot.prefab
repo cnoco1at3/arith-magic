@@ -344,7 +344,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4581373377267286}
   - component: {fileID: 95784224670901538}
-  - component: {fileID: 82695178843840366}
+  - component: {fileID: 82058507357140792}
+  - component: {fileID: 114444967383901302}
   m_Layer: 8
   m_Name: BlueRobot
   m_TagString: Robot
@@ -1256,7 +1257,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.1
---- !u!82 &82695178843840366
+--- !u!82 &82058507357140792
 AudioSource:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -1265,8 +1266,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: ae87b101f1d0388429fbe0b37e37e2d5, type: 3}
-  m_PlayOnAwake: 0
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -1353,6 +1354,30 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114444967383901302
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1578655078615640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1622a2be235d2c64a86fc9ca7267240f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  robotAudio_: {fileID: 0}
+  fixedClips_:
+  - {fileID: 8300000, guid: 27fea1fc6b231b04797f4fbadc4109e6, type: 3}
+  brokenClips_:
+  - {fileID: 8300000, guid: 65d8ecc09c3fa234397567fd7f81f70d, type: 3}
+  - {fileID: 8300000, guid: aec0342b8a3a3f441a80bd9da32742af, type: 3}
+  - {fileID: 8300000, guid: 47a00a2cda7293e459c4c21782773cb5, type: 3}
+  - {fileID: 8300000, guid: 736afada4a2cd0840b336a3ad3e1c8b3, type: 3}
+  - {fileID: 8300000, guid: c74e5172b35ff844499ad3f2a55cc1b3, type: 3}
+  - {fileID: 8300000, guid: c04ff84992318cb4e96da611030eda16, type: 3}
+  - {fileID: 8300000, guid: 8419760b5f8e9584596269ab8ea237ed, type: 3}
+  - {fileID: 8300000, guid: 4264c2c2126c1f14790aca3713814651, type: 3}
+  - {fileID: 8300000, guid: 3c631e8d0499d394db5184a1d4db2d9c, type: 3}
 --- !u!114 &114681254021084536
 MonoBehaviour:
   m_ObjectHideFlags: 1
