@@ -13,8 +13,8 @@ namespace SoundLib {
         private static Queue<AudioClip> sfx_queue_;
         private static HashSet<AudioClip> clips_set_;
 
-        // this would allow at most 6 sound effects playing simultaneously
-        private const int kSFXBufferSize = 6;
+        // this would allow at most 3 sound effects playing simultaneously
+        private const int kSFXBufferSize = 3;
 
         // Use this for initialization
         void Start() {

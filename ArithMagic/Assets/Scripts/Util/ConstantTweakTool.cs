@@ -10,7 +10,9 @@ using UnityEditor;
 /// <summary>
 /// Tool to help tweaking constants
 /// </summary>
+#if UNITY_EDITOR
 [ExecuteInEditMode]
+#endif
 public class ConstantTweakTool : PersistentSingleton<ConstantTweakTool> {
     public delegate void ConstantEvent(ConstantTweakTool src);
     public static ConstantEvent ConstantEventHandler;

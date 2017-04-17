@@ -28,7 +28,7 @@ namespace Util {
                     xs.Serialize(stream, obj);
                     stream.Close();
                 }
-            } catch (IOException e) {
+            } catch (Exception e) {
                 Debug.LogException(e);
             }
         }
@@ -50,10 +50,7 @@ namespace Util {
                     stream.Close();
                     return val;
                 }
-            } catch (IOException e) {
-                Debug.LogException(e);
-                return default(T);
-            } catch (InvalidCastException e) {
+            } catch (Exception e) {
                 Debug.LogException(e);
                 return default(T);
             }

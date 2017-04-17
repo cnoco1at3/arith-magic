@@ -286,57 +286,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c1bf3985fad1d7e48b78fd3fa83b3d9b, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &377497610
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 377497612}
-  - component: {fileID: 377497611}
-  m_Layer: 0
-  m_Name: BatteriesCluster
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &377497611
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 377497610}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e81f6cf625cab446ad7e1bf4674baf0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parts:
-  - {fileID: 1864569438913024, guid: 72155baa5773bdd45a10804f7ce9e856, type: 2}
-  - {fileID: 1506987651356144, guid: d9eb16fd5f291194287c979cfeea785f, type: 2}
-  - {fileID: 1847897140314138, guid: 66a2bddff4997dd4197b4e8df80c5b0a, type: 2}
-  - {fileID: 1641856174454546, guid: d9541c3f9d74b2f44b71e3820650a507, type: 2}
-  - {fileID: 1710775126541674, guid: 4dcac37e59b8db54b8909c700564ec2c, type: 2}
-  - {fileID: 1330188281193298, guid: 5bae31cf4552ccd4aafd8a36d28dd20a, type: 2}
-  - {fileID: 1979696270564890, guid: 621684a7920483542ac012a444f1774d, type: 2}
-  - {fileID: 1858729675305384, guid: 5475f1d15b6740f4a9ebd2095d526c14, type: 2}
-  - {fileID: 1236113962815514, guid: 4a7f4d7f6a9ce8d4d8e55af46240a500, type: 2}
-  - {fileID: 1915282962108414, guid: acb6ccd1ebc7eee4e90aa7edad0042e3, type: 2}
---- !u!4 &377497612
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 377497610}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.359499, y: 7.2099996, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &938887732
 GameObject:
   m_ObjectHideFlags: 0
@@ -522,6 +471,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1816269680}
   - component: {fileID: 1816269679}
+  - component: {fileID: 1816269681}
   m_Layer: 0
   m_Name: RobotCluster
   m_TagString: Untagged
@@ -565,8 +515,30 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1816269681
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1816269678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e81f6cf625cab446ad7e1bf4674baf0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parts:
+  - {fileID: 1864569438913024, guid: 72155baa5773bdd45a10804f7ce9e856, type: 2}
+  - {fileID: 1506987651356144, guid: d9eb16fd5f291194287c979cfeea785f, type: 2}
+  - {fileID: 1847897140314138, guid: 66a2bddff4997dd4197b4e8df80c5b0a, type: 2}
+  - {fileID: 1641856174454546, guid: d9541c3f9d74b2f44b71e3820650a507, type: 2}
+  - {fileID: 1710775126541674, guid: 4dcac37e59b8db54b8909c700564ec2c, type: 2}
+  - {fileID: 1330188281193298, guid: 5bae31cf4552ccd4aafd8a36d28dd20a, type: 2}
+  - {fileID: 1979696270564890, guid: 621684a7920483542ac012a444f1774d, type: 2}
+  - {fileID: 1858729675305384, guid: 5475f1d15b6740f4a9ebd2095d526c14, type: 2}
+  - {fileID: 1236113962815514, guid: 4a7f4d7f6a9ce8d4d8e55af46240a500, type: 2}
+  - {fileID: 1915282962108414, guid: acb6ccd1ebc7eee4e90aa7edad0042e3, type: 2}
 --- !u!1 &1866038039
 GameObject:
   m_ObjectHideFlags: 0

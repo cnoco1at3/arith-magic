@@ -46,7 +46,7 @@ public static class ProblemRuler {
                 break;
             case 8:
                 num1 = Random.Range(10, 18);
-                num2 = Random.Range(num1 - 9, 9);
+                num2 = Random.Range(0, num1 % 10);
                 break;
             case 9:
                 num1 = Random.Range(10, 99);

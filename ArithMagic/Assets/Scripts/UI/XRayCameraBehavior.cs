@@ -147,7 +147,8 @@ public class XRayCameraBehavior : GenericSingleton<XRayCameraBehavior> {
         // TODO wrap category
         float wrapper = GameController.add ? 6.0f : 5.0f;
         int sub_offset = GameController.add ? 0 : 6;
-        category_ = Mathf.RoundToInt(Mathf.Repeat(MapRobotBehavior.GetDockedId(), 5.0f) + 1) + sub_offset;
+        category_ = Mathf.RoundToInt(Mathf.Repeat(MapRobotBehavior.GetDockedId(), wrapper) + 1) + sub_offset;
+        Debug.Log(category_);
         // TODO wrap robots
         try {
             robot_ = Instantiate(RobotCluster.Instance.GetRobotById(MapRobotBehavior.GetDockedId()));
