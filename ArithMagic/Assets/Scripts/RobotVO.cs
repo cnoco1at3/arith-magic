@@ -6,8 +6,8 @@ public class RobotVO : MonoBehaviour
 {
     public AudioSource robotAudio_;
 
-    public AudioClip[] fixedClips_;
-    public AudioClip[] brokenClips_;
+    public List<AudioClip> fixedClips_ = new List<AudioClip>();
+    public List<AudioClip> brokenClips_ = new List<AudioClip>();
 
 
 	// Use this for initialization

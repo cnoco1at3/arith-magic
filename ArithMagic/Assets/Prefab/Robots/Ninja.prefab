@@ -1675,7 +1675,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: d2ee4e5a9d4abc748ac69cd864d33409, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -1780,12 +1780,11 @@ MonoBehaviour:
   - {fileID: 8300000, guid: cfc6810dd4cca3249b74c44ddec81643, type: 3}
   brokenClips_:
   - {fileID: 8300000, guid: 495fe6dcf5989f8468ed752686e2c3b8, type: 3}
-  - {fileID: 8300000, guid: d2ee4e5a9d4abc748ac69cd864d33409, type: 3}
+  - {fileID: 8300000, guid: 24fa9c8bb0f09c846a0dc1be901b0202, type: 3}
   - {fileID: 8300000, guid: 22448304a56065240933c7c46b9ae029, type: 3}
   - {fileID: 8300000, guid: a5b1bb343a56e9544b5491bd804f33dd, type: 3}
   - {fileID: 8300000, guid: 7ddb34e887c355049b01d8cea044470a, type: 3}
   - {fileID: 8300000, guid: dc555fc5b50b4c34bb266a1cfcd5db80, type: 3}
-  - {fileID: 8300000, guid: 24fa9c8bb0f09c846a0dc1be901b0202, type: 3}
 --- !u!212 &212013396043043488
 SpriteRenderer:
   m_ObjectHideFlags: 1
