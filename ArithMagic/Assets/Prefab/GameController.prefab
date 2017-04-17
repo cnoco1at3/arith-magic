@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 114603296478033120}
   - component: {fileID: 114291420537150346}
   - component: {fileID: 114948107749135702}
+  - component: {fileID: 114422876778414216}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -53,6 +54,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40eeeea6a6d1dea4db15ad0fb45c6d7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114422876778414216
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1816103332012876}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3dd0aeb6babd01f42a8a4b192dcdd5bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114603296478033120
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -64,6 +76,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c9ff36a604cd8c4dae856328e0a2929, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cheat_clip: {fileID: 8300000, guid: 2620206b18258fd4aaa84387ee62532a, type: 3}
 --- !u!114 &114948107749135702
 MonoBehaviour:
   m_ObjectHideFlags: 1

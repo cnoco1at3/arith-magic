@@ -16,6 +16,8 @@ public class MapScroller : Dragable {
     private static float kDecay;
     private SpriteRenderer sprite_;
 
+    private bool fix_move_ = true;
+
     public AudioClip[] mapBackground;
 
     void Start() {
@@ -30,7 +32,9 @@ public class MapScroller : Dragable {
             LockBoxBehavior center = LevelCluster.Instance.GetLockBoxById(MapRobotBehavior.GetDockedId());
             if (center == null)
                 center = LevelCluster.Instance.GetLockBoxById(0);
+            fix_move_ = false;
             transform.DOMoveY(transform.position.y - center.transform.position.y, 2.0f);
+            StartCoroutine(CenterAnim());
         } catch (KeyNotFoundException e) {
             Debug.LogException(e);
         }
@@ -39,19 +43,19 @@ public class MapScroller : Dragable {
     }
 
     void FixedUpdate() {
-        prev_world_vel *= kDecay;
-        float f = prev_world_vel.y;
+        if (fix_move_) {
+            prev_world_vel *= kDecay;
+            float f = prev_world_vel.y;
 
-        float bound = sprite_.bounds.extents.y - 10.0f;
+            float bound = sprite_.bounds.extents.y - 10.0f;
 
-        if (transform.position.y > bound)
-            f = kHooke * (bound - transform.position.y);
-        else if (transform.position.y < -bound)
-            f = -kHooke * (bound + transform.position.y);
+            if (transform.position.y > bound)
+                f = kHooke * (bound - transform.position.y);
+            else if (transform.position.y < -bound)
+                f = -kHooke * (bound + transform.position.y);
 
-        //float x = SlideX();
-
-        transform.position = new Vector3(transform.position.x, transform.position.y + f, transform.position.z);
+            transform.position = new Vector3(transform.position.x, transform.position.y + f, transform.position.z);
+        }
     }
 
     public override void OnTouchEnter(Vector3 touch_pos) {
@@ -68,7 +72,8 @@ public class MapScroller : Dragable {
         transform.position = new Vector3(transform.position.x, transform.position.y + delta_pos.y, transform.position.z);
     }
 
-    private float SlideX() {
-        return Mathf.Lerp(7.5f, -7.5f, (Mathf.Clamp(transform.position.y + 16.0f, -8.0f, 8.0f) + 8.0f) / 16.0f);
+    private IEnumerator CenterAnim() {
+        yield return new WaitForSeconds(2.0f);
+        fix_move_ = true;
     }
 }

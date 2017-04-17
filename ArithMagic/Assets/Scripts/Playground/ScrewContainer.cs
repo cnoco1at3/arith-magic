@@ -44,9 +44,21 @@ public class ScrewContainer : Clickable {
         return slot_index_;
     }
 
+    public GenericScrewBehavior ReleaseSlot() {
+        if (is_empty)
+            return null;
+        GenericScrewBehavior tmp = buckets_[slot_index_];
+        buckets_[slot_index_--] = null;
+        return tmp;
+    }
+
     public Vector3 GetNextSlotPosition() {
         int next_index = slot_index_ + 1;
         return next_index >= slots_.Length ? Vector3.zero : slots_[next_index].position;
+    }
+
+    public Vector3 GetLastSlotPosition() {
+        return slots_[slot_index_].position;
     }
 
     public void ClearSlots() {
@@ -115,13 +127,6 @@ public class ScrewContainer : Clickable {
         StartCoroutine(BorrowAnim(prev_container));
     }
 
-    private GenericScrewBehavior ReleaseSlot() {
-        if (is_empty)
-            return null;
-        GenericScrewBehavior tmp = buckets_[slot_index_];
-        buckets_[slot_index_--] = null;
-        return tmp;
-    }
 
     private IEnumerator BorrowAnim(ScrewContainer prev_container) {
         InteractManager.LockInteraction();

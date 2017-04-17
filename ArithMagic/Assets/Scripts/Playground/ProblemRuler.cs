@@ -12,6 +12,7 @@ public static class ProblemRuler {
         int num1, num2;
 
         switch (category) {
+            // additions
             case 1:
                 num1 = Random.Range(1, 9);
                 num2 = Random.Range(0, 9 - num1);
@@ -37,6 +38,29 @@ public static class ProblemRuler {
                 num2 = Random.Range(10, 90 - num1) / 10 * 10;
                 num2 += num1 % 10 == 0 ? 9 : Random.Range(10 - num1 % 10, 9);
                 break;
+
+            // subtractions
+            case 7:
+                num1 = Random.Range(1, 9);
+                num2 = Random.Range(0, num1);
+                break;
+            case 8:
+                num1 = Random.Range(10, 18);
+                num2 = Random.Range(num1 - 9, 9);
+                break;
+            case 9:
+                num1 = Random.Range(10, 99);
+                num2 = Random.Range(1, num1 / 10) * 10 + Random.Range(0, num1 % 10);
+                break;
+            case 10:
+                num1 = Random.Range(10, 99);
+                num2 = Random.Range(num1 % 10, 9);
+                break;
+            case 11:
+                num1 = Random.Range(20, 99);
+                num2 = Random.Range(1, num1 / 10) * 10 + Random.Range(num1 % 10, 9);
+                break;
+
             default:
                 num1 = 0;
                 num2 = 0;
@@ -50,11 +74,9 @@ public static class ProblemRuler {
 public class ProblemData {
     public int num1;
     public int num2;
-    public bool add;
 
-    public ProblemData(int n1, int n2, bool af = true) {
+    public ProblemData(int n1, int n2) {
         num1 = n1;
         num2 = n2;
-        add = af;
     }
 }

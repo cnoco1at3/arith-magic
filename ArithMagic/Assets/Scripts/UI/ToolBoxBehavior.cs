@@ -139,10 +139,10 @@ public class ToolBoxBehavior : GenericSingleton<ToolBoxBehavior> {
 
     private void SetNewProblem(ProblemData prob) {
         ClearProblem();
-        SpawnOperator(prob.add);
+        SpawnOperator(GameController.add);
         SpawnProblem(prob.num1, prob.num2);
 
-        int ans = prob.add ? prob.num1 + prob.num2 : prob.num1 - prob.num2;
+        int ans = GameController.add ? prob.num1 + prob.num2 : prob.num1 - prob.num2;
         RefineSlots(ans);
     }
 
@@ -184,10 +184,10 @@ public class ToolBoxBehavior : GenericSingleton<ToolBoxBehavior> {
         }
 
         problems_[2] = Instantiate(numbers_[num2 % 10], anchors_[2].position, Quaternion.identity, transform);
-        problems_[2].GetComponent<ScrewGenerator>().GenerateScrews(0);
+        problems_[2].GetComponent<ScrewGenerator>().GenerateScrews(0, GameController.add);
         if (num2 >= 10) {
             problems_[3] = Instantiate(numbers_[num2 / 10], anchors_[3].position, Quaternion.identity, transform);
-            problems_[3].GetComponent<ScrewGenerator>().GenerateScrews(1);
+            problems_[3].GetComponent<ScrewGenerator>().GenerateScrews(1, GameController.add);
         }
     }
 

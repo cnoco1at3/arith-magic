@@ -11,12 +11,9 @@ public class LockBoxBehavior : Clickable, IComparable {
     private Vector3 target_pos_;
 
     [SerializeField]
-    private GameObject robot_pic_;
+    private Sprite unlocked_pic_;
 
-    [SerializeField]
-    private Sprite feng_rao_;
-
-    private static Sprite feng_feng_;
+    private static Sprite unlocked_pic__;
 
     private bool unlocked_ = false;
 
@@ -26,8 +23,8 @@ public class LockBoxBehavior : Clickable, IComparable {
     public AudioClip moveRobotSound;
 
     void Start() {
-        if (feng_rao_ != null)
-            feng_feng_ = feng_rao_;
+        if (unlocked_pic_ != null)
+            unlocked_pic__ = unlocked_pic_;
     }
 
     public int CompareTo(object obj) {
@@ -57,7 +54,7 @@ public class LockBoxBehavior : Clickable, IComparable {
     }
 
     public void SetUnlocked() {
-        GetComponent<SpriteRenderer>().sprite = feng_feng_;
+        GetComponent<SpriteRenderer>().sprite = unlocked_pic__;
         /*
         if (robot_pic_ != null) {
             GameObject robot = Instantiate(robot_pic_, transform);

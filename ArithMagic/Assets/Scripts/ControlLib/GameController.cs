@@ -10,6 +10,8 @@ public class GameController : PersistentSingleton<GameController> {
 
     public const bool kDebug = true;
 
+    public static bool add = true;
+
     void Awake() {
         DOTween.Init(true, true);
     }
@@ -106,5 +108,21 @@ public class GameController : PersistentSingleton<GameController> {
     /*
      * END PROFILE
      */
+    #endregion
+
+    #region cheat
+
+    public AudioClip cheat_clip;
+    public static long sequence = 0;
+    public const long cheatcode = 1122343456;
+
+    public void CheckCheat() {
+        if (sequence == cheatcode) {
+            Debug.Log("Cheat!");
+            SoundLib.SoundManager.Instance.PlaySFX(cheat_clip);
+            add = false;
+        }
+    }
+
     #endregion
 }

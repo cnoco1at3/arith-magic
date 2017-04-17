@@ -7,7 +7,7 @@ using DG.Tweening;
 
 public class GenericScrewBehavior : Clickable {
 
-    public bool on_number = false;
+    public bool add = true;
 
     [SerializeField]
     protected int screw_id_;
@@ -35,13 +35,33 @@ public class GenericScrewBehavior : Clickable {
     }
 
     public override void ClickEvent() {
-        MoveToContainer();
+        if (add)
+            MoveToContainer();
+        else
+            MissleContainer();
     }
 
     public void SetWiggle(bool wiggle) {
         if (wiggle != wiggle_) {
             transform.localPosition = origin_;
             wiggle_ = wiggle;
+        }
+    }
+
+    public void MissleContainer() {
+        try {
+            if (!container_.is_empty) {
+                SoundManager.Instance.PlaySFX(sfx_clip_, false);
+                Vector3 pos = container_.GetLastSlotPosition();
+                GenericScrewBehavior last = container_.ReleaseSlot();
+
+                if (prev_screw_ != null)
+                    StartCoroutine(ClusterAnim(pos, last));
+                else
+                    StartCoroutine(SingleAnim(pos, last));
+            }
+        } catch (NullReferenceException e) {
+            Debug.LogException(e);
         }
     }
 
@@ -62,7 +82,6 @@ public class GenericScrewBehavior : Clickable {
                     StartCoroutine(SingleAnim(pos));
 
                 collider_.enabled = false;
-                on_number = false;
             }
         } catch (NullReferenceException e) {
             Debug.LogException(e);
@@ -79,7 +98,7 @@ public class GenericScrewBehavior : Clickable {
         origin_ = local;
     }
 
-    private IEnumerator SingleAnim(Vector3 pos) {
+    private IEnumerator SingleAnim(Vector3 pos, GenericScrewBehavior tar = null) {
         MoveToPosition(pos);
         yield return new WaitForSeconds(0.5f);
 
@@ -88,9 +107,14 @@ public class GenericScrewBehavior : Clickable {
             container_.SetWiggleBuckets(true);
         else
             container_.SetWiggleBuckets(false);
+
+        if (!add) {
+            Destroy(tar.gameObject);
+            Destroy(gameObject);
+        }
     }
 
-    private IEnumerator ClusterAnim(Vector3 pos) {
+    private IEnumerator ClusterAnim(Vector3 pos, GenericScrewBehavior tar = null) {
         GameObject[] ones = new GameObject[9];
 
         // Instantiate ones
@@ -118,6 +142,11 @@ public class GenericScrewBehavior : Clickable {
         // Destroy ones
         for (int i = 0; i < ones.Length; ++i)
             Destroy(ones[i]);
+
+        if (!add) {
+            Destroy(tar.gameObject);
+            Destroy(gameObject);
+        }
     }
 
 
