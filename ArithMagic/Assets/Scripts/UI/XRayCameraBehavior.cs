@@ -56,13 +56,15 @@ public class XRayCameraBehavior : GenericSingleton<XRayCameraBehavior> {
             robot_.GetComponent<Animator>().SetBool("isDancing", true);
             back_button_.SetActive(true);
             try {
-                roboVO.robotAudio_.clip = roboVO.fixedClips_[UnityEngine.Random.Range(0, roboVO.fixedClips_.Length - 1)];
+                roboVO.robotAudio_.clip = roboVO.fixedClips_[UnityEngine.Random.Range(0, roboVO.fixedClips_.Count)];
                 roboVO.robotAudio_.Play();
             } catch (Exception) { }
         } else {
             SetXRayCameraActive(true);
             try {
-                roboVO.robotAudio_.clip = roboVO.brokenClips_[UnityEngine.Random.Range(0, roboVO.brokenClips_.Length - 1)];
+                int clipNumber = UnityEngine.Random.Range(0, roboVO.brokenClips_.Count);
+                roboVO.robotAudio_.clip = roboVO.brokenClips_[clipNumber];
+                roboVO.brokenClips_.RemoveAt(clipNumber);
                 roboVO.robotAudio_.Play();
             } catch (Exception) { }
         }
