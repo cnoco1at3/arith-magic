@@ -117,11 +117,11 @@ public class GameController : PersistentSingleton<GameController> {
     public const long cheatcode = 1122343456;
 
     public void CheckCheat() {
-        if (sequence == cheatcode) {
+       // if (sequence == cheatcode) {
             Debug.Log("Cheat!");
             SoundLib.SoundManager.Instance.PlaySFX(cheat_clip);
             add = false;
-        }
+        //}
     }
 
     #endregion
