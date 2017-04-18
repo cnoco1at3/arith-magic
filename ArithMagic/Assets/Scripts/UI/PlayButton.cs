@@ -10,6 +10,9 @@ public class PlayButton : MonoBehaviour {
     private string nextSceneName;
     private Button playButton;
 
+    [SerializeField]
+    private bool add = false;
+
     public AudioClip clip;
     //public AudioClip backgroundSound;
 
@@ -18,6 +21,11 @@ public class PlayButton : MonoBehaviour {
         playButton.interactable = false;
         SoundManager.Instance.StopBGM();
         SceneManager.LoadScene(nextSceneName);
+
+        if (add == false)
+        {
+            GameController.Instance.CheckCheat();
+        }
     }
 
     void Start() {

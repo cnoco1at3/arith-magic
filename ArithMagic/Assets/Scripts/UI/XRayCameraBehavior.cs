@@ -14,7 +14,7 @@ public class XRayCameraBehavior : GenericSingleton<XRayCameraBehavior> {
     public AudioClip sfx_a_scan;
 
     public AudioClip[] bgm;
-    private int bgmTrack = 0; 
+    private int bgmTrack = 0;
 
     [SerializeField]
     private GameObject back_button_;
@@ -155,9 +155,10 @@ public class XRayCameraBehavior : GenericSingleton<XRayCameraBehavior> {
         collider_ = GetComponent<BoxCollider2D>();
 
         // TODO wrap category
-        float wrapper = GameController.add ? 6.0f : 5.0f;
-        int sub_offset = GameController.add ? 0 : 6;
-        category_ = Mathf.RoundToInt(Mathf.Repeat(MapRobotBehavior.GetDockedId(), wrapper) + 1) + sub_offset;
+        int wrap = GameController.add ? 6 : 5;
+        int offset = GameController.add ? 1 : 7;
+        category_ = ProblemRuler.GetCategory(MapRobotBehavior.GetDockedId(), (int)GameController.user_prof.grade);
+        category_ = Mathf.Clamp(category_, 0, wrap) + offset;
         Debug.Log(category_);
         // TODO wrap robots
         try {
