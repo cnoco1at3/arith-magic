@@ -11,7 +11,7 @@ namespace SoundLib {
         private static AudioSource[] sfx_src_;
         private static Queue<AudioClip> bgm_queue_;
         private static Queue<AudioClip> sfx_queue_;
-        private static HashSet<AudioClip> clips_set_;
+        private static Dictionary<AudioClip, AudioSource> clips_set_;
 
         // this would allow at most 3 sound effects playing simultaneously
         private const int kSFXBufferSize = 3;
@@ -37,7 +37,7 @@ namespace SoundLib {
             FlushSFX();
 
             if (clips_set_ == null)
-                clips_set_ = new HashSet<AudioClip>();
+                clips_set_ = new Dictionary<AudioClip, AudioSource>();
         }
 
         public void SwitchScene(AudioClip bgm, AudioClip[] sfx) {
@@ -76,7 +76,10 @@ namespace SoundLib {
 
             if (clip == null)
                 return false;
-            if (clips_set_ == null || clips_set_.Contains(clip))
+            if (clips_set_ == null)
+                return false;
+
+            if (clips_set_.ContainsKey(clip) && clips_set_[clip].isPlaying)
                 return false;
 
             try {
@@ -85,7 +88,7 @@ namespace SoundLib {
                 bgm_src_.clip = clip;
                 bgm_src_.Play();
 
-                clips_set_.Add(clip);
+                clips_set_[clip] = bgm_src_;
 
                 return true;
             } catch (NullReferenceException e) {
@@ -104,7 +107,6 @@ namespace SoundLib {
             try {
                 if (bgm_src_.isPlaying) {
                     bgm_src_.Stop();
-                    clips_set_.Remove(bgm_src_.clip);
                     return true;
                 }
             } catch (NullReferenceException e) {
@@ -116,7 +118,10 @@ namespace SoundLib {
         public bool PlaySFX(AudioClip clip, bool loop = false) {
             if (clip == null)
                 return false;
-            if (clips_set_ == null || clips_set_.Contains(clip))
+            if (clips_set_ == null)
+                return false;
+
+            if (clips_set_.ContainsKey(clip) && clips_set_[clip].isPlaying)
                 return false;
 
             try {
@@ -132,7 +137,7 @@ namespace SoundLib {
                         src.loop = loop;
                         src.Play();
 
-                        clips_set_.Remove(clip);
+                        clips_set_[clip] = src;
 
                         return true;
                     }
@@ -162,8 +167,13 @@ namespace SoundLib {
             if (clip == null)
                 return false;
 
-            if (clips_set_ == null || !clips_set_.Contains(clip))
+            if (clips_set_ == null)
                 return false;
+
+            if (clips_set_.ContainsKey(clip) && !clips_set_[clip].isPlaying) {
+                clips_set_.Remove(clip);
+                return true;
+            }
 
             try {
                 for (int i = 0; i < sfx_src_.Length; ++i) {

@@ -2,8 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Util;
+using AvatarLib;
 
 public static class ProblemRuler {
+
+    private static int[] k_category_ = new int[18];
+    private static int[] f_category_ = new int[18] { 0, 0, 0, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2 };
+    private static int[] s_category_ = new int[18] { 0, 1, 2, 3, 3, 3, 4, 4, 4, 5, 5, 5, 6, 6, 6, 6, 6, 6 };
 
     public static ProblemData GetNewProblem(int category) {
 
@@ -68,6 +73,19 @@ public static class ProblemRuler {
         }
 
         return new ProblemData(num1, num2);
+    }
+
+    public static int GetCategory(int level, int grade) {
+        switch (grade) {
+            case 0:
+                return k_category_[level];
+            case 1:
+                return f_category_[level];
+            case 2:
+                return s_category_[level];
+            default:
+                return 0;
+        }
     }
 }
 
