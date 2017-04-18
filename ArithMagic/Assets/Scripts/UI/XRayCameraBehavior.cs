@@ -58,6 +58,8 @@ public class XRayCameraBehavior : GenericSingleton<XRayCameraBehavior> {
             try {
                 roboVO.robotAudio_.clip = roboVO.fixedClips_[UnityEngine.Random.Range(0, roboVO.fixedClips_.Count)];
                 roboVO.robotAudio_.Play();
+                back_button_.GetComponent<Animator>().SetTrigger("Scale");
+
             } catch (Exception) { }
         } else {
             SetXRayCameraActive(true);
@@ -80,6 +82,7 @@ public class XRayCameraBehavior : GenericSingleton<XRayCameraBehavior> {
 
         if (other.gameObject.tag == "Part")
             SetDetectStatus(other);
+
     }
 
     void OnTriggerStay2D(Collider2D other) {
@@ -103,7 +106,10 @@ public class XRayCameraBehavior : GenericSingleton<XRayCameraBehavior> {
     //Exit with part, stops and resets countdown
     void OnTriggerExit2D(Collider2D other) {
         if (other.gameObject.tag == "Part")
+        {
             SetDetectStatus(null);
+            SoundManager.Instance.StopSFX(sfx_detect);
+        }
     }
 
     private void SetDetectStatus(Collider2D other) {
@@ -113,7 +119,9 @@ public class XRayCameraBehavior : GenericSingleton<XRayCameraBehavior> {
         is_entered_ = other != null;
 
         if (is_entered_)
+        { 
             SoundManager.Instance.PlaySFX(sfx_detect);
+        }
     }
 
     private void PopsUpToolBox() {
@@ -136,8 +144,8 @@ public class XRayCameraBehavior : GenericSingleton<XRayCameraBehavior> {
 
     // Use this for initialization
     void Start() {
-        SoundManager.Instance.SwitchScene(null, sfx_b_scan);
-        SoundManager.Instance.PlayBGM(bgm[bgmTrack]);
+        SoundManager.Instance.SwitchScene(bgm[bgmTrack], sfx_b_scan);
+        //SoundManager.Instance.PlayBGM(bgm[bgmTrack]);
 
         detect_thres_ = (float)ConstantTweakTool.Instance["DetectThreshold"];
         detect_time_ = detect_thres_;
