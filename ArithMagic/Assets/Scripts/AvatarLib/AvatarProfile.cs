@@ -53,7 +53,8 @@ namespace AvatarLib {
 
         public uint age = 0;
 
-        public int progress_index = -1;
+        public int add_index = -1;
+        public int sub_index = -1;
 
         public bool Equals(AvatarProfile other) {
             return user.Equals(other.user) && name.Equals(other.name);

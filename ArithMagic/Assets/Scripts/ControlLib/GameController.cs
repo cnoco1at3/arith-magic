@@ -31,7 +31,7 @@ public class GameController : PersistentSingleton<GameController> {
 
     public static int GetCurrentLevel() {
         try {
-            level_index_ = user_prof.progress_index;
+            level_index_ = add ? user_prof.add_index : user_prof.sub_index;
         } catch (NullReferenceException) { }
         return level_index_;
     }
@@ -43,7 +43,10 @@ public class GameController : PersistentSingleton<GameController> {
     public static void AdvanceToNextLevel() {
         level_index_ = GetCurrentLevel() + 1;
         try {
-            user_prof.progress_index = level_index_;
+            if (add)
+                user_prof.add_index = level_index_;
+            else
+                user_prof.sub_index = level_index_;
             avatar_conn.SaveToText();
         } catch (NullReferenceException e) {
             Debug.LogException(e);
