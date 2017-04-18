@@ -1803,7 +1803,7 @@ Transform:
   m_GameObject: {fileID: 1736222046040774}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -9.21, y: -0.46, z: 0}
-  m_LocalScale: {x: 4.9361563, y: 4.9361563, z: 0.98722154}
+  m_LocalScale: {x: 1.1389292, y: 1.1389292, z: 1.1389292}
   m_Children: []
   m_Father: {fileID: 4143947751474120}
   m_RootOrder: 7
@@ -2164,13 +2164,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1535470497828676}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0.29995665, w: 0.95395285}
   m_LocalPosition: {x: 1.46, y: -4.63, z: 0}
-  m_LocalScale: {x: 4.9361563, y: 4.9361563, z: 0.98722154}
+  m_LocalScale: {x: 1.1389292, y: 1.1389292, z: 1.1389292}
   m_Children: []
   m_Father: {fileID: 4143947751474120}
   m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 34.91}
 --- !u!4 &4388267739975290
 Transform:
   m_ObjectHideFlags: 1
@@ -2191,13 +2191,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1907184118462120}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: -0.5006045, w: 0.8656761}
   m_LocalPosition: {x: 0.71, y: 2.9243746, z: 0}
-  m_LocalScale: {x: 4.9361563, y: 4.9361563, z: 0.98722154}
+  m_LocalScale: {x: 1.1389292, y: 1.1389292, z: 1.1389292}
   m_Children: []
   m_Father: {fileID: 4143947751474120}
   m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -60.08}
 --- !u!4 &4399345791620066
 Transform:
   m_ObjectHideFlags: 1
@@ -2382,13 +2382,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1724287603015802}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: -0.2541799, w: 0.967157}
   m_LocalPosition: {x: 1.8143768, y: -0.89773816, z: 0}
-  m_LocalScale: {x: 4.9361563, y: 4.9361563, z: 0.98722154}
+  m_LocalScale: {x: 1.1389292, y: 1.1389292, z: 1.1389292}
   m_Children: []
   m_Father: {fileID: 4143947751474120}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -29.45}
 --- !u!4 &4549811684948616
 Transform:
   m_ObjectHideFlags: 1
@@ -3025,13 +3025,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1217953600631264}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: -0.4366448, w: 0.89963406}
   m_LocalPosition: {x: -1.91, y: -7.79, z: 0}
-  m_LocalScale: {x: 4.9361563, y: 4.9361563, z: 0.98722154}
+  m_LocalScale: {x: 1.1389292, y: 1.1389292, z: 1.1389292}
   m_Children: []
   m_Father: {fileID: 4143947751474120}
   m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -51.78}
 --- !u!58 &58031620640716912
 CircleCollider2D:
   m_ObjectHideFlags: 1
@@ -3045,7 +3045,7 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.1
+  m_Radius: 0.5
 --- !u!58 &58287957390505228
 CircleCollider2D:
   m_ObjectHideFlags: 1
@@ -3059,7 +3059,7 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.1
+  m_Radius: 0.5
 --- !u!58 &58555458304162044
 CircleCollider2D:
   m_ObjectHideFlags: 1
@@ -3073,7 +3073,7 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.1
+  m_Radius: 0.5
 --- !u!58 &58816823461840312
 CircleCollider2D:
   m_ObjectHideFlags: 1
@@ -3087,7 +3087,7 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.1
+  m_Radius: 0.5
 --- !u!58 &58919498045470508
 CircleCollider2D:
   m_ObjectHideFlags: 1
@@ -3101,7 +3101,7 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.1
+  m_Radius: 0.5
 --- !u!82 &82399948748257966
 AudioSource:
   m_ObjectHideFlags: 1
@@ -3986,8 +3986,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: -5
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 673134701df1b7f4d9e5e78a5d407848, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
 --- !u!212 &212234036694589906
@@ -5001,8 +5001,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: -5
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 673134701df1b7f4d9e5e78a5d407848, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
 --- !u!212 &212577550908897796
@@ -5036,8 +5036,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: -5
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 673134701df1b7f4d9e5e78a5d407848, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
 --- !u!212 &212579855838876942
@@ -6156,8 +6156,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: -5
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 673134701df1b7f4d9e5e78a5d407848, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
 --- !u!212 &212999649056819702
@@ -6191,7 +6191,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: -5
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 673134701df1b7f4d9e5e78a5d407848, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
