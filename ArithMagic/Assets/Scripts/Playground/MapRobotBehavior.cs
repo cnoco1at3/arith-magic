@@ -28,11 +28,11 @@ public class MapRobotBehavior : GenericSingleton<MapRobotBehavior> {
     public static int GetDockedId() { return docked_id_ > 0 ? docked_id_ : 0; }
 
     public void MoveToPosition(LockBoxBehavior target) {
-        SoundManager.Instance.PlaySFX(move_sfx_);
-        transform.DOLocalMove(target.GetTargetLocalPosition(), 2.0f);
         if (target == LevelCluster.Instance.GetLockBoxById(docked_id_)) {
             GameController.EnterNextLevel();
         } else {
+            SoundManager.Instance.PlaySFX(move_sfx_);
+            transform.DOLocalMove(target.GetTargetLocalPosition(), 2.0f);
             docked_id_ = target.GetLockBoxId();
             StartCoroutine(AdvanceLevel());
         }

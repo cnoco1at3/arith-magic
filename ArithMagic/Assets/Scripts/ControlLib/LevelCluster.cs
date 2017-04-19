@@ -17,10 +17,6 @@ public class LevelCluster : GenericSingleton<LevelCluster> {
                     lock_boxes_[i].SetLockBoxId(i);
                     if (i <= GameController.GetCurrentLevel() + 1)
                         lock_boxes_[i].SetUnlocked();
-                    if (i == GameController.GetCurrentLevel() + 1)
-                        lock_boxes_[i].SetAnimation(true);
-                    else
-                        lock_boxes_[i].SetAnimation(false);
                 }
         } catch (NullReferenceException e) {
             Debug.LogException(e);

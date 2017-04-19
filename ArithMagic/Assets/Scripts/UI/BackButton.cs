@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using InteractLib;
 
-public class BackButton : Clickable {
+public class BackButton : ProfileButton {
     [SerializeField]
     private const string kMapScene = "Map";
 
