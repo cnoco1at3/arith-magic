@@ -6,6 +6,6 @@ public class ProfileNextButton : ProfileButton {
 
     public override void ClickEvent() {
         GameController.SignInById(id);
-        SceneManager.LoadScene("Map");
+        SceneManager.LoadScene("Start");
     }
 }
