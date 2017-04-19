@@ -2,30 +2,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using InteractLib;
+using UnityEngine.UI;
 using SoundLib;
 
-public class LockBoxBehavior : Clickable, IComparable {
+public class LockBoxBehavior : ProfileButton, IComparable {
 
-    [SerializeField]
-    private Vector3 target_pos_;
-
-    [SerializeField]
-    private Sprite unlocked_pic_;
-
-    private static Sprite unlocked_pic__;
-
-    private bool unlocked_ = false;
+    private static Vector3 target_pos_ = new Vector3(0.0f, 180.0f);
 
     private int id_ = -1;
 
-    public AudioClip touchBoxSound;
-    public AudioClip moveRobotSound;
-
-    void Start() {
-        if (unlocked_pic_ != null)
-            unlocked_pic__ = unlocked_pic_;
-    }
+    private Button button_;
 
     public int CompareTo(object obj) {
         if (obj.GetType() != typeof(LockBoxBehavior))
@@ -35,9 +21,8 @@ public class LockBoxBehavior : Clickable, IComparable {
     }
 
     public override void ClickEvent() {
-        SoundManager.Instance.PlaySFX(touchBoxSound, false);
-        if (unlocked_)
-            MoveRobot();
+        SoundManager.Instance.PlaySFX(LockBoxSingleton.Instance.touch_box, false);
+        MapRobotBehavior.Instance.MoveToPosition(this);
     }
 
     public void SetAnimation(bool flag) {
@@ -54,16 +39,12 @@ public class LockBoxBehavior : Clickable, IComparable {
     }
 
     public void SetUnlocked() {
-        GetComponent<SpriteRenderer>().sprite = unlocked_pic__;
-        /*
-        if (robot_pic_ != null) {
-            GameObject robot = Instantiate(robot_pic_, transform);
-            robot.GetComponent<Animator>().enabled = false;
-            robot.transform.localPosition = Vector3.zero;
-            robot.transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
+        try {
+            button_.interactable = true;
+        } catch (NullReferenceException) {
+            button_ = GetComponent<Button>();
+            button_.interactable = true;
         }
-        */
-        unlocked_ = true;
     }
 
     public void SetLockBoxId(int id) { id_ = id; }
@@ -73,11 +54,4 @@ public class LockBoxBehavior : Clickable, IComparable {
     public Vector3 GetTargetLocalPosition() {
         return transform.localPosition + target_pos_;
     }
-
-    private void MoveRobot() {
-        //SoundManager.Instance.PlaySFX(moveRobotSound, false);
-        GetComponent<Collider>().enabled = false;
-        MapRobotBehavior.Instance.MoveToPosition(this);
-    }
-
 }
