@@ -39,7 +39,11 @@ public class XRayCameraBehavior : GenericSingleton<XRayCameraBehavior> {
 
     //particle
     [SerializeField]
-    private GameObject confetti; 
+    private GameObject confetti;
+    //Fixed part sprite
+    [SerializeField]
+    private Sprite fixedSprite_; 
+
 
     public bool is_finished {
         get {
@@ -51,7 +55,8 @@ public class XRayCameraBehavior : GenericSingleton<XRayCameraBehavior> {
     public void CheckParts(bool remove) {
         if (remove) {
             parts_.Remove(part_ptr_);
-            Destroy(part_ptr_);
+            part_ptr_.GetComponent<CircleCollider2D>().enabled = false; 
+            part_ptr_.GetComponent<SpriteRenderer>().sprite = fixedSprite_;
             bgmTrack += 1;
             SoundManager.Instance.PlayBGM(bgm[bgmTrack]);
         }
