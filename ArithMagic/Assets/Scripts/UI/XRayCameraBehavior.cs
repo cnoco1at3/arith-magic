@@ -37,6 +37,10 @@ public class XRayCameraBehavior : GenericSingleton<XRayCameraBehavior> {
     //Robot VoiceOver
     private RobotVO roboVO;
 
+    //particle
+    [SerializeField]
+    private GameObject confetti; 
+
     public bool is_finished {
         get {
             return parts_.Count == 0;
@@ -59,6 +63,7 @@ public class XRayCameraBehavior : GenericSingleton<XRayCameraBehavior> {
                 roboVO.robotAudio_.clip = roboVO.fixedClips_[UnityEngine.Random.Range(0, roboVO.fixedClips_.Count)];
                 roboVO.robotAudio_.Play();
                 back_button_.GetComponent<Animator>().SetTrigger("Scale");
+                confetti.SetActive(true);
 
             } catch (Exception) { }
         } else {
