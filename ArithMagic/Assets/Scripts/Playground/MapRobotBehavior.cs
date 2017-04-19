@@ -25,7 +25,7 @@ public class MapRobotBehavior : GenericSingleton<MapRobotBehavior> {
         SoundManager.Instance.PlaySFX(move_sfx_);
     }
 
-    public static int GetDockedId() { return docked_id_; }
+    public static int GetDockedId() { return docked_id_ > 0 ? docked_id_ : 0; }
 
     public void MoveToPosition(LockBoxBehavior target) {
         SoundManager.Instance.PlaySFX(move_sfx_);

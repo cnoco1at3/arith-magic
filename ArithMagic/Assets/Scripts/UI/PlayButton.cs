@@ -22,10 +22,7 @@ public class PlayButton : MonoBehaviour {
         SoundManager.Instance.StopBGM();
         SceneManager.LoadScene(nextSceneName);
 
-        if (add == false)
-        {
-            GameController.Instance.CheckCheat();
-        }
+        GameController.add = this.add;
     }
 
     void Start() {

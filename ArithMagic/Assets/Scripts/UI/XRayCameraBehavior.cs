@@ -105,8 +105,7 @@ public class XRayCameraBehavior : GenericSingleton<XRayCameraBehavior> {
 
     //Exit with part, stops and resets countdown
     void OnTriggerExit2D(Collider2D other) {
-        if (other.gameObject.tag == "Part")
-        {
+        if (other.gameObject.tag == "Part") {
             SetDetectStatus(null);
             SoundManager.Instance.StopSFX(sfx_detect);
         }
@@ -118,8 +117,7 @@ public class XRayCameraBehavior : GenericSingleton<XRayCameraBehavior> {
         mesh_animator_.SetBool("hit", other != null);
         is_entered_ = other != null;
 
-        if (is_entered_)
-        { 
+        if (is_entered_) {
             SoundManager.Instance.PlaySFX(sfx_detect);
         }
     }
@@ -157,9 +155,8 @@ public class XRayCameraBehavior : GenericSingleton<XRayCameraBehavior> {
         // TODO wrap category
         int wrap = GameController.add ? 6 : 5;
         int offset = GameController.add ? 1 : 7;
-        category_ = ProblemRuler.GetCategory(MapRobotBehavior.GetDockedId(), (int)GameController.user_prof.grade);
+        category_ = ProblemRuler.GetCategory(MapRobotBehavior.GetDockedId(), (int)GameController.GetCurrentProfileGrade());
         category_ = Mathf.Clamp(category_, 0, wrap) + offset;
-        Debug.Log(category_);
         // TODO wrap robots
         try {
             robot_ = Instantiate(RobotCluster.Instance.GetRobotById(MapRobotBehavior.GetDockedId()));

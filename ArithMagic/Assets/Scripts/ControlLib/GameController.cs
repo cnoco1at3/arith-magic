@@ -105,6 +105,12 @@ public class GameController : PersistentSingleton<GameController> {
         }
     }
 
+    public static int GetCurrentProfileGrade() {
+        if (user_prof != null)
+            return (int)user_prof.grade;
+        return 0;
+    }
+
     public static void SignOut() {
         user_prof = null;
     }
@@ -116,16 +122,6 @@ public class GameController : PersistentSingleton<GameController> {
     #region cheat
 
     public AudioClip cheat_clip;
-    public static long sequence = 0;
-    public const long cheatcode = 1122343456;
-
-    public void CheckCheat() {
-       // if (sequence == cheatcode) {
-            Debug.Log("Cheat!");
-            SoundLib.SoundManager.Instance.PlaySFX(cheat_clip);
-            add = false;
-        //}
-    }
 
     #endregion
 }

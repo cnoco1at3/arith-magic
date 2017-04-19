@@ -76,19 +76,12 @@ namespace SoundLib {
 
             if (clip == null)
                 return false;
-            if (clips_set_ == null)
-                return false;
-
-            if (clips_set_.ContainsKey(clip) && clips_set_[clip].isPlaying)
-                return false;
 
             try {
                 if (bgm_src_.isPlaying)
                     bgm_src_.Stop();
                 bgm_src_.clip = clip;
                 bgm_src_.Play();
-
-                clips_set_[clip] = bgm_src_;
 
                 return true;
             } catch (NullReferenceException e) {
@@ -199,7 +192,8 @@ namespace SoundLib {
             try {
                 foreach (AudioSource src in sfx_src_) {
                     src.Stop();
-                    clips_set_.Remove(src.clip);
+                    if (src.clip != null && clips_set_.ContainsKey(src.clip))
+                        clips_set_.Remove(src.clip);
                 }
                 return true;
             } catch (NullReferenceException e) {
