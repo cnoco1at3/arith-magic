@@ -66,12 +66,11 @@ public class XRayCameraBehavior : GenericSingleton<XRayCameraBehavior> {
         if (parts_.Count == 0) {
             robot_.GetComponent<Animator>().SetBool("isDancing", true);
             back_button_.SetActive(true);
+            confetti.SetActive(true);
+
             try {
                 roboVO.robotAudio_.clip = roboVO.fixedClips_[UnityEngine.Random.Range(0, roboVO.fixedClips_.Count)];
                 roboVO.robotAudio_.Play();
-                back_button_.GetComponent<Animator>().SetTrigger("Scale");
-                confetti.SetActive(true);
-
             } catch (Exception) { }
         } else {
             SetXRayCameraActive(true);

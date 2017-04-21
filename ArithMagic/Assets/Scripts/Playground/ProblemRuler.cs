@@ -55,15 +55,15 @@ public static class ProblemRuler {
                 break;
             case 9:
                 num1 = Random.Range(10, 99);
-                num2 = Random.Range(1, num1 / 10 + 1) * 10 + Random.Range(0, num1 % 10);
+                num2 = Random.Range(1, num1 / 10 + 1) * 10 + Random.Range(0, num1 % 10 + 1);
                 break;
             case 10:
-                num1 = Random.Range(10, 99);
-                num2 = Random.Range(num1 % 10, 9);
+                num1 = Random.Range(10, 100);
+                num2 = Random.Range(num1 % 10, 10);
                 break;
             case 11:
-                num1 = Random.Range(20, 99);
-                num2 = Random.Range(1, num1 / 10) * 10 + Random.Range(num1 % 10, 9);
+                num1 = Random.Range(20, 100);
+                num2 = Random.Range(1, num1 / 10 + 1) * 10 + Random.Range(num1 % 10, 10);
                 break;
 
             default:

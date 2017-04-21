@@ -11,7 +11,7 @@ public class ToolBoxBehavior : GenericSingleton<ToolBoxBehavior> {
     public AudioClip right_sfx;
     public AudioClip wrong_sfx;
 
-    public const int kTimerTime = 60;
+    public const int kTimerTime = 10;
 
     [SerializeField]
     private GameObject[] numbers_;
@@ -78,9 +78,12 @@ public class ToolBoxBehavior : GenericSingleton<ToolBoxBehavior> {
     }
 
     public void OnTimeUp() {
-        ClearProblem();
-        transform.DOMove(new Vector3(0, 10.4f), 2.0f);
-        XRayCameraBehavior.Instance.CheckParts();
+        if (time_mode_) {
+            ClearProblem();
+            transform.DOMove(new Vector3(0, 10.4f), 2.0f);
+            XRayCameraBehavior.Instance.CheckParts();
+            time_mode_ = false;
+        }
     }
 
     public void CheckActivateStatus() {
