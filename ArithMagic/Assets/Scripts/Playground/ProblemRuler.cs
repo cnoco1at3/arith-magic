@@ -65,6 +65,10 @@ public static class ProblemRuler {
                 num1 = Random.Range(20, 100);
                 num2 = Random.Range(1, num1 / 10 + 1) * 10 + Random.Range(num1 % 10, 10);
                 break;
+            case 12:
+                num1 = Random.Range(20, 100);
+                num2 = Random.Range(1, num1 / 10 + 1) * 10 + Random.Range(num1 % 10, 10);
+                break;
 
             default:
                 num1 = 0;
