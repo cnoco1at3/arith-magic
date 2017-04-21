@@ -58,10 +58,10 @@ public class XRayCameraBehavior : GenericSingleton<XRayCameraBehavior> {
                 parts_.Remove(part_ptr_);
                 part_ptr_.GetComponent<CircleCollider2D>().enabled = false;
                 part_ptr_.GetComponent<SpriteRenderer>().sprite = fixedSprite_;
-                bgmTrack += 1;
-                SoundManager.Instance.PlayBGM(bgm[bgmTrack]);
-            } catch (Exception e) {
+                SoundManager.Instance.PlayBGM(bgm[++bgmTrack]);
+            } catch (IndexOutOfRangeException e) {
                 Debug.LogException(e);
+                Debug.Log(bgmTrack);
             }
         }
 
@@ -143,7 +143,6 @@ public class XRayCameraBehavior : GenericSingleton<XRayCameraBehavior> {
     private void PopsUpToolBox(bool time_mode) {
         //SoundManager.Instance.PlaySFX(afterScannnigDetected, false);
         SetXRayCameraActive(false);
-        Debug.Log(time_mode);
         ToolBoxBehavior.Instance.PopulateProblem(category_, time_mode);
     }
 
@@ -180,7 +179,6 @@ public class XRayCameraBehavior : GenericSingleton<XRayCameraBehavior> {
         int offset = GameController.add ? 1 : 7;
         category_ = ProblemRuler.GetCategory(MapRobotBehavior.GetDockedId(), (int)GameController.GetCurrentProfileGrade());
         category_ = Mathf.Clamp(category_, 0, wrap) + offset;
-        Debug.Log(category_);
 
         try {
             roboVO = robot_.GetComponent<RobotVO>();

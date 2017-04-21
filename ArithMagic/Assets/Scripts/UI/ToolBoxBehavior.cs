@@ -63,7 +63,7 @@ public class ToolBoxBehavior : GenericSingleton<ToolBoxBehavior> {
         time_mode_ = time_mode;
 
         if (time_mode) {
-            category = UnityEngine.Random.Range(1, category_);
+            category = UnityEngine.Random.Range(1, category_ + 1);
             timer_.SetActive(true);
             TimerCountDownDisplay.Instance.ResetTimer();
         } else {
@@ -203,10 +203,10 @@ public class ToolBoxBehavior : GenericSingleton<ToolBoxBehavior> {
         }
 
         problems_[2] = Instantiate(numbers_[num2 % 10], anchors_[2].position, Quaternion.identity, transform);
-        problems_[2].GetComponent<ScrewGenerator>().GenerateScrews(0, GameController.add);
+        problems_[2].GetComponent<ScrewGenerator>().GenerateScrews(2, GameController.add);
         if (num2 >= 10) {
             problems_[3] = Instantiate(numbers_[num2 / 10], anchors_[3].position, Quaternion.identity, transform);
-            problems_[3].GetComponent<ScrewGenerator>().GenerateScrews(1, GameController.add);
+            problems_[3].GetComponent<ScrewGenerator>().GenerateScrews(3, GameController.add);
         }
     }
 
@@ -234,7 +234,9 @@ public class ToolBoxBehavior : GenericSingleton<ToolBoxBehavior> {
         feedback_.SetActive(false);
 
         if (time_mode_) {
-            int category = UnityEngine.Random.Range(1, category_);
+            int offset = GameController.add ? 1 : 7;
+            int category = UnityEngine.Random.Range(offset, category_ + 1);
+            Debug.Log(category + " " + category_);
             SetNewProblem(ProblemRuler.GetNewProblem(category));
         } else {
             problem_size_--;

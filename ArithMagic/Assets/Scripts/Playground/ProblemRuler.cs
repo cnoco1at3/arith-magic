@@ -19,43 +19,43 @@ public static class ProblemRuler {
         switch (category) {
             // additions
             case 1:
-                num1 = Random.Range(1, 9);
-                num2 = Random.Range(0, 9 - num1);
+                num1 = Random.Range(1, 10);
+                num2 = Random.Range(0, 10 - num1);
                 break;
             case 2:
-                num1 = Random.Range(10, 99);
-                num2 = Random.Range(0, 9 - num1 % 10);
+                num1 = Random.Range(10, 100);
+                num2 = Random.Range(0, 10 - num1 % 10);
                 break;
             case 3:
-                num1 = Random.Range(10, 89);
-                num2 = Random.Range(10, 99 - num1) / 10 * 10 + Random.Range(0, 9 - num1 % 10);
+                num1 = Random.Range(10, 90);
+                num2 = Random.Range(10, 100 - num1) / 10 * 10 + Random.Range(0, 10 - num1 % 10);
                 break;
             case 4:
-                num1 = Random.Range(1, 9);
-                num2 = Random.Range(10 - num1, 9);
+                num1 = Random.Range(1, 10);
+                num2 = Random.Range(10 - num1, 10);
                 break;
             case 5:
-                num1 = Random.Range(10, 89);
-                num2 = num1 % 10 == 0 ? 9 : Random.Range(10 - num1 % 10, 9);
+                num1 = Random.Range(10, 90);
+                num2 = num1 % 10 == 0 ? 9 : Random.Range(10 - num1 % 10, 10);
                 break;
             case 6:
-                num1 = Random.Range(10, 79);
+                num1 = Random.Range(10, 80);
                 num2 = Random.Range(10, 90 - num1) / 10 * 10;
-                num2 += num1 % 10 == 0 ? 9 : Random.Range(10 - num1 % 10, 9);
+                num2 += num1 % 10 == 0 ? 9 : Random.Range(10 - num1 % 10, 10);
                 break;
 
             // subtractions
             case 7:
-                num1 = Random.Range(1, 9);
-                num2 = Random.Range(0, num1);
+                num1 = Random.Range(1, 10);
+                num2 = Random.Range(0, num1 + 1);
                 break;
             case 8:
                 num1 = Random.Range(10, 18);
-                num2 = Random.Range(0, num1 % 10);
+                num2 = Random.Range(0, num1 % 10 + 1);
                 break;
             case 9:
                 num1 = Random.Range(10, 99);
-                num2 = Random.Range(1, num1 / 10) * 10 + Random.Range(0, num1 % 10);
+                num2 = Random.Range(1, num1 / 10 + 1) * 10 + Random.Range(0, num1 % 10);
                 break;
             case 10:
                 num1 = Random.Range(10, 99);
