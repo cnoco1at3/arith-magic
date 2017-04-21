@@ -58,11 +58,9 @@ public class XRayCameraBehavior : GenericSingleton<XRayCameraBehavior> {
                 parts_.Remove(part_ptr_);
                 part_ptr_.GetComponent<CircleCollider2D>().enabled = false;
                 part_ptr_.GetComponent<SpriteRenderer>().sprite = fixedSprite_;
-                SoundManager.Instance.PlayBGM(bgm[++bgmTrack]);
-            } catch (IndexOutOfRangeException e) {
-                Debug.LogException(e);
-                Debug.Log(bgmTrack);
-            }
+                bgmTrack = Mathf.Clamp(bgmTrack + 1, 0, bgm.Length - 1);
+                SoundManager.Instance.PlayBGM(bgm[bgmTrack]);
+            } catch (IndexOutOfRangeException e) { }
         }
 
         if (parts_.Count == 0) {

@@ -203,10 +203,10 @@ public class ToolBoxBehavior : GenericSingleton<ToolBoxBehavior> {
         }
 
         problems_[2] = Instantiate(numbers_[num2 % 10], anchors_[2].position, Quaternion.identity, transform);
-        problems_[2].GetComponent<ScrewGenerator>().GenerateScrews(2, GameController.add);
+        problems_[2].GetComponent<ScrewGenerator>().GenerateScrews(GameController.add ? 0 : 2, GameController.add);
         if (num2 >= 10) {
             problems_[3] = Instantiate(numbers_[num2 / 10], anchors_[3].position, Quaternion.identity, transform);
-            problems_[3].GetComponent<ScrewGenerator>().GenerateScrews(3, GameController.add);
+            problems_[3].GetComponent<ScrewGenerator>().GenerateScrews(GameController.add ? 1 : 3, GameController.add);
         }
     }
 
