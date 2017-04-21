@@ -12,7 +12,10 @@ public class MapRobotBehavior : GenericSingleton<MapRobotBehavior> {
 
     private static int docked_id_ = -1;
 
+    public AudioClip[] mapBackground; 
+
     void Start() {
+        SoundManager.Instance.PlayBGM(mapBackground[UnityEngine.Random.Range(0, mapBackground.Length)]);
         LockBoxBehavior box = LevelCluster.Instance.GetLockBoxById(docked_id_);
         if (docked_id_ == -1)
             docked_id_ = 0;
