@@ -1,9 +1,10 @@
 fileFormatVersion: 2
 guid: 2efa30ed00c77c141a3eaaabbe78d43f
-timeCreated: 1492191111
+timeCreated: 1492735188
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: discardButtonNormal_0
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -76,7 +77,20 @@ TextureImporter:
     overridden: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: discardButtonNormal_0
+      rect:
+        serializedVersion: 2
+        x: 21
+        y: 19
+        width: 250
+        height: 250
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
     outline: []
   spritePackingTag: 
   userData: 

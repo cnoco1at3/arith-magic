@@ -26,10 +26,15 @@ public class ProfileEdit : GenericSingleton<ProfileEdit> {
 
         this.from = from;
 
-        foreach (Button button in buttons_)
-            button.interactable = true;
+        SetButtonActive(true);
 
         UpdateDisplay();
+    }
+
+    public void SetButtonActive(bool active) {
+
+        foreach (Button button in buttons_)
+            button.interactable = active;
     }
 
     public void OnExitEditPanel() {
@@ -39,8 +44,7 @@ public class ProfileEdit : GenericSingleton<ProfileEdit> {
         dropdowns_[0].value = 0;
         dropdowns_[1].value = 0;
 
-        foreach (Button button in buttons_)
-            button.interactable = false;
+        SetButtonActive(false);
     }
 
     public void SaveOrAddProfileToData() {
@@ -66,6 +70,14 @@ public class ProfileEdit : GenericSingleton<ProfileEdit> {
             inputs_[0].text = "";
             inputs_[1].text = "";
             dropdowns_[0].value = 0;
+            dropdowns_[1].value = 0;
         }
+    }
+
+    public bool ProfileChanged() {
+        if (edit_ != null)
+            return edit_.name != inputs_[0].text || edit_.age != (uint)Int32.Parse(inputs_[1].text) || (int)edit_.grade != dropdowns_[1].value;
+        else
+            return inputs_[0].text != "" || inputs_[1].text != "" || dropdowns_[1].value != 0;
     }
 }

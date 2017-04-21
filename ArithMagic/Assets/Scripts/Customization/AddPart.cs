@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using InteractLib;
 using UnityEngine.Events;
-using UnityEditor.Events; 
+#if UNITY_EDITOR
+using UnityEditor.Events;
+#endif
 
 public class AddPart : Clickable
 {

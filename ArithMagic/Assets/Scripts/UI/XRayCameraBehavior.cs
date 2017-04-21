@@ -159,6 +159,12 @@ public class XRayCameraBehavior : GenericSingleton<XRayCameraBehavior> {
         transform.localScale = Vector3.zero;
     }
 
+    private void Awake() {
+        try {
+            robot_ = Instantiate(RobotCluster.Instance.GetRobotById(MapRobotBehavior.GetDockedId()));
+        } catch (NullReferenceException e) { }
+    }
+
     // Use this for initialization
     void Start() {
         SoundManager.Instance.SwitchScene(bgm[bgmTrack], sfx_b_scan);
@@ -174,9 +180,9 @@ public class XRayCameraBehavior : GenericSingleton<XRayCameraBehavior> {
         int offset = GameController.add ? 1 : 7;
         category_ = ProblemRuler.GetCategory(MapRobotBehavior.GetDockedId(), (int)GameController.GetCurrentProfileGrade());
         category_ = Mathf.Clamp(category_, 0, wrap) + offset;
+        Debug.Log(category_);
 
         try {
-            robot_ = Instantiate(RobotCluster.Instance.GetRobotById(MapRobotBehavior.GetDockedId()));
             roboVO = robot_.GetComponent<RobotVO>();
         } catch (NullReferenceException) { }
 

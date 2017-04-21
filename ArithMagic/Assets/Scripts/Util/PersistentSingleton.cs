@@ -6,7 +6,7 @@ namespace Util {
         private static T _instance;
 
         void Awake() {
-            if (_instance == null) {
+            if (_instance == null || _instance == this) {
                 DontDestroyOnLoad(gameObject);
                 _instance = this as T;
             } else

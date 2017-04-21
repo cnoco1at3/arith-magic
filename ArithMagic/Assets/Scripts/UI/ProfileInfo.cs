@@ -16,26 +16,23 @@ public class ProfileInfo : GenericSingleton<ProfileInfo> {
     private Button[] info_buttons_;
 
     public void OnEnterInfoPanel(AvatarProfile prof) {
-        if (info_buttons_ != null) {
-            foreach (Button button in info_buttons_)
-                button.interactable = true;
-        }
+        SetButtonActive(true);
 
         this.prof = prof;
 
         UpdateDisplay();
     }
 
-    public void OnExitInfoPanel() {
-        if (text_fields_ != null) {
-            foreach (Text text in text_fields_)
-                text.text = "";
-        }
+    public void SetButtonActive(bool active) {
 
         if (info_buttons_ != null) {
             foreach (Button button in info_buttons_)
-                button.interactable = false;
+                button.interactable = active;
         }
+    }
+
+    public void OnExitInfoPanel() {
+        SetButtonActive(false);
 
         prof = null;
     }
