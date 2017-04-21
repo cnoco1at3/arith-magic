@@ -1,9 +1,10 @@
 fileFormatVersion: 2
 guid: 286004124039c0b43b20f2c6531610ee
-timeCreated: 1492191107
+timeCreated: 1492732978
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: keepButtonDisabled_0
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -76,7 +77,20 @@ TextureImporter:
     overridden: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: keepButtonDisabled_0
+      rect:
+        serializedVersion: 2
+        x: 21
+        y: 19
+        width: 250
+        height: 250
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
     outline: []
   spritePackingTag: 
   userData: 

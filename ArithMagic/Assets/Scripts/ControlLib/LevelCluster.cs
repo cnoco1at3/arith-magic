@@ -23,6 +23,11 @@ public class LevelCluster : GenericSingleton<LevelCluster> {
         }
     }
 
+    public void UnlockAll() {
+        foreach (LockBoxBehavior lock_box in lock_boxes_)
+            lock_box.SetUnlocked();
+    }
+
     public LockBoxBehavior GetLockBoxById(int id) {
         if (id >= 0 && id < lock_boxes_.Length)
             return lock_boxes_[id];

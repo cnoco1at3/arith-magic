@@ -119,9 +119,4 @@ public class GameController : PersistentSingleton<GameController> {
      */
     #endregion
 
-    #region cheat
-
-    public AudioClip cheat_clip;
-
-    #endregion
 }

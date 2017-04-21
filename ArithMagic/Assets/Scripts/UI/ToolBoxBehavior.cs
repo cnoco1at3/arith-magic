@@ -11,6 +11,8 @@ public class ToolBoxBehavior : GenericSingleton<ToolBoxBehavior> {
     public AudioClip right_sfx;
     public AudioClip wrong_sfx;
 
+    public const int kTimerTime = 10;
+
     [SerializeField]
     private GameObject[] numbers_;
 
@@ -41,27 +43,47 @@ public class ToolBoxBehavior : GenericSingleton<ToolBoxBehavior> {
     [SerializeField]
     private GameObject cover_;
 
+    [SerializeField]
+    private GameObject timer_;
+
     private GameObject[] problems_;
     private GameObject operator_;
 
     private int problem_size_;
     private int category_;
+    private bool time_mode_;
+
     [SerializeField]
     private const int kProblemSize = 3;
 
-
-    public void PopulateProblem(int category, bool downward = false) {
-        if (downward)
-            category = UnityEngine.Random.Range(1, category);
+    public void PopulateProblem(int category, bool time_mode = false) {
 
         category_ = category;
-        problem_size_ = kProblemSize;
+        problem_size_ = time_mode ? -1 : kProblemSize;
+        time_mode_ = time_mode;
 
-        SetNewProblem(ProblemRuler.GetNewProblem(category_));
+        if (time_mode) {
+            category = UnityEngine.Random.Range(1, category_ + 1);
+            timer_.SetActive(true);
+            TimerCountDownDisplay.Instance.ResetTimer();
+        } else {
+            timer_.SetActive(false);
+        }
+
+        SetNewProblem(ProblemRuler.GetNewProblem(category));
 
         // animations here
         transform.DOMove(Vector3.zero, 1.0f);
         InteractManager.Instance.LockInteractionForSeconds(1.0f);
+    }
+
+    public void OnTimeUp() {
+        if (time_mode_) {
+            ClearProblem();
+            transform.DOMove(new Vector3(0, 10.4f), 2.0f);
+            XRayCameraBehavior.Instance.CheckParts();
+            time_mode_ = false;
+        }
     }
 
     public void CheckActivateStatus() {
@@ -184,10 +206,10 @@ public class ToolBoxBehavior : GenericSingleton<ToolBoxBehavior> {
         }
 
         problems_[2] = Instantiate(numbers_[num2 % 10], anchors_[2].position, Quaternion.identity, transform);
-        problems_[2].GetComponent<ScrewGenerator>().GenerateScrews(0, GameController.add);
+        problems_[2].GetComponent<ScrewGenerator>().GenerateScrews(GameController.add ? 0 : 2, GameController.add);
         if (num2 >= 10) {
             problems_[3] = Instantiate(numbers_[num2 / 10], anchors_[3].position, Quaternion.identity, transform);
-            problems_[3].GetComponent<ScrewGenerator>().GenerateScrews(1, GameController.add);
+            problems_[3].GetComponent<ScrewGenerator>().GenerateScrews(GameController.add ? 1 : 3, GameController.add);
         }
     }
 
@@ -208,19 +230,28 @@ public class ToolBoxBehavior : GenericSingleton<ToolBoxBehavior> {
 
     private IEnumerator SolvedCoroutine() {
         InteractManager.LockInteraction();
+
         feedback_.SetActive(true);
         SoundLib.SoundManager.Instance.PlaySFX(right_sfx);
         yield return new WaitForSeconds(2.0f);
         feedback_.SetActive(false);
 
-        problem_size_--;
-        if (problem_size_ > 0) {
-            SetNewProblem(ProblemRuler.GetNewProblem(category_));
+        if (time_mode_) {
+            int offset = GameController.add ? 1 : 7;
+            int category = UnityEngine.Random.Range(offset, category_ + 1);
+            Debug.Log(category + " " + category_);
+            SetNewProblem(ProblemRuler.GetNewProblem(category));
         } else {
-            ClearProblem();
-            transform.DOMove(new Vector3(0, 10.4f), 2.0f);
-            XRayCameraBehavior.Instance.CheckParts(true);
+            problem_size_--;
+            if (problem_size_ > 0) {
+                SetNewProblem(ProblemRuler.GetNewProblem(category_));
+            } else {
+                ClearProblem();
+                transform.DOMove(new Vector3(0, 10.4f), 2.0f);
+                XRayCameraBehavior.Instance.CheckParts();
+            }
         }
+
         InteractManager.ReleaseInteraction();
     }
 
