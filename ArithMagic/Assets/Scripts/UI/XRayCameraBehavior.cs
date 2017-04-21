@@ -42,7 +42,7 @@ public class XRayCameraBehavior : GenericSingleton<XRayCameraBehavior> {
     private GameObject confetti;
     //Fixed part sprite
     [SerializeField]
-    private Sprite fixedSprite_; 
+    private Sprite fixedSprite_;
 
 
     public bool is_finished {
@@ -52,13 +52,17 @@ public class XRayCameraBehavior : GenericSingleton<XRayCameraBehavior> {
         private set { }
     }
 
-    public void CheckParts(bool remove) {
-        if (remove) {
-            parts_.Remove(part_ptr_);
-            part_ptr_.GetComponent<CircleCollider2D>().enabled = false; 
-            part_ptr_.GetComponent<SpriteRenderer>().sprite = fixedSprite_;
-            bgmTrack += 1;
-            SoundManager.Instance.PlayBGM(bgm[bgmTrack]);
+    public void CheckParts(bool remove_flag = true) {
+        if (remove_flag) {
+            try {
+                parts_.Remove(part_ptr_);
+                part_ptr_.GetComponent<CircleCollider2D>().enabled = false;
+                part_ptr_.GetComponent<SpriteRenderer>().sprite = fixedSprite_;
+                bgmTrack += 1;
+                SoundManager.Instance.PlayBGM(bgm[bgmTrack]);
+            } catch (Exception e) {
+                Debug.LogException(e);
+            }
         }
 
         if (parts_.Count == 0) {
@@ -80,6 +84,10 @@ public class XRayCameraBehavior : GenericSingleton<XRayCameraBehavior> {
                 roboVO.robotAudio_.Play();
             } catch (Exception) { }
         }
+    }
+
+    public void ClearParts() {
+        parts_.Clear();
     }
 
 
@@ -105,7 +113,7 @@ public class XRayCameraBehavior : GenericSingleton<XRayCameraBehavior> {
             detect_time_ -= Time.fixedDeltaTime;
 
             if (detect_time_ <= 0) {
-                PopsUpToolBox();
+                PopsUpToolBox((MapRobotBehavior.GetDockedId() + 1) % 3 == 0);
                 part_ptr_ = other.gameObject;
                 SoundManager.Instance.PlaySFX(sfx_a_scan);
             }
@@ -132,10 +140,11 @@ public class XRayCameraBehavior : GenericSingleton<XRayCameraBehavior> {
         }
     }
 
-    private void PopsUpToolBox() {
+    private void PopsUpToolBox(bool time_mode) {
         //SoundManager.Instance.PlaySFX(afterScannnigDetected, false);
         SetXRayCameraActive(false);
-        ToolBoxBehavior.Instance.PopulateProblem(category_);
+        Debug.Log(time_mode);
+        ToolBoxBehavior.Instance.PopulateProblem(category_, time_mode);
     }
 
     private void SetXRayCameraActive(bool active) {
@@ -153,7 +162,6 @@ public class XRayCameraBehavior : GenericSingleton<XRayCameraBehavior> {
     // Use this for initialization
     void Start() {
         SoundManager.Instance.SwitchScene(bgm[bgmTrack], sfx_b_scan);
-        //SoundManager.Instance.PlayBGM(bgm[bgmTrack]);
 
         detect_thres_ = (float)ConstantTweakTool.Instance["DetectThreshold"];
         detect_time_ = detect_thres_;
@@ -162,12 +170,11 @@ public class XRayCameraBehavior : GenericSingleton<XRayCameraBehavior> {
         mesh_animator_ = render_mesh_.GetComponent<Animator>();
         collider_ = GetComponent<BoxCollider2D>();
 
-        // TODO wrap category
         int wrap = GameController.add ? 6 : 5;
         int offset = GameController.add ? 1 : 7;
         category_ = ProblemRuler.GetCategory(MapRobotBehavior.GetDockedId(), (int)GameController.GetCurrentProfileGrade());
         category_ = Mathf.Clamp(category_, 0, wrap) + offset;
-        // TODO wrap robots
+
         try {
             robot_ = Instantiate(RobotCluster.Instance.GetRobotById(MapRobotBehavior.GetDockedId()));
             roboVO = robot_.GetComponent<RobotVO>();

@@ -21,7 +21,8 @@ public class MapRobotBehavior : GenericSingleton<MapRobotBehavior> {
         int tmp = GameController.GetCurrentLevel() + 1;
         if (tmp == LevelCluster.Instance.GetLockBoxSize())
             tmp -= 1;
-        transform.DOLocalMove(LevelCluster.Instance.GetLockBoxById(tmp).GetTargetLocalPosition(), 2.0f);
+        docked_id_ = tmp;
+        transform.localPosition = LevelCluster.Instance.GetLockBoxById(tmp).GetTargetLocalPosition();
         SoundManager.Instance.PlaySFX(move_sfx_);
     }
 

@@ -25,19 +25,6 @@ public class LockBoxBehavior : ProfileButton, IComparable {
         MapRobotBehavior.Instance.MoveToPosition(this);
     }
 
-    public void SetAnimation(bool flag) {
-        try {
-            Animator anim = GetComponent<Animator>();
-            if (flag) {
-                anim.SetTrigger("BoxAnim");
-                anim.ResetTrigger("Null");
-            } else {
-                anim.SetTrigger("Null");
-                anim.ResetTrigger("BoxAnim");
-            }
-        } catch (Exception) { }
-    }
-
     public void SetUnlocked() {
         try {
             button_.interactable = true;

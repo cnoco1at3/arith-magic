@@ -11,7 +11,9 @@ public class ProfileEditConfirm : ProfileButton {
         ProfileEdit.Instance.OnExitEditPanel();
         if (ProfileEdit.Instance.from == 0)
             ProfileDisplay.Instance.UpdateDisplay();
-        if (ProfileEdit.Instance.from == 1)
+        if (ProfileEdit.Instance.from == 1) {
             ProfileInfo.Instance.UpdateDisplay();
+            ProfileDisplay.Instance.UpdateDisplay();
+        }
     }
 }

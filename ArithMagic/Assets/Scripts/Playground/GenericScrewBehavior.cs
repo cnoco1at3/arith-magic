@@ -99,6 +99,8 @@ public class GenericScrewBehavior : Clickable {
     }
 
     private IEnumerator SingleAnim(Vector3 pos, GenericScrewBehavior tar = null) {
+        InteractManager.LockInteraction();
+
         MoveToPosition(pos);
         yield return new WaitForSeconds(0.5f);
 
@@ -112,9 +114,13 @@ public class GenericScrewBehavior : Clickable {
             Destroy(tar.gameObject);
             Destroy(gameObject);
         }
+
+        InteractManager.ReleaseInteraction();
     }
 
     private IEnumerator ClusterAnim(Vector3 pos, GenericScrewBehavior tar = null) {
+        InteractManager.LockInteraction();
+
         GameObject[] ones = new GameObject[9];
 
         // Instantiate ones
@@ -147,6 +153,8 @@ public class GenericScrewBehavior : Clickable {
             Destroy(tar.gameObject);
             Destroy(gameObject);
         }
+
+        InteractManager.ReleaseInteraction();
     }
 
 

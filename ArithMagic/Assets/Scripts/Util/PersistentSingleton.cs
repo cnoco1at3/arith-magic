@@ -6,22 +6,24 @@ namespace Util {
         private static T _instance;
 
         void Awake() {
-            DontDestroyOnLoad(gameObject);
+            if (_instance == null) {
+                DontDestroyOnLoad(gameObject);
+                _instance = this as T;
+            } else
+                Destroy(gameObject);
         }
 
-        public static T Instance
-        {
-            get
-            {
+        public static T Instance {
+            get {
                 if (_instance == null) {
                     var objs = FindObjectsOfType(typeof(T)) as T[];
                     if (objs.Length > 0) {
                         if (objs.Length > 1) {
-                            Debug.LogError("There are more than one" + typeof(T).Name + "Singleton");
-                        }
-                        else _instance = objs[0] as T;
-                    }
-                    else {
+                            for (int i = 1; i < objs.Length; ++i)
+                                Destroy(objs[i]);
+                            _instance = objs[0] as T;
+                        } else _instance = objs[0] as T;
+                    } else {
                         GameObject gameobj = new GameObject(typeof(T).ToString());
                         _instance = gameobj.AddComponent<T>();
                     }
