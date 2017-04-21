@@ -11,7 +11,7 @@ public class ToolBoxBehavior : GenericSingleton<ToolBoxBehavior> {
     public AudioClip right_sfx;
     public AudioClip wrong_sfx;
 
-    public const int kTimerTime = 10;
+    public const int kTimerTime = 60;
 
     [SerializeField]
     private GameObject[] numbers_;
@@ -63,7 +63,8 @@ public class ToolBoxBehavior : GenericSingleton<ToolBoxBehavior> {
         time_mode_ = time_mode;
 
         if (time_mode) {
-            category = UnityEngine.Random.Range(1, category_ + 1);
+            int offset = GameController.add ? 1 : 7;
+            category = UnityEngine.Random.Range(offset, category_ + 1);
             timer_.SetActive(true);
             TimerCountDownDisplay.Instance.ResetTimer();
         } else {
