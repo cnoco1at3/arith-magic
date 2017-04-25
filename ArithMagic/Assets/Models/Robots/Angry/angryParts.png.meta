@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 6da51a6b5588d482e988a3dda144bfe0
-timeCreated: 1490912400
+timeCreated: 1492979273
 licenseType: Pro
 TextureImporter:
   fileIDToRecycleName:
@@ -93,6 +93,22 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+  - buildTarget: Android
+    maxTextureSize: 1024
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: WebGL
+    maxTextureSize: 1024
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -100,12 +116,12 @@ TextureImporter:
       name: angryParts_0
       rect:
         serializedVersion: 2
-        x: 157
-        y: 1719
-        width: 411
-        height: 170
+        x: 154
+        y: 1718
+        width: 416
+        height: 173
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -114,11 +130,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 1054
-        y: 1767
+        y: 1765
         width: 444
-        height: 169
+        height: 173
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -126,12 +142,12 @@ TextureImporter:
       name: angryParts_2
       rect:
         serializedVersion: 2
-        x: 1861
-        y: 1552
-        width: 214
-        height: 253
+        x: 1859
+        y: 1551
+        width: 217
+        height: 255
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -140,11 +156,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 749
-        y: 1719
-        width: 391
-        height: 26
+        y: 1718
+        width: 392
+        height: 30
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -152,12 +168,12 @@ TextureImporter:
       name: angryParts_4
       rect:
         serializedVersion: 2
-        x: 111
-        y: 1154
-        width: 1028
-        height: 471
+        x: 110
+        y: 1153
+        width: 1031
+        height: 475
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -165,12 +181,12 @@ TextureImporter:
       name: angryParts_5
       rect:
         serializedVersion: 2
-        x: 1202
-        y: 1518
-        width: 76
-        height: 75
+        x: 1200
+        y: 1516
+        width: 79
+        height: 79
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -179,11 +195,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 1458
-        y: 1507
-        width: 167
-        height: 168
+        y: 1505
+        width: 169
+        height: 172
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -191,12 +207,12 @@ TextureImporter:
       name: angryParts_7
       rect:
         serializedVersion: 2
-        x: 2173
-        y: 1432
-        width: 246
-        height: 249
+        x: 1674
+        y: 1346
+        width: 173
+        height: 173
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -204,12 +220,12 @@ TextureImporter:
       name: angryParts_8
       rect:
         serializedVersion: 2
-        x: 1677
-        y: 1349
-        width: 166
-        height: 168
+        x: 2172
+        y: 1431
+        width: 249
+        height: 251
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -217,12 +233,12 @@ TextureImporter:
       name: angryParts_9
       rect:
         serializedVersion: 2
-        x: 2125
-        y: 1249
-        width: 85
-        height: 120
+        x: 2123
+        y: 1247
+        width: 89
+        height: 123
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -231,11 +247,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 2542
-        y: 1155
-        width: 214
-        height: 253
+        y: 1153
+        width: 216
+        height: 257
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -243,12 +259,12 @@ TextureImporter:
       name: angryParts_11
       rect:
         serializedVersion: 2
-        x: 1423
-        y: 924
-        width: 223
-        height: 222
+        x: 1422
+        y: 922
+        width: 226
+        height: 228
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -256,12 +272,12 @@ TextureImporter:
       name: angryParts_12
       rect:
         serializedVersion: 2
-        x: 1766
-        y: 915
-        width: 572
-        height: 177
-      alignment: 9
-      pivot: {x: 0.0078201825, y: 0.48617157}
+        x: 1762
+        y: 913
+        width: 574
+        height: 181
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -269,12 +285,12 @@ TextureImporter:
       name: angryParts_13
       rect:
         serializedVersion: 2
-        x: 54
-        y: 93
-        width: 452
-        height: 628
-      alignment: 9
-      pivot: {x: 0.6795787, y: 0.34397805}
+        x: 51
+        y: 92
+        width: 457
+        height: 630
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -282,12 +298,12 @@ TextureImporter:
       name: angryParts_14
       rect:
         serializedVersion: 2
-        x: 1187
-        y: 622
-        width: 476
-        height: 239
+        x: 1185
+        y: 620
+        width: 481
+        height: 243
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -295,12 +311,12 @@ TextureImporter:
       name: angryParts_15
       rect:
         serializedVersion: 2
-        x: 2004
-        y: 93
-        width: 838
-        height: 700
+        x: 2076
+        y: 81
+        width: 837
+        height: 703
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -308,12 +324,12 @@ TextureImporter:
       name: angryParts_16
       rect:
         serializedVersion: 2
-        x: 546
-        y: 369
-        width: 357
-        height: 245
-      alignment: 2
-      pivot: {x: 0.5, y: 1}
+        x: 544
+        y: 368
+        width: 360
+        height: 249
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -321,12 +337,12 @@ TextureImporter:
       name: angryParts_17
       rect:
         serializedVersion: 2
-        x: 1649
-        y: 319
-        width: 357
-        height: 244
-      alignment: 2
-      pivot: {x: 0.5, y: 1}
+        x: 1645
+        y: 290
+        width: 363
+        height: 274
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -334,12 +350,12 @@ TextureImporter:
       name: angryParts_18
       rect:
         serializedVersion: 2
-        x: 1417
-        y: 20
-        width: 281
-        height: 320
-      alignment: 2
-      pivot: {x: 0.5, y: 1}
+        x: 1238
+        y: 43
+        width: 287
+        height: 325
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
