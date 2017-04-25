@@ -7,6 +7,8 @@ using AvatarLib;
 
 public class ProfileDisplay : GenericSingleton<ProfileDisplay> {
 
+    public static int last_selected = 0;
+
     [SerializeField]
     private GameObject user_;
 
@@ -23,6 +25,8 @@ public class ProfileDisplay : GenericSingleton<ProfileDisplay> {
     private const float kVStep = 255.0f;
     private const float kTAnchor = 365.0f;
     private const int kMaxProfiles = 9;
+
+    private static Vector3 selected_offset_ = new Vector3(0, -45.0f);
 
     private List<AvatarProfile> profiles_;
     private GameObject[] avatars_;
@@ -70,12 +74,13 @@ public class ProfileDisplay : GenericSingleton<ProfileDisplay> {
             avatars_[i] = avatar;
         }
 
-        if(profiles_.Count > 0) {
-            selected_.transform.localPosition = avatars_[0].transform.localPosition - new Vector3(0, 45.0f);
-            ProfileNextButton.id = 0;
+        if (profiles_.Count > 0) {
+            last_selected = last_selected < 0 ? profiles_.Count - 1 : last_selected;
+            last_selected = last_selected >= profiles_.Count ? 0 : last_selected;
+            selected_.transform.localPosition = avatars_[last_selected].transform.localPosition + selected_offset_;
             next_button_.interactable = true;
         } else {
-            ProfileNextButton.id = -1;
+            last_selected = -1;
             next_button_.interactable = false;
         }
     }

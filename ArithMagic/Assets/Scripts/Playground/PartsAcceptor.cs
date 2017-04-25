@@ -31,6 +31,7 @@ public class PartsAcceptor : MonoBehaviour {
     }
 
     public virtual void ClearSlot() {
+        is_occupied = false;
         if (pb_ != null)
             Destroy(pb_.gameObject);
         pb_ = null;

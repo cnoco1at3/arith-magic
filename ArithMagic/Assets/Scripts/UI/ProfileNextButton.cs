@@ -2,10 +2,8 @@
 
 public class ProfileNextButton : ProfileButton {
 
-    public static int id = -1;
-
     public override void ClickEvent() {
-        GameController.SignInById(id);
+        GameController.SignInById(ProfileDisplay.last_selected);
         SceneManager.LoadScene("Start");
     }
 }

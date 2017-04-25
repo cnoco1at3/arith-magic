@@ -27,6 +27,8 @@ public class GenericScrewBehavior : Clickable {
     private Vector3 current_vel;
     private bool wiggle_ = false;
 
+    private GameObject[] ones;
+
     // Use this for initialization
     void Start() {
         container_ = ToolBoxBehavior.Instance.GetContainerById(screw_id_);
@@ -98,8 +100,17 @@ public class GenericScrewBehavior : Clickable {
         origin_ = local;
     }
 
+    public void LatentDestroy() {
+        if (ones != null && ones.Length > 0) {
+            for (int i = 0; i < ones.Length; ++i)
+                if (ones[i] != null)
+                    Destroy(ones[i]);
+        }
+
+        Destroy(gameObject);
+    }
+
     private IEnumerator SingleAnim(Vector3 pos, GenericScrewBehavior tar = null) {
-        InteractManager.LockInteraction();
 
         MoveToPosition(pos);
         yield return new WaitForSeconds(0.5f);
@@ -111,17 +122,15 @@ public class GenericScrewBehavior : Clickable {
             container_.SetWiggleBuckets(false);
 
         if (!add) {
-            Destroy(tar.gameObject);
-            Destroy(gameObject);
+            tar.LatentDestroy();
+            LatentDestroy();
         }
 
-        InteractManager.ReleaseInteraction();
     }
 
     private IEnumerator ClusterAnim(Vector3 pos, GenericScrewBehavior tar = null) {
-        InteractManager.LockInteraction();
 
-        GameObject[] ones = new GameObject[9];
+        ones = new GameObject[9];
 
         // Instantiate ones
         for (int i = 0; i < ones.Length; ++i) {
@@ -148,13 +157,13 @@ public class GenericScrewBehavior : Clickable {
         // Destroy ones
         for (int i = 0; i < ones.Length; ++i)
             Destroy(ones[i]);
+        ones = null;
 
         if (!add) {
-            Destroy(tar.gameObject);
-            Destroy(gameObject);
+            tar.LatentDestroy();
+            LatentDestroy();
         }
 
-        InteractManager.ReleaseInteraction();
     }
 
 

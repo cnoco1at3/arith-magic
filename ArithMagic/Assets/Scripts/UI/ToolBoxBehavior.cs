@@ -115,8 +115,10 @@ public class ToolBoxBehavior : GenericSingleton<ToolBoxBehavior> {
         // Animation here
         if (solved)
             StartCoroutine(SolvedCoroutine());
-        else
+        else {
+            CheckActivateStatus();
             StartCoroutine(WrongCoroutine());
+        }
     }
 
     public ScrewContainer GetContainerById(int id) {
@@ -162,7 +164,7 @@ public class ToolBoxBehavior : GenericSingleton<ToolBoxBehavior> {
 
     private void SetNewProblem(ProblemData prob) {
         ClearProblem();
-        SpawnOperator(GameController.add);
+        SpawnOperator(prob.num1, GameController.add);
         SpawnProblem(prob.num1, prob.num2);
 
         int ans = GameController.add ? prob.num1 + prob.num2 : prob.num1 - prob.num2;
@@ -191,9 +193,10 @@ public class ToolBoxBehavior : GenericSingleton<ToolBoxBehavior> {
             button_.ActiveButton(false);
     }
 
-    private void SpawnOperator(bool add) {
+    private void SpawnOperator(int num1, bool add) {
         GameObject op = add ? operators_[0] : operators_[1];
-        operator_ = Instantiate(op, anchors_[4].position, Quaternion.identity, transform);
+        Vector3 pos = num1 > 10 ? anchors_[4].position : anchors_[5].position;
+        operator_ = Instantiate(op, pos, Quaternion.identity, transform);
     }
 
     private void SpawnProblem(int num1, int num2) {

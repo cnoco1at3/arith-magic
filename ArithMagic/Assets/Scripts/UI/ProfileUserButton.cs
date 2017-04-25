@@ -13,6 +13,6 @@ public class ProfileUserButton : ProfileButton {
         pos.y -= 45.0f;
         selected_.transform.DOLocalMove(pos, 0.5f);
         next_button_.interactable = true;
-        ProfileNextButton.id = id_;
+        ProfileDisplay.last_selected = id_;
     }
 }

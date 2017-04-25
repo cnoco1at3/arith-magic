@@ -9,8 +9,10 @@ public class ProfileEditConfirm : ProfileButton {
         ProfileGuide.Instance.MoveToScreenById(ProfileEdit.Instance.from);
         ProfileEdit.Instance.SaveOrAddProfileToData();
         ProfileEdit.Instance.OnExitEditPanel();
-        if (ProfileEdit.Instance.from == 0)
+        if (ProfileEdit.Instance.from == 0) {
+            ProfileDisplay.last_selected = -1;
             ProfileDisplay.Instance.UpdateDisplay();
+        }
         if (ProfileEdit.Instance.from == 1) {
             ProfileInfo.Instance.UpdateDisplay();
             ProfileDisplay.Instance.UpdateDisplay();

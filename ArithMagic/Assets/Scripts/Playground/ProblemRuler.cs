@@ -20,15 +20,15 @@ public static class ProblemRuler {
             // additions
             case 1:
                 num1 = Random.Range(1, 10);
-                num2 = Random.Range(0, 10 - num1);
+                num2 = RandomSampler.Sample10(0, 10 - num1);
                 break;
             case 2:
                 num1 = Random.Range(10, 100);
-                num2 = Random.Range(0, 10 - num1 % 10);
+                num2 = RandomSampler.Sample10(0, 10 - num1 % 10);
                 break;
             case 3:
                 num1 = Random.Range(10, 90);
-                num2 = Random.Range(10, 100 - num1) / 10 * 10 + Random.Range(0, 10 - num1 % 10);
+                num2 = Random.Range(10, 100 - num1) / 10 * 10 + RandomSampler.Sample10(0, 10 - num1 % 10);
                 break;
             case 4:
                 num1 = Random.Range(1, 10);
@@ -48,22 +48,22 @@ public static class ProblemRuler {
             // s - s w/o re
             case 7:
                 num1 = Random.Range(1, 10);
-                num2 = Random.Range(0, num1 + 1);
+                num2 = RandomSampler.Sample10(0, num1 + 1);
                 break;
             // d - s w/o re
             case 8:
                 num1 = Random.Range(10, 19);
-                num2 = Random.Range(0, num1 % 10 + 1);
+                num2 = RandomSampler.Sample10(0, num1 % 10 + 1);
                 break;
             // d - d w/o re
             case 9:
                 num1 = Random.Range(10, 100);
-                num2 = Random.Range(1, num1 / 10 + 1) * 10 + Random.Range(0, num1 % 10 + 1);
+                num2 = Random.Range(1, num1 / 10 + 1) * 10 + RandomSampler.Sample10(0, num1 % 10 + 1);
                 break;
             // d - s w/ re
             case 10:
                 num1 = Random.Range(10, 100);
-                num2 = Random.Range(num1 % 10, 10);
+                num2 = RandomSampler.Sample10(num1 % 10, 10);
                 break;
             // d - d w/ re
             case 11:

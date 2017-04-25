@@ -21,18 +21,19 @@ public class ProfileEdit : GenericSingleton<ProfileEdit> {
 
     public int from { get; private set; }
 
+    private void Start() {
+        foreach (InputField input in inputs_)
+            input.onValueChanged.AddListener(delegate { CheckIsValidProfile(); });
+    }
+
     public void OnEnterEditPanel(AvatarProfile edit, int from) {
         edit_ = edit;
-
         this.from = from;
-
-        SetButtonActive(true);
-
+        buttons_[0].interactable = true;
         UpdateDisplay();
     }
 
     public void SetButtonActive(bool active) {
-
         foreach (Button button in buttons_)
             button.interactable = active;
     }
@@ -75,9 +76,14 @@ public class ProfileEdit : GenericSingleton<ProfileEdit> {
     }
 
     public bool ProfileChanged() {
-        if (edit_ != null)
+        if (edit_ != null) {
             return edit_.name != inputs_[0].text || edit_.age != (uint)Int32.Parse(inputs_[1].text) || (int)edit_.grade != dropdowns_[1].value;
-        else
-            return inputs_[0].text != "" || inputs_[1].text != "" || dropdowns_[1].value != 0;
+        } else {
+            return inputs_[0].text != "" || inputs_[1].text != "";
+        }
+    }
+
+    private void CheckIsValidProfile() {
+        buttons_[1].interactable = inputs_[0].text != "" && inputs_[1].text != "";
     }
 }

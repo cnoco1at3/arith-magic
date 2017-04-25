@@ -64,7 +64,7 @@ public class ScrewContainer : Clickable {
     public void ClearSlots() {
         for (int i = 0; i < buckets_.Length; ++i) {
             if (buckets_[i] != null)
-                Destroy(buckets_[i].gameObject);
+                buckets_[i].LatentDestroy();
             buckets_[i] = null;
         }
         slot_index_ = -1;
@@ -132,7 +132,7 @@ public class ScrewContainer : Clickable {
         InteractManager.LockInteraction();
 
         GenericScrewBehavior tmp = ReleaseSlot();
-        Destroy(tmp.gameObject);
+        tmp.LatentDestroy();
         yield return new WaitForSeconds(0.5f);
 
         InteractManager.ReleaseInteraction();
@@ -144,7 +144,7 @@ public class ScrewContainer : Clickable {
         yield return new WaitForSeconds(0.5f);
 
         for (int i = 0; i <= slot_index_; ++i) {
-            Destroy(buckets_[i].gameObject);
+            buckets_[i].LatentDestroy();
             buckets_[i] = null;
         }
         ClearSlots();
