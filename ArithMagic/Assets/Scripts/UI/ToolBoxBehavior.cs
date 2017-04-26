@@ -8,7 +8,7 @@ using DG.Tweening;
 public class ToolBoxBehavior : GenericSingleton<ToolBoxBehavior> {
 
 
-    public AudioClip right_sfx;
+    public AudioClip[] right_sfx;
     public AudioClip wrong_sfx;
 
     public const int kTimerTime = 60;
@@ -233,7 +233,7 @@ public class ToolBoxBehavior : GenericSingleton<ToolBoxBehavior> {
         InteractManager.LockInteraction();
 
         feedback_.SetActive(true);
-        SoundLib.SoundManager.Instance.PlaySFX(right_sfx);
+        SoundLib.SoundManager.Instance.PlaySFX(right_sfx[UnityEngine.Random.Range(0,right_sfx.Length)]);
         yield return new WaitForSeconds(2.0f);
         feedback_.SetActive(false);
 

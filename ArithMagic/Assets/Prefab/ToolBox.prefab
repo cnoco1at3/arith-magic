@@ -2505,7 +2505,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed6fc876221e870419ab55a415752f3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  right_sfx: {fileID: 8300000, guid: c02f2ef9c81245148a02916a6d1a34f9, type: 3}
+  right_sfx:
+  - {fileID: 8300000, guid: 76887851ec4f80047af0d814a0fa4b41, type: 3}
+  - {fileID: 8300000, guid: 8bf6fb560d65cc546afb047e05aa358c, type: 3}
+  - {fileID: 8300000, guid: e6d974d660c27bc439a9564975183b2e, type: 3}
   wrong_sfx: {fileID: 8300000, guid: ccac5b46f2f5fd444bdb6f45b78a99b8, type: 3}
   numbers_:
   - {fileID: 1581309935582976, guid: c2fac9d2bb39e6742a94db989a299ca1, type: 2}
