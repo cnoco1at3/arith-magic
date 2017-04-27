@@ -59,7 +59,7 @@ public class XRayCameraBehavior : GenericSingleton<XRayCameraBehavior> {
                 part_ptr_.GetComponent<CircleCollider2D>().enabled = false;
                 part_ptr_.GetComponent<SpriteRenderer>().sprite = fixedSprite_;
                 bgmTrack = Mathf.Clamp(bgmTrack + 1, 0, bgm.Length - 1);
-                SoundManager.Instance.PlayBGM(bgm[bgmTrack]);
+                SoundManager.Instance.PlayBGM(bgm[bgmTrack], 0.5f);
             } catch (IndexOutOfRangeException e) { }
         }
 
@@ -133,7 +133,7 @@ public class XRayCameraBehavior : GenericSingleton<XRayCameraBehavior> {
         is_entered_ = other != null;
 
         if (is_entered_) {
-            SoundManager.Instance.PlaySFX(sfx_detect);
+            SoundManager.Instance.PlaySFX(sfx_detect, false, 0.5f);
         }
     }
 
@@ -163,7 +163,7 @@ public class XRayCameraBehavior : GenericSingleton<XRayCameraBehavior> {
 
     // Use this for initialization
     void Start() {
-        SoundManager.Instance.SwitchScene(bgm[bgmTrack], sfx_b_scan);
+        SoundManager.Instance.SwitchScene(bgm[bgmTrack], sfx_b_scan,0.5f);
 
         detect_thres_ = (float)ConstantTweakTool.Instance["DetectThreshold"];
         detect_time_ = detect_thres_;

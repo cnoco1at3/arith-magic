@@ -10,14 +10,16 @@ public class StartScreen : MonoBehaviour
 
 	// Use this for initialization
 	void Start ()
-    {
-        
+    { 
         StartCoroutine(StartIntro());
 	}
 
     private IEnumerator StartIntro()
     {
         yield return new WaitForEndOfFrame();
-        SoundManager.Instance.PlayBGM(introMusic);
+        if(SoundManager.Instance.gameObject.GetComponent<AudioSource>().isPlaying == false || SoundManager.Instance.gameObject.GetComponent<AudioSource>().clip != introMusic)
+        {
+            SoundManager.Instance.PlayBGM(introMusic);
+        }
     }
 }
