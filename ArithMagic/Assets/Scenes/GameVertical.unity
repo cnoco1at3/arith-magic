@@ -339,11 +339,6 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 114576472108213078, guid: 2f3ce3e4d84c65d449cf4d3daf877a61,
-        type: 2}
-      propertyPath: right_sfx.Array.size
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 4301700106633564, guid: 2f3ce3e4d84c65d449cf4d3daf877a61, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -376,21 +371,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 6
       objectReference: {fileID: 0}
-    - target: {fileID: 114576472108213078, guid: 2f3ce3e4d84c65d449cf4d3daf877a61,
-        type: 2}
-      propertyPath: right_sfx.Array.data[0]
-      value: 
-      objectReference: {fileID: 8300000, guid: 76887851ec4f80047af0d814a0fa4b41, type: 3}
-    - target: {fileID: 114576472108213078, guid: 2f3ce3e4d84c65d449cf4d3daf877a61,
-        type: 2}
-      propertyPath: right_sfx.Array.data[1]
-      value: 
-      objectReference: {fileID: 8300000, guid: 8bf6fb560d65cc546afb047e05aa358c, type: 3}
-    - target: {fileID: 114576472108213078, guid: 2f3ce3e4d84c65d449cf4d3daf877a61,
-        type: 2}
-      propertyPath: right_sfx.Array.data[2]
-      value: 
-      objectReference: {fileID: 8300000, guid: e6d974d660c27bc439a9564975183b2e, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2f3ce3e4d84c65d449cf4d3daf877a61, type: 2}
   m_IsPrefabParent: 0
@@ -1019,7 +999,6 @@ MonoBehaviour:
   backgroundImage: {fileID: 1647652792}
   topGearImage: {fileID: 1366189410}
   bottomGearImage: {fileID: 1879008472}
-  subColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &1879008472
 GameObject:
   m_ObjectHideFlags: 0
