@@ -138,8 +138,6 @@ Camera:
   m_TargetDisplay: 1
   m_TargetEye: 3
   m_HDR: 0
-  m_AllowMSAA: 1
-  m_ForceIntoRT: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
@@ -174,7 +172,6 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
-  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!33 &33298425832580066
 MeshFilter:
@@ -214,20 +211,9 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
 --- !u!81 &81834785751414392
 AudioListener:
   m_ObjectHideFlags: 1
@@ -284,6 +270,14 @@ MonoBehaviour:
   back_button_: {fileID: 0}
   confetti: {fileID: 0}
   fixedSprite_: {fileID: 21300000, guid: 95eacf9f5a7b981459b6e52a94424275, type: 3}
+  progressBar: {fileID: 0}
+  progressSprites:
+  - {fileID: 21300000, guid: ede64aca6687428419b6f0238cdcf1dd, type: 3}
+  - {fileID: 21300000, guid: a2147d379d637e047a36556d9ada945d, type: 3}
+  - {fileID: 21300000, guid: 35d0d9cb1950c1f448f24c3e7b2078ca, type: 3}
+  - {fileID: 21300000, guid: 9fef21d45d002ae4f8e5a528e1cc3f12, type: 3}
+  - {fileID: 21300000, guid: 961e9fee1d5d23f43a14cd8a98956d6e, type: 3}
+  fixedText: {fileID: 0}
 --- !u!124 &124262440909505010
 Behaviour:
   m_ObjectHideFlags: 1
@@ -321,13 +315,8 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
-  m_SortingLayer: 0
   m_SortingOrder: 10
   m_Sprite: {fileID: 21300000, guid: deb56492b94276b41a63e9253bdfb546, type: 3}
   m_Color: {r: 0.38235295, g: 0.26989618, b: 0.26989618, a: 1}
   m_FlipX: 0
   m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0

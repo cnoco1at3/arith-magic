@@ -5,6 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Util;
+using UnityEngine.UI;
 
 public class XRayCameraBehavior : GenericSingleton<XRayCameraBehavior> {
 
@@ -44,6 +45,15 @@ public class XRayCameraBehavior : GenericSingleton<XRayCameraBehavior> {
     [SerializeField]
     private Sprite fixedSprite_;
 
+    //progressbar
+    [SerializeField]
+    private Image progressBar;
+    [SerializeField]
+    private Sprite[] progressSprites;
+    private int numberFixed = -1;
+    [SerializeField]
+    private Text fixedText; 
+
 
     public bool is_finished {
         get {
@@ -60,12 +70,16 @@ public class XRayCameraBehavior : GenericSingleton<XRayCameraBehavior> {
                 part_ptr_.GetComponent<SpriteRenderer>().sprite = fixedSprite_;
                 bgmTrack = Mathf.Clamp(bgmTrack + 1, 0, bgm.Length - 1);
                 SoundManager.Instance.PlayBGM(bgm[bgmTrack], 0.5f);
+                numberFixed++;
+                fixedText.text = numberFixed + 1 + "/5";
+                progressBar.sprite = progressSprites[numberFixed];
             } catch (IndexOutOfRangeException e) { }
         }
 
         if (parts_.Count == 0) {
             robot_.GetComponent<Animator>().SetBool("isDancing", true);
             back_button_.SetActive(true);
+            back_button_.GetComponent<Animator>().SetTrigger("Scale");
             confetti.SetActive(true);
 
             try {
