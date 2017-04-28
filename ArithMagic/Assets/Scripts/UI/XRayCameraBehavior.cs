@@ -5,6 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Util;
+using UnityEngine.UI;
 
 public class XRayCameraBehavior : GenericSingleton<XRayCameraBehavior> {
 
@@ -44,6 +45,14 @@ public class XRayCameraBehavior : GenericSingleton<XRayCameraBehavior> {
     [SerializeField]
     private Sprite fixedSprite_;
 
+    //progressbar
+    [SerializeField]
+    private Image progressBar;
+    [SerializeField]
+    private Sprite[] progressSprites;
+    private int numberFixed = -1;
+    [SerializeField]
+    private Text fixedText; 
 
     public bool IsFinished {
         get {
@@ -59,13 +68,17 @@ public class XRayCameraBehavior : GenericSingleton<XRayCameraBehavior> {
                 part_ptr_.GetComponent<CircleCollider2D>().enabled = false;
                 part_ptr_.GetComponent<SpriteRenderer>().sprite = fixedSprite_;
                 bgmTrack = Mathf.Clamp(bgmTrack + 1, 0, bgm.Length - 1);
-                SoundManager.Instance.PlayBGM(bgm[bgmTrack]);
+                SoundManager.Instance.PlayBGM(bgm[bgmTrack], 0.5f);
+                numberFixed++;
+                fixedText.text = numberFixed + 1 + "/5";
+                progressBar.sprite = progressSprites[numberFixed];
             } catch (IndexOutOfRangeException) { }
         }
 
         if (parts_.Count == 0) {
             robot_.GetComponent<Animator>().SetBool("isDancing", true);
             back_button_.SetActive(true);
+            back_button_.GetComponent<Animator>().SetTrigger("Scale");
             confetti.SetActive(true);
 
             try {
@@ -133,7 +146,7 @@ public class XRayCameraBehavior : GenericSingleton<XRayCameraBehavior> {
         is_entered_ = other != null;
 
         if (is_entered_) {
-            SoundManager.Instance.PlaySFX(sfx_detect);
+            SoundManager.Instance.PlaySFX(sfx_detect, false, 0.5f);
         }
     }
 
@@ -163,7 +176,7 @@ public class XRayCameraBehavior : GenericSingleton<XRayCameraBehavior> {
 
     // Use this for initialization
     void Start() {
-        SoundManager.Instance.SwitchScene(bgm[bgmTrack], sfx_b_scan);
+        SoundManager.Instance.SwitchScene(bgm[bgmTrack], sfx_b_scan,0.5f);
 
         detect_thres_ = (float)ConstantTweakTool.Instance["DetectThreshold"];
         detect_time_ = detect_thres_;

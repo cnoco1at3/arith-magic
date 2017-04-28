@@ -36,18 +36,18 @@ namespace SoundLib {
             FlushSFX();
         }
 
-        public void SwitchScene(AudioClip bgm, AudioClip[] sfx) {
+        public void SwitchScene(AudioClip bgm, AudioClip[] sfx, float bgmVolume = 1, float sfxVolume = 1) {
             StopBGM();
             StopSFX();
             PlayBGM(bgm);
             PlaySFX(sfx);
         }
 
-        public void SwitchScene(AudioClip bgm, AudioClip sfx) {
+        public void SwitchScene(AudioClip bgm, AudioClip sfx, float bgmVolume = 1, float sfxVolume = 1) {
             StopBGM();
             StopSFX();
-            PlayBGM(bgm);
-            PlaySFX(sfx);
+            PlayBGM(bgm,bgmVolume);
+            PlaySFX(sfx, false,sfxVolume);
         }
 
         public void FlushBGM() {
@@ -63,7 +63,7 @@ namespace SoundLib {
                 blocked = PlaySFX(sfx_queue_.Dequeue());
         }
 
-        public bool PlayBGM(AudioClip clip) {
+        public bool PlayBGM(AudioClip clip, float volume = 1) {
             if (bgm_src_ == null) {
                 bgm_src_ = gameObject.AddComponent<AudioSource>();
                 bgm_src_.loop = true;
@@ -77,6 +77,7 @@ namespace SoundLib {
                 if (bgm_src_.isPlaying)
                     bgm_src_.Stop();
                 bgm_src_.clip = clip;
+                bgm_src_.volume = volume;
                 bgm_src_.Play();
 
                 return true;
@@ -104,7 +105,7 @@ namespace SoundLib {
         }
 
         // return true if successfully play a clip
-        public bool PlaySFX(AudioClip clip, bool loop = false) {
+        public bool PlaySFX(AudioClip clip, bool loop = false, float volume = 1) {
             if (clip == null)
                 return false;
 
@@ -119,6 +120,7 @@ namespace SoundLib {
                     if (!src.isPlaying) {
                         src.clip = clip;
                         src.loop = loop;
+                        src.volume = volume; 
                         src.Play();
 
                         return true;

@@ -19,7 +19,7 @@ public class PlayButton : MonoBehaviour {
     public void StartButton() {
         SoundManager.Instance.PlaySFX(clip);
         playButton.interactable = false;
-        SoundManager.Instance.StopBGM();
+        //SoundManager.Instance.StopBGM();
         SceneManager.LoadScene(nextSceneName);
 
         GameController.add = this.add;
