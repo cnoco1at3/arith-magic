@@ -11,7 +11,7 @@ public class ToolBoxBehavior : GenericSingleton<ToolBoxBehavior> {
     public AudioClip[] right_sfx;
     public AudioClip wrong_sfx;
 
-    public const int kTimerTime = 60;
+    public const int kTimerTime = 10;
 
     [SerializeField]
     private GameObject[] numbers_;

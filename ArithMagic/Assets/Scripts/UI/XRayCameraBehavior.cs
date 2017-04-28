@@ -71,7 +71,7 @@ public class XRayCameraBehavior : GenericSingleton<XRayCameraBehavior> {
                 SoundManager.Instance.PlayBGM(bgm[bgmTrack], 0.5f);
                 numberFixed++;
                 fixedText.text = numberFixed + 1 + "/5";
-                if (progressBar.transform.parent.gameObject.activeInHierarchy) {
+                if (progressBar.transform.parent.gameObject.activeSelf) {
                     progressBar.sprite = progressSprites[numberFixed];
                 }
             } catch (IndexOutOfRangeException) { }
