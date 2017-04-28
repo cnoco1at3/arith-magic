@@ -71,7 +71,7 @@ public class XRayCameraBehavior : GenericSingleton<XRayCameraBehavior> {
                 SoundManager.Instance.PlayBGM(bgm[bgmTrack], 0.5f);
                 numberFixed++;
                 fixedText.text = numberFixed + 1 + "/5";
-                if (progressBar.gameObject.activeInHierarchy) {
+                if (progressBar.transform.parent.gameObject.activeInHierarchy) {
                     progressBar.sprite = progressSprites[numberFixed];
                 }
             } catch (IndexOutOfRangeException) { }
@@ -202,7 +202,7 @@ public class XRayCameraBehavior : GenericSingleton<XRayCameraBehavior> {
         transform.localScale = Vector3.zero;
 
         if ((MapRobotBehavior.GetDockedId() + 1) % 3 == 0)
-            progressBar.gameObject.SetActive(false);
+            progressBar.transform.parent.gameObject.SetActive(false);
     }
 
     void Update() {
