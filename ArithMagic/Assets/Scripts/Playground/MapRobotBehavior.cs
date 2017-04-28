@@ -23,6 +23,8 @@ public class MapRobotBehavior : GenericSingleton<MapRobotBehavior> {
 
     public static int GetDockedId() { return docked_id_ > 0 ? docked_id_ : 0; }
 
+    public static void ResetDockedId() { docked_id_ = -1; }
+
     public void MoveToPosition(LockBoxBehavior target) {
         if (target == LevelCluster.Instance.GetLockBoxById(docked_id_)) {
             GameController.EnterNextLevel();

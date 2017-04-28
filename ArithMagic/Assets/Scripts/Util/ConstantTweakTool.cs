@@ -31,7 +31,11 @@ public class ConstantTweakTool : PersistentSingleton<ConstantTweakTool> {
                 return const_dict[key];
             } catch (KeyNotFoundException e) {
                 Debug.LogException(e);
-                return 0.5;
+                return 0.5f;
+            } catch (NullReferenceException e) {
+                BuildTable();
+                Debug.LogException(e);
+                return 0.5f;
             }
         }
         private set { }

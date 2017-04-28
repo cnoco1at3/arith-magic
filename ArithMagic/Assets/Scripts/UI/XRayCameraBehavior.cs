@@ -52,7 +52,7 @@ public class XRayCameraBehavior : GenericSingleton<XRayCameraBehavior> {
     private Sprite[] progressSprites;
     private int numberFixed = -1;
     [SerializeField]
-    private Text fixedText; 
+    private Text fixedText;
 
     public bool IsFinished {
         get {
@@ -71,7 +71,9 @@ public class XRayCameraBehavior : GenericSingleton<XRayCameraBehavior> {
                 SoundManager.Instance.PlayBGM(bgm[bgmTrack], 0.5f);
                 numberFixed++;
                 fixedText.text = numberFixed + 1 + "/5";
-                progressBar.sprite = progressSprites[numberFixed];
+                if (progressBar.gameObject.activeInHierarchy) {
+                    progressBar.sprite = progressSprites[numberFixed];
+                }
             } catch (IndexOutOfRangeException) { }
         }
 
@@ -176,7 +178,7 @@ public class XRayCameraBehavior : GenericSingleton<XRayCameraBehavior> {
 
     // Use this for initialization
     void Start() {
-        SoundManager.Instance.SwitchScene(bgm[bgmTrack], sfx_b_scan,0.5f);
+        SoundManager.Instance.SwitchScene(bgm[bgmTrack], sfx_b_scan, 0.5f);
 
         detect_thres_ = (float)ConstantTweakTool.Instance["DetectThreshold"];
         detect_time_ = detect_thres_;
@@ -198,6 +200,9 @@ public class XRayCameraBehavior : GenericSingleton<XRayCameraBehavior> {
 
         scale_factor_ = transform.localScale;
         transform.localScale = Vector3.zero;
+
+        if ((MapRobotBehavior.GetDockedId() + 1) % 3 == 0)
+            progressBar.gameObject.SetActive(false);
     }
 
     void Update() {

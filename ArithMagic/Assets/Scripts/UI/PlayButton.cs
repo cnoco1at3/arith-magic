@@ -23,6 +23,7 @@ public class PlayButton : MonoBehaviour {
         SceneManager.LoadScene(nextSceneName);
 
         GameController.add = this.add;
+        MapRobotBehavior.ResetDockedId();
     }
 
     void Start() {

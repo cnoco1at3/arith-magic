@@ -146,6 +146,13 @@ public class ToolBoxBehavior : GenericSingleton<ToolBoxBehavior> {
         return null;
     }
 
+    public ScrewContainer GetPrevContainer(ScrewContainer container) {
+        for (int i = 1; i < containers_.Length; ++i)
+            if (containers_[i].Equals(container))
+                return containers_[i - 1];
+        return null;
+    }
+
     public GameObject GetScrewById(int id) {
         if (id >= 0 && id < screws_.Length)
             return screws_[id];
@@ -205,7 +212,7 @@ public class ToolBoxBehavior : GenericSingleton<ToolBoxBehavior> {
 
     private void SpawnOperator(int num1, bool add) {
         GameObject op = add ? operators_[0] : operators_[1];
-        Vector3 pos = num1 > 10 ? anchors_[4].position : anchors_[5].position;
+        Vector3 pos = num1 >= 10 ? anchors_[4].position : anchors_[5].position;
         operator_ = Instantiate(op, pos, Quaternion.identity, transform);
     }
 
@@ -259,7 +266,6 @@ public class ToolBoxBehavior : GenericSingleton<ToolBoxBehavior> {
         if (time_mode_) {
             int offset = GameController.add ? 1 : 7;
             int category = UnityEngine.Random.Range(offset, category_ + 1);
-            Debug.Log(category + " " + category_);
             SetNewProblem(ProblemRuler.GetNewProblem(category));
         } else {
             problem_size_--;

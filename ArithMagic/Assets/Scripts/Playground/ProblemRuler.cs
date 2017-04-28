@@ -10,20 +10,25 @@ public static class ProblemRuler {
     private static int[] f_category_ = new int[18] { 0, 0, 0, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2 };
     private static int[] s_category_ = new int[18] { 0, 1, 2, 3, 3, 3, 4, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 5 };
 
-    private static ProblemData prev = new ProblemData();
+    private static ProblemData prev;
 
     public static ProblemData GetNewProblem(int category) {
+        Random.InitState((int)(Time.time * 19891) % 19991);
+
         ProblemData tmp = GetProblem(category);
-        while (tmp.Equals(prev))
-            tmp = GetProblem(category);
+        if (prev != null) {
+            int cnt = 0, max = 3;
+            while (tmp.Equals(prev) && cnt < max) {
+                tmp = GetProblem(category);
+                cnt++;
+            }
+        }
         prev = tmp;
-        return tmp;
+
+        return new ProblemData(tmp);
     }
 
     public static ProblemData GetProblem(int category) {
-
-        Random.InitState((int)(Time.time * 19997) % 1000000);
-
         int num1, num2;
 
         switch (category) {
@@ -127,6 +132,16 @@ public class ProblemData {
     public ProblemData(int n1, int n2) {
         num1 = n1;
         num2 = n2;
+    }
+
+    public ProblemData(ProblemData other) {
+        if (other != null) {
+            num1 = other.num1;
+            num2 = other.num2;
+        } else {
+            num1 = 0;
+            num2 = 0;
+        }
     }
 
     public override int GetHashCode() {

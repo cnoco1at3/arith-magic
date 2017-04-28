@@ -13,6 +13,9 @@ public class ScrewContainer : Clickable {
     [SerializeField]
     private ScrewCarrier carrier_;
 
+    [SerializeField]
+    private GameObject glow_;
+
     private GenericScrewBehavior[] buckets_;
 
     private int slot_index_ = -1;
@@ -44,6 +47,9 @@ public class ScrewContainer : Clickable {
         if (IsFull)
             return -1;
         buckets_[++slot_index_] = screw;
+
+        if (IsFull && ToolBoxBehavior.Instance.GetNextContainer(this) != null)
+            glow_.SetActive(true);
         return slot_index_;
     }
 
@@ -74,10 +80,13 @@ public class ScrewContainer : Clickable {
     }
 
     public override void ClickEvent() {
-        if (IsFull && GameController.add)
+        if (IsFull && GameController.add) {
+            glow_.SetActive(false);
             RegroupTo();
-        else if (!GameController.add)
+        } else if (!GameController.add) {
+            glow_.SetActive(false);
             BorrowTo();
+        }
     }
 
 
