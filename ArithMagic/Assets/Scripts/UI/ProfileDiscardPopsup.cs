@@ -9,7 +9,7 @@ public class ProfileDiscardPopsup : ProfileButton {
 
     public override void ClickEvent() {
         popsup_.DOLocalMoveY(-800.0f, 0.5f);
-        ProfileGuide.Instance.MoveToScreenById(ProfileEdit.Instance.from);
+        ProfileGuide.Instance.MoveToScreenById(ProfileEdit.Instance.FromIndex);
         ProfileEdit.Instance.OnExitEditPanel();
     }
 

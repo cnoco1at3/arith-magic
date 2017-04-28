@@ -9,7 +9,7 @@ public class BackButton : ProfileButton {
     private const string kMapScene = "Map";
 
     public override void ClickEvent() {
-        if (XRayCameraBehavior.Instance.is_finished && (MapRobotBehavior.GetDockedId() == GameController.GetCurrentLevel() + 1))
+        if (XRayCameraBehavior.Instance.IsFinished && (MapRobotBehavior.GetDockedId() == GameController.GetCurrentLevel() + 1))
             GameController.AdvanceToNextLevel();
         SceneManager.LoadScene(kMapScene);
     }

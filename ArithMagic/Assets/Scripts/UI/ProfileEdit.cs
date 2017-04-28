@@ -19,7 +19,7 @@ public class ProfileEdit : GenericSingleton<ProfileEdit> {
 
     private AvatarProfile edit_;
 
-    public int from { get; private set; }
+    public int FromIndex { get; private set; }
 
     private void Start() {
         foreach (InputField input in inputs_)
@@ -28,7 +28,7 @@ public class ProfileEdit : GenericSingleton<ProfileEdit> {
 
     public void OnEnterEditPanel(AvatarProfile edit, int from) {
         edit_ = edit;
-        this.from = from;
+        this.FromIndex = from;
         buttons_[0].interactable = true;
         UpdateDisplay();
     }

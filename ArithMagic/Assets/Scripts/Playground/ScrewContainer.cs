@@ -10,6 +10,9 @@ public class ScrewContainer : Clickable {
     [SerializeField]
     private Transform[] slots_;
 
+    [SerializeField]
+    private ScrewCarrier carrier_;
+
     private GenericScrewBehavior[] buckets_;
 
     private int slot_index_ = -1;
@@ -17,14 +20,14 @@ public class ScrewContainer : Clickable {
 
 
     #region attributes
-    public bool is_full {
+    public bool IsFull {
         get {
             return slot_index_ == slots_.Length - 1;
         }
         private set { }
     }
 
-    public bool is_empty {
+    public bool IsEmpty {
         get {
             return slot_index_ == -1;
         }
@@ -38,14 +41,14 @@ public class ScrewContainer : Clickable {
     }
 
     public int ObtainSlot(GenericScrewBehavior screw) {
-        if (is_full)
+        if (IsFull)
             return -1;
         buckets_[++slot_index_] = screw;
         return slot_index_;
     }
 
     public GenericScrewBehavior ReleaseSlot() {
-        if (is_empty)
+        if (IsEmpty)
             return null;
         GenericScrewBehavior tmp = buckets_[slot_index_];
         buckets_[slot_index_--] = null;
@@ -71,29 +74,20 @@ public class ScrewContainer : Clickable {
     }
 
     public override void ClickEvent() {
-        if (is_full)
-            RegroupToNext();
-        else
-            BorrowToPrev();
+        if (IsFull && GameController.add)
+            RegroupTo();
+        else if (!GameController.add)
+            BorrowTo();
     }
 
-    public void SetWiggleBuckets(bool wiggle) {
-        for (int i = 0; i <= slot_index_; ++i)
-            buckets_[i].SetWiggle(wiggle);
-    }
 
-    public void SetWiggleLastBucket(bool wiggle) {
-        buckets_[slot_index_].SetWiggle(wiggle);
-    }
-
-    private void RegroupToNext() {
-        SetWiggleBuckets(false);
+    private void RegroupTo() {
 
         ScrewContainer next_container = ToolBoxBehavior.Instance.GetNextContainer(this);
 
         if (next_container == null)
             return;
-        if (next_container.is_full)
+        if (next_container.IsFull)
             return;
 
         Vector3 next_pos = next_container.GetNextSlotPosition();
@@ -105,37 +99,18 @@ public class ScrewContainer : Clickable {
         StartCoroutine(RegroupAnim(next_container));
     }
 
-    private void BorrowToPrev() {
-        ScrewContainer prev_container = ToolBoxBehavior.Instance.GetPrevContainer(this);
+    private void BorrowTo() {
 
-        if (prev_container == null)
+        if (carrier_ == null)
             return;
-        if (!prev_container.is_empty)
+        if (!carrier_.IsEmpty)
             return;
 
-        for (int i = 0; i < slots_.Length; ++i) {
+        GenericScrewBehavior last = ReleaseSlot();
+        carrier_.ObtainSlot(last);
+        ToolBoxBehavior.Instance.BorrowSpawn();
+        last.transform.DOMove(carrier_.GetSlotPosition(), 0.5f);
 
-            GameObject prev_screw = Instantiate(ToolBoxBehavior.Instance.GetScrewByContainer(prev_container),
-                buckets_[slot_index_].transform.position, Quaternion.identity, transform.root);
-            prev_screw.GetComponent<Collider>().enabled = false;
-            GenericScrewBehavior prev_behavior = prev_screw.GetComponent<GenericScrewBehavior>();
-
-            prev_screw.transform.DOMove(prev_container.GetNextSlotPosition(), 0.5f);
-            prev_container.ObtainSlot(prev_behavior);
-        }
-
-        StartCoroutine(BorrowAnim(prev_container));
-    }
-
-
-    private IEnumerator BorrowAnim(ScrewContainer prev_container) {
-        InteractManager.LockInteraction();
-
-        GenericScrewBehavior tmp = ReleaseSlot();
-        tmp.LatentDestroy();
-        yield return new WaitForSeconds(0.5f);
-
-        InteractManager.ReleaseInteraction();
     }
 
     private IEnumerator RegroupAnim(ScrewContainer next_container) {

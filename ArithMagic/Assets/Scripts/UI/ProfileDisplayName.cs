@@ -10,7 +10,7 @@ public class ProfileDisplayName : MonoBehaviour {
 	void Start () {
         string name = "";
         try {
-            name = GameController.user_prof.name;
+            name = GameController.UserProf.name;
         } catch (Exception) { }
         GetComponent<Text>().text = name;
 		

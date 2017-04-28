@@ -31,7 +31,7 @@ public class GameController : PersistentSingleton<GameController> {
 
     public static int GetCurrentLevel() {
         try {
-            level_index_ = add ? user_prof.add_index : user_prof.sub_index;
+            level_index_ = add ? UserProf.add_index : UserProf.sub_index;
         } catch (NullReferenceException) { }
         return level_index_;
     }
@@ -44,9 +44,9 @@ public class GameController : PersistentSingleton<GameController> {
         level_index_ = GetCurrentLevel() + 1;
         try {
             if (add)
-                user_prof.add_index = level_index_;
+                UserProf.add_index = level_index_;
             else
-                user_prof.sub_index = level_index_;
+                UserProf.sub_index = level_index_;
             avatar_conn.SaveToText();
         } catch (NullReferenceException e) {
             Debug.LogException(e);
@@ -62,7 +62,7 @@ public class GameController : PersistentSingleton<GameController> {
      * BEGIN PROFILE 
      */
     private static AvatarBackEnd avatar_conn;
-    public static AvatarProfile user_prof { get; private set; }
+    public static AvatarProfile UserProf { get; private set; }
 
     public static List<AvatarProfile> GetProfiles() {
         List<AvatarProfile> profiles;
@@ -99,20 +99,20 @@ public class GameController : PersistentSingleton<GameController> {
 
     public static void SignInById(int id) {
         try {
-            user_prof = avatar_conn.GetProfileByIndex(id);
+            UserProf = avatar_conn.GetProfileByIndex(id);
         } catch (NullReferenceException e) {
             Debug.LogException(e);
         }
     }
 
     public static int GetCurrentProfileGrade() {
-        if (user_prof != null)
-            return (int)user_prof.grade;
+        if (UserProf != null)
+            return (int)UserProf.grade;
         return 0;
     }
 
     public static void SignOut() {
-        user_prof = null;
+        UserProf = null;
     }
     /*
      * END PROFILE

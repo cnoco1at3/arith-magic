@@ -12,21 +12,13 @@ public class MapRobotBehavior : GenericSingleton<MapRobotBehavior> {
 
     private static int docked_id_ = -1;
 
-    public AudioClip[] mapBackground; 
+    public AudioClip[] mapBackground;
 
     void Start() {
         SoundManager.Instance.PlayBGM(mapBackground[UnityEngine.Random.Range(0, mapBackground.Length)]);
         LockBoxBehavior box = LevelCluster.Instance.GetLockBoxById(docked_id_);
-        if (docked_id_ == -1)
-            docked_id_ = 0;
         if (box != null)
             transform.localPosition = box.GetTargetLocalPosition();
-        int tmp = GameController.GetCurrentLevel() + 1;
-        if (tmp == LevelCluster.Instance.GetLockBoxSize())
-            tmp -= 1;
-        docked_id_ = tmp;
-        transform.localPosition = LevelCluster.Instance.GetLockBoxById(tmp).GetTargetLocalPosition();
-        SoundManager.Instance.PlaySFX(move_sfx_);
     }
 
     public static int GetDockedId() { return docked_id_ > 0 ? docked_id_ : 0; }

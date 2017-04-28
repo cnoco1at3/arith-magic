@@ -45,7 +45,7 @@ public class XRayCameraBehavior : GenericSingleton<XRayCameraBehavior> {
     private Sprite fixedSprite_;
 
 
-    public bool is_finished {
+    public bool IsFinished {
         get {
             return parts_.Count == 0;
         }
@@ -60,7 +60,7 @@ public class XRayCameraBehavior : GenericSingleton<XRayCameraBehavior> {
                 part_ptr_.GetComponent<SpriteRenderer>().sprite = fixedSprite_;
                 bgmTrack = Mathf.Clamp(bgmTrack + 1, 0, bgm.Length - 1);
                 SoundManager.Instance.PlayBGM(bgm[bgmTrack]);
-            } catch (IndexOutOfRangeException e) { }
+            } catch (IndexOutOfRangeException) { }
         }
 
         if (parts_.Count == 0) {
@@ -158,7 +158,7 @@ public class XRayCameraBehavior : GenericSingleton<XRayCameraBehavior> {
     private void Awake() {
         try {
             robot_ = Instantiate(RobotCluster.Instance.GetRobotById(MapRobotBehavior.GetDockedId()));
-        } catch (NullReferenceException e) { }
+        } catch (NullReferenceException) { }
     }
 
     // Use this for initialization

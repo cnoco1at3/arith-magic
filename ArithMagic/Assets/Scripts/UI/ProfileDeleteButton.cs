@@ -9,7 +9,7 @@ public class ProfileDeleteButton : ProfileButton {
     private Transform popsup_;
 
     public override void ClickEvent() {
-        GameController.RemoveProfile(ProfileInfo.Instance.prof);
+        GameController.RemoveProfile(ProfileInfo.Instance.Profile);
         ProfileGuide.Instance.MoveToScreenById(0);
         ProfileDisplay.Instance.UpdateDisplay();
         ProfileInfo.Instance.OnExitInfoPanel();

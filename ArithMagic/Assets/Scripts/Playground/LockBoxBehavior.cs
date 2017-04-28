@@ -9,9 +9,21 @@ public class LockBoxBehavior : ProfileButton, IComparable {
 
     private static Vector3 target_pos_ = new Vector3(0.0f, 180.0f);
 
+    [SerializeField]
+    private GameObject load_;
+    private static GameObject _load_;
+
     private int id_ = -1;
 
     private Button button_;
+
+    private void Start() {
+        GetComponent<Button>().onClick.AddListener(ClickEvent);
+        if (load_ != null) {
+            _load_ = load_;
+            _load_.SetActive(false);
+        }
+    }
 
     public int CompareTo(object obj) {
         if (obj.GetType() != typeof(LockBoxBehavior))
@@ -23,6 +35,7 @@ public class LockBoxBehavior : ProfileButton, IComparable {
     public override void ClickEvent() {
         SoundManager.Instance.PlaySFX(LockBoxSingleton.Instance.touch_box, false);
         MapRobotBehavior.Instance.MoveToPosition(this);
+        _load_.SetActive(true);
     }
 
     public void SetUnlocked() {

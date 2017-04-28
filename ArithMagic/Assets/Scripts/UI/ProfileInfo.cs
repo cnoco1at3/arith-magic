@@ -7,7 +7,7 @@ using Util;
 
 public class ProfileInfo : GenericSingleton<ProfileInfo> {
 
-    public AvatarProfile prof { get; private set; }
+    public AvatarProfile Profile { get; private set; }
 
     [SerializeField]
     private Text[] text_fields_;
@@ -18,7 +18,7 @@ public class ProfileInfo : GenericSingleton<ProfileInfo> {
     public void OnEnterInfoPanel(AvatarProfile prof) {
         SetButtonActive(true);
 
-        this.prof = prof;
+        this.Profile = prof;
 
         UpdateDisplay();
     }
@@ -34,16 +34,16 @@ public class ProfileInfo : GenericSingleton<ProfileInfo> {
     public void OnExitInfoPanel() {
         SetButtonActive(false);
 
-        prof = null;
+        Profile = null;
     }
 
     public void UpdateDisplay() {
-        if (prof != null) {
-            text_fields_[0].text = prof.ToString();
-            text_fields_[1].text = prof.ToString();
-            text_fields_[2].text = prof.gender.GetDescription();
-            text_fields_[3].text = prof.age.ToString();
-            text_fields_[4].text = prof.grade.GetDescription();
+        if (Profile != null) {
+            text_fields_[0].text = Profile.ToString();
+            text_fields_[1].text = Profile.ToString();
+            text_fields_[2].text = Profile.gender.GetDescription();
+            text_fields_[3].text = Profile.age.ToString();
+            text_fields_[4].text = Profile.grade.GetDescription();
         }
 
     }

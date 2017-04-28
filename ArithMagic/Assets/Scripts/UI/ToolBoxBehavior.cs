@@ -26,6 +26,9 @@ public class ToolBoxBehavior : GenericSingleton<ToolBoxBehavior> {
     private ScrewContainer[] containers_;
 
     [SerializeField]
+    private ScrewCarrier carrier_;
+
+    [SerializeField]
     private GameObject[] screws_;
 
     [SerializeField]
@@ -46,7 +49,9 @@ public class ToolBoxBehavior : GenericSingleton<ToolBoxBehavior> {
     [SerializeField]
     private GameObject timer_;
 
+
     private GameObject[] problems_;
+    private int[] problem_id_;
     private GameObject operator_;
 
     private int problem_size_;
@@ -70,6 +75,11 @@ public class ToolBoxBehavior : GenericSingleton<ToolBoxBehavior> {
         } else {
             timer_.SetActive(false);
         }
+
+        if (category >= 10)
+            carrier_.gameObject.SetActive(true);
+        else
+            carrier_.gameObject.SetActive(false);
 
         SetNewProblem(ProblemRuler.GetNewProblem(category));
 
@@ -130,20 +140,9 @@ public class ToolBoxBehavior : GenericSingleton<ToolBoxBehavior> {
     }
 
     public ScrewContainer GetNextContainer(ScrewContainer container) {
-        try {
-            for (int i = 0; i < containers_.Length - 1; ++i)
-                if (containers_[i].Equals(container))
-                    return containers_[i + 1];
-        } catch (NullReferenceException) { }
-        return null;
-    }
-
-    public ScrewContainer GetPrevContainer(ScrewContainer container) {
-        try {
-            for (int i = 1; i < containers_.Length; ++i)
-                if (containers_[i].Equals(container))
-                    return containers_[i - 1];
-        } catch (NullReferenceException) { }
+        for (int i = 0; i < containers_.Length - 1; ++i)
+            if (containers_[i].Equals(container))
+                return containers_[i + 1];
         return null;
     }
 
@@ -157,9 +156,16 @@ public class ToolBoxBehavior : GenericSingleton<ToolBoxBehavior> {
         try {
             for (int i = 0; i < containers_.Length && i < screws_.Length; ++i)
                 if (container.Equals(containers_[i]))
-                    return screws_[i];
+                    return i > 1 ? screws_[1] : screws_[i];
         } catch (NullReferenceException) { }
         return null;
+    }
+
+    public void BorrowSpawn() {
+        int re = problems_[1].GetComponent<ScrewGenerator>().GetRemainNum();
+        Destroy(problems_[1]);
+        problems_[1] = Instantiate(numbers_[problem_id_[1] - 1], anchors_[1].position, Quaternion.identity, transform);
+        problems_[1].GetComponent<ScrewGenerator>().GenerateScrews(1, num: re);
     }
 
     private void SetNewProblem(ProblemData prob) {
@@ -176,6 +182,7 @@ public class ToolBoxBehavior : GenericSingleton<ToolBoxBehavior> {
             foreach (GameObject problem in problems_)
                 if (problem != null)
                     Destroy(problem);
+
         if (operators_ != null)
             Destroy(operator_);
 
@@ -183,6 +190,9 @@ public class ToolBoxBehavior : GenericSingleton<ToolBoxBehavior> {
             foreach (ScrewContainer container in containers_)
                 if (container != null)
                     container.ClearSlots();
+
+        if (carrier_ != null)
+            carrier_.ClearSlot();
 
         if (slots_ != null)
             foreach (PartsAcceptor slot in slots_)
@@ -201,6 +211,12 @@ public class ToolBoxBehavior : GenericSingleton<ToolBoxBehavior> {
 
     private void SpawnProblem(int num1, int num2) {
         problems_ = new GameObject[4];
+        problem_id_ = new int[4];
+
+        problem_id_[0] = num1 % 10;
+        problem_id_[1] = num1 / 10;
+        problem_id_[2] = num2 % 10;
+        problem_id_[3] = num2 / 10;
 
         problems_[0] = Instantiate(numbers_[num1 % 10], anchors_[0].position, Quaternion.identity, transform);
         problems_[0].GetComponent<ScrewGenerator>().GenerateScrews(0);
@@ -236,7 +252,7 @@ public class ToolBoxBehavior : GenericSingleton<ToolBoxBehavior> {
         InteractManager.LockInteraction();
 
         feedback_.SetActive(true);
-        SoundLib.SoundManager.Instance.PlaySFX(right_sfx[UnityEngine.Random.Range(0,right_sfx.Length)]);
+        SoundLib.SoundManager.Instance.PlaySFX(right_sfx[UnityEngine.Random.Range(0, right_sfx.Length)]);
         yield return new WaitForSeconds(2.0f);
         feedback_.SetActive(false);
 

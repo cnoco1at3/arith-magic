@@ -12,7 +12,7 @@ public class ProfileEditBackButton : ProfileButton {
             ProfileEdit.Instance.SetButtonActive(false);
             popsup_.DOLocalMoveY(0.0f, 0.5f);
         } else {
-            ProfileGuide.Instance.MoveToScreenById(ProfileEdit.Instance.from);
+            ProfileGuide.Instance.MoveToScreenById(ProfileEdit.Instance.FromIndex);
             ProfileEdit.Instance.OnExitEditPanel();
         }
     }

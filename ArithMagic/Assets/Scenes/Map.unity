@@ -13,7 +13,7 @@ OcclusionCullingSettings:
 --- !u!104 &2
 RenderSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 7
+  serializedVersion: 8
   m_Fog: 0
   m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   m_FogMode: 3
@@ -25,6 +25,7 @@ RenderSettings:
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
   m_AmbientMode: 0
+  m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
   m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
@@ -41,7 +42,7 @@ RenderSettings:
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 7
+  serializedVersion: 9
   m_GIWorkflowMode: 1
   m_GISettings:
     serializedVersion: 2
@@ -53,7 +54,7 @@ LightmapSettings:
     m_EnableBakedLightmaps: 1
     m_EnableRealtimeLightmaps: 1
   m_LightmapEditorSettings:
-    serializedVersion: 4
+    serializedVersion: 8
     m_Resolution: 2
     m_BakeResolution: 40
     m_TextureWidth: 1024
@@ -66,13 +67,27 @@ LightmapSettings:
     m_LightmapParameters: {fileID: 0}
     m_LightmapsBakeMode: 1
     m_TextureCompression: 1
-    m_DirectLightInLightProbes: 1
     m_FinalGather: 0
     m_FinalGatherFiltering: 1
     m_FinalGatherRayCount: 256
     m_ReflectionCompression: 2
+    m_MixedBakeMode: 1
+    m_BakeBackend: 0
+    m_PVRSampling: 1
+    m_PVRDirectSampleCount: 32
+    m_PVRSampleCount: 500
+    m_PVRBounces: 2
+    m_PVRFiltering: 0
+    m_PVRFilteringMode: 1
+    m_PVRCulling: 1
+    m_PVRFilteringGaussRadiusDirect: 1
+    m_PVRFilteringGaussRadiusIndirect: 5
+    m_PVRFilteringGaussRadiusAO: 2
+    m_PVRFilteringAtrousColorSigma: 1
+    m_PVRFilteringAtrousNormalSigma: 1
+    m_PVRFilteringAtrousPositionSigma: 1
   m_LightingDataAsset: {fileID: 0}
-  m_RuntimeCPUUsage: 25
+  m_ShadowMaskMode: 2
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -89,6 +104,8 @@ NavMeshSettings:
     minRegionArea: 2
     manualCellSize: 0
     cellSize: 0.16666667
+    manualTileSize: 0
+    tileSize: 256
     accuratePlacement: 0
   m_NavMeshData: {fileID: 0}
 --- !u!1 &18590385
@@ -389,6 +406,8 @@ Camera:
   m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 0
+  m_AllowMSAA: 1
+  m_ForceIntoRT: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
@@ -530,6 +549,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8500694b4ee3f974e9a6a76b06ad700b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  load_: {fileID: 0}
 --- !u!95 &221693393
 Animator:
   serializedVersion: 3
@@ -1043,6 +1063,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8500694b4ee3f974e9a6a76b06ad700b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  load_: {fileID: 0}
 --- !u!95 &526451173
 Animator:
   serializedVersion: 3
@@ -1260,6 +1281,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8500694b4ee3f974e9a6a76b06ad700b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  load_: {fileID: 0}
 --- !u!95 &537765831
 Animator:
   serializedVersion: 3
@@ -1469,6 +1491,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8500694b4ee3f974e9a6a76b06ad700b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  load_: {fileID: 0}
 --- !u!95 &617898827
 Animator:
   serializedVersion: 3
@@ -1610,6 +1633,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8500694b4ee3f974e9a6a76b06ad700b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  load_: {fileID: 0}
 --- !u!95 &754463803
 Animator:
   serializedVersion: 3
@@ -1726,7 +1750,7 @@ Light:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 782159150}
   m_Enabled: 1
-  serializedVersion: 7
+  serializedVersion: 8
   m_Type: 1
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
   m_Intensity: 1
@@ -1751,6 +1775,8 @@ Light:
   m_Lightmapping: 4
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
+  m_ColorTemperature: 6570
+  m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
 --- !u!4 &782159152
@@ -1966,6 +1992,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8500694b4ee3f974e9a6a76b06ad700b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  load_: {fileID: 1293648351}
 --- !u!95 &847032548
 Animator:
   serializedVersion: 3
@@ -2107,6 +2134,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8500694b4ee3f974e9a6a76b06ad700b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  load_: {fileID: 0}
 --- !u!95 &880878154
 Animator:
   serializedVersion: 3
@@ -2248,6 +2276,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8500694b4ee3f974e9a6a76b06ad700b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  load_: {fileID: 0}
 --- !u!95 &985970468
 Animator:
   serializedVersion: 3
@@ -2389,6 +2418,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8500694b4ee3f974e9a6a76b06ad700b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  load_: {fileID: 0}
 --- !u!95 &996589919
 Animator:
   serializedVersion: 3
@@ -2530,6 +2560,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8500694b4ee3f974e9a6a76b06ad700b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  load_: {fileID: 0}
 --- !u!95 &1023709227
 Animator:
   serializedVersion: 3
@@ -2609,7 +2640,7 @@ Canvas:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1053342134}
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_RenderMode: 0
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
@@ -2618,6 +2649,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -2634,6 +2666,7 @@ RectTransform:
   - {fileID: 1147485760}
   - {fileID: 1982296277}
   - {fileID: 1682709996}
+  - {fileID: 1293648352}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2704,7 +2737,7 @@ Canvas:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1074298663}
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_RenderMode: 0
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
@@ -2713,6 +2746,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -3002,6 +3036,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8500694b4ee3f974e9a6a76b06ad700b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  load_: {fileID: 0}
 --- !u!95 &1118122135
 Animator:
   serializedVersion: 3
@@ -3343,6 +3378,92 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1257550379}
+--- !u!1 &1293648351
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1293648352}
+  - component: {fileID: 1293648355}
+  - component: {fileID: 1293648354}
+  - component: {fileID: 1293648353}
+  m_Layer: 5
+  m_Name: Loading
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1293648352
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1293648351}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1053342138}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 300, y: 300}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!95 &1293648353
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1293648351}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2a8f60b2014ca694cb4ef69509c74af4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &1293648354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1293648351}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 21300000, guid: e56f76c7be3bc61498da8aad5c4db4d0, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!222 &1293648355
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1293648351}
 --- !u!1 &1325179957
 GameObject:
   m_ObjectHideFlags: 0
@@ -3757,6 +3878,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8500694b4ee3f974e9a6a76b06ad700b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  load_: {fileID: 0}
 --- !u!95 &1476616518
 Animator:
   serializedVersion: 3
@@ -3898,6 +4020,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8500694b4ee3f974e9a6a76b06ad700b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  load_: {fileID: 0}
 --- !u!95 &1516379248
 Animator:
   serializedVersion: 3
@@ -4107,6 +4230,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8500694b4ee3f974e9a6a76b06ad700b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  load_: {fileID: 0}
 --- !u!95 &1554694863
 Animator:
   serializedVersion: 3
@@ -4468,6 +4592,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8500694b4ee3f974e9a6a76b06ad700b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  load_: {fileID: 0}
 --- !u!95 &1583580764
 Animator:
   serializedVersion: 3
@@ -4609,6 +4734,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8500694b4ee3f974e9a6a76b06ad700b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  load_: {fileID: 0}
 --- !u!95 &1610089347
 Animator:
   serializedVersion: 3
@@ -5429,6 +5555,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8500694b4ee3f974e9a6a76b06ad700b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  load_: {fileID: 0}
 --- !u!95 &2041235599
 Animator:
   serializedVersion: 3
@@ -5638,6 +5765,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8500694b4ee3f974e9a6a76b06ad700b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  load_: {fileID: 0}
 --- !u!95 &2111002657
 Animator:
   serializedVersion: 3

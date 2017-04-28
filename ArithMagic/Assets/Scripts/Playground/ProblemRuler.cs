@@ -10,7 +10,17 @@ public static class ProblemRuler {
     private static int[] f_category_ = new int[18] { 0, 0, 0, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2 };
     private static int[] s_category_ = new int[18] { 0, 1, 2, 3, 3, 3, 4, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 5 };
 
+    private static ProblemData prev = new ProblemData();
+
     public static ProblemData GetNewProblem(int category) {
+        ProblemData tmp = GetProblem(category);
+        while (tmp.Equals(prev))
+            tmp = GetProblem(category);
+        prev = tmp;
+        return tmp;
+    }
+
+    public static ProblemData GetProblem(int category) {
 
         Random.InitState((int)(Time.time * 19997) % 1000000);
 
@@ -63,17 +73,23 @@ public static class ProblemRuler {
             // d - s w/ re
             case 10:
                 num1 = Random.Range(10, 100);
-                num2 = RandomSampler.Sample10(num1 % 10, 10);
+                while (num1 % 10 == 9)
+                    num1 = Random.Range(10, 100);
+                num2 = RandomSampler.Sample10(num1 % 10 + 1, 10);
                 break;
             // d - d w/ re
             case 11:
                 num1 = Random.Range(20, 100);
-                num2 = Random.Range(1, num1 / 10) * 10 + Random.Range(num1 % 10, 10);
+                while (num1 % 10 == 9)
+                    num1 = Random.Range(10, 100);
+                num2 = Random.Range(1, num1 / 10) * 10 + Random.Range(num1 % 10 + 1, 10);
                 break;
             // d - d w/ re
             case 12:
                 num1 = Random.Range(20, 100);
-                num2 = Random.Range(1, num1 / 10) * 10 + Random.Range(num1 % 10, 10);
+                while (num1 % 10 == 9)
+                    num1 = Random.Range(10, 100);
+                num2 = Random.Range(1, num1 / 10) * 10 + Random.Range(num1 % 10 + 1, 10);
                 break;
 
             default:
@@ -103,8 +119,21 @@ public class ProblemData {
     public int num1;
     public int num2;
 
+    public ProblemData() {
+        num1 = 0;
+        num2 = 0;
+    }
+
     public ProblemData(int n1, int n2) {
         num1 = n1;
         num2 = n2;
+    }
+
+    public override int GetHashCode() {
+        return base.GetHashCode();
+    }
+
+    public override bool Equals(object obj) {
+        return num1 == ((ProblemData)obj).num1 && num2 == ((ProblemData)obj).num2;
     }
 }

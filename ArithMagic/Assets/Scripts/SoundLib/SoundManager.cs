@@ -98,7 +98,7 @@ namespace SoundLib {
                     bgm_src_.Stop();
                     return true;
                 }
-            } catch (NullReferenceException e) {
+            } catch (NullReferenceException) {
             }
             return false;
         }
@@ -124,7 +124,7 @@ namespace SoundLib {
                         return true;
                     }
                 }
-            } catch (NullReferenceException e) {
+            } catch (NullReferenceException) {
                 try {
                     sfx_queue_.Enqueue(clip);
                 } catch (NullReferenceException) {
@@ -162,7 +162,7 @@ namespace SoundLib {
                         return true;
                     }
                 }
-            } catch (NullReferenceException e) {
+            } catch (NullReferenceException) {
             }
             return false;
         }
@@ -173,7 +173,7 @@ namespace SoundLib {
                     src.Stop();
                 }
                 return true;
-            } catch (NullReferenceException e) { }
+            } catch (NullReferenceException) { }
             return false;
         }
     }
