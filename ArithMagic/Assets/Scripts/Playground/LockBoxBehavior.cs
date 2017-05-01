@@ -17,8 +17,41 @@ public class LockBoxBehavior : ProfileButton, IComparable {
 
     private Button button_;
 
+    private bool unlocked = false;
+
+    [SerializeField]
+    private Sprite source;
+    [SerializeField]
+    private Sprite pressed;
+
     private void Start() {
-        GetComponent<Button>().onClick.AddListener(ClickEvent);
+        button_ = GetComponent<Button>();
+        button_.onClick.AddListener(ClickEvent);
+        SpriteState spritestate = new SpriteState();
+        spritestate = GetComponent<Button>().spriteState;
+        if (!unlocked)
+        {
+            GetComponent<Image>().sprite = LockBoxSingleton.Instance.lockBox;
+            spritestate.pressedSprite = LockBoxSingleton.Instance.lockBox;
+        }
+
+        else if (unlocked)
+        {
+            GetComponent<Image>().sprite = source;
+            spritestate.pressedSprite = pressed;
+        }
+        try
+        {
+            button_.interactable = true;
+            button_.spriteState = spritestate;
+        }
+        catch (NullReferenceException)
+        {
+            button_ = GetComponent<Button>();
+            button_.interactable = true;
+            button_.spriteState = spritestate;
+        }
+
         if (load_ != null) {
             _load_ = load_;
             _load_.SetActive(false);
@@ -33,19 +66,37 @@ public class LockBoxBehavior : ProfileButton, IComparable {
     }
 
     public override void ClickEvent() {
-        SoundManager.Instance.PlaySFX(LockBoxSingleton.Instance.touch_box, false);
-        MapRobotBehavior.Instance.MoveToPosition(this);
-        _load_.SetActive(true);
-    }
 
-    public void SetUnlocked() {
-        try {
-            button_.interactable = true;
-        } catch (NullReferenceException) {
-            button_ = GetComponent<Button>();
-            button_.interactable = true;
+        if (unlocked == true)
+        {
+            SoundManager.Instance.PlaySFX(LockBoxSingleton.Instance.touch_box, false);
+            MapRobotBehavior.Instance.MoveToPosition(this);
+            _load_.SetActive(true);
+        }
+        else if (unlocked == false)
+        {
+            SoundManager.Instance.PlaySFX(LockBoxSingleton.Instance.touch_locked_box[UnityEngine.Random.Range(0, LockBoxSingleton.Instance.touch_locked_box.Length)], false);
         }
     }
+
+    public void SetUnlocked()
+    {
+        unlocked = true;
+
+        SpriteState spritestate = new SpriteState();
+        try
+        {
+            spritestate = button_.spriteState;
+        }
+        catch (NullReferenceException)
+        {
+            button_ = GetComponent<Button>();
+            spritestate = button_.spriteState;
+        }
+        GetComponent<Image>().sprite = source;
+        spritestate.pressedSprite = pressed;
+        button_.spriteState = spritestate;
+     }
 
     public void SetLockBoxId(int id) { id_ = id; }
 

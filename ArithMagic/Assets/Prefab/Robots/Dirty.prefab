@@ -2457,7 +2457,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 504ecd75973181846b2552557686db1f, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 76e63fc6865b90f4887907d6b29f702b, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -2560,7 +2560,7 @@ MonoBehaviour:
   fixedClips_:
   - {fileID: 8300000, guid: e8cfb18d0cb780f4d94b2133c13eb0c0, type: 3}
   brokenClips_:
-  - {fileID: 8300000, guid: fdccb72aaac643f4099cfe7901cd804c, type: 3}
+  - {fileID: 8300000, guid: 504ecd75973181846b2552557686db1f, type: 3}
   - {fileID: 8300000, guid: 0b76db87c579c584686c5eebb0c15b63, type: 3}
   - {fileID: 8300000, guid: 94dd2a8cda41bd648bce4e994b182ff5, type: 3}
   - {fileID: 8300000, guid: c646474fda1cf48499a4608cf67c8720, type: 3}
@@ -3905,7 +3905,7 @@ SpriteRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1459618296665314}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_MotionVectors: 1
@@ -4465,7 +4465,7 @@ SpriteRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000558126642268}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_MotionVectors: 1
