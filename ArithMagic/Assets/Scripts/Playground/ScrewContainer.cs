@@ -76,6 +76,7 @@ public class ScrewContainer : Clickable {
                 buckets_[i].LatentDestroy();
             buckets_[i] = null;
         }
+        glow_.SetActive(false);
         slot_index_ = -1;
     }
 
@@ -117,7 +118,7 @@ public class ScrewContainer : Clickable {
 
         GenericScrewBehavior last = ReleaseSlot();
         carrier_.ObtainSlot(last);
-        ToolBoxBehavior.Instance.BorrowSpawn();
+        // ToolBoxBehavior.Instance.BorrowSpawn();
         last.transform.DOMove(carrier_.GetSlotPosition(), 0.5f);
 
     }
