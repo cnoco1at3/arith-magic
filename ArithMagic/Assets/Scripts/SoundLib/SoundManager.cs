@@ -201,5 +201,25 @@ namespace SoundLib {
             catch (NullReferenceException) { }
             return false; 
         }
+
+        public bool CheckSFX(AudioClip clip)
+        {
+            if (clip == null)
+                return false;
+            try
+            {
+                bool isNotPlaying = true;
+                for (int i = 0; i < sfx_src_.Length; i++)
+                { 
+                        if (sfx_src_[i].clip == clip && sfx_src_[i].isPlaying)
+                        {
+                            isNotPlaying = false;
+                        }
+                }
+                return isNotPlaying;
+            }
+            catch (NullReferenceException) { }
+            return false;
+        }
     }
 }

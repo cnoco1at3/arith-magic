@@ -127,7 +127,7 @@ public class XRayCameraBehavior : GenericSingleton<XRayCameraBehavior> {
             if (detect_time_ <= 0) {
                 PopsUpToolBox((MapRobotBehavior.GetDockedId() + 1) % 3 == 0);
                 part_ptr_ = other.gameObject;
-                SoundManager.Instance.PlaySFX(sfx_a_scan);
+               // SoundManager.Instance.PlaySFX(sfx_a_scan);
             }
         } else if (other.gameObject.tag == "Part")
             SetDetectStatus(other);
@@ -148,7 +148,8 @@ public class XRayCameraBehavior : GenericSingleton<XRayCameraBehavior> {
         is_entered_ = other != null;
 
         if (is_entered_) {
-            SoundManager.Instance.PlaySFX(sfx_detect, false, 0.5f);
+            if(SoundManager.Instance.CheckSFX(sfx_detect))
+                SoundManager.Instance.PlaySFX(sfx_detect, false, 0.5f);
         }
     }
 
@@ -163,8 +164,8 @@ public class XRayCameraBehavior : GenericSingleton<XRayCameraBehavior> {
         render_mesh_.SetActive(active);
         back_button_.SetActive(active);
 
-        if (active)
-            SoundManager.Instance.PlaySFX(sfx_scanner);
+        //if (active)
+           // SoundManager.Instance.PlaySFX(sfx_scanner);
 
         is_entered_ = false;
         transform.localScale = Vector3.zero;

@@ -6,5 +6,8 @@ using Util;
 public class LockBoxSingleton : GenericSingleton<LockBoxSingleton> {
 
     public AudioClip touch_box;
+    public AudioClip[] touch_locked_box; 
     public AudioClip move_robot;
+
+    public Sprite lockBox; 
 }
