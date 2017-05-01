@@ -11,6 +11,13 @@ public class ToolBoxBehavior : GenericSingleton<ToolBoxBehavior> {
     public AudioClip[] right_sfx;
     public AudioClip wrong_sfx;
 
+    [SerializeField]
+    private AudioClip[] answerVO_ones;
+    [SerializeField]
+    private AudioClip[] answerVO_tens;
+    private AudioClip answerClip_ones;
+    private AudioClip answerClip_tens;
+
     public const int kTimerTime = 10;
 
     [SerializeField]
@@ -257,6 +264,48 @@ public class ToolBoxBehavior : GenericSingleton<ToolBoxBehavior> {
 
     private IEnumerator SolvedCoroutine() {
         InteractManager.LockInteraction();
+
+        //determine audio clips for answer
+        if (slots_[1].acc_part_id == 0)
+        {
+            answerClip_ones = answerVO_ones[slots_[0].acc_part_id];
+            answerClip_tens = null;
+        }
+        else if (slots_[1].acc_part_id == 1)
+        {
+            answerClip_ones = answerVO_ones[slots_[0].acc_part_id + (slots_[1].acc_part_id * 10)];
+            answerClip_tens = null;
+        }
+
+        else if (slots_[1].acc_part_id > 1 && slots_[0].acc_part_id == 0)
+        {
+            answerClip_ones = null;
+            answerClip_tens = answerVO_tens[slots_[1].acc_part_id - 1];
+        }
+
+        else if (slots_[1].acc_part_id > 1 && slots_[0].acc_part_id > 0)
+        {
+            answerClip_ones = answerVO_ones[slots_[0].acc_part_id];
+            answerClip_tens = answerVO_tens[slots_[1].acc_part_id - 1];      
+        }
+        //Play audio clips for answer
+        if (answerClip_ones != null && answerClip_tens == null)
+        {
+            SoundLib.SoundManager.Instance.PlaySFX(answerClip_ones);
+            yield return new WaitForSeconds(answerClip_ones.length);
+        }
+        else if (answerClip_ones == null && answerClip_tens != null)
+        {
+            SoundLib.SoundManager.Instance.PlaySFX(answerClip_tens);
+            yield return new WaitForSeconds(answerClip_tens.length);
+        }
+        else if (answerClip_ones != null && answerClip_tens != null)
+        {
+            SoundLib.SoundManager.Instance.PlaySFX(answerClip_tens);
+            yield return new WaitForSeconds(answerClip_tens.length);
+            SoundLib.SoundManager.Instance.PlaySFX(answerClip_ones);
+            yield return new WaitForSeconds(answerClip_ones.length);
+        }
 
         feedback_.SetActive(true);
         SoundLib.SoundManager.Instance.PlaySFX(right_sfx[UnityEngine.Random.Range(0, right_sfx.Length)]);
