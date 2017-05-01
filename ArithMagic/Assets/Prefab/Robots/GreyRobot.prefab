@@ -1741,7 +1741,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: b1a023357df20a845a836b003bcfc374, type: 3}
+  m_audioClip: {fileID: 8300000, guid: a03c2f664f2a93e4d98232025f82c6de, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -1842,7 +1842,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   robotAudio_: {fileID: 0}
   fixedClips_:
-  - {fileID: 8300000, guid: f4dd4ed1f5509a84094303d98fba489e, type: 3}
+  - {fileID: 8300000, guid: 54c1edca3632358488178b1fa4202315, type: 3}
   brokenClips_:
   - {fileID: 8300000, guid: cd7fb133e430b1e45ad165742d12f6a1, type: 3}
   - {fileID: 8300000, guid: 459a6c3bfe270914fa47a43f28179ef6, type: 3}
@@ -1850,6 +1850,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: c6a6c0114573a2d47bbab946ec107180, type: 3}
   - {fileID: 8300000, guid: d67338a76b586fb4a941ab84d91ccba5, type: 3}
   - {fileID: 8300000, guid: 9168a697cf73bf647b0556b0f4bfee89, type: 3}
+  - {fileID: 8300000, guid: f4dd4ed1f5509a84094303d98fba489e, type: 3}
 --- !u!212 &212002158521265200
 SpriteRenderer:
   m_ObjectHideFlags: 1
