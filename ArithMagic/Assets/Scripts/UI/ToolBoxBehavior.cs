@@ -260,7 +260,7 @@ public class ToolBoxBehavior : GenericSingleton<ToolBoxBehavior> {
 
         feedback_.SetActive(true);
         SoundLib.SoundManager.Instance.PlaySFX(right_sfx[UnityEngine.Random.Range(0, right_sfx.Length)]);
-        yield return new WaitForSeconds(2.0f);
+        yield return new WaitForSeconds(1.5f);
         feedback_.SetActive(false);
 
         if (time_mode_) {
