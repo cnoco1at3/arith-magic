@@ -27,7 +27,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4320507750126894
 Transform:
   m_ObjectHideFlags: 1
@@ -53,16 +53,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   robots:
-  - {fileID: 1222469167460492, guid: 977a41edf773f214c8872ea23c1e129b, type: 2}
-  - {fileID: 1701297451659122, guid: 57d9bec16d3788b4bb238c16b25d9128, type: 2}
+  - {fileID: 1491275095095424, guid: 8011ad8814c9a38498aef94d8ba8d207, type: 2}
+  - {fileID: 1440064340157806, guid: 272739cbde790e04d8687693ecf0fc04, type: 2}
   - {fileID: 1427365410503842, guid: c46c5cd037ee26241b37cd16c2946895, type: 2}
   - {fileID: 1246857624629494, guid: 0cf5972e9a595ef46921f118aea3d593, type: 2}
   - {fileID: 1108754277553440, guid: b8c04ca8adffe774792a878980ef93d2, type: 2}
   - {fileID: 1427365410503842, guid: 2a515b10fe31daf48ab3f4c158fdfb87, type: 2}
   - {fileID: 1195578606111116, guid: 87ba1c0c67ca3374caef6635065c0440, type: 2}
-  - {fileID: 1440064340157806, guid: 272739cbde790e04d8687693ecf0fc04, type: 2}
+  - {fileID: 1701297451659122, guid: 57d9bec16d3788b4bb238c16b25d9128, type: 2}
   - {fileID: 1427365410503842, guid: 22ee54b1f9eae864e8f0d53b2fb6c1f9, type: 2}
-  - {fileID: 1491275095095424, guid: 8011ad8814c9a38498aef94d8ba8d207, type: 2}
+  - {fileID: 1222469167460492, guid: 977a41edf773f214c8872ea23c1e129b, type: 2}
   - {fileID: 1647805489410138, guid: 75c37a1cc4b74d2469dcbcb112b079fe, type: 2}
   - {fileID: 1427365410503842, guid: 8f9f31882a2cddb478dde3c6687b7776, type: 2}
   - {fileID: 1122718444788182, guid: db1ad04d139fdc349ac093111f371a8f, type: 2}

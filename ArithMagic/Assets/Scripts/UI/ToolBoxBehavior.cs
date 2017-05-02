@@ -18,6 +18,9 @@ public class ToolBoxBehavior : GenericSingleton<ToolBoxBehavior> {
     private AudioClip answerClip_ones;
     private AudioClip answerClip_tens;
 
+    [SerializeField]
+    private AudioClip[] wrongVO;
+
     public const int kTimerTime = 60;
 
     [SerializeField]
@@ -334,7 +337,10 @@ public class ToolBoxBehavior : GenericSingleton<ToolBoxBehavior> {
         InteractManager.LockInteraction();
         SoundLib.SoundManager.Instance.PlaySFX(wrong_sfx);
         wrong_feedback_.SetActive(true);
-        yield return new WaitForSeconds(2.0f);
+        yield return new WaitForSeconds(wrong_sfx.length);
+        AudioClip wrongclip = wrongVO[UnityEngine.Random.Range(0, wrongVO.Length)];
+        SoundLib.SoundManager.Instance.PlaySFX(wrongclip);
+        yield return new WaitForSeconds(wrongclip.length);
         wrong_feedback_.SetActive(false);
         InteractManager.ReleaseInteraction();
     }
