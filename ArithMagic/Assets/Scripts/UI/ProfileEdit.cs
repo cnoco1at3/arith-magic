@@ -50,12 +50,10 @@ public class ProfileEdit : GenericSingleton<ProfileEdit> {
 
     public void SaveOrAddProfileToData() {
         if (edit_ == null) {
-            AvatarProfile saved = new AvatarProfile(inputs_[0].text, (uint)Int32.Parse(inputs_[1].text),
-                (AvatarProfile.Gender)dropdowns_[0].value, (AvatarProfile.GradeLevel)dropdowns_[1].value);
+            AvatarProfile saved = new AvatarProfile(inputs_[0].text, (uint)Int32.Parse(inputs_[1].text), (AvatarProfile.GradeLevel)dropdowns_[1].value);
             GameController.AddProfile(saved);
         } else {
-            GameController.EditProfile(edit_, inputs_[0].text, (uint)Int32.Parse(inputs_[1].text),
-                (AvatarProfile.Gender)dropdowns_[0].value, (AvatarProfile.GradeLevel)dropdowns_[1].value);
+            GameController.EditProfile(edit_, inputs_[0].text, (uint)Int32.Parse(inputs_[1].text), (AvatarProfile.GradeLevel)dropdowns_[1].value);
         }
     }
 
@@ -65,7 +63,6 @@ public class ProfileEdit : GenericSingleton<ProfileEdit> {
         if (edit_ != null) {
             inputs_[0].text = edit_.ToString();
             inputs_[1].text = edit_.age.ToString();
-            dropdowns_[0].value = (int)edit_.gender;
             dropdowns_[1].value = (int)edit_.grade;
         } else {
             inputs_[0].text = "";

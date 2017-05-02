@@ -6,6 +6,7 @@ public class ScrewGenerator : MonoBehaviour {
 
     private Transform[] anchors_;
 
+
     public void GenerateScrews(int id, bool add = true, int num = -1) {
         GameObject screw = ToolBoxBehavior.Instance.GetScrewById(id);
 
@@ -23,6 +24,14 @@ public class ScrewGenerator : MonoBehaviour {
             }
         }
     }
+
+
+    public void ClearScrews() {
+        foreach (Transform child in transform) {
+            Destroy(child.gameObject);
+        }
+    }
+
 
     public int GetRemainNum() {
         return transform.childCount - anchors_.Length;

@@ -19,6 +19,8 @@ public class ScrewContainer : Clickable {
     private GenericScrewBehavior[] buckets_;
 
     private int slot_index_ = -1;
+
+    private bool borrowed_ = false;
     #endregion
 
 
@@ -48,8 +50,6 @@ public class ScrewContainer : Clickable {
             return -1;
         buckets_[++slot_index_] = screw;
 
-        if (IsFull && ToolBoxBehavior.Instance.GetNextContainer(this) != null)
-            glow_.SetActive(true);
         return slot_index_;
     }
 
@@ -76,18 +76,15 @@ public class ScrewContainer : Clickable {
                 buckets_[i].LatentDestroy();
             buckets_[i] = null;
         }
-        glow_.SetActive(false);
         slot_index_ = -1;
+        borrowed_ = false;
     }
 
     public override void ClickEvent() {
-        if (IsFull && GameController.add) {
-            glow_.SetActive(false);
+        if (IsFull && GameController.add)
             RegroupTo();
-        } else if (!GameController.add) {
-            glow_.SetActive(false);
+        else if (!GameController.add)
             BorrowTo();
-        }
     }
 
 
@@ -116,10 +113,14 @@ public class ScrewContainer : Clickable {
         if (!carrier_.IsEmpty)
             return;
 
-        GenericScrewBehavior last = ReleaseSlot();
-        carrier_.ObtainSlot(last);
-        // ToolBoxBehavior.Instance.BorrowSpawn();
-        last.transform.DOMove(carrier_.GetSlotPosition(), 0.5f);
+        if (!borrowed_) {
+            GenericScrewBehavior last = ReleaseSlot();
+            carrier_.ObtainSlot(last);
+            ToolBoxBehavior.Instance.BorrowSpawn();
+            last.transform.DOMove(carrier_.GetSlotPosition(), 0.5f);
+
+            borrowed_ = true;
+        }
 
     }
 

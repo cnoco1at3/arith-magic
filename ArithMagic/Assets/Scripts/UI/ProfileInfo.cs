@@ -41,7 +41,6 @@ public class ProfileInfo : GenericSingleton<ProfileInfo> {
         if (Profile != null) {
             text_fields_[0].text = Profile.ToString();
             text_fields_[1].text = Profile.ToString();
-            text_fields_[2].text = Profile.gender.GetDescription();
             text_fields_[3].text = Profile.age.ToString();
             text_fields_[4].text = Profile.grade.GetDescription();
         }

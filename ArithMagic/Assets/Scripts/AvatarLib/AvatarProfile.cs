@@ -8,17 +8,14 @@ namespace AvatarLib {
         public AvatarProfile() {
             name = "";
             age = 0;
-            gender = 0;
             grade = 0;
         }
 
-        public AvatarProfile(string name = "", uint age = 0,
-            Gender gender = 0, GradeLevel grade = 0) {
+        public AvatarProfile(string name = "", uint age = 0, GradeLevel grade = 0) {
 
             this.name = name;
             this.age = age;
 
-            this.gender = gender;
             this.grade = grade;
         }
 
@@ -40,16 +37,6 @@ namespace AvatarLib {
             k2nd = 2
         };
         public GradeLevel grade;
-
-        public enum Gender {
-            [Description("Boy")]
-            kBoy = 0,
-            [Description("Girl")]
-            kGirl = 1,
-            [Description("Other")]
-            kOther = 2
-        };
-        public Gender gender = 0;
 
         public uint age = 0;
 

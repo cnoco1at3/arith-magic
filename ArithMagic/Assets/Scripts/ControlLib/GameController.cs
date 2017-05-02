@@ -88,10 +88,9 @@ public class GameController : PersistentSingleton<GameController> {
         avatar_conn.SaveToText();
     }
 
-    public static void EditProfile(AvatarProfile prof, string name, uint age, AvatarProfile.Gender gender, AvatarProfile.GradeLevel grade) {
+    public static void EditProfile(AvatarProfile prof, string name, uint age, AvatarProfile.GradeLevel grade) {
         prof.name = name;
         prof.age = age;
-        prof.gender = gender;
         prof.grade = grade;
 
         avatar_conn.SaveToText();

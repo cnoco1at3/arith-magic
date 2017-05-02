@@ -49,6 +49,9 @@ public class ToolBoxBehavior : GenericSingleton<ToolBoxBehavior> {
     [SerializeField]
     private GameObject timer_;
 
+    [SerializeField]
+    private GameObject cross_;
+
 
     private GameObject[] problems_;
     private int[] problem_id_;
@@ -169,10 +172,14 @@ public class ToolBoxBehavior : GenericSingleton<ToolBoxBehavior> {
     }
 
     public void BorrowSpawn() {
-        int re = problems_[1].GetComponent<ScrewGenerator>().GetRemainNum();
-        Destroy(problems_[1]);
-        problems_[1] = Instantiate(numbers_[problem_id_[1] - 1], anchors_[1].position, Quaternion.identity, transform);
-        problems_[1].GetComponent<ScrewGenerator>().GenerateScrews(1, num: re);
+        try {
+            ScrewGenerator sg = problems_[1].GetComponent<ScrewGenerator>();
+            int re = sg.GetRemainNum();
+            sg.ClearScrews();
+            problems_[4] = Instantiate(numbers_[problem_id_[1] - 1], anchors_[6].position, Quaternion.identity, transform);
+            problems_[4].GetComponent<ScrewGenerator>().GenerateScrews(1, num: re);
+            cross_.SetActive(true);
+        } catch (Exception e) { }
     }
 
     private void SetNewProblem(ProblemData prob) {
@@ -208,6 +215,9 @@ public class ToolBoxBehavior : GenericSingleton<ToolBoxBehavior> {
 
         if (button_ != null)
             button_.ActiveButton(false);
+
+        if (cross_ != null)
+            cross_.SetActive(false);
     }
 
     private void SpawnOperator(int num1, bool add) {
@@ -217,7 +227,7 @@ public class ToolBoxBehavior : GenericSingleton<ToolBoxBehavior> {
     }
 
     private void SpawnProblem(int num1, int num2) {
-        problems_ = new GameObject[4];
+        problems_ = new GameObject[5];
         problem_id_ = new int[4];
 
         problem_id_[0] = num1 % 10;
