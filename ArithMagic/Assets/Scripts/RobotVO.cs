@@ -14,6 +14,12 @@ public class RobotVO : MonoBehaviour
 	void Start ()
     {
         robotAudio_ = GetComponent<AudioSource>();
+        if (!SoundLib.SoundManager.Instance.CheckSoundState())
+        {
+            robotAudio_.Stop();
+        }
+
+
     }
 	
 }

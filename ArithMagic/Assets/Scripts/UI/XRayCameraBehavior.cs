@@ -32,7 +32,7 @@ public class XRayCameraBehavior : GenericSingleton<XRayCameraBehavior> {
     private GameObject render_mesh_;
     private Animator mesh_animator_;
     private BoxCollider2D collider_;
-    //private Vector3 scale_factor_;
+    private Vector3 scale_factor_;
     private bool is_entered_ = false;
 
     //Robot VoiceOver
@@ -84,16 +84,22 @@ public class XRayCameraBehavior : GenericSingleton<XRayCameraBehavior> {
             confetti.SetActive(true);
 
             try {
-                roboVO.robotAudio_.clip = roboVO.fixedClips_[UnityEngine.Random.Range(0, roboVO.fixedClips_.Count)];
-                roboVO.robotAudio_.Play();
+                if (SoundManager.Instance.CheckSoundState())
+                {
+                    roboVO.robotAudio_.clip = roboVO.fixedClips_[UnityEngine.Random.Range(0, roboVO.fixedClips_.Count)];
+                    roboVO.robotAudio_.Play();
+                }
             } catch (Exception) { }
         } else {
             SetXRayCameraActive(true);
             try {
-                int clipNumber = UnityEngine.Random.Range(0, roboVO.brokenClips_.Count);
-                roboVO.robotAudio_.clip = roboVO.brokenClips_[clipNumber];
-                roboVO.brokenClips_.RemoveAt(clipNumber);
-                roboVO.robotAudio_.Play();
+                if (SoundManager.Instance.CheckSoundState())
+                {
+                    int clipNumber = UnityEngine.Random.Range(0, roboVO.brokenClips_.Count);
+                    roboVO.robotAudio_.clip = roboVO.brokenClips_[clipNumber];
+                    roboVO.brokenClips_.RemoveAt(clipNumber);
+                    roboVO.robotAudio_.Play();
+                }
             } catch (Exception) { }
         }
     }
@@ -168,7 +174,7 @@ public class XRayCameraBehavior : GenericSingleton<XRayCameraBehavior> {
            // SoundManager.Instance.PlaySFX(sfx_scanner);
 
         is_entered_ = false;
-        //transform.localScale = Vector3.zero;
+        transform.localScale = Vector3.zero;
     }
 
     private void Awake() {
@@ -199,8 +205,8 @@ public class XRayCameraBehavior : GenericSingleton<XRayCameraBehavior> {
 
         parts_ = new List<GameObject>(GameObject.FindGameObjectsWithTag("Part"));
 
-        //scale_factor_ = transform.localScale;
-        //transform.localScale = Vector3.zero;
+        scale_factor_ = transform.localScale;
+        transform.localScale = Vector3.zero;
 
         if ((MapRobotBehavior.GetDockedId() + 1) % 3 == 0)
             progressBar.transform.parent.gameObject.SetActive(false);
@@ -208,18 +214,12 @@ public class XRayCameraBehavior : GenericSingleton<XRayCameraBehavior> {
 
     void Update() {
         if (InteractManager.Instance.is_touched || is_entered_)
-        {
-            //transform.DOScale(scale_factor_, 0.5f);
-            Vector2 pos = Input.mousePosition;
-            pos = Camera.main.ScreenToWorldPoint(pos);
-            transform.position = new Vector3(pos.x, pos.y, -1);
-        }
+            transform.DOScale(scale_factor_, 0.5f);
         else
-            //transform.DOScale(Vector3.zero, 0.5f);
-            transform.position = new Vector3(-2.57f, -3.088f, -1f);
+            transform.DOScale(Vector3.zero, 0.5f);
 
-        //Vector2 pos = Input.mousePosition;
-        //pos = Camera.main.ScreenToWorldPoint(pos);
-        //transform.position = new Vector3(pos.x, pos.y, -1);
+        Vector2 pos = Input.mousePosition;
+        pos = Camera.main.ScreenToWorldPoint(pos);
+        transform.position = new Vector3(pos.x, pos.y, -1);
     }
 }

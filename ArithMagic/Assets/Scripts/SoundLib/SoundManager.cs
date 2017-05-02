@@ -12,6 +12,9 @@ namespace SoundLib {
         private static Queue<AudioClip> bgm_queue_;
         private static Queue<AudioClip> sfx_queue_;
 
+        private bool SoundState = true;
+        private bool MusicState = true; 
+
         // this would allow at most 3 sound effects playing simultaneously
         private const int kSFXBufferSize = 3;
 
@@ -72,6 +75,8 @@ namespace SoundLib {
 
             if (clip == null)
                 return false;
+            if (!MusicState)
+                return false;
 
             try {
                 if (bgm_src_.isPlaying)
@@ -109,6 +114,9 @@ namespace SoundLib {
             if (clip == null)
                 return false;
 
+            if (!SoundState)
+                return false; 
+
             try {
                 for (int i = 0; i < sfx_src_.Length; ++i) {
                     if (sfx_src_[i] == null) {
@@ -139,6 +147,8 @@ namespace SoundLib {
 
         public bool PlaySFX(AudioClip[] clips, bool loop = false) {
             if (clips == null)
+                return false;
+            if (!SoundState)
                 return false;
             foreach (AudioClip clip in clips)
                 if (!PlaySFX(clip, loop))
@@ -221,5 +231,41 @@ namespace SoundLib {
             catch (NullReferenceException) { }
             return false;
         }
+
+        public void MuteMusic()
+        {
+            if (MusicState)
+            {
+                MusicState = false;
+                StopBGM(); 
+            }
+            else if (!MusicState)
+            {
+                MusicState = true;
+                try
+                {
+                    bgm_src_.Play();
+                }
+                catch (NullReferenceException) { }
+            }
+        }
+
+        public void MuteSound()
+        {
+            if (SoundState)
+            {
+                SoundState = false; 
+            }
+            else if (!SoundState)
+            {
+                SoundState = true; 
+            }
+        }
+
+        public bool CheckMusicState()
+        { return MusicState; }
+
+        public bool CheckSoundState()
+        { return SoundState; }
     }
 }
