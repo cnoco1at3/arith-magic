@@ -7,8 +7,7 @@ public class PartsAcceptor : MonoBehaviour {
 
     public bool active = true;
 
-    [SerializeField]
-    private int acc_part_id = 0;
+    public int acc_part_id = 0;
 
     public AudioClip dropBatterySound;
     public AudioClip rightAnswerSound;

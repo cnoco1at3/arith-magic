@@ -2706,7 +2706,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   active: 1
-  acc_part_id: 3
+  acc_part_id: 0
   dropBatterySound: {fileID: 8300000, guid: d465aa5e80400c94eb3a639999018a76, type: 3}
   rightAnswerSound: {fileID: 8300000, guid: c02f2ef9c81245148a02916a6d1a34f9, type: 3}
   accept_point_: {fileID: 4410531688054860}
@@ -2812,6 +2812,51 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 8bf6fb560d65cc546afb047e05aa358c, type: 3}
   - {fileID: 8300000, guid: e6d974d660c27bc439a9564975183b2e, type: 3}
   wrong_sfx: {fileID: 8300000, guid: ccac5b46f2f5fd444bdb6f45b78a99b8, type: 3}
+  answerVO_ones:
+  - {fileID: 8300000, guid: b0830939a53d96e43b3159a6ecea6ae6, type: 3}
+  - {fileID: 8300000, guid: 769169885d0292742b57208923c7bad4, type: 3}
+  - {fileID: 8300000, guid: f2a3ab108db649044aa7969d9912e56b, type: 3}
+  - {fileID: 8300000, guid: afa3c8574a2f4374fa3ed774082e1a95, type: 3}
+  - {fileID: 8300000, guid: 443684ead95f94848bffe3106cdc492b, type: 3}
+  - {fileID: 8300000, guid: 13bfd95aa11708e478494df7a8403c9a, type: 3}
+  - {fileID: 8300000, guid: aa1fd64e377dc2a44879c4f83db3895c, type: 3}
+  - {fileID: 8300000, guid: 01312eee3dd0fa64f8d96b4e8f812b3b, type: 3}
+  - {fileID: 8300000, guid: 5e0a6f8adc58b1940a512051e900f88a, type: 3}
+  - {fileID: 8300000, guid: 8d3943659bdea3040958725c829a0974, type: 3}
+  - {fileID: 8300000, guid: d10085b16158f5e41b55568e77e01724, type: 3}
+  - {fileID: 8300000, guid: 11a6f1e897c4c024ebebd0cfc36f41eb, type: 3}
+  - {fileID: 8300000, guid: 51bf9e65c53a05c45a8e59b1c678bfcc, type: 3}
+  - {fileID: 8300000, guid: 670c8b3c1f152df41a5e7b0ed74f7a19, type: 3}
+  - {fileID: 8300000, guid: a714fe7d704e1bf419e94b9f65b03a6c, type: 3}
+  - {fileID: 8300000, guid: 60a8d1fac7cd1c344ad351123dcf68e7, type: 3}
+  - {fileID: 8300000, guid: 085c174f2a2ce304b83645cce0f14627, type: 3}
+  - {fileID: 8300000, guid: dd6b92d2119275a4aacb7c94a236d7b2, type: 3}
+  - {fileID: 8300000, guid: f0f6586c1bfa82642838808917a8b64c, type: 3}
+  - {fileID: 8300000, guid: d50018b7e32536d4f82bf085f43bcb54, type: 3}
+  answerVO_tens:
+  - {fileID: 8300000, guid: d10085b16158f5e41b55568e77e01724, type: 3}
+  - {fileID: 8300000, guid: baf32518b92c92d4088c21733a7d2080, type: 3}
+  - {fileID: 8300000, guid: 102956f41b706bf48a2f98a9a05ce72e, type: 3}
+  - {fileID: 8300000, guid: d9ffc76e25907c245ac35edde290d8bb, type: 3}
+  - {fileID: 8300000, guid: d4540f94c5b2eb04dba139ee77849387, type: 3}
+  - {fileID: 8300000, guid: 826fd437068b7704cb9eddfdaf2d0b5d, type: 3}
+  - {fileID: 8300000, guid: fc0e120acbc551a4195b42a18264f7e8, type: 3}
+  - {fileID: 8300000, guid: f80e9a6838fa4a8448e06feff53c531f, type: 3}
+  - {fileID: 8300000, guid: a7cd33b221d0cc747b76fc9a88828eb6, type: 3}
+  wrongVO:
+  - {fileID: 8300000, guid: cb4787b5625eb8846b458825cec275ce, type: 3}
+  - {fileID: 8300000, guid: 001f9e4d5ed8d4f4aa9d04c41938bac0, type: 3}
+  - {fileID: 8300000, guid: 21f2a24a1014ae84bb315ddf1d923976, type: 3}
+  - {fileID: 8300000, guid: 14f378a708c883e4aa396b118c181e00, type: 3}
+  - {fileID: 8300000, guid: 7a3d16232217e2a439033b9c87495695, type: 3}
+  - {fileID: 8300000, guid: 5e0b0d7643ecea24f8b82179ce9ab150, type: 3}
+  - {fileID: 8300000, guid: a4a6080bd91edb643ab89ecae5888da0, type: 3}
+  - {fileID: 8300000, guid: c9cfce8d41536f14598dd457ac478172, type: 3}
+  - {fileID: 8300000, guid: ed593997211362f4ebb2d037763fff7f, type: 3}
+  - {fileID: 8300000, guid: 61e46a0c16f06ef488a99283624891f7, type: 3}
+  - {fileID: 8300000, guid: f40751f38947cbc43a4f4988529851ba, type: 3}
+  - {fileID: 8300000, guid: 90e55563fb097704598844b42c3d7b84, type: 3}
+  - {fileID: 8300000, guid: 9ca8947536dcd394ebd467e0643c54c9, type: 3}
   numbers_:
   - {fileID: 1581309935582976, guid: c2fac9d2bb39e6742a94db989a299ca1, type: 2}
   - {fileID: 1484826530720502, guid: fcf0b51fe17bb5d47a532a66aac7aa28, type: 2}
@@ -2921,6 +2966,8 @@ MonoBehaviour:
   pickBatterySound:
   - {fileID: 8300000, guid: b0830939a53d96e43b3159a6ecea6ae6, type: 3}
   - {fileID: 8300000, guid: faab918a6e440a54399f33f2f9c63572, type: 3}
+  - {fileID: 8300000, guid: 8540ccb33c2c33f4ea464305bbdbd0b3, type: 3}
+  - {fileID: 8300000, guid: 4bfb275fe3dfc514e9c8a095ae5e35cd, type: 3}
 --- !u!114 &114815410054589734
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2943,8 +2990,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c350d40ecedd45a4a879ce574b02e224, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  active: 0
-  acc_part_id: 4
+  active: 1
+  acc_part_id: 0
   dropBatterySound: {fileID: 8300000, guid: d465aa5e80400c94eb3a639999018a76, type: 3}
   rightAnswerSound: {fileID: 0}
   accept_point_: {fileID: 4341921423453580}
