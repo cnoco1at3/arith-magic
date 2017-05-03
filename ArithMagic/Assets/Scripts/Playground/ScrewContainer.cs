@@ -83,7 +83,7 @@ public class ScrewContainer : Clickable {
     public override void ClickEvent() {
         if (IsFull && GameController.add)
             RegroupTo();
-        else if (!GameController.add)
+        else if (!IsEmpty && !GameController.add)
             BorrowTo();
     }
 
@@ -117,6 +117,7 @@ public class ScrewContainer : Clickable {
             GenericScrewBehavior last = ReleaseSlot();
             carrier_.ObtainSlot(last);
             ToolBoxBehavior.Instance.BorrowSpawn();
+            last.LatentStop();
             last.transform.DOMove(carrier_.GetSlotPosition(), 0.5f);
 
             borrowed_ = true;

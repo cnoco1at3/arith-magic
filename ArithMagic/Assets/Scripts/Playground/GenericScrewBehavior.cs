@@ -22,7 +22,9 @@ public class GenericScrewBehavior : Clickable {
     protected Collider collider_;
     protected AudioSource soundEffect;
 
-    private GameObject[] ones;
+    private GameObject[] ones_;
+
+    private Coroutine cluster_anim_;
 
     // Use this for initialization
     void Start() {
@@ -46,7 +48,7 @@ public class GenericScrewBehavior : Clickable {
                 GenericScrewBehavior last = container_.ReleaseSlot();
 
                 if (prev_screw_ != null)
-                    StartCoroutine(ClusterAnim(pos, last));
+                    cluster_anim_ = StartCoroutine(ClusterAnim(pos, last));
                 else
                     StartCoroutine(SingleAnim(pos, last));
             }
@@ -66,7 +68,7 @@ public class GenericScrewBehavior : Clickable {
 
                 // do animation here
                 if (prev_screw_ != null)
-                    StartCoroutine(ClusterAnim(pos));
+                    cluster_anim_ = StartCoroutine(ClusterAnim(pos));
                 else
                     StartCoroutine(SingleAnim(pos));
 
@@ -86,13 +88,24 @@ public class GenericScrewBehavior : Clickable {
     }
 
     public void LatentDestroy() {
-        if (ones != null && ones.Length > 0) {
-            for (int i = 0; i < ones.Length; ++i)
-                if (ones[i] != null)
-                    Destroy(ones[i]);
+        if (ones_ != null && ones_.Length > 0) {
+            for (int i = 0; i < ones_.Length; ++i)
+                if (ones_[i] != null)
+                    Destroy(ones_[i]);
         }
 
         Destroy(gameObject);
+    }
+
+    public void LatentStop() {
+        transform.DOKill();
+        if (cluster_anim_ != null)
+            StopCoroutine(cluster_anim_);
+        if (ones_ != null && ones_.Length > 0) {
+            for (int i = 0; i < ones_.Length; ++i)
+                if (ones_[i] != null)
+                    Destroy(ones_[i]);
+        }
     }
 
     private IEnumerator SingleAnim(Vector3 pos, GenericScrewBehavior tar = null) {
@@ -112,24 +125,24 @@ public class GenericScrewBehavior : Clickable {
 
     private IEnumerator ClusterAnim(Vector3 pos, GenericScrewBehavior tar = null) {
 
-        ones = new GameObject[9];
+        ones_ = new GameObject[9];
 
         // Instantiate ones
-        for (int i = 0; i < ones.Length; ++i) {
-            ones[i] = Instantiate(prev_screw_, transform.position, Quaternion.identity);
-            ones[i].GetComponent<Collider>().enabled = false;
+        for (int i = 0; i < ones_.Length; ++i) {
+            ones_[i] = Instantiate(prev_screw_, transform.position, Quaternion.identity);
+            ones_[i].GetComponent<Collider>().enabled = false;
             Vector3 randoff = new Vector3(UnityEngine.Random.Range(-0.5f, 0.5f), UnityEngine.Random.Range(-0.5f, 0.5f));
 
             // Move them to scattered position
             SoundManager.Instance.PlaySFX(sfx_clip_, false);
-            ones[i].transform.DOLocalMove(ones[i].transform.localPosition + randoff, 0.5f);
+            ones_[i].transform.DOLocalMove(ones_[i].transform.localPosition + randoff, 0.5f);
         }
 
         yield return new WaitForSeconds(0.8f);
 
         // Move them to target position
-        for (int i = 0; i < ones.Length; ++i)
-            ones[i].transform.DOMove(pos, 0.8f);
+        for (int i = 0; i < ones_.Length; ++i)
+            ones_[i].transform.DOMove(pos, 0.8f);
 
         // Move ten to target position
         SoundManager.Instance.PlaySFX(sfx_clip_, false);
@@ -137,9 +150,9 @@ public class GenericScrewBehavior : Clickable {
 
         yield return new WaitForSeconds(0.8f);
         // Destroy ones
-        for (int i = 0; i < ones.Length; ++i)
-            Destroy(ones[i]);
-        ones = null;
+        for (int i = 0; i < ones_.Length; ++i)
+            Destroy(ones_[i]);
+        ones_ = null;
 
         if (tar != null && !add) {
 

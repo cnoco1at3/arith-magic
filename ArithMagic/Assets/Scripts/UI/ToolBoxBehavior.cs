@@ -266,6 +266,7 @@ public class ToolBoxBehavior : GenericSingleton<ToolBoxBehavior> {
         if (ans < 10) {
             slots_[1].active = false;
             slots_[1].GetComponent<Collider>().enabled = false;
+            slots_[1].SetAccPartId(0);
             cover_.SetActive(true);
         } else {
             slots_[1].active = true;
@@ -279,41 +280,27 @@ public class ToolBoxBehavior : GenericSingleton<ToolBoxBehavior> {
         InteractManager.LockInteraction();
 
         //determine audio clips for answer
-        if (slots_[1].acc_part_id == 0)
-        {
+        if (slots_[1].acc_part_id == 0) {
             answerClip_ones = answerVO_ones[slots_[0].acc_part_id];
             answerClip_tens = null;
-        }
-        else if (slots_[1].acc_part_id == 1)
-        {
+        } else if (slots_[1].acc_part_id == 1) {
             answerClip_ones = answerVO_ones[slots_[0].acc_part_id + (slots_[1].acc_part_id * 10)];
             answerClip_tens = null;
-        }
-
-        else if (slots_[1].acc_part_id > 1 && slots_[0].acc_part_id == 0)
-        {
+        } else if (slots_[1].acc_part_id > 1 && slots_[0].acc_part_id == 0) {
             answerClip_ones = null;
             answerClip_tens = answerVO_tens[slots_[1].acc_part_id - 1];
-        }
-
-        else if (slots_[1].acc_part_id > 1 && slots_[0].acc_part_id > 0)
-        {
+        } else if (slots_[1].acc_part_id > 1 && slots_[0].acc_part_id > 0) {
             answerClip_ones = answerVO_ones[slots_[0].acc_part_id];
-            answerClip_tens = answerVO_tens[slots_[1].acc_part_id - 1];      
+            answerClip_tens = answerVO_tens[slots_[1].acc_part_id - 1];
         }
         //Play audio clips for answer
-        if (answerClip_ones != null && answerClip_tens == null)
-        {
+        if (answerClip_ones != null && answerClip_tens == null) {
             SoundLib.SoundManager.Instance.PlaySFX(answerClip_ones);
             yield return new WaitForSeconds(answerClip_ones.length);
-        }
-        else if (answerClip_ones == null && answerClip_tens != null)
-        {
+        } else if (answerClip_ones == null && answerClip_tens != null) {
             SoundLib.SoundManager.Instance.PlaySFX(answerClip_tens);
             yield return new WaitForSeconds(answerClip_tens.length);
-        }
-        else if (answerClip_ones != null && answerClip_tens != null)
-        {
+        } else if (answerClip_ones != null && answerClip_tens != null) {
             SoundLib.SoundManager.Instance.PlaySFX(answerClip_tens);
             yield return new WaitForSeconds(answerClip_tens.length);
             SoundLib.SoundManager.Instance.PlaySFX(answerClip_ones);
