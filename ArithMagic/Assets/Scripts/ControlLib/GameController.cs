@@ -37,6 +37,7 @@ public class GameController : PersistentSingleton<GameController> {
     }
 
     public static void EnterNextLevel() {
+        System.GC.Collect();
         SceneManager.LoadScene(kGameScene);
     }
 
