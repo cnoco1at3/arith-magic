@@ -20,7 +20,7 @@ public class ScrewContainer : Clickable {
 
     private int slot_index_ = -1;
 
-    private bool borrowed_ = false;
+    public bool borrowed_ = false;
     #endregion
 
 
@@ -80,6 +80,15 @@ public class ScrewContainer : Clickable {
         borrowed_ = false;
     }
 
+
+    public void StartGlow()
+    {
+        if (glow_ == null)
+            return; 
+
+        glow_.SetActive(true);
+    }
+
     public override void ClickEvent() {
         if (IsFull && GameController.add)
             RegroupTo();
@@ -117,6 +126,8 @@ public class ScrewContainer : Clickable {
         slot_index_ = -1;
 
         StartCoroutine(RegroupAnim(carrier_));
+
+        glow_.SetActive(false);
     }
 
     private void BorrowTo() {
@@ -124,6 +135,8 @@ public class ScrewContainer : Clickable {
         if (carrier_ == null)
             return;
         if (!carrier_.IsEmpty)
+            return;
+        if (this == ToolBoxBehavior.Instance.GetContainerById(0))
             return;
 
         if (!borrowed_) {
@@ -134,6 +147,8 @@ public class ScrewContainer : Clickable {
             last.transform.DOMove(carrier_.GetSlotPosition(), 0.5f);
 
             borrowed_ = true;
+            glow_.SetActive(false);
+
         }
 
     }

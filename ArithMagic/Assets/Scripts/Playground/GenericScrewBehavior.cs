@@ -121,6 +121,9 @@ public class GenericScrewBehavior : Clickable {
             LatentDestroy();
         }
 
+        if(container_.IsFull)
+            container_.StartGlow();
+
     }
 
     public IEnumerator ClusterAnim(Vector3 pos, GenericScrewBehavior tar = null) {
@@ -149,6 +152,10 @@ public class GenericScrewBehavior : Clickable {
         MoveToPosition(pos, 0.8f);
 
         yield return new WaitForSeconds(0.8f);
+
+        if (!container_.borrowed_ && !GameController.add)
+            container_.StartGlow();
+
         // Destroy ones
         for (int i = 0; i < ones_.Length; ++i)
             Destroy(ones_[i]);
