@@ -37,6 +37,8 @@ public class ToolBoxBehavior : GenericSingleton<ToolBoxBehavior> {
 
     [SerializeField]
     private ScrewCarrier carrier_;
+    [SerializeField]
+    private ScrewCarrier carrierAdd_;
 
     [SerializeField]
     private GameObject[] screws_;
@@ -88,6 +90,11 @@ public class ToolBoxBehavior : GenericSingleton<ToolBoxBehavior> {
         } else {
             timer_.SetActive(false);
         }
+
+        if (category >= 4 && category <= 6)
+            carrierAdd_.gameObject.SetActive(true);
+        else
+            carrierAdd_.gameObject.SetActive(false);
 
         if (category >= 10)
             carrier_.gameObject.SetActive(true);
@@ -217,6 +224,9 @@ public class ToolBoxBehavior : GenericSingleton<ToolBoxBehavior> {
 
         if (carrier_ != null)
             carrier_.ClearSlot();
+
+        if (carrierAdd_ != null)
+            carrierAdd_.ClearSlot();
 
         if (slots_ != null)
             foreach (PartsAcceptor slot in slots_)

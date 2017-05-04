@@ -90,20 +90,33 @@ public class ScrewContainer : Clickable {
 
     private void RegroupTo() {
 
-        ScrewContainer next_container = ToolBoxBehavior.Instance.GetNextContainer(this);
+        //ScrewContainer next_container = ToolBoxBehavior.Instance.GetNextContainer(this);
 
-        if (next_container == null)
+        //if (next_container == null)
+        //    return;
+        //if (next_container.IsFull)
+        //    return;
+
+        //Vector3 next_pos = next_container.GetNextSlotPosition();
+
+        //for (int i = 0; i <= slot_index_; ++i)
+        //    buckets_[i].transform.DOMove(next_pos, 0.5f);
+
+        //slot_index_ = -1;
+        //StartCoroutine(RegroupAnim(next_container));
+
+        if (carrier_ == null)
             return;
-        if (next_container.IsFull)
+        if (!carrier_.IsEmpty)
             return;
 
-        Vector3 next_pos = next_container.GetNextSlotPosition();
+        Vector3 next_pos = carrier_.GetSlotPosition();
 
         for (int i = 0; i <= slot_index_; ++i)
             buckets_[i].transform.DOMove(next_pos, 0.5f);
-
         slot_index_ = -1;
-        StartCoroutine(RegroupAnim(next_container));
+
+        StartCoroutine(RegroupAnim(carrier_));
     }
 
     private void BorrowTo() {
@@ -144,6 +157,30 @@ public class ScrewContainer : Clickable {
         next_collider.enabled = false;
 
         next_container.ObtainSlot(next_behavior);
+        InteractManager.ReleaseInteraction();
+    }
+
+    private IEnumerator RegroupAnim(ScrewCarrier next_carrier)
+    {
+        InteractManager.LockInteraction();
+
+        yield return new WaitForSeconds(0.5f);
+
+        for (int i = 0; i <= slot_index_; ++i)
+        {
+            buckets_[i].LatentDestroy();
+            buckets_[i] = null;
+        }
+        ClearSlots();
+
+        GameObject next_screw =
+            Instantiate(ToolBoxBehavior.Instance.GetScrewByContainer(next_carrier.GetContainer()),
+            carrier_.GetSlotPosition(), Quaternion.identity, transform.root);
+        GenericScrewBehavior next_behavior = next_screw.GetComponent<GenericScrewBehavior>();
+        Collider next_collider = next_screw.GetComponent<Collider>();
+        next_collider.enabled = false;
+
+        carrier_.ObtainSlot(next_behavior);
         InteractManager.ReleaseInteraction();
     }
 }

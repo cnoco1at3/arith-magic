@@ -123,7 +123,7 @@ public class GenericScrewBehavior : Clickable {
 
     }
 
-    private IEnumerator ClusterAnim(Vector3 pos, GenericScrewBehavior tar = null) {
+    public IEnumerator ClusterAnim(Vector3 pos, GenericScrewBehavior tar = null) {
 
         ones_ = new GameObject[9];
 

@@ -55,13 +55,23 @@ public class ScrewCarrier : Clickable {
     }
 
     public override void ClickEvent() {
+
+        if (GameController.add)
+            AddCarry();
+        else if (!GameController.add)
+            SubtractCarry();    
+    }
+
+    private void SubtractCarry()
+    {
         if (IsEmpty)
             return;
 
         if (!container_.IsEmpty)
             return;
 
-        for (int i = 0; i < 10; ++i) {
+        for (int i = 0; i < 10; ++i)
+        {
             GameObject next_screw = Instantiate(ToolBoxBehavior.Instance.GetScrewByContainer(container_),
                 slot_.position, Quaternion.identity, transform.root);
             next_screw.GetComponent<Collider>().enabled = false;
@@ -73,5 +83,32 @@ public class ScrewCarrier : Clickable {
 
         GenericScrewBehavior tmp = ReleaseSlot();
         tmp.LatentDestroy();
+    }
+
+    private void AddCarry()
+    {
+        if (IsEmpty)
+            return;
+
+        if (container_.IsFull)
+            return;
+
+        GameObject next_screw = Instantiate(ToolBoxBehavior.Instance.GetScrewByContainer(container_),
+                slot_.position, Quaternion.identity, transform.root);
+        next_screw.GetComponent<Collider>().enabled = false;
+        GenericScrewBehavior next_behavior = next_screw.GetComponent<GenericScrewBehavior>();
+
+        StartCoroutine(next_behavior.ClusterAnim(container_.GetNextSlotPosition()));
+
+        //next_screw.transform.DOMove(container_.GetNextSlotPosition(), 0.5f);
+        container_.ObtainSlot(next_behavior);
+
+        GenericScrewBehavior tmp = ReleaseSlot();
+        tmp.LatentDestroy();
+
+    }
+
+    public ScrewContainer GetContainer() {
+        return container_;
     }
 }
