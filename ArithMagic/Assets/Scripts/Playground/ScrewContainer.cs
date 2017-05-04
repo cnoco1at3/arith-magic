@@ -78,6 +78,7 @@ public class ScrewContainer : Clickable {
         }
         slot_index_ = -1;
         borrowed_ = false;
+        glow_.SetActive(false);
     }
 
 
