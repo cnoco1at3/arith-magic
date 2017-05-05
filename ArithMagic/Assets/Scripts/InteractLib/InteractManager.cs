@@ -30,12 +30,13 @@ public class InteractManager : PersistentSingleton<InteractManager> {
             is_touched = true;
         }
 #endif
-#if UNITY_EDITOR
+#if UNITY_EDITOR || UNITY_ANDROID
         if (Input.GetMouseButton(0)) {
             touch_pos = Input.mousePosition;
             is_touched = true;
         }
 #endif
+
         else {
             if (current_ != null)
                 current_.OnTouchExit(touch_pos);
