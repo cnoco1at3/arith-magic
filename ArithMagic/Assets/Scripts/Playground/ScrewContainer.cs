@@ -137,9 +137,11 @@ public class ScrewContainer : Clickable {
             return;
         if (!carrier_.IsEmpty)
             return;
+        if (!checkCarrierActive())
+            return;
         if (this == ToolBoxBehavior.Instance.GetContainerById(0))
             return;
-
+        
         if (!borrowed_) {
             GenericScrewBehavior last = ReleaseSlot();
             carrier_.ObtainSlot(last);
@@ -199,4 +201,7 @@ public class ScrewContainer : Clickable {
         carrier_.ObtainSlot(next_behavior);
         InteractManager.ReleaseInteraction();
     }
+
+    public bool checkCarrierActive() { 
+        return carrier_.gameObject.activeSelf; }
 }
