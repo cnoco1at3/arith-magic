@@ -121,7 +121,7 @@ public class GenericScrewBehavior : Clickable {
             LatentDestroy();
         }
 
-        if(container_.IsFull)
+        if(container_.IsFull && GameController.add)
             container_.StartGlow();
 
     }
