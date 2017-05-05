@@ -196,6 +196,7 @@ public class ToolBoxBehavior : GenericSingleton<ToolBoxBehavior> {
             problems_[4] = Instantiate(numbers_[problem_id_[1] - 1], anchors_[6].position, Quaternion.identity, transform);
             problems_[4].GetComponent<ScrewGenerator>().GenerateScrews(1, num: re);
             cross_.SetActive(true);
+           
         } catch (Exception e) { }
     }
 
