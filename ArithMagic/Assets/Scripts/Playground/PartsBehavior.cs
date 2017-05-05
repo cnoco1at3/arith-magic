@@ -31,6 +31,13 @@ public class PartsBehavior : Dragable {
         Destroy(gameObject);
     }
 
+    //change sorting order 
+    public override void OnTouchEnter(Vector3 touch_pos)
+    {
+        GetComponent<SpriteRenderer>().sortingOrder++;
+        transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sortingOrder++;
+    }
+
     // NOTE: this check is seperated into two steps
     // 1. check if there is anything it could snap on, if so, snap on it, otherwise, return to where it from
     // 2. TODO check if this is a correct solution for the problem
@@ -70,8 +77,12 @@ public class PartsBehavior : Dragable {
 
     private void UpdateStatus(PartsAcceptor acceptor, bool accepted) {
         if (accepted)
+        {
             transform.DOMove(acceptor.GetAcceptPoint(),
                 (float)ConstantTweakTool.Instance[kSnapEaseIn]);
+            GetComponent<SpriteRenderer>().sortingOrder--;
+            transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sortingOrder--;
+        }
         else
             Destroy(gameObject);
 

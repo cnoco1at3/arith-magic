@@ -96,7 +96,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   part_id_: 7
-  pickBatterySound: {fileID: 8300000, guid: 744e436d4174a0d44ac7a374c77e0117, type: 3}
+  pickBatterySound:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!212 &212014660001809038
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -127,7 +130,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
-  m_SortingOrder: 41
+  m_SortingOrder: 63
   m_Sprite: {fileID: 21300000, guid: af8b3e371bfd49141a550051bf4847c4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -162,7 +165,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
-  m_SortingOrder: 40
+  m_SortingOrder: 62
   m_Sprite: {fileID: 21300000, guid: 91ac4a693b7ec974a9a24b4d6ee578b2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
