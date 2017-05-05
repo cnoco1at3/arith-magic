@@ -153,7 +153,7 @@ public class GenericScrewBehavior : Clickable {
 
         yield return new WaitForSeconds(0.8f);
 
-        if (!container_.borrowed_ && !GameController.add)
+        if (!container_.borrowed_ && !GameController.add && container_.checkCarrierActive())
             container_.StartGlow();
 
         // Destroy ones
