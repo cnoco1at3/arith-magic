@@ -77,24 +77,22 @@ public static class ProblemRuler {
                 break;
             // d - s w/ re
             case 10:
-                num1 = Random.Range(10, 100);
+                num1 = Random.Range(10, 19);
+                num2 = RandomSampler.Sample10(num1 % 10 + 1, 10);
+                break;
+            // d - s w/ re
+            case 11:
+                num1 = Random.Range(20, 100);
                 if (num1 % 10 == 9)
                     num1--;
                 num2 = RandomSampler.Sample10(num1 % 10 + 1, 10);
                 break;
             // d - d w/ re
-            case 11:
-                num1 = Random.Range(20, 100);
-                if (num1 % 10 == 9)
-                    num1--;
-                num2 = Random.Range(1, num1 / 10) * 10 + Random.Range(num1 % 10 + 1, 10);
-                break;
-            // d - d w/ re
             case 12:
-                num1 = Random.Range(20, 100);
+                num1 = Random.Range(30, 100);
                 if (num1 % 10 == 9)
                     num1--;
-                num2 = Random.Range(1, num1 / 10) * 10 + Random.Range(num1 % 10 + 1, 10);
+                num2 = Random.Range(1, num1 / 10 - 1) * 10 + Random.Range(num1 % 10 + 1, 10);
                 break;
 
             default:
