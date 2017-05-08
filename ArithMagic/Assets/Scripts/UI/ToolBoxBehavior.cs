@@ -104,14 +104,14 @@ public class ToolBoxBehavior : GenericSingleton<ToolBoxBehavior> {
         SetNewProblem(ProblemRuler.GetNewProblem(category));
 
         // animations here
-        transform.DOMove(Vector3.zero, 1.0f);
+        transform.DOMove(new Vector3(0,0,0), 1.0f);
         InteractManager.Instance.LockInteractionForSeconds(1.0f);
     }
 
     public void OnTimeUp() {
         if (time_mode_) {
             ClearProblem();
-            transform.DOMove(new Vector3(0, 10.4f), 2.0f);
+            transform.DOMove(new Vector3(0, 10.8f), 2.0f);
             XRayCameraBehavior.Instance.CheckParts();
             time_mode_ = false;
         }
@@ -333,7 +333,7 @@ public class ToolBoxBehavior : GenericSingleton<ToolBoxBehavior> {
                 SetNewProblem(ProblemRuler.GetNewProblem(category_));
             } else {
                 ClearProblem();
-                transform.DOMove(new Vector3(0, 10.4f), 2.0f);
+                transform.DOMove(new Vector3(0, 10.8f), 2.0f);
                 XRayCameraBehavior.Instance.CheckParts();
             }
         }
