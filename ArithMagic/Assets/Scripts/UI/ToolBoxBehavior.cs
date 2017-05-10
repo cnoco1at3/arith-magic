@@ -326,6 +326,18 @@ public class ToolBoxBehavior : GenericSingleton<ToolBoxBehavior> {
         if (time_mode_) {
             int offset = GameController.add ? 1 : 7;
             int category = UnityEngine.Random.Range(offset, category_ + 1);
+
+            //reset carriers
+            if (category >= 4 && category <= 6)
+                carrierAdd_.gameObject.SetActive(true);
+            else
+                carrierAdd_.gameObject.SetActive(false);
+
+            if (category >= 10)
+                carrier_.gameObject.SetActive(true);
+            else
+                carrier_.gameObject.SetActive(false);
+
             SetNewProblem(ProblemRuler.GetNewProblem(category));
         } else {
             problem_size_--;
