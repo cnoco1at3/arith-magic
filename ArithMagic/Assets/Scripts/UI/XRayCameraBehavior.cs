@@ -185,7 +185,8 @@ public class XRayCameraBehavior : GenericSingleton<XRayCameraBehavior> {
 
     // Use this for initialization
     void Start() {
-        SoundManager.Instance.SwitchScene(bgm[bgmTrack], sfx_b_scan, 0.5f);
+        //SoundManager.Instance.SwitchScene(bgm[bgmTrack], sfx_b_scan, 0.5f);
+        InteractManager.Instance.ResetInteraction();
 
         detect_thres_ = (float)ConstantTweakTool.Instance["DetectThreshold"];
         detect_time_ = detect_thres_;
