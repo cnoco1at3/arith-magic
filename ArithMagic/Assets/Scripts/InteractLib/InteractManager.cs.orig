@@ -24,14 +24,34 @@ public class InteractManager : PersistentSingleton<InteractManager> {
 
         // NOTE: This snippet get the touch position based on the platform
         is_touched = false;
-
 #if UNITY_IOS
         if (Input.touchCount > 0 && Input.GetTouch(0).phase != TouchPhase.Canceled && Input.GetTouch(0).phase != TouchPhase.Ended) {
             touch_pos = Input.GetTouch(0).position;
             is_touched = true;
         }
 #endif
+<<<<<<< HEAD
 #if UNITY_EDITOR || UNITY_ANDROID
+=======
+
+#if UNITY_ANDROID
+        if (Input.GetMouseButton(0))
+        {
+            touch_pos = Input.mousePosition;
+            is_touched = true;
+        }
+#endif
+
+        else
+        {
+            if (current_ != null)
+                current_.OnTouchExit(touch_pos);
+            ReleaseOccupation(current_);
+            touch_pos = new Vector3();
+        }
+
+#if UNITY_EDITOR
+>>>>>>> 98756c904d98c444de2cfad3284e1fe5bb6b9c48
         if (Input.GetMouseButton(0)) {
             touch_pos = Input.mousePosition;
             is_touched = true;

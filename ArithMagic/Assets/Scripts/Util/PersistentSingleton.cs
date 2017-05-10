@@ -1,6 +1,10 @@
 ﻿using UnityEngine;
 
 namespace Util {
+    /// <summary>
+    /// 
+    /// </summary> </remarks>
+    /// <typeparam name="T"></typeparam>
     public class PersistentSingleton<T> : MonoBehaviour
         where T : Component {
         private static T _instance;

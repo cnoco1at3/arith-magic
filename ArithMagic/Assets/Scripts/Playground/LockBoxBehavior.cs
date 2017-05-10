@@ -58,6 +58,11 @@ public class LockBoxBehavior : ProfileButton, IComparable {
         }
     }
 
+    /// <summary>
+    /// HACK
+    /// </summary>
+    /// <param name="obj"></param>
+    /// <returns></returns>
     public int CompareTo(object obj) {
         if (obj.GetType() != typeof(LockBoxBehavior))
             return -1;

@@ -5,6 +5,9 @@ using UnityEngine;
 using Util;
 using DG.Tweening;
 
+/// <summary>
+/// 
+/// </summary>
 public class ToolBoxBehavior : GenericSingleton<ToolBoxBehavior> {
 
 
@@ -76,6 +79,11 @@ public class ToolBoxBehavior : GenericSingleton<ToolBoxBehavior> {
     [SerializeField]
     private const int kProblemSize = 3;
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="category"></param>
+    /// <param name="time_mode"></param>
     public void PopulateProblem(int category, bool time_mode = false) {
 
         category_ = category;
