@@ -112,4 +112,11 @@ public class InteractManager : PersistentSingleton<InteractManager> {
         yield return new WaitForSeconds(time);
         ReleaseInteraction();
     }
+
+    public void ResetInteraction()
+    {
+        is_occupied_ = false;
+        locker_ = false;
+        current_ = null;
+    }
 }
